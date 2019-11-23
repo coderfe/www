@@ -70,7 +70,7 @@ class WordCloud extends React.Component {
     };
     return (
       <div>
-        <Chart height={600} data={dv} scale={scale} padding={0} forceFit>
+        <Chart height={800} width={1200} data={dv} scale={scale} padding={0}>
           <Tooltip showTitle={false} />
           <Coord reflect="y" />
           <Geom
