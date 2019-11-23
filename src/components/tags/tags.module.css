@@ -1,0 +1,21 @@
+.tag {
+  display: inline-block;
+  height: 26px;
+  padding: 0 8px;
+  line-height: 26px;
+  border-radius: var(--base-border-radius);
+  margin-bottom: 8px;
+  margin-right: 8px;
+  border: 1px solid var(--primary-color);
+  font-size: 12px;
+  cursor: pointer;
+  transition: var(--base-transition);
+}
+
+.tag:hover {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.tags-content {
+}
