@@ -246,3 +246,44 @@ main {
 .books-btn-group .btn:nth-child(2) {
   margin: 0 3px;
 }
+
+/* media query */
+
+@media screen and (max-width: 1024px) {
+  .books-wrapper {
+    grid-template-columns: repeat(5, minmax(120px, 1fr));
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .home {
+    padding: 0 1rem;
+    grid-template: 'content' 'sidebar';
+  }
+  .home-sidebar {
+    width: 100%;
+  }
+  .books-wrapper {
+    grid-template-columns: repeat(4, minmax(120px, 1fr));
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .header-navbar {
+    width: 100%;
+    text-align: center;
+    flex-direction: column;
+  }
+  .books {
+    padding: 0 1rem;
+  }
+  .books-wrapper {
+    grid-template-columns: repeat(2, minmax(120px, 1fr));
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .header-logo {
+    font-size: 94px;
+  }
+}

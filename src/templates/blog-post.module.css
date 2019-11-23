@@ -87,3 +87,17 @@
 .blog-post-content a:hover {
   text-decoration: underline;
 }
+
+@media screen and (max-width: 1024px) {
+  .blog-post-wrapper {
+    flex-direction: column;
+  }
+  .blog-post-aside {
+    width: 100%;
+    display: none;
+  }
+  .blog-post {
+    padding: 0 1rem;
+    order: 2;
+  }
+}

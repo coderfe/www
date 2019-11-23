@@ -1,24 +1,51 @@
 .profile {
   padding: 0 var(--base-padding);
-  margin: 96px auto;
+  margin: 96px auto 2rem auto;
   border: 1px solid var(--border-color);
   border-radius: var(--base-border-radius);
   background: white;
+  transition: var(--base-transition);
 }
 
 .profile-avatar {
+  position: relative;
   width: 160px;
   height: 160px;
   margin-left: 50%;
-  transform: translateX(-50%);
   margin-top: -80px;
   margin-bottom: 1rem;
   overflow: hidden;
   border-radius: 50%;
-  border: 10px solid rgba(255, 255, 255, 0.5);
-  box-shadow: inset 1px 1px 4px rgba(0, 0, 0, 0.6), 0 2px 3px rgba(0, 0, 0, 0.5);
+  border-width: 1px;
+  border-style: solid;
+  border-color: var(--border-color) var(--border-color) transparent transparent;
+  transform: translateX(-50%) rotate(-45deg);
+  transform-origin: center;
+  transition: var(--base-transition);
+}
+
+.profile:hover,
+.profile:active {
+  border-color: var(--primary-color);
+}
+
+.profile:hover .profile-avatar,
+.profile:active .profile-avatar {
+  border-color: var(--primary-color) var(--primary-color) transparent
+    transparent;
+}
+
+.profile-avatar::after {
+  position: absolute;
+  content: '';
+  display: block;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
   background: url('../../images/icon.jpg') no-repeat center;
   background-size: contain;
+  transform: rotate(45deg);
 }
 
 .profile-slogan {
