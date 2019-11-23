@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Bonbon&display=swap');
 
 html {
-  --primary-color: tomato;
+  --primary-color: #e92a31;
   --primary-text-color: rgba(0, 0, 0, 0.75);
   --secondary-text-color: rgba(0, 0, 0, 0.55);
   --border-color: #dddde1;
