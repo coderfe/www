@@ -2,7 +2,7 @@ const path = require('path');
 const fs = require('fs');
 const fetchDouBanBooks = require('db-book');
 const config = require('./db-config');
-const jsonPath = path.join(__dirname, '../src/pages/_data/books.json');
+const jsonPath = path.join(__dirname, '../src/data/books.json');
 
 (async () => {
   const books = await fetchDouBanBooks({
