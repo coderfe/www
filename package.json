@@ -23,7 +23,7 @@
     "react-helmet": "^5.2.1"
   },
   "devDependencies": {
-    "db-book": "^1.0.3",
+    "db-book": "^1.0.4",
     "prettier": "^1.19.1"
   },
   "scripts": {

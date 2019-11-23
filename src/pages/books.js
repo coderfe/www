@@ -77,6 +77,7 @@ export const pageQuery = graphql`
           status
           tags
           title
+          url
         }
       }
     }

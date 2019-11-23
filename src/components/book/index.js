@@ -1,9 +1,9 @@
-import React from "react";
-import { cacheImages } from "../../helper";
-import styles from "./book.module.css";
+import React from 'react';
+import { cacheImages } from '../../helper';
+import styles from './book.module.css';
 
 export default function Book({ book }) {
-  const { title, author, img } = book;
+  const { title, author, img, url } = book;
 
   return (
     <div className={styles.book}>
@@ -14,11 +14,8 @@ export default function Book({ book }) {
         </div>
         <div className={styles.bookInfo}>
           <p className={styles.bookInfoTitle}>
-            {/* TODO: Fix 修正书的 URL，连接至书详情 */}
             <a
-              href={`https://search.douban.com/book/subject_search?search_text=${encodeURIComponent(
-                title
-              )}`}
+              href={url}
               rel="noopener noreferrer"
               target="_blank"
               className={styles.bookInfoLink}
