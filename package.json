@@ -27,6 +27,7 @@
   },
   "devDependencies": {
     "db-book": "^1.0.4",
+    "gatsby-plugin-feed": "^2.3.21",
     "prettier": "^1.19.1"
   },
   "scripts": {
