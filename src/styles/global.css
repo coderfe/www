@@ -209,9 +209,13 @@ main {
 }
 
 .books-wrapper {
-  display: grid;
+  display: none;
   grid-gap: 2rem;
   grid-template-columns: repeat(6, minmax(120px, 1fr));
+}
+
+.books-wrapper.active {
+  display: grid;
 }
 
 .books-btn-group {
@@ -248,10 +252,19 @@ main {
 }
 
 .has-error {
-  content: url('../images/icon.jpg');
+  content: url('../images/fail-to-load.svg');
 }
 .loaded:not(.has-error) {
   animation: loaded 300ms ease-in-out;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 @keyframes loaded {

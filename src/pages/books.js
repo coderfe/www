@@ -48,14 +48,17 @@ export default function BooksPage({ data }) {
         </div>
         <div>
           {allBooks.map(({ books, status }, index) => (
-            <div className={`books-wrapper books-${status}`} key={index}>
-              {books &&
-                tab === status &&
-                books.map(book => (
-                  <div className="book-container" key={book.id}>
-                    <Book key={book.id} book={book} />
-                  </div>
-                ))}
+            <div
+              className={`books-wrapper books-${status} ${
+                tab === status ? 'active' : ''
+              }`}
+              key={index}
+            >
+              {books.map(book => (
+                <div className="book-container" key={book.id}>
+                  <Book key={book.id} book={book} />
+                </div>
+              ))}
             </div>
           ))}
         </div>
