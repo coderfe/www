@@ -2,7 +2,7 @@
 title: 在 Gatsby.js 服务端渲染模式下使用 BizCharts
 date: 2019-11-23
 path: /gatsby/use-bizcharts-in-gatsby
-tldr: BizCharts 踩坑记录：Gatsby.js 在服务端渲染（SSR）模式下使用 BizCharts，
+tldr: BizCharts 踩坑记录：Gatsby.js 在服务端渲染（SSR）模式下使用 BizCharts
 tags: ['Gatsby', '可视化']
 ---
 
