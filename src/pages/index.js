@@ -11,7 +11,7 @@ const IndexPage = ({ data }) => {
 
   return (
     <Layout>
-      <SEO title="Home" />
+      <SEO title="首页" description="coderfee coderfee.com coderfe" />
       <div className="home">
         <div className="home-content">
           {posts.map(({ node: post }) => (

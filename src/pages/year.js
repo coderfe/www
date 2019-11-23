@@ -1,4 +1,3 @@
-// import { Axis, Chart, Geom, Tooltip } from 'bizcharts';
 import { graphql } from 'gatsby';
 import React from 'react';
 import WordCloud from '../components/chart/pie';
