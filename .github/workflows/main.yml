@@ -26,5 +26,5 @@ jobs:
           local: public
           remote: /home/static-site
           host: ${{ secrets.HOST }}
-          username: root
+          username: ${{ secrets.USER }}
           password: ${{ secrets.PASSWORD }}
