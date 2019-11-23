@@ -52,7 +52,7 @@ export default function BooksPage({ data }) {
               {books &&
                 tab === status &&
                 books.map(book => (
-                  <div className="book-container">
+                  <div className="book-container" key={book.id}>
                     <Book key={book.id} book={book} />
                   </div>
                 ))}

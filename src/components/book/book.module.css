@@ -29,6 +29,7 @@
 }
 
 .book-cover-image img {
+  display: block;
   margin-bottom: 0;
   max-height: 100%;
 }

@@ -247,6 +247,24 @@ main {
   margin: 0 3px;
 }
 
+.has-error {
+  content: url('../images/icon.jpg');
+}
+.loaded:not(.has-error) {
+  animation: loaded 300ms ease-in-out;
+}
+
+@keyframes loaded {
+  0% {
+    opacity: 0.1;
+    filter: blur(8px);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
 /* media query */
 
 @media screen and (max-width: 1024px) {
