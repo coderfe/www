@@ -31,6 +31,18 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
         limit: 1000
       ) {
         edges {
+          next {
+            frontmatter {
+              title
+              path
+            }
+          }
+          previous {
+            frontmatter {
+              title
+              path
+            }
+          }
           node {
             frontmatter {
               path
@@ -44,11 +56,14 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     reporter.panicOnBuild('Error while running GraphQL query.');
     return;
   }
-  result.data.allMarkdownRemark.edges.forEach(({ node }) => {
+  result.data.allMarkdownRemark.edges.forEach(({ node, next, previous }) => {
     createPage({
       path: node.frontmatter.path,
       component: blogPostTemplate,
-      context: {},
+      context: {
+        next,
+        previous,
+      },
     });
   });
 };

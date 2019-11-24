@@ -11,8 +11,11 @@ import { useStaticQuery, graphql } from 'gatsby';
 
 import Header from './header';
 import SEO from './seo';
+import { toast } from 'react-toastify';
 
-const Layout = ({ seoTitle, seoDescription, children }) => {
+toast.configure({ autoClose: 3000 });
+
+const Layout = ({ seoTitle, seoDescription, meta, children }) => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -31,7 +34,12 @@ const Layout = ({ seoTitle, seoDescription, children }) => {
 
   return (
     <>
-      <SEO lang="zh-cmn-Hans" title={pageTitle} description={pageDescription} />
+      <SEO
+        lang="zh-cmn-Hans"
+        title={pageTitle}
+        description={pageDescription}
+        meta={meta || []}
+      />
       <div className="layout">
         <Header />
         <main>{children}</main>

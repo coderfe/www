@@ -7,6 +7,7 @@
 .blog-post-aside {
   width: 320px;
   order: 1;
+  padding: 0 2rem 0 0;
 }
 
 .blog-post {
@@ -25,8 +26,7 @@
 }
 
 .blog-post-quote {
-  position: relative;
-  margin-right: 2rem;
+  margin: 0;
   text-align: justify;
   font-family: serif;
   font-style: italic;

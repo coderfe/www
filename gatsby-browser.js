@@ -9,3 +9,4 @@
 import './src/styles/layout.css';
 import './src/styles/global.css';
 import 'prismjs/themes/prism-tomorrow.css';
+import 'react-toastify/dist/ReactToastify.css';
