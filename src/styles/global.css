@@ -251,6 +251,12 @@ main {
   margin: 0 3px;
 }
 
+.lazy {
+  width: 32px;
+  height: 32px;
+  content: url('../images/loading.png');
+  animation: rotate 0.6s ease-in-out infinite;
+}
 .has-error {
   content: url('../images/fail-to-load.svg');
 }

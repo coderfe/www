@@ -1,30 +1,28 @@
 import React, { useState, useEffect } from 'react';
 
 const LazyImage = ({ src, alt }) => {
-  const placeHolder =
-    'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkqAcAAIUAgUW0RjgAAAAASUVORK5CYII=';
-  const [imageSrc, setImageSrc] = useState(placeHolder);
   const [imageRef, setImageRef] = useState();
 
   const onLoad = event => {
     event.target.classList.add('loaded');
+    event.target.classList.remove('lazy');
   };
 
   const onError = event => {
-    event.target.classList.remove('loaded');
+    event.target.classList.remove('lazy');
     event.target.classList.add('has-error');
   };
 
   useEffect(() => {
     let observer;
 
-    if (imageRef && imageSrc !== src) {
+    if (imageRef) {
       if (IntersectionObserver) {
         observer = new IntersectionObserver(
           entries => {
             entries.forEach(entry => {
               if (entry.intersectionRatio > 0 || entry.isIntersecting) {
-                setImageSrc(src);
+                imageRef.src = src;
                 observer.unobserve(imageRef);
               }
             });
@@ -35,8 +33,6 @@ const LazyImage = ({ src, alt }) => {
           }
         );
         observer.observe(imageRef);
-      } else {
-        setImageRef(src);
       }
     }
 
@@ -45,13 +41,14 @@ const LazyImage = ({ src, alt }) => {
         observer.unobserve(imageRef);
       }
     };
-  }, [src, imageSrc, imageRef]);
+  }, [src, imageRef]);
 
   return (
     <img
       ref={setImageRef}
       alt={alt}
-      src={imageSrc}
+      className="lazy"
+      data-src={src}
       onLoad={onLoad}
       onError={onError}
     />
