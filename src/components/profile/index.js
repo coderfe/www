@@ -21,7 +21,7 @@ export default function Profile() {
   const { social } = data.site.siteMetadata;
 
   return (
-    <div>
+    <div className="profile">
       <h4 className="sidebar-title">
         <span role="img" aria-label="about me">
           👨‍💻

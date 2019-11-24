@@ -125,12 +125,11 @@ main {
 .home {
   display: grid;
   grid-gap: 2rem;
-  grid-template: 'content sidebar';
+  grid-template-columns: 1fr 320px;
   padding: 0 2rem;
 }
 
 .home-content {
-  grid-template-areas: 'content';
   display: grid;
   grid-gap: 3rem;
 }
@@ -169,11 +168,6 @@ main {
   font-style: italic;
   text-align: justify;
   color: var(--secondary-text-color);
-}
-
-.home-sidebar {
-  width: 300px;
-  grid-template-areas: 'sidebar';
 }
 
 .sidebar-title {
@@ -295,10 +289,7 @@ main {
 @media screen and (max-width: 768px) {
   .home {
     padding: 0 1rem;
-    grid-template: 'content' 'sidebar';
-  }
-  .home-sidebar {
-    width: 100%;
+    grid-template-columns: 100%;
   }
   .books-wrapper {
     grid-template-columns: repeat(4, minmax(120px, 1fr));
