@@ -1,16 +1,18 @@
 .blog-post-wrapper {
   width: 100%;
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 320px;
 }
 
 .blog-post-aside {
   width: 320px;
-  flex-shrink: 0;
   order: 1;
 }
+
 .blog-post {
   padding: 0 2rem;
   order: 0;
+  overflow: hidden;
 }
 
 .blog-post-title {
