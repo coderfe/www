@@ -1,13 +1,46 @@
-import React from 'react';
-import { Link, graphql } from 'gatsby';
-
+import { graphql, Link } from 'gatsby';
+import React, { useState, useEffect } from 'react';
 import Layout from '../components/layout';
-import SEO from '../components/seo';
 import Profile from '../components/profile';
+import SEO from '../components/seo';
 import Tags from '../components/tags';
 
 const IndexPage = ({ data }) => {
-  const { edges: posts } = data.allMarkdownRemark;
+  const { edges: allPosts } = data.allMarkdownRemark;
+  const chunkedPosts = chunk(allPosts);
+
+  const [page, setPage] = useState(0);
+  const [posts, setPosts] = useState(chunkedPosts[page]);
+  const [btnRef, setBtnRef] = useState();
+
+  useEffect(() => {
+    let observer;
+    if (IntersectionObserver) {
+      if (btnRef) {
+        observer = new IntersectionObserver(
+          entries => {
+            entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                const nextPage = Number(btnRef.dataset.page) + 1;
+                setPage(nextPage);
+                if (nextPage < chunkedPosts.length) {
+                  setPosts(prevPosts => {
+                    return [...prevPosts, ...chunkedPosts[nextPage]];
+                  });
+                }
+                observer.unobserve(btnRef);
+              }
+            });
+          },
+          {
+            threshold: 0.1,
+            rootMargin: '10px',
+          }
+        );
+        observer.observe(btnRef);
+      }
+    }
+  });
 
   return (
     <Layout>
@@ -31,6 +64,13 @@ const IndexPage = ({ data }) => {
               <blockquote>{post.frontmatter.tldr}</blockquote>
             </article>
           ))}
+          <button
+            ref={setBtnRef}
+            data-page={page}
+            style={{ visibility: 'hidden' }}
+          >
+            More
+          </button>
         </div>
         <div className="home-sidebar">
           <Profile />
@@ -61,3 +101,9 @@ export const pageQuery = graphql`
     }
   }
 `;
+
+function chunk(arr, size = 6) {
+  return Array.from({ length: Math.ceil(arr.length / size) }, (v, k) =>
+    arr.slice(k * size, k * size + size)
+  );
+}
