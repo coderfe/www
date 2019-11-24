@@ -92,7 +92,7 @@
 
 @media screen and (max-width: 1024px) {
   .blog-post-wrapper {
-    flex-direction: column;
+    grid-template-columns: 1fr;
   }
   .blog-post-aside {
     width: 100%;
@@ -100,6 +100,5 @@
   }
   .blog-post {
     padding: 0 1rem;
-    order: 2;
   }
 }
