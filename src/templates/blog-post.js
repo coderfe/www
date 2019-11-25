@@ -10,21 +10,24 @@ export default function BlogPostTemplate({ data, pageContext }) {
 
   const { title, tldr, date, tags } = post.frontmatter;
 
-  const handleKeyup = useCallback(event => {
-    if (event.keyCode === 37) {
-      // <-
-      if (previous) {
-        toast(`⬅️ ${previous.frontmatter.title}`);
-        navigate(previous.frontmatter.path);
+  const handleKeyup = useCallback(
+    event => {
+      if (event.keyCode === 37) {
+        // <-
+        if (previous) {
+          toast(`⬅️ ${previous.frontmatter.title}`);
+          navigate(previous.frontmatter.path);
+        }
+      } else if (event.keyCode === 39) {
+        // ->
+        if (next) {
+          toast(`➡️ ${next.frontmatter.title}`);
+          navigate(next.frontmatter.path);
+        }
       }
-    } else if (event.keyCode === 39) {
-      // ->
-      if (next) {
-        toast(`➡️ ${next.frontmatter.title}`);
-        navigate(next.frontmatter.path);
-      }
-    }
-  }, []);
+    },
+    [next, previous]
+  );
 
   useEffect(() => {
     window.addEventListener('keyup', handleKeyup);
