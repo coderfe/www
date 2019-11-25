@@ -1,7 +1,8 @@
+import { graphql, useStaticQuery } from 'gatsby';
 import React from 'react';
 import Divider from '../divider';
+import Emoji from '../emoji';
 import styles from './profile.module.css';
-import { useStaticQuery, graphql } from 'gatsby';
 
 export default function Profile() {
   const data = useStaticQuery(graphql`
@@ -23,10 +24,9 @@ export default function Profile() {
   return (
     <div className="profile">
       <h4 className="sidebar-title">
-        <span role="img" aria-label="about me">
-          👨‍💻
-        </span>
-        <span>&nbsp;about me &bull; 关于我</span>
+        <Emoji label="关于我" emoji="👨‍💻">
+          &nbsp;about me &bull; 关于我
+        </Emoji>
       </h4>
       <div className={styles.profile}>
         <div className={styles.profileAvatar}></div>
@@ -47,9 +47,7 @@ export default function Profile() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <span role="img" aria-label={item.name}>
-                  {item.icon}
-                </span>
+                <Emoji label={item.name} emoji={item.icon} />
               </a>
             ))}
         </div>

@@ -1,6 +1,7 @@
 import { Link } from 'gatsby';
 import React, { Component } from 'react';
 import Divider from '../components/divider';
+import Emoji from '../components/emoji';
 
 class Header extends Component {
   render() {
@@ -10,22 +11,19 @@ class Header extends Component {
         <div className="header-logo">c:/d/d</div>
         <div className="header-navbar">
           <Link to="/">
-            <span role="img" aria-label="首页">
-              🏡
-            </span>
-            首页
+            <Emoji label="首页" emoji="🏡">
+              首页
+            </Emoji>
           </Link>
           <Link to="/books">
-            <span role="img" aria-label="书单">
-              📚
-            </span>
-            书单
+            <Emoji label="书单" emoji="📚">
+              书单
+            </Emoji>
           </Link>
           <Link to="/year">
-            <span role="img" aria-label="书单">
-              📆
-            </span>
-            年复一年
+            <Emoji label="年复一年" emoji="📆">
+              年复一年
+            </Emoji>
           </Link>
         </div>
         <Divider />

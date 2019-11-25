@@ -1,6 +1,7 @@
 import { graphql, useStaticQuery } from 'gatsby';
 import React from 'react';
 import styles from './tags.module.css';
+import Emoji from '../emoji';
 
 export default function Tags() {
   const data = useStaticQuery(graphql`
@@ -24,10 +25,9 @@ export default function Tags() {
   return (
     <div className="tags">
       <h4 className="sidebar-title">
-        <span role="img" aria-label="tags">
-          🏷
-        </span>
-        <span>&nbsp;tags &bull; 标签</span>
+        <Emoji label="标签" emoji="🏷">
+          &nbsp;tags &bull; 标签
+        </Emoji>
       </h4>
       <div className={styles.tagsContent}>
         {tags.map((tag, index) => (
