@@ -5,15 +5,14 @@
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-import React from 'react';
+import { graphql, useStaticQuery } from 'gatsby';
 import PropTypes from 'prop-types';
-import { useStaticQuery, graphql } from 'gatsby';
-
+import React from 'react';
+import { toast } from 'react-toastify';
 import Header from './header';
 import SEO from './seo';
-import { toast } from 'react-toastify';
 
-toast.configure({ autoClose: 3000 });
+toast.configure({ autoClose: 2000 });
 
 const Layout = ({ seoTitle, seoDescription, meta, children }) => {
   const data = useStaticQuery(graphql`
