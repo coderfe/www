@@ -52,11 +52,6 @@ button:active {
   outline: none;
 }
 
-span[role='img'] {
-  position: relative;
-  top: 1px;
-}
-
 ::selection {
   background-color: var(--primary-color);
   color: white;

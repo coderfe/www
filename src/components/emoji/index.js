@@ -1,12 +1,27 @@
 import React from 'react';
+import styled from 'styled-components';
+
+const EmojiWrapper = styled.span`
+  display: inline-block;
+`;
+
+const EmojiIcon = styled.span`
+  position: relative;
+  top: 1px;
+`;
+
+const EmojiLabel = styled.span`
+  display: inline-block;
+  margin-left: 5px;
+`;
 
 export default function Emoji({ label, emoji, children }) {
   return (
-    <span className="emoji">
-      <span className="emoji-icon" role="img" aria-label={label}>
+    <EmojiWrapper>
+      <EmojiIcon role="img" aria-label={label}>
         {emoji}
-      </span>
-      {children && <span className="emoji-label">{children}</span>}
-    </span>
+      </EmojiIcon>
+      {children && <EmojiLabel>{children}</EmojiLabel>}
+    </EmojiWrapper>
   );
 }
