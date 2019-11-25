@@ -33,7 +33,7 @@ export default function Tags() {
           &nbsp;tags &bull; 标签
         </Emoji>
       </h4>
-      {isChart ? (
+      {isChart && process.browser ? (
         <WordCloud data={tags} width={320} height={320} />
       ) : (
         <div className={styles.tagsContent}>
