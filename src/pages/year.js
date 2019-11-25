@@ -1,6 +1,6 @@
 import { graphql } from 'gatsby';
 import React from 'react';
-import WordCloud from '../components/chart/pie';
+import WordCloud from '../components/chart/WorldCloud';
 import Layout from '../components/layout';
 
 let bizcharts;
@@ -14,7 +14,7 @@ export default function Year({ data }) {
 
   const books = queryBooks(allBooks);
   const lineChartData = groupByMonth(books);
-  const pieChartData = groupByTag(books, allTags);
+  const wordCloudData = groupByTag(books, allTags);
 
   const cols = {
     month: {
@@ -68,7 +68,7 @@ export default function Year({ data }) {
             />
           </bizcharts.Chart>
 
-          <WordCloud data={pieChartData} />
+          <WordCloud data={wordCloudData} />
         </>
       )}
     </Layout>

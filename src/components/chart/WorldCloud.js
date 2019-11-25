@@ -4,6 +4,8 @@ import React from 'react';
 
 class WordCloud extends React.Component {
   render() {
+    const { data, width = 1200, height = 800 } = this.props;
+
     function getTextAttrs(cfg) {
       return Object.assign({}, cfg.style, {
         fillOpacity: cfg.opacity,
@@ -28,14 +30,14 @@ class WordCloud extends React.Component {
         });
       },
     });
-    const dv = new DataSet.View().source(this.props.data);
+    const dv = new DataSet.View().source(data);
     const range = dv.range('value');
     const min = range[0];
     const max = range[1];
     dv.transform({
       type: 'tag-cloud',
       fields: ['x', 'value'],
-      size: [window.innerWidth, window.innerHeight],
+      size: [width, height],
       font: 'Verdana',
       padding: 0,
       timeInterval: 5000,
@@ -70,15 +72,24 @@ class WordCloud extends React.Component {
     };
     return (
       <div>
-        <Chart height={800} width={1200} data={dv} scale={scale} padding={0}>
-          <Tooltip showTitle={false} />
+        <Chart
+          width={width}
+          height={height}
+          data={dv}
+          scale={scale}
+          padding={0}
+        >
+          <Tooltip
+            showTitle={false}
+            itemTpl={'<li data-index={index}>{value}</li>'}
+          />
           <Coord reflect="y" />
           <Geom
             type="point"
             position="x*y"
             color="category"
             shape="cloud"
-            tooltip="value*category"
+            tooltip="value"
           />
         </Chart>
       </div>

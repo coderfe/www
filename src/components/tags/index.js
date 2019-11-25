@@ -1,9 +1,12 @@
 import { graphql, useStaticQuery } from 'gatsby';
-import React from 'react';
-import styles from './tags.module.css';
+import React, { useState } from 'react';
+import WordCloud from '../chart/WorldCloud';
 import Emoji from '../emoji';
+import styles from './tags.module.css';
 
 export default function Tags() {
+  const [isChart] = useState(true);
+
   const data = useStaticQuery(graphql`
     query Tags {
       allMarkdownRemark {
@@ -18,8 +21,9 @@ export default function Tags() {
   const { distinct: tagList, group: totalCount } = data.allMarkdownRemark;
 
   const tags = tagList.map((tag, index) => ({
-    name: tag,
-    totalCount: totalCount[index].totalCount,
+    x: tag,
+    value: totalCount[index].totalCount,
+    category: tag,
   }));
 
   return (
@@ -29,13 +33,17 @@ export default function Tags() {
           &nbsp;tags &bull; 标签
         </Emoji>
       </h4>
-      <div className={styles.tagsContent}>
-        {tags.map((tag, index) => (
-          <span className={styles.tag} key={index}>
-            {tag.name} &bull; {tag.totalCount}
-          </span>
-        ))}
-      </div>
+      {isChart ? (
+        <WordCloud data={tags} width={320} height={320} />
+      ) : (
+        <div className={styles.tagsContent}>
+          {tags.map((tag, index) => (
+            <span className={styles.tag} key={index}>
+              {tag.x} &bull; {tag.value}
+            </span>
+          ))}
+        </div>
+      )}
     </div>
   );
 }
