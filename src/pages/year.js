@@ -3,6 +3,10 @@ import React from 'react';
 import WordCloud from '../components/chart/WorldCloud';
 import Layout from '../components/layout';
 
+import allMoviesJson from '../data/movies.json';
+
+console.log(allMoviesJson);
+
 let bizcharts;
 
 if (process.browser) {
@@ -69,6 +73,8 @@ export default function Year({ data }) {
           </bizcharts.Chart>
 
           <WordCloud data={wordCloudData} />
+
+          <WordCloud data={allMoviesJson} width={500} height={500} />
         </>
       )}
     </Layout>
