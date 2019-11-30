@@ -5,8 +5,6 @@ import Layout from '../components/layout';
 
 import allMoviesJson from '../data/movies.json';
 
-console.log(allMoviesJson);
-
 let bizcharts;
 
 if (process.browser) {
