@@ -30,7 +30,7 @@
     "styled-components": "^4.4.1"
   },
   "devDependencies": {
-    "db-book": "^1.0.4",
+    "db-book": "^1.0.5",
     "gatsby-plugin-feed": "^2.3.21",
     "gatsby-plugin-google-analytics": "^2.1.28",
     "gatsby-plugin-robots-txt": "^1.5.0",

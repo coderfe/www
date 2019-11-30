@@ -13,6 +13,5 @@ const jsonPath = path.join(__dirname, '../src/data/books.json');
   fs.writeFile(jsonPath, JSON.stringify(books), async err => {
     if (err) console.log(err);
     console.log('Bingo: ' + books.length);
-    process.exit();
   });
 })();

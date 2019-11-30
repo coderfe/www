@@ -3984,10 +3984,10 @@ dashdash@^1.12.0:
   dependencies:
     assert-plus "^1.0.0"
 
-db-book@^1.0.4:
-  version "1.0.4"
-  resolved "https://registry.npm.taobao.org/db-book/download/db-book-1.0.4.tgz?cache=0&sync_timestamp=1574474058835&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fdb-book%2Fdownload%2Fdb-book-1.0.4.tgz#8583c25e940936849358a167f66b558324c75017"
-  integrity sha1-hYPCXpQJNoSTWKFn9mtVgyTHUBc=
+db-book@^1.0.5:
+  version "1.0.5"
+  resolved "https://registry.npm.taobao.org/db-book/download/db-book-1.0.5.tgz?cache=0&sync_timestamp=1575104674312&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fdb-book%2Fdownload%2Fdb-book-1.0.5.tgz#7dddb33e46c1161ff0a1a1a92ac1e8b5c20773da"
+  integrity sha1-fd2zPkbBFh/woaGpKsHotcIHc9o=
   dependencies:
     ora "^3.4.0"
     puppeteer-core "^1.18.0"
