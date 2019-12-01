@@ -11,7 +11,6 @@ const IndexPage = ({ data }) => {
 
   const [page, setPage] = useState(0);
   const [posts, setPosts] = useState(chunkedPosts[page]);
-  const [btnRef, setBtnRef] = useState();
 
   useEffect(() => {
     let observer;
