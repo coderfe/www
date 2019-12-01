@@ -16,19 +16,20 @@ const IndexPage = ({ data }) => {
   useEffect(() => {
     let observer;
     if (IntersectionObserver) {
-      if (btnRef) {
+      const target = document.querySelector('.footer');
+      if (target) {
         observer = new IntersectionObserver(
           entries => {
             entries.forEach(entry => {
               if (entry.isIntersecting) {
-                const nextPage = Number(btnRef.dataset.page) + 1;
+                const nextPage = Number(target.dataset.page) + 1;
                 setPage(nextPage);
                 if (nextPage < chunkedPosts.length) {
                   setPosts(prevPosts => {
                     return [...prevPosts, ...chunkedPosts[nextPage]];
                   });
                 }
-                observer.unobserve(btnRef);
+                observer.unobserve(target);
               }
             });
           },
@@ -37,14 +38,18 @@ const IndexPage = ({ data }) => {
             rootMargin: '10px',
           }
         );
-        observer.observe(btnRef);
+        observer.observe(target);
+        target.setAttribute('data-page', page);
       }
     }
   });
 
   return (
     <Layout>
-      <SEO title="首页" description="coderfee coderfee.com coderfe" />
+      <SEO
+        title="首页"
+        description="coderfee coderfee.com coderfe 前端 Gatsby"
+      />
       <div className="home">
         <div className="home-content">
           {posts.map(({ node: post }) => (
@@ -64,13 +69,6 @@ const IndexPage = ({ data }) => {
               <blockquote>{post.frontmatter.tldr}</blockquote>
             </article>
           ))}
-          <button
-            ref={setBtnRef}
-            data-page={page}
-            style={{ visibility: 'hidden' }}
-          >
-            More
-          </button>
         </div>
         <div className="home-sidebar">
           <Profile />

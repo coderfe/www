@@ -3,9 +3,10 @@ import React, { useState } from 'react';
 import WordCloud from '../chart/WorldCloud';
 import Emoji from '../emoji';
 import styles from './tags.module.css';
+import TagList from './TagList';
 
 export default function Tags() {
-  const [isChart] = useState(true);
+  const [isChart] = useState(false);
 
   const data = useStaticQuery(graphql`
     query Tags {
@@ -20,11 +21,13 @@ export default function Tags() {
 
   const { distinct: tagList, group: totalCount } = data.allMarkdownRemark;
 
-  const tags = tagList.map((tag, index) => ({
-    x: tag,
-    value: totalCount[index].totalCount,
-    category: tag,
-  }));
+  const tags = tagList
+    .map((tag, index) => ({
+      x: tag,
+      value: totalCount[index].totalCount,
+      category: tag,
+    }))
+    .sort((a, b) => b.value - a.value);
 
   return (
     <div className="tags">
@@ -37,11 +40,7 @@ export default function Tags() {
         <WordCloud data={tags} width={320} height={320} />
       ) : (
         <div className={styles.tagsContent}>
-          {tags.map((tag, index) => (
-            <span className={styles.tag} key={index}>
-              {tag.x} &bull; {tag.value}
-            </span>
-          ))}
+          <TagList tags={tags} />
         </div>
       )}
     </div>

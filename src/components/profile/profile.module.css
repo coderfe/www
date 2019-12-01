@@ -3,7 +3,6 @@
   margin: 96px auto 2rem auto;
   border: 1px solid var(--border-color);
   border-radius: var(--base-border-radius);
-  background: white;
   transition: var(--base-transition);
 }
 

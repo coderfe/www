@@ -31,6 +31,7 @@ body {
     'Microsoft YaHei', '微软雅黑', Arial, sans-serif;
   color: var(--primary-text-color);
   background: var(--background-color, snow) var(--background-image);
+  background-attachment: fixed;
   scroll-behavior: smooth;
   transition: var(--base-transition);
 }
@@ -62,10 +63,12 @@ main {
 }
 
 .layout {
-  margin: 0 auto;
+  margin: 50px auto;
   max-width: 1200px;
-  box-shadow: 0 0 40px rgba(0, 0, 0, 0.1);
-  background-color: var(--background-color, white);
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
+  border-radius: var(--base-border-radius);
+  overflow: hidden;
+  background-color: rgba(255, 255, 255, 0.6);
 }
 
 /* .header - header */
@@ -106,6 +109,7 @@ main {
   padding: 0.5rem var(--base-padding);
   color: var(--primary-text-color);
   transition: var(--base-transition);
+  border-radius: var(--base-border-radius);
   user-select: none;
 }
 
@@ -124,8 +128,10 @@ main {
 }
 
 .home-content {
-  display: grid;
-  grid-gap: 3rem;
+}
+
+.home-content .post:not(:first-child) {
+  margin-top: 3rem;
 }
 
 .post .post-title {
@@ -136,7 +142,7 @@ main {
   transition: var(--base-transition);
 }
 
-.home-content .post .post-title:hover {
+.home-content .post .post-title a:hover {
   color: var(--primary-color);
 }
 
