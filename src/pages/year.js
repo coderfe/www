@@ -4,6 +4,7 @@ import WordCloud from '../components/chart/WorldCloud';
 import Layout from '../components/layout';
 
 import allMoviesJson from '../data/movies.json';
+import allCommitsJson from '../data/github.json';
 
 let bizcharts;
 
@@ -34,6 +35,7 @@ export default function Year({ data }) {
       {process.browser && (
         <>
           <bizcharts.Chart
+            placeholder
             height={400}
             data={lineChartData}
             scale={cols}
@@ -70,9 +72,53 @@ export default function Year({ data }) {
             />
           </bizcharts.Chart>
 
-          <WordCloud data={wordCloudData} />
+          <bizcharts.Chart
+            height={400}
+            data={allCommitsJson}
+            scale={{
+              month: {
+                alias: '月份',
+              },
+              acc: {
+                alias: 'commits',
+              },
+            }}
+            forceFit
+          >
+            <bizcharts.Axis
+              name="month"
+              title={null}
+              tickLine={null}
+              line={{
+                stroke: '#E6E6E6',
+              }}
+            />
+            <bizcharts.Axis
+              name="acc"
+              line={false}
+              tickLine={null}
+              grid={null}
+              title={null}
+            />
+            <bizcharts.Tooltip />
+            <bizcharts.Geom
+              type="line"
+              position="month*commits"
+              size={2}
+              color="l (270) 0:rgba(255, 146, 255, 1) .5:rgba(100, 268, 255, 1)
+            1:rgba(215, 0, 255, 1)"
+              shape="smooth"
+              style={{
+                shadowColor: 'l (270) 0:rgba(21, 146, 255, 0)',
+                shadowBlur: 60,
+                shadowOffsetY: 6,
+              }}
+            />
+          </bizcharts.Chart>
 
-          <WordCloud data={allMoviesJson} width={500} height={500} />
+          <WordCloud height={400} forceFit data={wordCloudData} />
+
+          <WordCloud height={200} forceFit data={allMoviesJson} />
         </>
       )}
     </Layout>
