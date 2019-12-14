@@ -1,16 +1,9 @@
-/**
- * Layout component that queries for data
- * with Gatsby's useStaticQuery component
- *
- * See: https://www.gatsbyjs.org/docs/use-static-query/
- */
-
 import { graphql, useStaticQuery } from 'gatsby';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { toast } from 'react-toastify';
-import Header from './header';
 import SEO from './seo';
+import Profile from './profile';
 
 toast.configure({ autoClose: 2000 });
 
@@ -40,18 +33,25 @@ const Layout = ({ seoTitle, seoDescription, meta, children }) => {
         meta={meta || []}
       />
       <div className="layout">
-        <Header />
-        <main>{children}</main>
-        <footer className="footer">
-          © {new Date().getFullYear()},{` `}
-          <a
-            href="http://www.beian.miit.gov.cn/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {data.site.siteMetadata.ICP}
-          </a>
-        </footer>
+        <aside className="aside">
+          <div className="aside-effect"/>
+          <div className="aside-content">
+            <Profile />
+          </div>
+        </aside>
+        <main>
+          {children}
+          <footer className="footer">
+            © {new Date().getFullYear()},{` `}
+            <a
+              href="http://www.beian.miit.gov.cn/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {data.site.siteMetadata.ICP}
+            </a>
+          </footer>
+        </main>
       </div>
     </>
   );

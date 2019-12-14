@@ -50,29 +50,23 @@ const IndexPage = ({ data }) => {
         description="coderfee coderfee.com coderfe 前端 Gatsby"
       />
       <div className="home">
-        <div className="home-content">
-          {posts.map(({ node: post }) => (
-            <article className="post" key={post.id}>
-              <h2 className="post-title">
-                <Link to={post.frontmatter.path}>{post.frontmatter.title}</Link>
-              </h2>
-              <p className="post-title_sub">
-                <span>{post.frontmatter.date}</span>
-                {post.frontmatter.tags &&
-                  post.frontmatter.tags.map((tag, index) => (
-                    <span className="sub-tag" key={index}>
+        {posts.map(({ node: post }) => (
+          <article className="post" key={post.id}>
+            <h2 className="post-title">
+              <Link to={post.frontmatter.path}>{post.frontmatter.title}</Link>
+            </h2>
+            <p className="post-title_sub">
+              <span>{post.frontmatter.date}</span>
+              {post.frontmatter.tags &&
+              post.frontmatter.tags.map((tag, index) => (
+                <span className="sub-tag" key={index}>
                       #{tag}#
                     </span>
-                  ))}
-              </p>
-              <blockquote>{post.frontmatter.tldr}</blockquote>
-            </article>
-          ))}
-        </div>
-        <div className="home-sidebar">
-          <Profile />
-          <Tags />
-        </div>
+              ))}
+            </p>
+            <blockquote>{post.frontmatter.tldr}</blockquote>
+          </article>
+        ))}
       </div>
     </Layout>
   );

@@ -3,6 +3,7 @@ import React from 'react';
 import Divider from '../divider';
 import Emoji from '../emoji';
 import styles from './profile.module.css';
+import Nav from '../nav/Nav';
 
 export default function Profile() {
   const data = useStaticQuery(graphql`
@@ -23,17 +24,16 @@ export default function Profile() {
 
   return (
     <div className="profile">
-      <h4 className="sidebar-title">
-        <Emoji label="关于我" emoji="👨‍💻">
-          &nbsp;about me &bull; 关于我
-        </Emoji>
-      </h4>
       <div className={styles.profile}>
-        <div className={styles.profileAvatar}></div>
+        <div className={styles.profileAvatar}/>
 
         <div className={styles.profileSlogan}>
           愿我如星君如月，夜夜流光相皎洁。
         </div>
+
+        <Divider width="40%" />
+
+        <Nav />
 
         <Divider width="40%" />
 

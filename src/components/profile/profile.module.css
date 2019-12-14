@@ -1,37 +1,15 @@
 .profile {
   padding: 0 var(--base-padding);
   margin: 96px auto 2rem auto;
-  border: 1px solid var(--border-color);
-  border-radius: var(--base-border-radius);
-  transition: var(--base-transition);
 }
 
 .profile-avatar {
   position: relative;
-  width: 160px;
-  height: 160px;
-  margin-left: 50%;
-  margin-top: -80px;
-  margin-bottom: 1rem;
+  width: 140px;
+  height: 140px;
+  margin: -70px auto 1rem auto;
   overflow: hidden;
   border-radius: 50%;
-  border-width: 1px;
-  border-style: solid;
-  border-color: var(--border-color) var(--border-color) transparent transparent;
-  transform: translateX(-50%) rotate(-45deg);
-  transform-origin: center;
-  transition: var(--base-transition);
-}
-
-.profile:hover,
-.profile:active {
-  border-color: var(--primary-color);
-}
-
-.profile:hover .profile-avatar,
-.profile:active .profile-avatar {
-  border-color: var(--primary-color) var(--primary-color) transparent
-    transparent;
 }
 
 .profile-avatar::after {
@@ -44,14 +22,14 @@
   left: 0;
   background: url('../../images/icon.jpg') no-repeat center;
   background-size: contain;
-  transform: rotate(45deg);
 }
 
 .profile-slogan {
   margin-bottom: 1rem;
-  color: var(--secondary-text-color);
+  color: white;
   text-align: center;
-  font-size: 82%;
+  font-size: 85%;
+  font-family: Serif, serif;
 }
 
 .profile-social {
