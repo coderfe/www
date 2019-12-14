@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { toast } from 'react-toastify';
 import SEO from './seo';
-import Profile from './profile';
+import Aside from './layout/Aside';
 
 toast.configure({ autoClose: 2000 });
 
@@ -28,12 +28,8 @@ const Layout = ({ seoTitle, seoDescription, meta, children }) => {
     <>
       <SEO lang="zh-cmn-Hans" title={pageTitle} description={pageDescription} meta={meta || []} />
       <div className="layout">
-        <aside className="aside">
-          <div className="aside-effect" />
-          <div className="aside-content">
-            <Profile />
-          </div>
-        </aside>
+        <Aside />
+
         <main>
           {children}
           <footer className="footer">

@@ -7,6 +7,10 @@ const RelatedPostsContainer = styled.div`
   text-align: left;
   font-family: Serif, serif;
 
+  @media screen and (max-width: 1200px) {
+    display: none;
+  }
+
   a {
     position: relative;
     display: block;
