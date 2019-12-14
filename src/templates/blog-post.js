@@ -41,15 +41,16 @@ export default function BlogPostTemplate({ data, pageContext }) {
     <Layout seoTitle={title} seoDescription={tldr} meta={[{ name: `keyword`, content: (tags || []).join(' ') }]}>
       <div className={styles.blogPost}>
         <h1 className={styles.blogPostTitle}>{title}</h1>
-        <p className="post-title_sub">
+        <div className="post-title_sub">
           <span>{date}</span>
+          <span>{post.timeToRead}min</span>
           {tags &&
             tags.map((tag, index) => (
               <span className="sub-tag" key={index}>
                 #{tag}#
               </span>
             ))}
-        </p>
+        </div>
         <blockquote className={styles.blogPostQuote}>{tldr}</blockquote>
         <div className={styles.blogPostContent} dangerouslySetInnerHTML={{ __html: post.html }} />
         <div className={styles.blogPostLink}>
@@ -85,6 +86,7 @@ export const pageQuery = graphql`
         tldr
         tags
       }
+      timeToRead
     }
   }
 `;
