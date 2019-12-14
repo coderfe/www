@@ -26,15 +26,10 @@ const Layout = ({ seoTitle, seoDescription, meta, children }) => {
 
   return (
     <>
-      <SEO
-        lang="zh-cmn-Hans"
-        title={pageTitle}
-        description={pageDescription}
-        meta={meta || []}
-      />
+      <SEO lang="zh-cmn-Hans" title={pageTitle} description={pageDescription} meta={meta || []} />
       <div className="layout">
         <aside className="aside">
-          <div className="aside-effect"/>
+          <div className="aside-effect" />
           <div className="aside-content">
             <Profile />
           </div>
@@ -43,11 +38,7 @@ const Layout = ({ seoTitle, seoDescription, meta, children }) => {
           {children}
           <footer className="footer">
             © {new Date().getFullYear()},{` `}
-            <a
-              href="http://www.beian.miit.gov.cn/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a href="http://www.beian.miit.gov.cn/" target="_blank" rel="noopener noreferrer">
               {data.site.siteMetadata.ICP}
             </a>
           </footer>

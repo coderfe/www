@@ -40,24 +40,6 @@ export default function BlogPostTemplate({ data, pageContext }) {
   return (
     <Layout seoTitle={title} seoDescription={tldr} meta={[{ name: `keyword`, content: (tags || []).join(' ') }]}>
       <div className={styles.blogPost}>
-        <div className={styles.blogPostLink} hidden>
-          <p className={styles.blogPostLinkItem}>
-            {previous && (
-              <Link title={previous.frontmatter.title} to={previous.frontmatter.path}>
-                <kbd>&lt;-</kbd>
-                {previous.frontmatter.title}
-              </Link>
-            )}
-          </p>
-          <p className={styles.blogPostLinkItem}>
-            {next && (
-              <Link title={next.frontmatter.title} to={next.frontmatter.path}>
-                {next.frontmatter.title}
-                <kbd>-&gt;</kbd>
-              </Link>
-            )}
-          </p>
-        </div>
         <h1 className={styles.blogPostTitle}>{title}</h1>
         <p className="post-title_sub">
           <span>{date}</span>
@@ -70,6 +52,22 @@ export default function BlogPostTemplate({ data, pageContext }) {
         </p>
         <blockquote className={styles.blogPostQuote}>{tldr}</blockquote>
         <div className={styles.blogPostContent} dangerouslySetInnerHTML={{ __html: post.html }} />
+        <div className={styles.blogPostLink}>
+          <div className={styles.prev}>
+            {previous && (
+              <Link title={previous.frontmatter.title} to={previous.frontmatter.path}>
+                ←{previous.frontmatter.title}
+              </Link>
+            )}
+          </div>
+          <div className={styles.next}>
+            {next && (
+              <Link title={next.frontmatter.title} to={next.frontmatter.path}>
+                {next.frontmatter.title}→
+              </Link>
+            )}
+          </div>
+        </div>
       </div>
     </Layout>
   );

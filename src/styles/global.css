@@ -57,8 +57,8 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  filter: blur(1px);
-  background: url('https://source.unsplash.com/random/600x1080');
+  /* filter: blur(1px); */
+  background: url('https://source.unsplash.com/collection/9239593/600x1080') center;
 }
 
 .layout .aside .aside-content {
@@ -74,13 +74,13 @@ body {
 }
 
 .layout main {
-  padding: 2rem;
   height: 100vh;
   overflow: auto;
 }
 
 /* .home - 首页 */
 .home {
+  padding: 2rem;
 }
 
 .home .post:not(:first-child) {

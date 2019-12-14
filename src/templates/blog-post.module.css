@@ -1,4 +1,5 @@
 .blog-post {
+  padding: 2rem;
   /* padding: 0 3px; */
   max-width: 960px;
   overflow: hidden;
@@ -80,26 +81,40 @@
   text-align: justify;
 }
 
-.blog-post-content ul {
+.blog-post-content ul,
+.blog-post-content ol {
   margin-left: 40px;
+}
+
+.blog-post-content ul {
   list-style: '🎈' outside;
 }
 
-.blog-post-content ol {
-  margin-left: 0;
+.blog-post-content a {
+  padding: 0 2px;
+  position: relative;
+  color: var(--primary-color);
+  text-decoration: none;
+  cursor: alias;
 }
 
-.blog-post-content a {
-  color: var(--primary-color);
-  cursor: alias;
+.blog-post-content a::before {
+  position: absolute;
+  content: '';
+  left: 0;
+  bottom: 0;
+  right: 0;
+  top: 50%;
+  background-color: rgba(138, 45, 34, 0.3);
+  transition: var(--base-transition);
 }
 
 .blog-post-content a[href*="https://coderfee.com"] {
   cursor: pointer;
 }
 
-.blog-post-content a:hover {
-  text-decoration: underline;
+.blog-post-content a:hover::before {
+  top: 0;
 }
 
 .blog-post-content figcaption {
@@ -122,4 +137,38 @@
   .blog-post {
     padding: 0 1rem;
   }
+}
+
+.blog-post-link {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+
+.prev a,
+.next a {
+  display: block;
+  color: var(--primary-light-color);
+  text-decoration: none;
+  transition: var(--base-transition);
+}
+
+.prev a {
+  transform: translateX(10px);
+}
+.next a {
+  text-align: right;
+  transform: translateX(-10px);
+}
+
+.prev a:hover,
+.next a:hover {
+  color: var(--primary-color);
+  text-decoration: underline;
+  transform: translateX(0);
+}
+
+code[class*='language-'],
+pre[class*='language-'] {
+  font-size: 14px;
 }
