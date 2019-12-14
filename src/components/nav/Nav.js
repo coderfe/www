@@ -9,12 +9,17 @@ export default function Nav() {
     <div className={styles.navigator}>
       <AniLink paintDrip hex="#af877c" duration={1} to="/">
         <Emoji label="首页" emoji="🏡">
-          此地
+          此间
         </Emoji>
       </AniLink>
       <AniLink paintDrip hex="#af877c" duration={1} to="/books">
         <Emoji label="书单" emoji="📚">
           此书
+        </Emoji>
+      </AniLink>
+      <AniLink paintDrip hex="#af877c" duration={1} to="/about">
+        <Emoji label="关于我" emoji="👨‍💻‍">
+          此人
         </Emoji>
       </AniLink>
       <AniLink paintDrip hex="#af877c" duration={1} to="/year">
