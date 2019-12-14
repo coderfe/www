@@ -38,53 +38,38 @@ export default function BlogPostTemplate({ data, pageContext }) {
   }, [handleKeyup]);
 
   return (
-    <Layout
-      seoTitle={title}
-      seoDescription={tldr}
-      meta={[{ name: `keyword`, content: (tags || []).join(' ') }]}
-    >
-      <div className={styles.blogPostWrapper}>
-        <div className={styles.blogPostAside}>
-          <blockquote className={styles.blogPostQuote}>{tldr}</blockquote>
-
-          <div className={styles.blogPostLink} hidden>
-            <p className={styles.blogPostLinkItem}>
-              {previous && (
-                <Link
-                  title={previous.frontmatter.title}
-                  to={previous.frontmatter.path}
-                >
-                  <kbd>&lt;-</kbd>
-                  {previous.frontmatter.title}
-                </Link>
-              )}
-            </p>
-            <p className={styles.blogPostLinkItem}>
-              {next && (
-                <Link title={next.frontmatter.title} to={next.frontmatter.path}>
-                  {next.frontmatter.title}
-                  <kbd>-&gt;</kbd>
-                </Link>
-              )}
-            </p>
-          </div>
-        </div>
-        <div className={styles.blogPost}>
-          <h1 className={styles.blogPostTitle}>{title}</h1>
-          <p className="post-title_sub">
-            <span>{date}</span>
-            {tags &&
-              tags.map((tag, index) => (
-                <span className="sub-tag" key={index}>
-                  #{tag}#
-                </span>
-              ))}
+    <Layout seoTitle={title} seoDescription={tldr} meta={[{ name: `keyword`, content: (tags || []).join(' ') }]}>
+      <div className={styles.blogPost}>
+        <div className={styles.blogPostLink} hidden>
+          <p className={styles.blogPostLinkItem}>
+            {previous && (
+              <Link title={previous.frontmatter.title} to={previous.frontmatter.path}>
+                <kbd>&lt;-</kbd>
+                {previous.frontmatter.title}
+              </Link>
+            )}
           </p>
-          <div
-            className={styles.blogPostContent}
-            dangerouslySetInnerHTML={{ __html: post.html }}
-          />
+          <p className={styles.blogPostLinkItem}>
+            {next && (
+              <Link title={next.frontmatter.title} to={next.frontmatter.path}>
+                {next.frontmatter.title}
+                <kbd>-&gt;</kbd>
+              </Link>
+            )}
+          </p>
         </div>
+        <h1 className={styles.blogPostTitle}>{title}</h1>
+        <p className="post-title_sub">
+          <span>{date}</span>
+          {tags &&
+            tags.map((tag, index) => (
+              <span className="sub-tag" key={index}>
+                #{tag}#
+              </span>
+            ))}
+        </p>
+        <blockquote className={styles.blogPostQuote}>{tldr}</blockquote>
+        <div className={styles.blogPostContent} dangerouslySetInnerHTML={{ __html: post.html }} />
       </div>
     </Layout>
   );

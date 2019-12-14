@@ -1,7 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=Bonbon&display=swap');
 
 html {
-  --primary-color: #e92a31;
+  --primary-color: #8a2d22;
+  --primary-light-color: #af877c;
   --primary-text-color: rgba(0, 0, 0, 0.75);
   --secondary-text-color: rgba(0, 0, 0, 0.55);
   --border-color: #dddde1;
@@ -27,34 +28,13 @@ html.dark {
 }
 
 body {
-  font-family: 'Helvetica Neue', Helvetica, 'PingFang SC', 'Hiragino Sans GB',
-    'Microsoft YaHei', '微软雅黑', Arial, sans-serif;
+  font-family: 'Helvetica Neue', Helvetica, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', '微软雅黑', Arial,
+    sans-serif;
   color: var(--primary-text-color);
   background: var(--background-color, snow) var(--background-image);
   background-attachment: fixed;
   scroll-behavior: smooth;
   transition: var(--base-transition);
-}
-
-a:hover,
-a:focus {
-  outline: none;
-}
-
-button,
-button:focus,
-button:active {
-  outline: none;
-}
-
-::selection {
-  background-color: var(--primary-color);
-  color: white;
-}
-
-main {
-  height: 100vh;
-  overflow: auto;
 }
 
 .layout {
@@ -78,7 +58,7 @@ main {
   right: 0;
   bottom: 0;
   filter: blur(1px);
-  background: url("https://source.unsplash.com/random/600x1080");
+  background: url('https://source.unsplash.com/random/600x1080');
 }
 
 .layout .aside .aside-content {
@@ -93,9 +73,14 @@ main {
   justify-content: center;
 }
 
+.layout main {
+  padding: 2rem;
+  height: 100vh;
+  overflow: auto;
+}
+
 /* .home - 首页 */
 .home {
-  padding: 2rem;
 }
 
 .home .post:not(:first-child) {
@@ -103,10 +88,11 @@ main {
 }
 
 .post .post-title {
-  margin: 0;
-  font-weight: 500;
-  font-size: 24px;
-  color: var(--primary-text-color);
+  font-weight: 200;
+  font-size: 28px;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: var(--primary-color);
   transition: var(--base-transition);
 }
 
@@ -115,7 +101,7 @@ main {
 }
 
 .post-title_sub {
-  margin-bottom: 0.5rem;
+  margin: 0;
   font-size: 80%;
   color: var(--secondary-text-color);
 }

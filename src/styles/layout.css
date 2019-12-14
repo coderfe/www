@@ -522,3 +522,19 @@ tt {
     font-size: 100%;
   }
 }
+
+a:hover,
+a:focus {
+  outline: none;
+}
+
+button,
+button:focus,
+button:active {
+  outline: none;
+}
+
+::selection {
+  background-color: var(--primary-light-color);
+  color: white;
+}

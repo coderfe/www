@@ -58,12 +58,12 @@ module.exports = {
             resolve: `gatsby-remark-images`,
             options: {
               maxWidth: 1200,
-              showCaptions: true,
               wrapperStyle: `
                 background-color: white;
                 box-shadow: 0px 0 4px rgba(0, 0, 0, 0.1);
                 border-radius: var(--base-border-radius);
                 overflow: hidden;
+                margin: 0 10px;
               `,
             },
           },

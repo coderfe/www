@@ -1,63 +1,76 @@
-.blog-post-wrapper {
-  width: 100%;
-  display: grid;
-  grid-template-columns: 1fr 320px;
-}
-
-.blog-post-aside {
-  width: 320px;
-  order: 1;
-  padding: 0 2rem 0 0;
-}
-
 .blog-post {
-  padding: 0 2rem;
-  order: 0;
+  /* padding: 0 3px; */
+  max-width: 960px;
   overflow: hidden;
 }
 
 .blog-post-title {
-  margin-bottom: 0;
+  margin: 0;
   font-size: 48px;
   font-weight: 100;
   font-style: italic;
   color: var(--primary-color);
   text-shadow: 2px 5px 0 rgba(0, 0, 0, 0.2);
+  text-transform: uppercase;
 }
 
 .blog-post-quote {
-  margin: 0;
+  position: relative;
+  /* padding: 4rem 1rem 1rem; */
+  padding: 1rem;
+  margin: 2rem 0;
   text-align: justify;
   font-family: serif;
   font-style: italic;
-  color: var(--secondary-text-color);
+  color: white;
+  border-left: 8px solid var(--primary-color);
+  background-color: var(--primary-light-color);
+  /* text-indent: 5em; */
 }
-.blog-post-quote:first-letter {
-  font-size: 2em;
+
+/* .blog-post-quote::before {
+  display: block;
+  position: absolute;
+  left: -126px;
+  top: 130px;
+  content: '\201C';
+  font-size: 15rem;
+  color: rgba(138, 45, 34, 0.3);
+  width: 0;
+  height: 0;
+  pointer-events: none;
+} */
+
+.blog-post-content h2,
+.blog-post-content h3,
+.blog-post-content h4,
+.blog-post-content h5,
+.blog-post-content h6 {
+  width: fit-content;
+  padding: 0.5rem 1rem;
+  margin: 1em 0 0.5em 0;
+  border-radius: 0 28px 0 28px;
+  font-weight: 500;
+  font-family: Serif, serif;
+  font-weight: 100;
+  color: white;
+  background-color: var(--primary-light-color);
 }
 
 .blog-post-content h2 {
-  margin: 1em 0 0.5em 0;
   font-size: 26px;
-  font-weight: 500;
 }
 
 .blog-post-content h3 {
-  margin: 1em 0 0.5em 0;
   font-size: 22px;
-  font-weight: 500;
 }
 
 .blog-post-content h4 {
-  margin: 1em 0 0.5em 0;
   font-size: 20px;
-  font-weight: 500;
 }
 
 .blog-post-content h5 {
-  margin: 1em 0 0.5em 0;
   font-size: 18px;
-  font-weight: 500;
 }
 
 .blog-post-content li,
@@ -68,7 +81,7 @@
 }
 
 .blog-post-content ul {
-  margin-left: 0;
+  margin-left: 40px;
   list-style: '🎈' outside;
 }
 
