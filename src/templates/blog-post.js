@@ -3,6 +3,7 @@ import React, { useEffect, useCallback } from 'react';
 import { toast } from 'react-toastify';
 import Layout from '../components/layout';
 import styles from './blog-post.module.css';
+import AniLink from 'gatsby-plugin-transition-link/AniLink';
 
 export default function BlogPostTemplate({ data, pageContext }) {
   const { markdownRemark: post } = data;
@@ -56,16 +57,28 @@ export default function BlogPostTemplate({ data, pageContext }) {
         <div className={styles.blogPostLink}>
           <div className={styles.prev}>
             {previous && (
-              <Link title={previous.frontmatter.title} to={previous.frontmatter.path}>
+              <AniLink
+                cover
+                direction="left"
+                bg="var(--primary-light-color)"
+                title={previous.frontmatter.title}
+                to={previous.frontmatter.path}
+              >
                 ←{previous.frontmatter.title}
-              </Link>
+              </AniLink>
             )}
           </div>
           <div className={styles.next}>
             {next && (
-              <Link title={next.frontmatter.title} to={next.frontmatter.path}>
+              <AniLink
+                cover
+                direction="right"
+                bg="var(--primary-light-color)"
+                title={next.frontmatter.title}
+                to={next.frontmatter.path}
+              >
                 {next.frontmatter.title}→
-              </Link>
+              </AniLink>
             )}
           </div>
         </div>
