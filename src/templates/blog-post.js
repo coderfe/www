@@ -1,13 +1,14 @@
-import { graphql, Link, navigate } from 'gatsby';
-import React, { useEffect, useCallback } from 'react';
+import { graphql, navigate } from 'gatsby';
+import AniLink from 'gatsby-plugin-transition-link/AniLink';
+import React, { useCallback, useEffect } from 'react';
 import { toast } from 'react-toastify';
 import Layout from '../components/layout';
 import styles from './blog-post.module.css';
-import AniLink from 'gatsby-plugin-transition-link/AniLink';
+import RelatedPosts from '../components/related-posts/RelatedPosts';
 
 export default function BlogPostTemplate({ data, pageContext }) {
   const { markdownRemark: post } = data;
-  const { next, previous } = pageContext;
+  const { next, previous, relatedPosts } = pageContext;
 
   const { title, tldr, date, tags } = post.frontmatter;
 
@@ -40,48 +41,56 @@ export default function BlogPostTemplate({ data, pageContext }) {
 
   return (
     <Layout seoTitle={title} seoDescription={tldr} meta={[{ name: `keyword`, content: (tags || []).join(' ') }]}>
-      <div className={styles.blogPost}>
-        <h1 className={styles.blogPostTitle}>{title}</h1>
-        <div className="post-title_sub">
-          <span>{date}</span>
-          <span>{post.timeToRead}min</span>
-          {tags &&
-            tags.map((tag, index) => (
-              <span className="sub-tag" key={index}>
-                #{tag}#
-              </span>
-            ))}
-        </div>
-        <blockquote className={styles.blogPostQuote}>{tldr}</blockquote>
-        <div className={styles.blogPostContent} dangerouslySetInnerHTML={{ __html: post.html }} />
-        <div className={styles.blogPostLink}>
-          <div className={styles.prev}>
-            {previous && (
-              <AniLink
-                cover
-                direction="left"
-                bg="var(--primary-light-color)"
-                title={previous.frontmatter.title}
-                to={previous.frontmatter.path}
-              >
-                ←{previous.frontmatter.title}
-              </AniLink>
-            )}
+      <div
+        style={{
+          display: 'grid',
+          gridTemplateColumns: '1fr auto',
+        }}
+      >
+        <div className={styles.blogPost}>
+          <h1 className={styles.blogPostTitle}>{title}</h1>
+          <div className="post-title_sub">
+            <span>{date}</span>
+            <span>{post.timeToRead}min</span>
+            {tags &&
+              tags.map((tag, index) => (
+                <span className="sub-tag" key={index}>
+                  #{tag}#
+                </span>
+              ))}
           </div>
-          <div className={styles.next}>
-            {next && (
-              <AniLink
-                cover
-                direction="right"
-                bg="var(--primary-light-color)"
-                title={next.frontmatter.title}
-                to={next.frontmatter.path}
-              >
-                {next.frontmatter.title}→
-              </AniLink>
-            )}
+          <blockquote className={styles.blogPostQuote}>{tldr}</blockquote>
+          <div className={styles.blogPostContent} dangerouslySetInnerHTML={{ __html: post.html }} />
+          <div className={styles.blogPostLink}>
+            <div className={styles.prev}>
+              {previous && (
+                <AniLink
+                  cover
+                  direction="left"
+                  bg="var(--primary-light-color)"
+                  title={previous.frontmatter.title}
+                  to={previous.frontmatter.path}
+                >
+                  ←{previous.frontmatter.title}
+                </AniLink>
+              )}
+            </div>
+            <div className={styles.next}>
+              {next && (
+                <AniLink
+                  cover
+                  direction="right"
+                  bg="var(--primary-light-color)"
+                  title={next.frontmatter.title}
+                  to={next.frontmatter.path}
+                >
+                  {next.frontmatter.title}→
+                </AniLink>
+              )}
+            </div>
           </div>
         </div>
+        <RelatedPosts posts={relatedPosts} />
       </div>
     </Layout>
   );

@@ -26,10 +26,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 
   const result = await graphql(`
     {
-      allMarkdownRemark(
-        sort: { order: DESC, fields: [frontmatter___date] }
-        limit: 1000
-      ) {
+      allMarkdownRemark(sort: { order: DESC, fields: [frontmatter___date] }, limit: 1000) {
         edges {
           next {
             frontmatter {
@@ -46,6 +43,8 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
           node {
             frontmatter {
               path
+              tags
+              title
             }
           }
         }
@@ -57,12 +56,15 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     return;
   }
   result.data.allMarkdownRemark.edges.forEach(({ node, next, previous }) => {
+    const relatedPosts = parseRelatedPosts(result, node);
+
     createPage({
       path: node.frontmatter.path,
       component: blogPostTemplate,
       context: {
         next,
         previous,
+        relatedPosts,
       },
     });
   });
@@ -82,3 +84,14 @@ exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
     });
   }
 };
+
+function parseRelatedPosts(allPosts, currentPost) {
+  const { tags: postTags, title: postTitle } = currentPost.frontmatter;
+  return allPosts.data.allMarkdownRemark.edges.filter(edge => {
+    const { tags: currentPostTags, title: currentPostTitle } = edge.node.frontmatter;
+    if (postTags && currentPostTags) {
+      return postTags.some(t => currentPostTags.includes(t)) && postTitle !== currentPostTitle;
+    }
+    return false;
+  });
+}
