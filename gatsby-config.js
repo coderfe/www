@@ -100,7 +100,7 @@ module.exports = {
         short_name: `c:/d/d`,
         start_url: `/`,
         background_color: `#663399`,
-        theme_color: `tomato`,
+        theme_color: `#8a2d22`,
         display: `minimal-ui`,
         icon: `src/images/icon.jpg`, // This path is relative to the root of the site.
       },
