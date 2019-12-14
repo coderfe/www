@@ -30,11 +30,12 @@
     "styled-components": "^4.4.1"
   },
   "devDependencies": {
-    "db-book": "^1.0.5",
+    "db-book": "^1.0.7",
     "gatsby-plugin-feed": "^2.3.21",
     "gatsby-plugin-google-analytics": "^2.1.28",
     "gatsby-plugin-robots-txt": "^1.5.0",
     "gatsby-plugin-sitemap": "^2.2.21",
+    "gatsby-remark-images": "^3.1.35",
     "prettier": "^1.19.1",
     "puppeteer": "^2.0.0"
   },

@@ -55,6 +55,19 @@ module.exports = {
         },
         plugins: [
           {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 1200,
+              showCaptions: true,
+              wrapperStyle: `
+                background-color: white;
+                box-shadow: 0px 0 4px rgba(0, 0, 0, 0.1);
+                border-radius: var(--base-border-radius);
+                overflow: hidden;
+              `,
+            },
+          },
+          {
             resolve: `gatsby-remark-prismjs`,
             options: {
               classPrefix: 'language-',

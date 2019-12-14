@@ -1,17 +1,21 @@
 const path = require('path');
-const fs = require('fs');
-const fetchDouBanBooks = require('db-book');
-const config = require('./db-config');
-const jsonPath = path.join(__dirname, '../src/data/books.json');
+const { writeFile } = require('fs');
+const fetchDouBanBooks = require('db-book').default;
+const bookPath = path.join(__dirname, '../src/data/book.json');
+const moviePath = path.join(__dirname, '../src/data/movie.json');
 
 (async () => {
-  const books = await fetchDouBanBooks({
-    username: config.username,
-    password: config.password,
+  const { book, movie } = await fetchDouBanBooks({
+    userId: '84902716',
     headless: false,
   });
-  fs.writeFile(jsonPath, JSON.stringify(books), async err => {
+  writeFile(bookPath, JSON.stringify(book), async err => {
     if (err) console.log(err);
-    console.log('Bingo: ' + books.length);
+    console.log('Bingo: ' + book.length);
+  });
+
+  writeFile(moviePath, JSON.stringify(movie), async err => {
+    if (err) console.log(err);
+    console.log('Bingo: ' + book.length);
   });
 })();

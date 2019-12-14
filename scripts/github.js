@@ -10,8 +10,6 @@ const puppeteer = require('puppeteer');
 
   await page.goto('https://github.com/coderfe');
 
-  await page.setViewport({ width: 1920, height: 942 });
-
   await page.waitForSelector(
     '.js-calendar-graph > .js-calendar-graph-svg > g > g:nth-child(6) > .day:nth-child(3)'
   );
@@ -34,7 +32,7 @@ async function save(data) {
   const _data = months.map(month => {
     return {
       month,
-      commits: data
+      acc: data
         .filter(item => item.date === month)
         .map(item => item.commits)
         .reduce((prev, acc) => prev + acc, 0),

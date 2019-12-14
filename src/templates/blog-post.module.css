@@ -69,7 +69,6 @@
 
 .blog-post-content ul {
   margin-left: 0;
-  list-style: circle outside;
   list-style: '🎈' outside;
 }
 
@@ -88,6 +87,15 @@
 
 .blog-post-content a:hover {
   text-decoration: underline;
+}
+
+.blog-post-content figcaption {
+  font-size: 12px;
+  font-style: italic;
+  font-weight: normal;
+  padding-bottom: 5px;
+  text-align: center;
+  color: var(--secondary-text-color);
 }
 
 @media screen and (max-width: 1024px) {

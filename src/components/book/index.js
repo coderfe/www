@@ -4,14 +4,14 @@ import styles from './book.module.css';
 import LazyImage from '../lazyImage';
 
 export default function Book({ book }) {
-  const { title, author, img, url } = book;
+  const { title, author, image, url } = book;
 
   return (
     <div className={styles.book}>
       <div className={styles.bookCover}>
-        <div className={styles.bookCoverMask}></div>
+        <div className={styles.bookCoverMask}/>
         <div className={styles.bookCoverImage}>
-          <LazyImage src={cacheImages(img)} alt={title} />
+          <LazyImage src={cacheImages(image)} alt={title} />
         </div>
         <div className={styles.bookInfo}>
           <p className={styles.bookInfoTitle}>

@@ -5,7 +5,7 @@ import SEO from '../components/seo';
 import Book from '../components/book';
 
 export default function BooksPage({ data }) {
-  const [collect, dos, wish] = data.allBooksJson.group;
+  const [collect, dos, wish] = data.allBookJson.group;
 
   const [tab, setTab] = useState('collect');
 
@@ -69,13 +69,12 @@ export default function BooksPage({ data }) {
 
 export const pageQuery = graphql`
   query BooksQuery {
-    allBooksJson {
+    allBookJson {
       group(field: status) {
         nodes {
           author
-          comment
           date(formatString: "YYYY-MM-DD")
-          img
+          image
           id
           status
           tags

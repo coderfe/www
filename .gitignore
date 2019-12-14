@@ -62,6 +62,10 @@ public
 # Mac files
 .DS_Store
 
+# Editor
+.vscode/
+.idea/
+
 # Yarn
 yarn-error.log
 .pnp/

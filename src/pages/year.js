@@ -1,81 +1,55 @@
 import { graphql } from 'gatsby';
 import React from 'react';
+import LineChart from '../components/chart/LineChart';
 import WordCloud from '../components/chart/WorldCloud';
 import Layout from '../components/layout';
-
-import allMoviesJson from '../data/movies.json';
 import allCommitsJson from '../data/github.json';
 
-let bizcharts;
-
-if (process.browser) {
-  bizcharts = require('bizcharts');
-}
-
 export default function Year({ data }) {
-  const { group: allBooks, distinct: allTags } = data.allBooksJson;
+  const { group: allBooks, distinct: allBookTags } = data.allBookJson;
+  const { group: allMovie, distinct: allMovieTag } = data.allMovieJson;
 
   const books = queryBooks(allBooks);
   const lineChartData = groupByMonth(books);
-  const wordCloudData = groupByTag(books, allTags);
+  const wordCloudData = groupByTag(books, allBookTags);
 
-  const cols = {
-    month: {
-      alias: '月份',
-    },
-    acc: {
-      alias: '阅读量',
-    },
-  };
+  const movies = queryBooks(allMovie);
+  const movieLineChartData = groupByMonth(movies);
+  const movieWordCloudData = groupByTag(movies, allMovieTag);
 
   const year = new Date().getFullYear();
 
   return (
-    <Layout seoTitle={'2019'} pageTitle={`${year}`}>
+    <Layout seoTitle={'2019'} pageTitle={`break 2019; goto ${year};`}>
       {process.browser && (
         <>
-          <bizcharts.Chart
-            placeholder
-            height={400}
+          <LineChart
             data={lineChartData}
-            scale={cols}
-            forceFit
-          >
-            <bizcharts.Axis
-              name="month"
-              title={null}
-              tickLine={null}
-              line={{
-                stroke: '#E6E6E6',
-              }}
-            />
-            <bizcharts.Axis
-              name="acc"
-              line={false}
-              tickLine={null}
-              grid={null}
-              title={null}
-            />
-            <bizcharts.Tooltip />
-            <bizcharts.Geom
-              type="line"
-              position="month*acc"
-              size={2}
-              color="l (270) 0:rgba(255, 146, 255, 1) .5:rgba(100, 268, 255, 1)
-            1:rgba(215, 0, 255, 1)"
-              shape="smooth"
-              style={{
-                shadowColor: 'l (270) 0:rgba(21, 146, 255, 0)',
-                shadowBlur: 60,
-                shadowOffsetY: 6,
-              }}
-            />
-          </bizcharts.Chart>
+            cols={{
+              month: {
+                alias: '月份',
+              },
+              acc: {
+                alias: '阅读量',
+              },
+            }}
+          />
 
-          <bizcharts.Chart
-            height={400}
+          <LineChart
+            data={movieLineChartData}
+            cols={{
+              month: {
+                alias: '月份',
+              },
+              acc: {
+                alias: '阅片量',
+              },
+            }}
+          />
+
+          <LineChart
             data={allCommitsJson}
-            scale={{
+            cols={{
               month: {
                 alias: '月份',
               },
@@ -83,42 +57,11 @@ export default function Year({ data }) {
                 alias: 'commits',
               },
             }}
-            forceFit
-          >
-            <bizcharts.Axis
-              name="month"
-              title={null}
-              tickLine={null}
-              line={{
-                stroke: '#E6E6E6',
-              }}
-            />
-            <bizcharts.Axis
-              name="acc"
-              line={false}
-              tickLine={null}
-              grid={null}
-              title={null}
-            />
-            <bizcharts.Tooltip />
-            <bizcharts.Geom
-              type="line"
-              position="month*commits"
-              size={2}
-              color="l (270) 0:rgba(255, 146, 255, 1) .5:rgba(100, 268, 255, 1)
-            1:rgba(215, 0, 255, 1)"
-              shape="smooth"
-              style={{
-                shadowColor: 'l (270) 0:rgba(21, 146, 255, 0)',
-                shadowBlur: 60,
-                shadowOffsetY: 6,
-              }}
-            />
-          </bizcharts.Chart>
+          />
 
-          <WordCloud height={400} forceFit data={wordCloudData} />
+          <WordCloud height={400} data={wordCloudData} />
 
-          <WordCloud height={200} forceFit data={allMoviesJson} />
+          <WordCloud height={200} data={movieWordCloudData} />
         </>
       )}
     </Layout>
@@ -127,9 +70,19 @@ export default function Year({ data }) {
 
 export const pageQuery = graphql`
   query BooksChartQuery {
-    allBooksJson(
+    allBookJson(
       filter: { date: { gt: "2019-01-01" }, status: { eq: "collect" } }
     ) {
+      group(field: date) {
+        nodes {
+          title
+          tags
+          date(formatString: "YYYY-MM")
+        }
+      }
+      distinct(field: tags)
+    }
+    allMovieJson(filter: { status: { eq: "collect" } }) {
       group(field: date) {
         nodes {
           title
