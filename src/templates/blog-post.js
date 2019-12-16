@@ -2,7 +2,7 @@ import { graphql, navigate } from 'gatsby';
 import AniLink from 'gatsby-plugin-transition-link/AniLink';
 import React, { useCallback, useEffect } from 'react';
 import { toast } from 'react-toastify';
-import Layout from '../components/layout';
+import Layout from '../components/layout/Layout';
 import styles from './blog-post.module.css';
 import RelatedPosts from '../components/related-posts/RelatedPosts';
 

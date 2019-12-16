@@ -2,8 +2,8 @@ import { graphql, useStaticQuery } from 'gatsby';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { toast } from 'react-toastify';
-import SEO from './seo';
-import Aside from './layout/Aside';
+import SEO from '../seo';
+import Aside from './Aside';
 
 toast.configure({ autoClose: 2000 });
 

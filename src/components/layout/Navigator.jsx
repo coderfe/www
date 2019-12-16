@@ -1,12 +1,33 @@
-import AniLink from 'gatsby-plugin-transition-link/AniLink';
-import Emoji from '../emoji';
 import React from 'react';
+import AniLink from 'gatsby-plugin-transition-link/AniLink';
+import styled from 'styled-components'
+import Emoji from '../emoji';
 
-import styles from './nav.module.css';
+const NavigatorContainer = styled.div`
+  text-align: center;
+  font-family: Serif, serif;
+  font-weight: bold;
+  
+  a {
+    display: block;
+    color: white;
+    transition: all 0.2s linear;
+  }
+  
+  a + a {
+    margin-top: 1rem;
+  }
+  
+  a:hover,
+  a[aria-current=page] {
+    font-weight: 900;
+    transform: scale(1.2);
+  }
+`;
 
-export default function Nav() {
+export default function Navigator() {
   return (
-    <div className={styles.navigator}>
+    <NavigatorContainer>
       <AniLink paintDrip hex="#af877c" duration={1} to="/">
         <Emoji label="首页" emoji="🏡">
           此间
@@ -27,6 +48,6 @@ export default function Nav() {
           此年
         </Emoji>
       </AniLink>
-    </div>
+    </NavigatorContainer>
   );
 }

@@ -3,7 +3,7 @@ import React from 'react';
 import Divider from '../divider';
 import Emoji from '../emoji';
 import styles from './profile.module.css';
-import Nav from '../nav/Nav';
+import Navigator from '../layout/Navigator';
 
 export default function Profile() {
   const data = useStaticQuery(graphql`
@@ -33,7 +33,7 @@ export default function Profile() {
 
         <Divider width="40%" />
 
-        <Nav />
+        <Navigator />
 
         <Divider width="40%" />
 

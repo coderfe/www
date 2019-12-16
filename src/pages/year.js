@@ -2,7 +2,7 @@ import { graphql } from 'gatsby';
 import React from 'react';
 import LineChart from '../components/chart/LineChart';
 import WordCloud from '../components/chart/WorldCloud';
-import Layout from '../components/layout';
+import Layout from '../components/layout/Layout';
 import allCommitsJson from '../data/github.json';
 
 export default function Year({ data }) {
