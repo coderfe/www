@@ -5,12 +5,13 @@ import Emoji from '../emoji';
 
 const NavigatorContainer = styled.div`
   text-align: center;
-  font-family: Serif, serif;
+  font-family: var(--serif-font);
   font-weight: bold;
   
   a {
     display: block;
     color: white;
+    font-size: 18px;
     transition: all 0.2s linear;
   }
   

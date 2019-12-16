@@ -5,7 +5,7 @@ import styled from 'styled-components';
 const RelatedPostsContainer = styled.div`
   padding: 2rem;
   text-align: left;
-  font-family: Serif, serif;
+  font-family: var(--serif-font);
 
   @media screen and (max-width: 1200px) {
     display: none;

@@ -28,8 +28,8 @@
   margin-bottom: 1rem;
   color: white;
   text-align: center;
-  font-size: 85%;
-  font-family: Serif, serif;
+  font-size: 18px;
+  font-family: var(--serif-font);
 }
 
 .profile-social {
