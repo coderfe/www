@@ -31,7 +31,7 @@ export default function BooksPage({ data }) {
     <Layout>
       <SEO title="书单" description="书单" />
       <div className="books">
-        <div style={{ textAlign: 'right' }}>
+        <div style={{ textAlign: 'left' }}>
           <div className="books-btn-group">
             {allBooks.map(({ books, status, name }, index) => (
               <button
@@ -48,12 +48,7 @@ export default function BooksPage({ data }) {
         </div>
         <div>
           {allBooks.map(({ books, status }, index) => (
-            <div
-              className={`books-wrapper books-${status} ${
-                tab === status ? 'active' : ''
-              }`}
-              key={index}
-            >
+            <div className={`books-wrapper books-${status} ${tab === status ? 'active' : ''}`} key={index}>
               {books.map(book => (
                 <div className="book-container" key={book.id}>
                   <Book key={book.id} book={book} />

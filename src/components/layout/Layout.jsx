@@ -4,6 +4,7 @@ import React from 'react';
 import { toast } from 'react-toastify';
 import SEO from '../seo';
 import Aside from './Aside';
+import Footer from './Footer';
 
 toast.configure({ autoClose: 2000 });
 
@@ -32,12 +33,7 @@ const Layout = ({ seoTitle, seoDescription, meta, children }) => {
 
         <main>
           {children}
-          <footer className="footer">
-            © {new Date().getFullYear()},{` `}
-            <a href="http://www.beian.miit.gov.cn/" target="_blank" rel="noopener noreferrer">
-              {data.site.siteMetadata.ICP}
-            </a>
-          </footer>
+          <Footer icp={data.site.siteMetadata.ICP} />
         </main>
       </div>
     </>

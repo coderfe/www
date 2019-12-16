@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Bonbon&display=swap');
+/* @import url('https://fonts.googleapis.com/css?family=Bonbon&display=swap'); */
 
 html {
   --primary-color: #8a2d22;
@@ -12,6 +12,7 @@ html {
   --base-border-radius: 4px;
 
   --base-padding: 1rem;
+  --main-padding: 2rem;
 
   --base-transition: all 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
 
@@ -41,12 +42,6 @@ body {
   transition: var(--base-transition);
 }
 
-@media (max-width: 447px) {
-  body {
-    font-size: var(--large-font-size);
-  }
-}
-
 .layout {
   /*max-width: 1200px;*/
   /*margin: 0 auto;*/
@@ -57,12 +52,6 @@ body {
   background-color: rgba(255, 255, 255, 0.6);
 }
 
-@media screen and (max-width: 1024px) {
-  .layout {
-    grid-template-columns: 1fr;
-  }
-}
-
 .layout main {
   height: 100vh;
   overflow: auto;
@@ -70,7 +59,7 @@ body {
 
 /* .home - 首页 */
 .home {
-  padding: 2rem;
+  padding: var(--main-padding);
 }
 
 .home .post:not(:first-child) {
@@ -114,42 +103,17 @@ body {
   color: var(--secondary-text-color);
 }
 
-.sidebar-title {
-  font-weight: 500;
-  padding: 8px;
-  margin-bottom: 12px;
-  text-transform: uppercase;
-}
-
-.sidebar-title span:last-child {
-  color: var(--secondary-text-color);
-}
-
-/* footer - 底部 */
-
-.footer {
-  margin-top: 1rem;
-  padding: 1rem;
-  color: white;
-  background-color: #1c1c1c;
-  text-align: center;
-  font-size: 14px;
-}
-
-.footer a {
-  color: var(--primary-color);
-}
-
 /* books */
 
 .books {
-  padding: 2rem;
+  --columns: 6;
+  padding: var(--main-padding);
 }
 
 .books-wrapper {
   display: none;
   grid-gap: 2rem;
-  grid-template-columns: repeat(6, minmax(120px, 1fr));
+  grid-template-columns: repeat(var(--columns), minmax(120px, 1fr));
 }
 
 .books-wrapper.active {
@@ -223,35 +187,27 @@ body {
 }
 
 /* media query */
-
 @media screen and (max-width: 1024px) {
-  .books-wrapper {
-    grid-template-columns: repeat(5, minmax(120px, 1fr));
+  .layout {
+    grid-template-columns: 1fr;
+  }
+  .book {
+    --colums: 5;
   }
 }
 
 @media screen and (max-width: 768px) {
-  .books-wrapper {
-    grid-template-columns: repeat(4, minmax(120px, 1fr));
+  .book {
+    --colums: 4;
   }
 }
 
-@media screen and (max-width: 425px) {
-  .header-navbar {
-    width: 100%;
-    text-align: center;
-    flex-direction: column;
+@media screen and (max-width: 447px) {
+  body {
+    font-size: var(--large-font-size);
   }
+
   .books {
-    padding: 0 1rem;
-  }
-  .books-wrapper {
-    grid-template-columns: repeat(2, minmax(120px, 1fr));
-  }
-}
-
-@media screen and (max-width: 360px) {
-  .header-logo {
-    font-size: 94px;
+    --columns: 2;
   }
 }
