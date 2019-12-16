@@ -182,7 +182,6 @@ textarea {
   font: inherit;
 }
 html {
-  font: 112.5%/1.45em georgia, serif;
   box-sizing: border-box;
   overflow-y: auto;
 }
@@ -516,11 +515,6 @@ tt {
   padding: 0;
   padding-top: 0.2em;
   padding-bottom: 0.2em;
-}
-@media only screen and (max-width: 480px) {
-  html {
-    font-size: 100%;
-  }
 }
 
 a:hover,

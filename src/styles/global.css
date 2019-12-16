@@ -17,6 +17,9 @@ html {
 
   --background-image: url('../images/light-geometry.png');
   --linear-gradient: linear-gradient(to right, #8a2387, tomato, #f27121);
+
+  --base-font-size: 16px;
+  --large-font-size: 17px;
 }
 
 html.dark {
@@ -30,11 +33,18 @@ html.dark {
 body {
   font-family: 'Helvetica Neue', Helvetica, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', '微软雅黑', Arial,
     sans-serif;
+  font-size: var(--base-font-size);
   color: var(--primary-text-color);
   background: var(--background-color, snow) var(--background-image);
   background-attachment: fixed;
   scroll-behavior: smooth;
   transition: var(--base-transition);
+}
+
+@media (max-width: 447px) {
+  body {
+    font-size: var(--large-font-size);
+  }
 }
 
 .layout {

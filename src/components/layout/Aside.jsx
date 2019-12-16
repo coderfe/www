@@ -7,6 +7,7 @@ import Profile from '../profile';
 const AsideWrapper = styled.div`
   @media (max-width: 1024px) {
     position: fixed;
+    z-index: 10;
   }
 `;
 
@@ -57,7 +58,7 @@ const AsideTrigger = styled.div`
   width: 50px;
   height: 50px;
   position: fixed;
-  z-index: 2;
+  z-index: 82;
   top: 1rem;
   right: 1rem;
   border-radius: 50%;
