@@ -47,90 +47,10 @@ body {
   background-color: rgba(255, 255, 255, 0.6);
 }
 
-.layout .aside {
-  position: relative;
-}
-
-.layout .aside .aside-toggle {
-  display: none;
-}
-
-.layout .aside .aside-toggle.active {
-  animation: rotate 0.3s linear;
-}
-
 @media screen and (max-width: 1024px) {
   .layout {
     grid-template-columns: 1fr;
   }
-  .layout .aside {
-    position: fixed;
-    width: 410px;
-    height: 100%;
-    overflow: hidden;
-    left: -410px;
-    top: 0;
-    z-index: 10;
-    box-shadow: 2px 0 3px rgba(0, 0, 0, 0.12);
-    transition: var(--base-transition);
-  }
-  .layout .aside.active {
-    left: 0;
-  }
-  .layout .aside .aside-toggle {
-    display: block;
-    position: fixed;
-    top: 2rem;
-    right: 2rem;
-    width: 60px;
-    height: 60px;
-    text-align: center;
-    line-height: 60px;
-    border-radius: 50%;
-    background-color: white;
-    box-shadow: 0 0 12px 6px rgba(0, 0, 0, 0.12);
-    z-index: 11;
-    cursor: pointer;
-    font-size: 2rem;
-  }
-}
-
-@keyframes rotate {
-  0% {
-    transform: rotate(0);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-@media screen and (max-width: 477px) {
-  .layout .aside {
-    width: 100%;
-    left: -100%;
-  }
-}
-
-.layout .aside .aside-effect {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  /* filter: blur(1px); */
-  background: url('../images/aside-bg.jpg') center;
-}
-
-.layout .aside .aside-content {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.3);
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .layout main {
