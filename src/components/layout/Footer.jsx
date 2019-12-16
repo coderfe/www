@@ -16,7 +16,7 @@ const FooterContainer = styled.div`
 
 export default function Footer({ icp }) {
   return (
-    <FooterContainer>
+    <FooterContainer id="footer">
       © {new Date().getFullYear()},{` `}
       <a href="http://www.beian.miit.gov.cn/" target="_blank" rel="noopener noreferrer">
         {icp}

@@ -13,7 +13,7 @@ const IndexPage = ({ data }) => {
   useEffect(() => {
     let observer;
     if (IntersectionObserver) {
-      const target = document.querySelector('.footer');
+      const target = document.querySelector('#footer');
       if (target) {
         observer = new IntersectionObserver(
           entries => {
