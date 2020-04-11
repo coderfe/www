@@ -14,6 +14,7 @@ const AsideWrapper = styled.div`
 const AsideContainer = styled.div`
   height: 100vh;
   background: url(${asideBg}) no-repeat;
+  background-size: cover;
   transition: var(--base-transition);
 
   @media (max-width: 1024px) {
