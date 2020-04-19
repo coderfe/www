@@ -78,3 +78,9 @@ brew cask install iterm2 alfred one-switch v2rayu google-chrome firefox-develope
    # 手动配置
    p10k configure
    ```
+
+## Screenshoot
+
+![screenshoot](./apps.png)
+
+![screenshoot](./vscode.png)
