@@ -1,0 +1,37 @@
+@windicss;
+
+html,
+body {
+  @apply h-screen overflow-hidden
+  dark:bg-gray-800;
+}
+
+::selection {
+  @apply bg-black text-white;
+}
+
+code {
+  @apply inline-block px-0.5 rounded-sm bg-gray-100 text-gray-900 text-sm
+  dark:(bg-gray-900 text-gray-100);
+}
+
+.container {
+  @apply w-11/12 sm:w-5/6 md:w-4/5 lg:max-w-3xl xl:max-w-3xl mx-auto;
+}
+
+.btn-icon {
+  @apply flex justify-center items-center w-10 h-10 rounded-md border border-gray-500 text-center
+  dark:border-gray-500
+  disabled:(opacity-50 cursor-not-allowed);
+}
+
+.nav-link {
+  @apply inline-block px-3 py-1 rounded-md text-gray-800 text-sm transition-colors duration-500
+  hover:bg-gray-50
+  dark:(bg-gray-800 text-gray-300 hover:bg-gray-900);
+}
+
+.nav-link--active {
+  @apply bg-gray-100
+  dark:bg-gray-900;
+}
