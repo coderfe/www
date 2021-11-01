@@ -15,6 +15,12 @@ module.exports = {
       resolve: 'gatsby-plugin-manifest',
       options: {
         icon: 'src/images/icon.jpg',
+        name: `coderfee space`,
+        short_name: `CSpace`,
+        start_url: `/`,
+        background_color: `#fff`,
+        theme_color: `#1f2937`,
+        display: `standalone`,
       },
     },
     'gatsby-transformer-remark',
