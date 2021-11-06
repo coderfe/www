@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    siteUrl: 'https://www.coderfee.com',
+    siteUrl: 'https://coderfee.com',
     description: 'Read Think Code',
     title: 'coderfee space',
     twitterUsername: 'coderfee',
@@ -74,8 +74,8 @@ module.exports = {
                 return Object.assign({}, node.frontmatter, {
                   description: node.frontmatter.tldr,
                   date: node.frontmatter.date,
-                  url: site.siteMetadata.siteUrl + '/' + node.slug,
-                  guid: site.siteMetadata.siteUrl + '/' + node.slug,
+                  url: site.siteMetadata.siteUrl + '/blog/' + node.slug,
+                  guid: site.siteMetadata.siteUrl + '/blog/' + node.slug,
                   custom_elements: [{ "content:encoded": node.frontmatter.tldr }],
                 })
               })
