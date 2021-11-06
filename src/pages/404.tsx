@@ -1,9 +1,12 @@
 import * as React from 'react'
+import { FiHome } from '@react-icons/all-files/fi/FiHome'
 
 const NotFoundPage = () => {
   return (
-    <main>
-      <h1>Not found</h1>
+    <main className="h-screen flex justify-center items-center">
+      <a className="hover:outline-none" href="/">
+        <FiHome size="100" />
+      </a>
     </main>
   )
 }
