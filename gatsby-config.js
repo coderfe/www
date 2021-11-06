@@ -19,7 +19,6 @@ module.exports = {
         short_name: `CSpace`,
         start_url: `/`,
         background_color: `#fff`,
-        theme_color: `#1f2937`,
         display: `standalone`,
       },
     },
