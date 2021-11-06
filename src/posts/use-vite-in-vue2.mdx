@@ -1,0 +1,59 @@
+---
+title: 在 Vue2.x 项目中使用 Vite
+date: 2021-11-05
+tldr: 随着 Vue3 的发布，尤大新推了一个前端构建工具——Vite，它在前端圈达到了『真香』效果，我也跃跃欲试，但奈何目前的项目都是 Vue2，而且升级 Vue3 的难度稍大，但是 Vite 并不强制要求 Vue3，于是折腾了一天的时间搞定了 Vite in Vue2
+tags: ['Vue']
+---
+
+## Vite 是个啥
+
+如 Vite 官网所介绍，Vite 是一个新型前端构建工具，能够显著提高前端开发体验，主要体现在：
+
+- 极速的服务启动
+- 轻量快速的热重载
+- 丰富的功能 Vue/React/TypeScript/JSX 等开箱即用
+
+## 搭建一个 Vite 项目
+
+```bash
+npm init vite@latest
+```
+
+这行代码会创建一个最简单的 Vite 项目，其中 Vue 为 3.x 版本。然后启动项目，能看到如下的输出，只用了 580ms 就能启动开发环境：
+
+## 一点小说明
+
+以上是对 Vite 的简单介绍，由于 Vite 天然支持 Vue3.x 版本，不需要过多的配置就可以使用。但是对于 Vue2.x 版本来说，Vite 缺乏相应的支持。那么如何开启 Vite 对 Vue 的支持呢，后面剩余的篇幅就专门来介绍
+
+## Vite 和 Vue2.x
+
+### 根目录
+
+### JSX
+
+### CSS 预处理器
+
+Vite 提供了 sass/scss/less/stylus 的内置支持，不需要安装特定的插件，只要安装对应的预处理器依赖：
+npm i -D sass less stylus
+需要注意由于 sass 默认使用 dart-sass，`/deep/` 语法无法被正确处理，语法应该修改为 `::v-deep`
+
+### 环境变量
+
+Vue CLI 生成的项目中可以通过 `VUE_APP_` 这种方式来访问环境变量。Vite 修改了环境变量的使用方式，Vite 在一个特殊的 `import.meta.env` 上暴露了环境变量
+
+内建变量：
+
+- `import.meta.env.MODE` `{string}` 应用运行模式
+- `import.meta.env.BASE_URL` `{string}` 应用基本 URL，可配置项
+- `import.meta.env.PROD` `{boolean}` 是否在生产环境
+- `import.meta.env.DEV` `{boolean}` 是否在开发环境
+
+自定义变量：在 env 环境变量文件中定义的以 `VITE\_` 为前缀的变量才会暴露给 Vite 处理
+
+```bash
+#只有 VITE_SOME_KEY 会暴露出去
+VITE_SOME_KEY=123
+SOME_KEY=321
+```
+
+### CommonJS 之 require
