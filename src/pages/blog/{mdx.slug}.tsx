@@ -7,6 +7,8 @@ import Container from '../../components/layout/Container'
 import { Layout } from '../../components/layout/Layout'
 import { components } from '../../components/provider'
 import { SEO } from '../../components/SEO'
+// @ts-ignore
+import Avatar from '../../images/icon.jpg'
 
 const Divider = () => <span className="text-gray-500">/</span>
 
@@ -25,9 +27,15 @@ const BlogPost: React.FC<PageProps<BlogPostQuery>> = ({
             {mdx.frontmatter?.title}
           </h1>
           <p className="text-sm text-gray-600 space-x-2 mb-5 dark:text-gray-300">
-            <span>{mdx.frontmatter?.date}</span>
+            <span>
+              <img
+                className="inline-block w-5 h-5 rounded-full mr-1"
+                src={Avatar}
+              />
+              {site?.siteMetadata?.author}
+            </span>
             <Divider />
-            <span>{site?.siteMetadata?.author}</span>
+            <span>{mdx.frontmatter?.date}</span>
             <Divider />
             <span className="space-x-1">
               {mdx.frontmatter?.tags &&
