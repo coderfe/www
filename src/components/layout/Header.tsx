@@ -8,7 +8,6 @@ import Container from './Container'
 const routes = [
   { path: '/', name: 'Home' },
   { path: '/about', name: 'About' },
-  { path: 'https://github.com', name: 'GitHub' },
 ]
 
 type Props = {
@@ -16,12 +15,7 @@ type Props = {
 }
 
 const NavLink: React.FC<Props> = ({ to, children }) => {
-  const isHttp = to.startsWith('http://') || to.startsWith('https://')
-  return isHttp ? (
-    <a className="nav-link" href={to} target="_blank">
-      {children}
-    </a>
-  ) : (
+  return (
     <Link to={to} activeClassName="nav-link--active" className="nav-link">
       {children}
     </Link>
