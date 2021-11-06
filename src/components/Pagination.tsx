@@ -15,7 +15,7 @@ export default function Pagination({
   onPageChange,
 }: React.PropsWithChildren<Props>) {
   return (
-    <footer className="p-6">
+    <div className="p-6">
       <div className="w-60 mx-auto grid grid-cols-[40px,1fr,40px] gap-3 items-center">
         <button
           className="btn-icon"
@@ -45,6 +45,6 @@ export default function Pagination({
           </IconContext.Provider>
         </button>
       </div>
-    </footer>
+    </div>
   )
 }
