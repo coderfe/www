@@ -50,7 +50,7 @@ const Header = () => {
             Coderfee Space
           </Link>
         </div>
-        <div className="space-x-5 text-right">
+        <div className="space-x-5 text-center md:text-right">
           {routes.map((route) => (
             <NavLink key={route.path} to={route.path}>
               {route.name}

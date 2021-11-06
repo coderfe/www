@@ -8,7 +8,7 @@ export default function Footer() {
   return (
     <div className="border-t border-gray-300 dark:border-gray-900 dark:bg-gray-900">
       <Container className="p-3 text-center text-xs text-gray-500 space-y-2">
-        <div className="space-x-3">
+        <div className="space-x-5">
           <a title="GitHub" href="https://github.com/coderfe" target="_blank">
             <IconContext.Provider
               value={{ className: 'text-gray-500', size: '20px' }}

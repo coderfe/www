@@ -8,7 +8,7 @@ interface Props {
   description?: string
 }
 
-export const SEO: React.FC<Props> = ({ subTitle, description }) => {
+export const SEO: React.FC<Props> = ({ subTitle, description = '' }) => {
   const data: SeoQuery = useStaticQuery(graphql`
     query SEO {
       site {
@@ -23,13 +23,13 @@ export const SEO: React.FC<Props> = ({ subTitle, description }) => {
   `)
 
   const seo = {
-    title: data.site?.siteMetadata?.title || '',
-    description: data.site?.siteMetadata?.description || description,
+    title: data.site?.siteMetadata?.title,
+    description: description ?? data.site?.siteMetadata?.description,
     twitterUsername: data.site?.siteMetadata?.twitterUsername || '',
   }
 
   return (
-    <Helmet title={`${seo.title}${subTitle ? ' | ' + subTitle : ''}`}>
+    <Helmet title={`${subTitle ? subTitle + ' | ' : ''}${seo.title}`}>
       <html lang="zh-CN" />
 
       <meta name="description" content={seo.description} />
