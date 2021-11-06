@@ -52,5 +52,61 @@ module.exports = {
       __key: 'posts',
     },
     `gatsby-plugin-graphql-codegen`,
+    {
+      resolve: `gatsby-plugin-feed`,
+      options: {
+        query: `
+          {
+            site {
+              siteMetadata {
+                title
+                description
+                siteUrl
+                site_url: siteUrl
+              }
+            }
+          }
+        `,
+        feeds: [
+          {
+            serialize: ({ query: { site, allMdx } }) => {
+              return allMdx.nodes.map(node => {
+                return Object.assign({}, node.frontmatter, {
+                  description: node.frontmatter.tldr,
+                  date: node.frontmatter.date,
+                  url: site.siteMetadata.siteUrl + '/' + node.slug,
+                  guid: site.siteMetadata.siteUrl + '/' + node.slug,
+                  custom_elements: [{ "content:encoded": node.frontmatter.tldr }],
+                })
+              })
+            },
+            query: `
+              {
+                allMdx(sort: {order: DESC, fields: frontmatter___date}) {
+                  nodes {
+                    frontmatter {
+                      date
+                      path
+                      tags
+                      title
+                      tldr
+                    }
+                    slug
+                  }
+                }
+                site {
+                  siteMetadata {
+                    siteUrl
+                  }
+                }
+              }
+            `,
+            output: "/rss.xml",
+            title: "CSpace RSS Feed",
+            match: "^/blog/",
+          },
+        ],
+      },
+    },
   ],
 }

@@ -19,6 +19,7 @@
     "@react-icons/all-files": "^4.1.0",
     "autoprefixer": "^10.3.7",
     "gatsby": "^4.0.0",
+    "gatsby-plugin-feed": "^4.0.0",
     "gatsby-plugin-graphql-codegen": "^3.0.0",
     "gatsby-plugin-image": "^2.0.0",
     "gatsby-plugin-manifest": "^4.0.0",
