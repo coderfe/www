@@ -2,7 +2,7 @@
 
 html,
 body {
-  @apply h-screen overflow-hidden
+  @apply h-screen overflow-auto
   dark:bg-gray-800;
 }
 
@@ -26,12 +26,11 @@ code {
 }
 
 .nav-link {
-  @apply inline-block px-3 py-1 rounded-md text-gray-800 text-sm transition-colors duration-500
-  hover:bg-gray-50
-  dark:(bg-gray-800 text-gray-300 hover:bg-gray-900);
+  @apply inline-block px-1 py-1 text-gray-800 text-sm border-b-2 border-b-transparent transition-colors duration-500
+  dark:(text-gray-300);
 }
 
 .nav-link--active {
-  @apply bg-gray-100
-  dark:bg-gray-900;
+  @apply border-b-gray-800
+  dark:(border-b-gray-300);
 }

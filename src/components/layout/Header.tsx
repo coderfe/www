@@ -1,5 +1,6 @@
 import { Link } from 'gatsby'
 import * as React from 'react'
+import useDarkMode from 'use-dark-mode'
 // @ts-ignore
 import Icon from '../../images/icon.jpg'
 import Container from './Container'
@@ -27,6 +28,19 @@ const NavLink: React.FC<Props> = ({ to, children }) => {
   )
 }
 
+const ThemeToggler = () => {
+  const { value, enable, disable } = useDarkMode()
+
+  return (
+    <a
+      className="cursor-pointer select-none"
+      onClick={value ? disable : enable}
+    >
+      {value ? '🌝' : '🌞'}
+    </a>
+  )
+}
+
 const Header = () => {
   return (
     <div className="py-3 border-b border-gray-300 dark:border-gray-900">
@@ -48,6 +62,7 @@ const Header = () => {
               {route.name}
             </NavLink>
           ))}
+          <ThemeToggler />
         </div>
       </Container>
     </div>
