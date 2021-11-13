@@ -1,10 +1,12 @@
-import * as React from 'react'
-import Container from './Container'
-import { FiGithub } from '@react-icons/all-files/fi/FiGithub'
-import { FiTwitter } from '@react-icons/all-files/fi/FiTwitter'
-import { IconContext } from '@react-icons/all-files'
+import * as React from 'react';
+import { FiGithub } from '@react-icons/all-files/fi/FiGithub';
+import { FiTwitter } from '@react-icons/all-files/fi/FiTwitter';
+import { IconContext } from '@react-icons/all-files';
+import Container from './Container';
 
-export default function Footer() {
+const Footer = function Footer() {
+  const iconOptions = React.useMemo(() => ({ className: 'text-gray-500', size: '20px' }), []);
+
   return (
     <div className="border-t border-gray-300 dark:border-gray-900 dark:bg-gray-900">
       <Container className="p-3 text-center text-xs text-gray-500 space-y-2">
@@ -16,7 +18,7 @@ export default function Footer() {
             rel="noopener noreferrer"
           >
             <IconContext.Provider
-              value={{ className: 'text-gray-500', size: '20px' }}
+              value={iconOptions}
             >
               <FiGithub />
             </IconContext.Provider>
@@ -28,7 +30,7 @@ export default function Footer() {
             rel="noopener noreferrer"
           >
             <IconContext.Provider
-              value={{ className: 'text-gray-500 ', size: '20px' }}
+              value={iconOptions}
             >
               <FiTwitter />
             </IconContext.Provider>
@@ -38,5 +40,7 @@ export default function Footer() {
         <div>Copyright &copy; 2016-2021 coderfee, All rights reserved.</div>
       </Container>
     </div>
-  )
-}
+  );
+};
+
+export default Footer;

@@ -1,10 +1,12 @@
-import * as React from 'react'
-import Container from '../components/layout/Container'
-import { Layout } from '../components/layout/Layout'
-import { A, H2, LI, UL } from '../components/provider'
-import { SEO } from '../components/SEO'
+import * as React from 'react';
+import Container from '../components/layout/Container';
+import Layout from '../components/layout/Layout';
+import {
+  A, H2, LI, UL,
+} from '../components/provider';
+import SEO from '../components/SEO';
 
-const AboutPage = () => {
+const AboutPage = function AboutPage() {
   return (
     <Layout>
       <SEO subTitle="about coderfee" />
@@ -29,18 +31,22 @@ const AboutPage = () => {
         <H2>Projects</H2>
         <UL>
           <LI>
-            <A href="https://marketplace.visualstudio.com/publishers/coderfee">
+            <A
+              href="https://marketplace.visualstudio.com/publishers/coderfee"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               VSCode 插件集
             </A>
           </LI>
           <LI>
-            <A href="https://coderfee.com" target="__blank">
+            <A href="https://coderfee.com" target="__blank" rel="noopener noreferrer">
               CSpace
             </A>
             ——个人网站
           </LI>
           <LI>
-            <A href="https://github.com/coderfe/db-book" target="__blank">
+            <A href="https://github.com/coderfe/db-book" target="__blank" rel="noopener noreferrer">
               db-book
             </A>
             ——爬取豆瓣读书标记过的书
@@ -50,19 +56,19 @@ const AboutPage = () => {
         <H2>Links</H2>
         <UL>
           <LI>
-            <A href="https://github.com/coderfe" target="__blank">
+            <A href="https://github.com/coderfe" target="__blank" rel="noopener noreferrer">
               GitHub
             </A>
           </LI>
           <LI>
-            <A href="https://twitter.com/coderfee" target="__blank">
+            <A href="https://twitter.com/coderfee" target="__blank" rel="noopener noreferrer">
               Twitter
             </A>
           </LI>
         </UL>
       </Container>
     </Layout>
-  )
-}
+  );
+};
 
-export default AboutPage
+export default AboutPage;

@@ -1,14 +1,14 @@
-import React from 'react'
-import { Helmet } from 'react-helmet'
-import { useStaticQuery, graphql } from 'gatsby'
-import { SeoQuery } from '../../graphql-types'
+import React from 'react';
+import { Helmet } from 'react-helmet';
+import { useStaticQuery, graphql } from 'gatsby';
+import { SeoQuery } from '../../graphql-types';
 
 interface Props {
   subTitle?: string
   description?: string
 }
 
-export const SEO: React.FC<Props> = ({ subTitle, description = '' }) => {
+const SEO: React.FC<Props> = function SEO({ subTitle, description = '' }) {
   const data: SeoQuery = useStaticQuery(graphql`
     query SEO {
       site {
@@ -20,16 +20,16 @@ export const SEO: React.FC<Props> = ({ subTitle, description = '' }) => {
         }
       }
     }
-  `)
+  `);
 
   const seo = {
     title: data.site?.siteMetadata?.title,
     description: description ?? data.site?.siteMetadata?.description,
     twitterUsername: data.site?.siteMetadata?.twitterUsername || '',
-  }
+  };
 
   return (
-    <Helmet title={`${subTitle ? subTitle + ' | ' : ''}${seo.title}`}>
+    <Helmet title={`${subTitle ? `${subTitle} | ` : ''}${seo.title}`}>
       <html lang="zh-CN" />
 
       <meta name="description" content={seo.description} />
@@ -51,5 +51,12 @@ export const SEO: React.FC<Props> = ({ subTitle, description = '' }) => {
         <meta name="twitter:description" content={seo.description} />
       )}
     </Helmet>
-  )
-}
+  );
+};
+
+SEO.defaultProps = {
+  subTitle: '',
+  description: '',
+};
+
+export default SEO;

@@ -12,25 +12,26 @@ module.exports = {
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-sitemap',
     {
-      resolve: `gatsby-plugin-robots-txt`, options: {
+      resolve: 'gatsby-plugin-robots-txt',
+      options: {
         host: 'https://coderfee.com',
         sitemap: 'https://www.coderfee.com/sitemap.xml',
-        policy: [{ userAgent: '*', allow: '/' }]
-      }
+        policy: [{ userAgent: '*', allow: '/' }],
+      },
     },
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
         icon: 'src/images/icon.jpg',
-        name: `coderfee space`,
-        short_name: `CSpace`,
-        start_url: `/`,
-        background_color: `#fff`,
-        theme_color: `#1f2937`,
-        display: `standalone`,
+        name: 'coderfee space',
+        short_name: 'CSpace',
+        start_url: '/',
+        background_color: '#fff',
+        theme_color: '#1f2937',
+        display: 'standalone',
         cache_busting_mode: 'none',
         icon_options: {
-          purpose: `any maskable`,
+          purpose: 'any maskable',
         },
       },
     },
@@ -38,9 +39,9 @@ module.exports = {
       resolve: 'gatsby-plugin-offline',
       options: {
         workboxConfig: {
-          globPatterns: ['**/icons*']
-        }
-      }
+          globPatterns: ['**/icons*'],
+        },
+      },
     },
     'gatsby-transformer-remark',
     'gatsby-plugin-mdx',
@@ -70,9 +71,9 @@ module.exports = {
       },
       __key: 'posts',
     },
-    `gatsby-plugin-graphql-codegen`,
+    'gatsby-plugin-graphql-codegen',
     {
-      resolve: `gatsby-plugin-feed`,
+      resolve: 'gatsby-plugin-feed',
       options: {
         query: `
           {
@@ -88,17 +89,14 @@ module.exports = {
         `,
         feeds: [
           {
-            serialize: ({ query: { site, allMdx } }) => {
-              return allMdx.nodes.map(node => {
-                return Object.assign({}, node.frontmatter, {
-                  description: node.frontmatter.tldr,
-                  date: node.frontmatter.date,
-                  url: site.siteMetadata.siteUrl + '/blog/' + node.slug,
-                  guid: site.siteMetadata.siteUrl + '/blog/' + node.slug,
-                  custom_elements: [{ "content:encoded": node.frontmatter.tldr }],
-                })
-              })
-            },
+            serialize: ({ query: { site, allMdx } }) => allMdx.nodes.map((node) => ({
+              ...node.frontmatter,
+              description: node.frontmatter.tldr,
+              date: node.frontmatter.date,
+              url: `${site.siteMetadata.siteUrl}/blog/${node.slug}`,
+              guid: `${site.siteMetadata.siteUrl}/blog/${node.slug}`,
+              custom_elements: [{ 'content:encoded': node.frontmatter.tldr }],
+            })),
             query: `
               {
                 allMdx(sort: {order: DESC, fields: frontmatter___date}) {
@@ -120,12 +118,12 @@ module.exports = {
                 }
               }
             `,
-            output: "/rss.xml",
-            title: "CSpace RSS Feed",
-            match: "^/blog/",
+            output: '/rss.xml',
+            title: 'CSpace RSS Feed',
+            match: '^/blog/',
           },
         ],
       },
     },
   ],
-}
+};

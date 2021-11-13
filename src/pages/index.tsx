@@ -1,33 +1,30 @@
-import { IconContext } from '@react-icons/all-files'
-import { FiChevronLeft } from '@react-icons/all-files/fi/FiChevronLeft'
-import { FiChevronRight } from '@react-icons/all-files/fi/FiChevronRight'
-import { graphql, Link, PageProps } from 'gatsby'
-import React, { useEffect, useState } from 'react'
-import { useSessionStorage } from 'react-use'
-import { IndexPageQuery } from '../../graphql-types'
-import Container from '../components/layout/Container'
-import { Layout } from '../components/layout/Layout'
-import Pagination from '../components/Pagination'
-import { SEO } from '../components/SEO'
+import { graphql, Link, PageProps } from 'gatsby';
+import React, { useEffect, useState } from 'react';
+import { useSessionStorage } from 'react-use';
+import { IndexPageQuery } from '../../graphql-types';
+import Container from '../components/layout/Container';
+import Layout from '../components/layout/Layout';
+import Pagination from '../components/Pagination';
+import SEO from '../components/SEO';
 
 type Nodes = IndexPageQuery['allMdx']['nodes']
 
-const IndexPage: React.FC<PageProps<IndexPageQuery>> = ({
+const IndexPage: React.FC<PageProps<IndexPageQuery>> = function IndexPage({
   data: {
     allMdx: { nodes },
   },
-}) => {
-  const paged = chunk(nodes, 8)
-  const [currentIndex, setCurrentIndex] = useSessionStorage('currentIndex', 0)
-  const [articles, setArticles] = useState<Nodes>([])
+}) {
+  const paged = chunk(nodes, 8);
+  const [currentIndex, setCurrentIndex] = useSessionStorage('currentIndex', 0);
+  const [articles, setArticles] = useState<Nodes>([]);
   const handlePageChange = (index: number) => {
-    setCurrentIndex(index)
-    setArticles(paged[index])
-  }
+    setCurrentIndex(index);
+    setArticles(paged[index]);
+  };
 
   useEffect(() => {
-    setArticles(paged[currentIndex])
-  }, [])
+    setArticles(paged[currentIndex]);
+  }, []);
 
   return (
     <Layout>
@@ -40,7 +37,13 @@ const IndexPage: React.FC<PageProps<IndexPageQuery>> = ({
             </p>
             <h2 className="text-lg">
               <Link
-                className="text-gray-700 font-semibold hover:text-gray-900 dark:text-gray-100 dark:hover:text-gray-50"
+                className="
+                  text-gray-700
+                  font-semibold
+                  hover:text-gray-900
+                  dark:text-gray-100
+                  dark:hover:text-gray-50
+                "
                 to={`/blog/${node.slug}`}
               >
                 {node.frontmatter?.title}
@@ -59,9 +62,9 @@ const IndexPage: React.FC<PageProps<IndexPageQuery>> = ({
         onPageChange={handlePageChange}
       />
     </Layout>
-  )
-}
-export default IndexPage
+  );
+};
+export default IndexPage;
 
 export const query = graphql`
   query IndexPage {
@@ -78,10 +81,8 @@ export const query = graphql`
       }
     }
   }
-`
+`;
 
 function chunk<T>(arr: T[], size: number) {
-  return Array.from({ length: Math.ceil(arr.length / size) }, (v, i) =>
-    arr.slice(i * size, i * size + size)
-  )
+  return Array.from({ length: Math.ceil(arr.length / size) }, (v, i) => arr.slice(i * size, i * size + size));
 }

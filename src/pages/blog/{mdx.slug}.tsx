@@ -1,20 +1,19 @@
-import { MDXProvider } from '@mdx-js/react'
-import { graphql, PageProps } from 'gatsby'
-import { MDXRenderer } from 'gatsby-plugin-mdx'
-import * as React from 'react'
-import { BlogPostQuery } from '../../../graphql-types'
-import Container from '../../components/layout/Container'
-import { Layout } from '../../components/layout/Layout'
-import { components } from '../../components/provider'
-import { SEO } from '../../components/SEO'
-// @ts-ignore
-import Avatar from '../../images/icon.jpg'
+import { MDXProvider } from '@mdx-js/react';
+import { graphql, PageProps } from 'gatsby';
+import { MDXRenderer } from 'gatsby-plugin-mdx';
+import * as React from 'react';
+import { BlogPostQuery } from '../../../graphql-types';
+import Container from '../../components/layout/Container';
+import Layout from '../../components/layout/Layout';
+import { components } from '../../components/provider';
+import SEO from '../../components/SEO';
+import Avatar from '../../images/icon.jpg';
 
-const Divider = () => <span className="text-gray-500">/</span>
+const Divider = function Divider() { return <span className="text-gray-500">/</span>; };
 
-const BlogPost: React.FC<PageProps<BlogPostQuery>> = ({
+const BlogPost: React.FC<PageProps<BlogPostQuery>> = function BlogPost({
   data: { mdx, site },
-}) => {
+}) {
   return mdx ? (
     <Layout>
       <SEO
@@ -31,6 +30,7 @@ const BlogPost: React.FC<PageProps<BlogPostQuery>> = ({
               <img
                 className="inline-block w-5 h-5 rounded-full mr-1"
                 src={Avatar}
+                alt="Avatar"
               />
               {site?.siteMetadata?.author}
             </span>
@@ -38,8 +38,8 @@ const BlogPost: React.FC<PageProps<BlogPostQuery>> = ({
             <span>{mdx.frontmatter?.date}</span>
             <Divider />
             <span className="space-x-1">
-              {mdx.frontmatter?.tags &&
-                mdx.frontmatter?.tags.map((tag) => (
+              {mdx.frontmatter?.tags
+                && mdx.frontmatter?.tags.map((tag) => (
                   <span key={tag}>
                     <i className="not-italic">#</i>
                     {tag}
@@ -54,10 +54,10 @@ const BlogPost: React.FC<PageProps<BlogPostQuery>> = ({
         </article>
       </Container>
     </Layout>
-  ) : null
-}
+  ) : null;
+};
 
-export default BlogPost
+export default BlogPost;
 
 export const query = graphql`
   query BlogPost($id: String) {
@@ -79,4 +79,4 @@ export const query = graphql`
       }
     }
   }
-`
+`;
