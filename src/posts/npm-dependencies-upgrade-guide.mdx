@@ -48,7 +48,7 @@ import { debounce } from 'lodash'
 
 该项目在部分 Windows 电脑上第一次运行 `npm install` 时会失败，主要是因为引入了 sass 模块，处理 sass 文件时会用到 node-sass，而 node-sass 模块同时需要 python 和 Visual Studio C++ 库的支持，所以导致安装失败。目前 sass 官方也已经用 dart-sass 替换 node-sass 作为默认的 sass 处理方式，因此我们可以从项目中删除 node-sass，直接安装 sass 模块：
 
-```bash
+```shell
 npm rm node-sass sass
 npm i -D sass
 ```
@@ -72,7 +72,7 @@ Tailwind CSS 是一个功能类优先的 CSS 框架，它集成了诸如 flex, p
 
 ### 安装 PostCSS 7 兼容版本
 
-```bash
+```shell
 npm install -D tailwindcss@npm:@tailwindcss/postcss7-compat @tailwindcss/postcss7-compat postcss@^7 autoprefixer@^9
 ```
 

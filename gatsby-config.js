@@ -12,6 +12,13 @@ module.exports = {
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-sitemap',
     {
+      resolve: `gatsby-plugin-robots-txt`, options: {
+        host: 'https://coderfee.com',
+        sitemap: 'https://www.coderfee.com/sitemap.xml',
+        policy: [{ userAgent: '*', allow: '/' }]
+      }
+    },
+    {
       resolve: 'gatsby-plugin-manifest',
       options: {
         icon: 'src/images/icon.jpg',
@@ -19,8 +26,21 @@ module.exports = {
         short_name: `CSpace`,
         start_url: `/`,
         background_color: `#fff`,
+        theme_color: `#1f2937`,
         display: `standalone`,
+        cache_busting_mode: 'none',
+        icon_options: {
+          purpose: `any maskable`,
+        },
       },
+    },
+    {
+      resolve: 'gatsby-plugin-offline',
+      options: {
+        workboxConfig: {
+          globPatterns: ['**/icons*']
+        }
+      }
     },
     'gatsby-transformer-remark',
     'gatsby-plugin-mdx',

@@ -31,7 +31,7 @@ const IndexPage: React.FC<PageProps<IndexPageQuery>> = ({
 
   return (
     <Layout>
-      <SEO />
+      <SEO description="coderfee, coderfe" />
       <Container className="grid gap-8 py-5">
         {articles.map((node) => (
           <article key={node.id} className="grid gap-1">

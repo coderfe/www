@@ -20,7 +20,7 @@ import VuecliInAction from '../images/blog/use-vite-in-vue2/vuecli-in-action.png
 
 ## 搭建一个 Vite 项目
 
-```bash
+```shell
 npm init vite@latest
 ```
 
@@ -66,7 +66,7 @@ Vite 生成的项目，index.html 在项目最外层即项目根目录下，而�
 
 想让 Vite 支持 Vue2.x 的 JSX 语法，需要安装插件 vite-plugin-vue2：
 
-```bash
+```shell
 npm i -D vite-plugin-vue2
 ```
 
@@ -85,7 +85,7 @@ export default () =>
 
 Vite 提供了 sass/scss/less/stylus 的内置支持，不需要安装特定的插件，只要安装对应的预处理器依赖：
 
-```bash
+```shell
 npm i -D sass less stylus
 ```
 
@@ -104,7 +104,7 @@ Vue CLI 生成的项目中可以通过 `VUE_APP_` 这种方式来访问环境变
 
 自定义变量：在 env 环境变量文件中定义的以 `VITE_` 为前缀的变量才会暴露给 Vite 处理
 
-```bash
+```shell
 #只有 VITE_SOME_KEY 会暴露出去
 VITE_SOME_KEY=123
 SOME_KEY=321
