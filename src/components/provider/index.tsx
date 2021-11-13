@@ -31,8 +31,8 @@ export const A = (props: any) => (
 );
 const Code = (props: any) => <code className="rounded-sm" {...props} />;
 const Pre = (props: any) => {
-  const className = props.children.props.className || '';
-  const matches = className.match(/language-(?<lang>.*)/);
+  const classNameProps = props.children.props.className || '';
+  const matches = classNameProps.match(/language-(?<lang>.*)/);
   const { value: darkMode } = useDarkMode();
 
   return (
@@ -48,7 +48,7 @@ const Pre = (props: any) => {
     >
       {({ className, style, tokens, getLineProps, getTokenProps }) => (
         <pre
-          className={`${className} p-4 my-3 rounded overflow-auto text-sm`}
+          className={`${className} p-4 my-3 rounded overflow-auto text-sm -mx-4`}
           style={{ ...style }}
         >
           {tokens.map((line, i) => (
@@ -64,7 +64,7 @@ const Pre = (props: any) => {
   );
 };
 const Image = (props: any) => (
-  <img className="block my-3 rounded-sm" {...props} />
+  <img className="block my-3 rounded-sm" alt={props.alt} {...props} />
 );
 
 export const components = {

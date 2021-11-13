@@ -23,11 +23,11 @@ module.exports = {
       resolve: 'gatsby-plugin-manifest',
       options: {
         icon: 'src/images/icon.jpg',
-        name: 'coderfee space',
+        name: 'CSpace',
         short_name: 'CSpace',
         start_url: '/',
         background_color: '#fff',
-        theme_color: '#1f2937',
+        theme_color: '#111827',
         display: 'standalone',
         cache_busting_mode: 'none',
         icon_options: {
