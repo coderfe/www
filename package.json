@@ -12,8 +12,8 @@
     "build": "gatsby build",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "prepare": "husky install",
-    "lint": "eslint"
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx src/",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@mdx-js/mdx": "^1.6.22",
