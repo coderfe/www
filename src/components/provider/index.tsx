@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Highlight, { defaultProps } from 'prism-react-renderer';
+import Highlight, { defaultProps, Language } from 'prism-react-renderer';
 import vsDark from 'prism-react-renderer/themes/vsDark';
 import github from 'prism-react-renderer/themes/github';
 import useDarkMode from 'use-dark-mode';
@@ -31,7 +31,7 @@ export const A = (props: any) => (
 );
 const Code = (props: any) => <code className="rounded-sm" {...props} />;
 const Pre = (props: any) => {
-  const classNameProps = props.children.props.className || '';
+  const classNameProps: string = props.children.props.className || '';
   const matches = classNameProps.match(/language-(?<lang>.*)/);
   const { value: darkMode } = useDarkMode();
 
@@ -39,16 +39,12 @@ const Pre = (props: any) => {
     <Highlight
       {...defaultProps}
       code={props.children.props.children.trim()}
-      language={
-        matches && matches.groups && matches.groups.lang
-          ? matches.groups.lang
-          : ''
-      }
+      language={matches?.groups?.lang as Language}
       theme={darkMode ? vsDark : github}
     >
       {({ className, style, tokens, getLineProps, getTokenProps }) => (
         <pre
-          className={`${className} p-4 my-3 rounded overflow-auto text-sm -mx-4`}
+          className={`${className} p-4 my-3 rounded overflow-auto text-sm`}
           style={{ ...style }}
         >
           {tokens.map((line, i) => (
