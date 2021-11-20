@@ -76,6 +76,19 @@ Tailwind CSS 是一个功能类优先的 CSS 框架，它集成了诸如 flex, p
 npm install -D tailwindcss@npm:@tailwindcss/postcss7-compat @tailwindcss/postcss7-compat postcss@^7 autoprefixer@^9
 ```
 
+### PostCSS 配置文件
+
+需要将 tailwindcss 作为 postcss 插件引入：
+
+```javascript
+module.exports = {
+  plugins: {
+    tailwindcss: {},
+    autoprefixer: {}
+  }
+}
+```
+
 ### tailwind 配置文件
 
 运行 `npx tailwind init` 会生成 tailwind.config.js 配置文件，需要修改部分配置如下:
