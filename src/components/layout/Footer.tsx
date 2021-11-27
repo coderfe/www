@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { FiGithub } from '@react-icons/all-files/fi/FiGithub';
 import { FiTwitter } from '@react-icons/all-files/fi/FiTwitter';
+import { FiRss } from '@react-icons/all-files/fi/FiRss';
 import { IconContext } from '@react-icons/all-files';
 import Container from './Container';
 
@@ -33,6 +34,18 @@ const Footer = function Footer() {
               value={iconOptions}
             >
               <FiTwitter />
+            </IconContext.Provider>
+          </a>
+          <a
+            title="Twitter"
+            href="https://twitter.com/coderfee"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <IconContext.Provider
+              value={iconOptions}
+            >
+              <FiRss />
             </IconContext.Provider>
           </a>
         </div>

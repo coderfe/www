@@ -1,7 +1,10 @@
 @windicss;
 
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap');
+
 html,
 body {
+  font-family: "Noto Sans SC", sans-serif;
   @apply h-screen overflow-auto
   dark:bg-gray-800;
 }
@@ -16,7 +19,7 @@ code {
 }
 
 .container {
-  @apply w-11/12 sm:w-5/6 md:w-4/5 lg:max-w-3xl xl:max-w-3xl mx-auto;
+  @apply w-10/12 sm:w-3/4 md:w-1/2 lg:max-w-xl xl:max-w-xl mx-auto;
 }
 
 .btn-icon {

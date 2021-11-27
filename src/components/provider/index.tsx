@@ -14,7 +14,7 @@ export const H2 = (props: any) => (
 );
 const H3 = (props: any) => <h3 className="font-semibold" {...props} />;
 const Paragraph = (props: any) => (
-  <p className="text-base leading-7 my-3" {...props} />
+  <p className="leading-7 my-3" {...props} />
 );
 export const UL = (props: any) => (
   <ul style={{ listStyleType: 'circle' }} className="my-3 ml-10" {...props} />
