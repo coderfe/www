@@ -2,7 +2,7 @@
 title: 记一次 npm dependencies 优化升级
 date: 2021-11-06
 tldr: 每次看到老项目 package.json 里的 dependencies，我就很焦虑，有些人竟然能把 npm/install 等安装为 devDependecies，更有甚者装了但不用，就是玩儿，我就气不打一处来。终于在双十一之前有时间能整理一波了
-tags: ['Vue']
+tags: ["Vue"]
 ---
 
 ## 删除 dependencies
@@ -29,10 +29,10 @@ devDependencies
 
 ```javascript
 // 删除
-import { debounce } from 'throttle-debounce'
+import { debounce } from "throttle-debounce";
 
 // 新增
-import { debounce } from 'lodash'
+import { debounce } from "lodash";
 ```
 
 目前项目中只存在一处 throttle-debounce 的引用
@@ -84,9 +84,9 @@ npm install -D tailwindcss@npm:@tailwindcss/postcss7-compat @tailwindcss/postcss
 module.exports = {
   plugins: {
     tailwindcss: {},
-    autoprefixer: {}
-  }
-}
+    autoprefixer: {},
+  },
+};
 ```
 
 ### tailwind 配置文件
@@ -95,7 +95,7 @@ module.exports = {
 
 ```javascript
 module.exports = {
-  purge: ['./src/**/*.{js,ts,jsx,tsx,html,vue}', './public/index.html'],
+  purge: ["./src/**/*.{js,ts,jsx,tsx,html,vue}", "./public/index.html"],
   darkMode: false,
   theme: {
     extend: {},
@@ -105,7 +105,7 @@ module.exports = {
   corePlugins: {
     preflight: false,
   },
-}
+};
 ```
 
 ### 引入 tailwindcss
@@ -113,16 +113,14 @@ module.exports = {
 在 Vue 入口文件引入 tailwindcss
 
 ```javascript
-import 'tailwindcss/tailwind.css'
+import "tailwindcss/tailwind.css";
 ```
 
 ### 实际使用
 
 ```html
 <template>
-  <div
-    class="p-6 max-w-sm mx-auto bg-white rounded-xl shadow-md flex items-center space-x-4"
-  >
+  <div class="p-6 max-w-sm mx-auto bg-white rounded-xl shadow-md flex items-center space-x-4">
     <div class="flex-shrink-0">
       <img class="h-12 w-12" src="/img/logo.svg" alt="ChitChat Logo" />
     </div>
@@ -132,4 +130,51 @@ import 'tailwindcss/tailwind.css'
     </div>
   </div>
 </template>
+```
+
+### 启用 JIT 模式
+
+Tailwind v2.1+ 新增了 [Just-In-Time](https://tailwindcss.com/docs/just-in-time-mode) 模式，可以根据项目中引用过的 utility 按需生成样式表，而非一次性生成，类似 Webpack 的 treeshaking，可以优化最终的 CSS 文件体积，配置如下：
+
+```javascript
+// tailwind.config.js
+
+module.exports = {
+  purge: ["./src/**/*.{js,ts,jsx,tsx,html,vue}", "./public/index.html"],
+  mode: "jit",
+};
+```
+
+PostCSS 最新版本已经完全支持，更改文件之后会自动生成对应样式并刷新浏览器，但是如果使用了 PostCSS 8.x 之前的版本，则需要搭配 `TAILWIND_MODE` 环境变量一起使用：
+
+```json
+// package.json
+
+{
+  "scripts": {
+    "serve": "TAILWIND_MODE=watch vue-cli-service serve --mode dev"
+  }
+}
+```
+
+Windows 可以用 cross-env 配置环境变量
+
+```json
+// package.json
+
+{
+  "scripts": {
+    "serve": "cross-env TAILWIND_MODE=watch vue-cli-service serve --mode dev"
+  }
+}
+```
+
+配置完成之后就可以更加灵活地使用 tailwindcss 了：
+
+```html
+<img class="absolute w-[762px] h-[918px] top-[-325px]" src="/crazy-background-image.png" />
+
+<button class="bg-[#1da1f1]">Share on Twitter</button>
+
+<div class="grid-cols-[1fr,700px,2fr]"></div>
 ```

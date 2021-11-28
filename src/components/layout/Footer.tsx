@@ -37,8 +37,8 @@ const Footer = function Footer() {
             </IconContext.Provider>
           </a>
           <a
-            title="Twitter"
-            href="https://twitter.com/coderfee"
+            title="RSS"
+            href="https://coderfee.com/rss.xml"
             target="_blank"
             rel="noopener noreferrer"
           >
