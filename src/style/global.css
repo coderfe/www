@@ -1,6 +1,8 @@
-@windicss;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap");
 
 html,
 body {
@@ -15,7 +17,7 @@ body {
 
 code {
   @apply inline-block px-0.5 rounded-sm bg-gray-100 text-gray-900 text-sm
-  dark:(bg-gray-900 text-gray-100);
+  dark:bg-gray-900 dark:text-gray-100;
 }
 
 .container {
@@ -25,15 +27,15 @@ code {
 .btn-icon {
   @apply flex justify-center items-center w-10 h-10 rounded-md border border-gray-500 text-center
   dark:border-gray-500
-  disabled:(opacity-50 cursor-not-allowed);
+  disabled:opacity-50 disabled:cursor-not-allowed;
 }
 
 .nav-link {
   @apply inline-block px-1 py-1 text-gray-800 text-sm border-b-2 border-b-transparent transition-colors duration-500
-  dark:(text-gray-300);
+  dark:text-gray-300;
 }
 
 .nav-link--active {
   @apply border-b-gray-800
-  dark:(border-b-gray-300);
+  dark:border-b-gray-300;
 }

@@ -421,9 +421,9 @@ export type MarkdownRemarkTableOfContentsArgs = {
 export type MdxFrontmatter = {
   title: Scalars['String'];
   date?: Maybe<Scalars['Date']>;
-  path?: Maybe<Scalars['String']>;
   tldr?: Maybe<Scalars['String']>;
   tags?: Maybe<Array<Maybe<Scalars['String']>>>;
+  path?: Maybe<Scalars['String']>;
 };
 
 
@@ -1121,9 +1121,9 @@ export type MdxFilterInput = {
 export type MdxFrontmatterFilterInput = {
   title?: Maybe<StringQueryOperatorInput>;
   date?: Maybe<DateQueryOperatorInput>;
-  path?: Maybe<StringQueryOperatorInput>;
   tldr?: Maybe<StringQueryOperatorInput>;
   tags?: Maybe<StringQueryOperatorInput>;
+  path?: Maybe<StringQueryOperatorInput>;
 };
 
 export type MdxHeadingMdxFilterListInput = {
@@ -1333,9 +1333,9 @@ export type FileFieldsEnum =
   | 'childrenMdx___fileAbsolutePath'
   | 'childrenMdx___frontmatter___title'
   | 'childrenMdx___frontmatter___date'
-  | 'childrenMdx___frontmatter___path'
   | 'childrenMdx___frontmatter___tldr'
   | 'childrenMdx___frontmatter___tags'
+  | 'childrenMdx___frontmatter___path'
   | 'childrenMdx___slug'
   | 'childrenMdx___body'
   | 'childrenMdx___excerpt'
@@ -1392,9 +1392,9 @@ export type FileFieldsEnum =
   | 'childMdx___fileAbsolutePath'
   | 'childMdx___frontmatter___title'
   | 'childMdx___frontmatter___date'
-  | 'childMdx___frontmatter___path'
   | 'childMdx___frontmatter___tldr'
   | 'childMdx___frontmatter___tags'
+  | 'childMdx___frontmatter___path'
   | 'childMdx___slug'
   | 'childMdx___body'
   | 'childMdx___excerpt'
@@ -3341,9 +3341,9 @@ export type MdxFieldsEnum =
   | 'fileAbsolutePath'
   | 'frontmatter___title'
   | 'frontmatter___date'
-  | 'frontmatter___path'
   | 'frontmatter___tldr'
   | 'frontmatter___tags'
+  | 'frontmatter___path'
   | 'slug'
   | 'body'
   | 'excerpt'

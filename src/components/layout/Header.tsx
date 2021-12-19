@@ -1,7 +1,10 @@
+import { FiSun } from '@react-icons/all-files/fi/FiSun';
+import { FiMoon } from '@react-icons/all-files/fi/FiMoon';
 import { Link } from 'gatsby';
 import * as React from 'react';
 import useDarkMode from 'use-dark-mode';
-import Icon from '../../images/icon.jpg';
+import avatar from '../../images/icon.jpg';
+import Icon from '../Icon';
 import Container from './Container';
 
 const routes = [
@@ -23,14 +26,32 @@ const NavLink: React.FC<Props> = function NavLink({ to, children }) {
 
 const ThemeToggler = function ThemeToggler() {
   const { value, enable, disable } = useDarkMode();
+  const [className, setClassName] = React.useState(value ? 'text-gray-300' : 'text-gray-800');
+  const handleClick = () => {
+    if (value) {
+      setClassName('text-gray-800');
+      disable();
+    } else {
+      setClassName('text-gray-300');
+      enable();
+    }
+  };
 
   return (
     <button
       type="button"
       className="cursor-pointer select-none"
-      onClick={value ? disable : enable}
+      onClick={handleClick}
     >
-      {value ? '🌝' : '🌞'}
+      {value ? (
+        <Icon iconOption={{ className }}>
+          <FiMoon />
+        </Icon>
+      ) : (
+        <Icon iconOption={{ className }}>
+          <FiSun />
+        </Icon>
+      )}
     </button>
   );
 };
@@ -51,7 +72,7 @@ const Header = function Header() {
       >
         <div className="flex items-center space-x-2 text-2xl">
           <div className="w-10 h-10 rounded-full overflow-hidden hover:shadow-md transition-shadow duration-500">
-            <img src={Icon} alt="coderfee space logo" />
+            <img src={avatar} alt="coderfee space logo" />
           </div>
           <Link
             to="/"
@@ -60,7 +81,7 @@ const Header = function Header() {
             Coderfee Space
           </Link>
         </div>
-        <div className="space-x-5 text-center md:text-right">
+        <div className="flex items-center justify-center space-x-3 text-center md:text-right md:justify-end">
           {routes.map((route) => (
             <NavLink key={route.path} to={route.path}>
               {route.name}

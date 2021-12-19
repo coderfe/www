@@ -10,9 +10,10 @@ const Footer = function Footer() {
 
   return (
     <div className="border-t border-gray-300 dark:border-gray-900 dark:bg-gray-900">
-      <Container className="p-3 text-center text-xs text-gray-500 space-y-2">
+      <Container className="p-3 text-center text-xs text-gray-500">
         <div className="space-x-5">
           <a
+            className="inline-block"
             title="GitHub"
             href="https://github.com/coderfe"
             target="_blank"
@@ -25,6 +26,7 @@ const Footer = function Footer() {
             </IconContext.Provider>
           </a>
           <a
+            className="inline-block"
             title="Twitter"
             href="https://twitter.com/coderfee"
             target="_blank"
@@ -37,6 +39,7 @@ const Footer = function Footer() {
             </IconContext.Provider>
           </a>
           <a
+            className="inline-block"
             title="RSS"
             href="https://coderfee.com/rss.xml"
             target="_blank"
