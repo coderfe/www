@@ -27,7 +27,6 @@ specifiers:
   gatsby-plugin-robots-txt: ^1.6.14
   gatsby-plugin-sharp: ^4.4.0
   gatsby-plugin-sitemap: ^5.4.0
-  gatsby-plugin-use-dark-mode: ^1.4.0
   gatsby-source-filesystem: ^4.4.0
   gatsby-transformer-remark: ^5.4.0
   gatsby-transformer-sharp: ^4.4.0
@@ -59,7 +58,6 @@ dependencies:
   gatsby-plugin-robots-txt: 1.6.14_gatsby@4.4.0
   gatsby-plugin-sharp: 4.4.0_gatsby@4.4.0
   gatsby-plugin-sitemap: 5.4.0_7867058bfbbce6b80fef9b011f9e6551
-  gatsby-plugin-use-dark-mode: 1.4.0_0507486e3f8e0e89ae7a5afdb3226c20
   gatsby-source-filesystem: 4.4.0_gatsby@4.4.0
   gatsby-transformer-remark: 5.4.0_gatsby@4.4.0
   gatsby-transformer-sharp: 4.4.0_0ec3cd99d7cdaf08e2d9b67c6252bfaf
@@ -7150,20 +7148,6 @@ packages:
       - supports-color
     dev: false
 
-  /gatsby-plugin-use-dark-mode/1.4.0_0507486e3f8e0e89ae7a5afdb3226c20:
-    resolution: {integrity: sha1-Y4KGrEO2tduxs5GdJWXYiE7Ppp8=, tarball: gatsby-plugin-use-dark-mode/download/gatsby-plugin-use-dark-mode-1.4.0.tgz}
-    peerDependencies:
-      gatsby: ^2.0.0 || ^3.0.0 || ^4.0.0
-      react: ^16.8.0 || ^17.0.0
-      use-dark-mode: ^2.3.1
-    dependencies:
-      gatsby: 4.4.0_3e110919350e0ee2e64d1a654bd03c09
-      prop-types: 15.7.2
-      react: 17.0.2
-      terser: 4.8.0
-      use-dark-mode: 2.3.1_react@17.0.2
-    dev: false
-
   /gatsby-plugin-utils/2.4.0_gatsby@4.4.0:
     resolution: {integrity: sha512-0+hN/Rfq7J+SwZZ2j+Sc9WiNd8XequDoM389/ORFTE82GXtPHDWtMV1LIF6yg/SkdANzChLUW9Eo/edgLiOOHA==, tarball: gatsby-plugin-utils/download/gatsby-plugin-utils-2.4.0.tgz}
     engines: {node: '>=14.15.0'}
@@ -9724,6 +9708,9 @@ packages:
     engines: {node: '>=12'}
     peerDependencies:
       '@types/node': '>=12'
+    peerDependenciesMeta:
+      '@types/node':
+        optional: true
     dev: false
 
   /methods/1.1.2:
@@ -13296,16 +13283,6 @@ packages:
       source-map: 0.6.1
       terser: 5.9.0
       webpack: 5.64.0
-    dev: false
-
-  /terser/4.8.0:
-    resolution: {integrity: sha1-YwVjQ9fHC7KfOvZlhlpG/gOg3xc=, tarball: terser/download/terser-4.8.0.tgz}
-    engines: {node: '>=6.0.0'}
-    hasBin: true
-    dependencies:
-      commander: 2.20.3
-      source-map: 0.6.1
-      source-map-support: 0.5.20
     dev: false
 
   /terser/5.9.0:
