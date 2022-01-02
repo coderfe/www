@@ -31,6 +31,7 @@ specifiers:
   gatsby-transformer-remark: ^5.4.0
   gatsby-transformer-sharp: ^4.4.0
   husky: ^7.0.4
+  lxgw-wenkai-webfont: ^1.0.0
   postcss: ^8.4.5
   prism-react-renderer: ^1.2.1
   react: ^17.0.2
@@ -61,6 +62,7 @@ dependencies:
   gatsby-source-filesystem: 4.4.0_gatsby@4.4.0
   gatsby-transformer-remark: 5.4.0_gatsby@4.4.0
   gatsby-transformer-sharp: 4.4.0_0ec3cd99d7cdaf08e2d9b67c6252bfaf
+  lxgw-wenkai-webfont: 1.0.0
   postcss: 8.4.5
   prism-react-renderer: 1.2.1_react@17.0.2
   react: 17.0.2
@@ -9385,6 +9387,10 @@ packages:
     resolution: {integrity: sha1-Jzi9nw089PhEkMVzbEhpmsYyzaM=, tarball: lru-queue/download/lru-queue-0.1.0.tgz}
     dependencies:
       es5-ext: 0.10.53
+    dev: false
+
+  /lxgw-wenkai-webfont/1.0.0:
+    resolution: {integrity: sha512-QUctNZyKv5eM9kacHzKh8J0Ch4+G8XjVSvUfVzvoo4eAZwLUNvYf7MgGEFGJ5FO9MNieXgzinO1XDYNXSQyvdQ==, tarball: lxgw-wenkai-webfont/download/lxgw-wenkai-webfont-1.0.0.tgz}
     dev: false
 
   /make-dir/3.1.0:
