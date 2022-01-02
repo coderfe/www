@@ -40,7 +40,6 @@ specifiers:
   react-use: ^17.3.1
   tailwindcss: ^3.0.7
   typescript: ^4.5.4
-  use-dark-mode: ^2.3.1
 
 dependencies:
   '@mdx-js/mdx': 1.6.22
@@ -70,7 +69,6 @@ dependencies:
   react-helmet: 6.1.0_react@17.0.2
   react-use: 17.3.1_react-dom@17.0.2+react@17.0.2
   tailwindcss: 3.0.7_16a290f6d0e3717bf6d2667234aebd30
-  use-dark-mode: 2.3.1_react@17.0.2
 
 devDependencies:
   '@types/mdx-js__react': 1.5.5
@@ -3195,14 +3193,6 @@ packages:
       '@typescript-eslint/types': 5.7.0
       eslint-visitor-keys: 3.1.0
     dev: true
-
-  /@use-it/event-listener/0.1.6_react@17.0.2:
-    resolution: {integrity: sha1-V3YnT+xy8/Ja+erRiY5/RbxDWBI=, tarball: '@use-it/event-listener/download/@use-it/event-listener-0.1.6.tgz'}
-    peerDependencies:
-      react: ^16.8.0
-    dependencies:
-      react: 17.0.2
-    dev: false
 
   /@vercel/webpack-asset-relocator-loader/1.7.0:
     resolution: {integrity: sha1-07cH4KujERcZ+UHayyQI7/PCcxk=, tarball: '@vercel/webpack-asset-relocator-loader/download/@vercel/webpack-asset-relocator-loader-1.7.0.tgz'}
@@ -13945,25 +13935,6 @@ packages:
     dependencies:
       punycode: 1.3.2
       querystring: 0.2.0
-    dev: false
-
-  /use-dark-mode/2.3.1_react@17.0.2:
-    resolution: {integrity: sha1-1QY0nHt+CemXfLimq0RwiWqjd5o=, tarball: use-dark-mode/download/use-dark-mode-2.3.1.tgz}
-    peerDependencies:
-      react: ^16.8.0
-    dependencies:
-      '@use-it/event-listener': 0.1.6_react@17.0.2
-      react: 17.0.2
-      use-persisted-state: 0.3.3_react@17.0.2
-    dev: false
-
-  /use-persisted-state/0.3.3_react@17.0.2:
-    resolution: {integrity: sha1-Xg8iNpZ87Hw03jOrwHrmgY58dFE=, tarball: use-persisted-state/download/use-persisted-state-0.3.3.tgz}
-    peerDependencies:
-      react: ^16.8.0 || ^17.0.0
-    dependencies:
-      '@use-it/event-listener': 0.1.6_react@17.0.2
-      react: 17.0.2
     dev: false
 
   /use/3.1.1:

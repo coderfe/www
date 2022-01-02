@@ -1,19 +1,8 @@
 import React from 'react';
-import useDarkMode from 'use-dark-mode';
 import Footer from './Footer';
 import Header from './Header';
 
 const Layout: React.FC = function Layout({ children }) {
-  let systemMode = false;
-  if (typeof window !== 'undefined' && document) {
-    systemMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    useDarkMode(systemMode, {
-      classNameLight: 'light',
-      classNameDark: 'dark',
-      element: document.documentElement,
-    });
-  }
-
   return (
     <div className="tracking-wide transition-colors duration-500 dark:bg-gray-800 dark:text-gray-50">
       <header className="

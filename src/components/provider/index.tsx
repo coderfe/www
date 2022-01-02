@@ -1,8 +1,6 @@
 import * as React from 'react';
 import Highlight, { defaultProps, Language } from 'prism-react-renderer';
-import vsDark from 'prism-react-renderer/themes/vsDark';
 import github from 'prism-react-renderer/themes/github';
-import useDarkMode from 'use-dark-mode';
 
 /* eslint-disable */
 const H1 = (props: any) => <h1 className="text-2xl" {...props} />;
@@ -33,14 +31,14 @@ const Code = (props: any) => <code className="rounded-sm" {...props} />;
 const Pre = (props: any) => {
   const classNameProps: string = props.children.props.className || '';
   const matches = classNameProps.match(/language-(?<lang>.*)/);
-  const { value: darkMode } = useDarkMode();
+  // const { value: darkMode } = useDarkMode();
 
   return (
     <Highlight
       {...defaultProps}
       code={props.children.props.children.trim()}
       language={matches?.groups?.lang as Language}
-      theme={darkMode ? vsDark : github}
+      theme={github}
     >
       {({ className, style, tokens, getLineProps, getTokenProps }) => (
         <pre

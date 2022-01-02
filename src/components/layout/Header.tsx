@@ -1,10 +1,6 @@
-import { FiSun } from '@react-icons/all-files/fi/FiSun';
-import { FiMoon } from '@react-icons/all-files/fi/FiMoon';
 import { Link } from 'gatsby';
 import * as React from 'react';
-import useDarkMode from 'use-dark-mode';
 import avatar from '../../images/icon.jpg';
-import Icon from '../Icon';
 import Container from './Container';
 
 const routes = [
@@ -24,7 +20,7 @@ const NavLink: React.FC<Props> = function NavLink({ to, children }) {
   );
 };
 
-const ThemeToggler = function ThemeToggler() {
+/* const ThemeToggler = function ThemeToggler() {
   const { value, enable, disable } = useDarkMode();
   const [className, setClassName] = React.useState(value ? 'text-gray-300' : 'text-gray-800');
   const handleClick = () => {
@@ -54,7 +50,7 @@ const ThemeToggler = function ThemeToggler() {
       )}
     </button>
   );
-};
+}; */
 
 const Header = function Header() {
   return (
@@ -87,7 +83,7 @@ const Header = function Header() {
               {route.name}
             </NavLink>
           ))}
-          <ThemeToggler />
+          {/* <ThemeToggler /> */}
         </div>
       </Container>
     </div>
