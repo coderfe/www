@@ -52,8 +52,9 @@ const Footer = function Footer() {
             </IconContext.Provider>
           </a>
         </div>
-
-        <div>Copyright &copy; 2016-2021 coderfee, All rights reserved.</div>
+        <div>
+          {`Copyright ©; 2016-${new Date().getFullYear()} coderfee, All rights reserved.`}
+        </div>
       </Container>
     </div>
   );
