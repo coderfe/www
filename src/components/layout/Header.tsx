@@ -1,6 +1,11 @@
 import { Link } from 'gatsby';
 import * as React from 'react';
+import { useEffect, useMemo } from 'react';
+import { useLocalStorage, useMedia } from 'react-use';
+import { FiMoon } from '@react-icons/all-files/fi/FiMoon';
+import { FiSun } from '@react-icons/all-files/fi/FiSun';
 import avatar from '../../images/icon.jpg';
+import Icon from '../Icon';
 import Container from './Container';
 
 const routes = [
@@ -9,8 +14,8 @@ const routes = [
 ];
 
 type Props = {
-  to: string
-}
+  to: string;
+};
 
 const NavLink: React.FC<Props> = function NavLink({ to, children }) {
   return (
@@ -20,42 +25,33 @@ const NavLink: React.FC<Props> = function NavLink({ to, children }) {
   );
 };
 
-/* const ThemeToggler = function ThemeToggler() {
-  const { value, enable, disable } = useDarkMode();
-  const [className, setClassName] = React.useState(value ? 'text-gray-300' : 'text-gray-800');
-  const handleClick = () => {
-    if (value) {
-      setClassName('text-gray-800');
-      disable();
-    } else {
-      setClassName('text-gray-300');
-      enable();
-    }
-  };
+function useColorTheme() {
+  const systemPrefers = useMedia('(prefers-color-scheme: dark)');
+  const [isDark, setIsDark] = useLocalStorage<boolean>('darkMode');
 
-  return (
-    <button
-      type="button"
-      className="cursor-pointer select-none"
-      onClick={handleClick}
-    >
-      {value ? (
-        <Icon iconOption={{ className }}>
-          <FiMoon />
-        </Icon>
-      ) : (
-        <Icon iconOption={{ className }}>
-          <FiSun />
-        </Icon>
-      )}
-    </button>
-  );
-}; */
+  const value = useMemo(() => (isDark === undefined ? systemPrefers : isDark), [isDark, systemPrefers]);
+
+  useEffect(() => {
+    if (value) {
+      document.body.classList.add('dark');
+    } else {
+      document.body.classList.remove('dark');
+    }
+  }, [value]);
+
+  return {
+    isDark: value,
+    setIsDark,
+  };
+}
 
 const Header = function Header() {
+  const { isDark, setIsDark } = useColorTheme();
+
   return (
     <div className="py-3 border-b border-gray-300 dark:border-gray-900">
-      <Container className="
+      <Container
+        className="
         h-full
         grid
         grid-row-2
@@ -83,7 +79,17 @@ const Header = function Header() {
               {route.name}
             </NavLink>
           ))}
-          {/* <ThemeToggler /> */}
+          <button type="button" className="cursor-pointer select-none" onClick={() => setIsDark(!isDark)}>
+            {isDark ? (
+              <Icon iconOption={{ className: 'text-gray-300' }}>
+                <FiMoon />
+              </Icon>
+            ) : (
+              <Icon iconOption={{ className: 'text-gray-800' }}>
+                <FiSun />
+              </Icon>
+            )}
+          </button>
         </div>
       </Container>
     </div>
