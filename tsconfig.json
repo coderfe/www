@@ -1,18 +1,9 @@
 {
+  "extends": "astro/tsconfigs/strict",
   "compilerOptions": {
-    "target": "es5",
-    "module": "commonjs",
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "strict": true,
-    "skipLibCheck": true,
-    "jsx": "react",
-    "plugins": [
-      {
-        "name": "ts-graphql-plugin",
-        "schema": "src/__generated__/gatsby-schema.graphql",
-        "tag": "graphql"
-      }
-    ]
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"],
+    }
   }
 }

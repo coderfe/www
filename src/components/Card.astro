@@ -1,0 +1,29 @@
+---
+import type { Post } from '@/types'
+import { formatDate, slugify } from '@/utils'
+
+export type Props = {
+  post: Post
+}
+
+const { post } = Astro.props
+const {
+  url,
+  frontmatter: { tldr, date, title },
+} = post
+---
+
+<li class="flex py-8 border-b border-solid border-slate-200">
+  <p class="w-56 text-slate-500">
+    <i class="i-ri-calendar-line" />
+    <time class="text-sm">{formatDate(date)}</time>
+  </p>
+  <a class="group flex-1" href={`/posts/${slugify(url)}`}>
+    <h2 class="text-xl font-medium group-hover:(underline decoration-wavy underline-offset-4 text-slate-900)">
+      {title}
+    </h2>
+    <p class="mt-2 text-base">
+      {tldr}
+    </p>
+  </a>
+</li>

@@ -1,0 +1,19 @@
+---
+const { classname } = Astro.props
+
+export type Props = {
+  classname: string
+}
+---
+
+<>
+  <a href="https://github.com/coderfe" target="_blank" aria-label="github.com" rel="noopener noreferrer">
+    <i class={`i-ri-github-line ${classname}`} />
+  </a>
+  <a href="https://twitter.com/coderfe" target="_blank" aria-label="twitter.com" rel="noopener noreferrer">
+    <i class={`i-ri-twitter-line ${classname}`} />
+  </a>
+  <a href="/rss.xml" target="_blank" aria-label="web feed" rel="noopener noreferrer">
+    <i class={`i-ri-rss-line ${classname}`} />
+  </a>
+</>
