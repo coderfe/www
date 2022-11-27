@@ -18,7 +18,7 @@ export interface Props {
       {formatDate(date)} by coderfee
     </div>
 
-    <hr class="my-4 h-px bg-slate-200" />
+    <hr class="my-4 h-px bg-zinc-200" />
 
     <Content />
 
@@ -27,7 +27,7 @@ export interface Props {
         tags.map((tag) => (
           <a
             href={`/tags/${slugify(tag)}`}
-            class="inline-block text-slate-500 decoration-slate-500 decoration-wavy underline-offset-4 transition-colors hover:(text-black decoration-black)"
+            class="inline-block text-zinc-500 decoration-zinc-500 decoration-wavy underline-offset-4 transition-colors hover:(text-black decoration-black)"
           >
             #{tag}
           </a>

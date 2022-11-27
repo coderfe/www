@@ -11,7 +11,7 @@ const sortedPosts = getSortedPosts(posts)
 
 <Layout title="Posts" description="coderfee space, CSpace">
   <section class="h-96 bg-no-repeat bg-center bg-cover banner" slot="banner"></section>
-  <ul>
+  <ul class="posts">
     {sortedPosts.map((post) => <Card post={post} />)}
   </ul>
 </Layout>

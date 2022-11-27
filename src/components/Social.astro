@@ -1,19 +1,11 @@
----
-const { classname } = Astro.props
-
-export type Props = {
-  classname: string
-}
----
-
 <>
   <a href="https://github.com/coderfe" target="_blank" aria-label="github.com" rel="noopener noreferrer">
-    <i class={`i-ri-github-line ${classname}`} />
+    <i class="i-ri-github-line transition-colors text-zinc-200 hover:text-zinc-4" />
   </a>
   <a href="https://twitter.com/coderfe" target="_blank" aria-label="twitter.com" rel="noopener noreferrer">
-    <i class={`i-ri-twitter-line ${classname}`} />
+    <i class="i-ri-twitter-line transition-colors text-zinc-200 hover:text-zinc-4" />
   </a>
   <a href="/rss.xml" target="_blank" aria-label="web feed" rel="noopener noreferrer">
-    <i class={`i-ri-rss-line ${classname}`} />
+    <i class="i-ri-rss-line transition-colors text-zinc-200 hover:text-zinc-4" />
   </a>
 </>

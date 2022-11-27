@@ -16,14 +16,14 @@ const { title, description } = Astro.props
 <html lang="zh-CN">
   <Head title={title} description={description} />
 
-  <body class="relative">
+  <body class="relative bg-zinc-100">
     <header class="py-3 sticky z-10 top-0 left-0 right-0 bg-black text-white">
       <div class="max-w-5xl mx-auto flex items-center justify-between">
         <div class="flex items-center">
           <Navigation />
         </div>
         <div class="flex space-x-4">
-          <Social classname="w-5 h-5" />
+          <Social />
         </div>
       </div>
     </header>

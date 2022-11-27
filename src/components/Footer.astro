@@ -1,12 +1,7 @@
----
-import Social from './Social.astro'
----
-
 <footer class="py-8 flex flex-col items-center">
-  <div class="space-x-4">
-    <Social classname="w-5 h-5" />
-  </div>
-  <div class="mt-4 text-xs">
-    &copy; {new Date().getFullYear()} {import.meta.env.SITE_NAME}
+  <div class="text-xs">
+    Copyright &copy; {new Date().getFullYear()}
+    {import.meta.env.SITE_NAME}
+    | All rights reserved.
   </div>
 </footer>
