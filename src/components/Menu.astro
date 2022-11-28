@@ -40,7 +40,7 @@ import Social from "./Social.astro"
   const menuIcon = document.querySelector('#menuIcon')
   const menu = document.querySelector('#menu')
   // @ts-ignore
-  menuIcon.addEventListener('tap', () => {
+  menuIcon.addEventListener('touchend', () => {
     // @ts-ignore
     menu.classList.toggle('hidden')
   })
