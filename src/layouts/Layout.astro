@@ -37,3 +37,17 @@ const { title, description } = Astro.props
     <Footer />
   </body>
 </html>
+
+<style is:global>
+  @font-face {
+    font-family: 'LXGW WenKai Lite';
+    src: url('/fonts/LXGWWenKaiLite-Regular.woff2') format('woff2'),
+      url('/fonts/LXGWWenKaiLite-Bold.woff2') format('woff2');
+  }
+  html,
+  body {
+    font-family: 'LXGW WenKai Lite', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+      'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+      'Noto Color Emoji';
+  }
+</style>

@@ -3,9 +3,10 @@ import { defineConfig } from 'astro/config'
 // https://astro.build/config
 import mdx from '@astrojs/mdx'
 import Unocss from 'unocss/astro'
-import { presetTypography, presetUno } from 'unocss'
-import presetIcons from '@unocss/preset-icons'
+import presetUno from '@unocss/preset-uno'
+import { presetTypography, presetAttributify, presetIcons } from 'unocss'
 import transformerVariantGroup from '@unocss/transformer-variant-group'
+import transformerDirectives from '@unocss/transformer-directives'
 
 // https://astro.build/config
 import sitemap from '@astrojs/sitemap'
@@ -24,10 +25,17 @@ export default defineConfig({
   integrations: [
     mdx(),
     Unocss({
-      transformers: [transformerVariantGroup()],
+      transformers: [transformerVariantGroup(), transformerDirectives()],
       presets: [
         presetUno(),
-        presetTypography(),
+        presetAttributify(),
+        presetTypography({
+          cssExtend: {
+            img: {
+              'border-radius': '12px',
+            },
+          },
+        }),
         presetIcons({
           extraProperties: {
             display: 'inline-block',

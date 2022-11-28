@@ -15,6 +15,7 @@
     "@astrojs/prefetch": "^0.1.1",
     "@astrojs/rss": "^1.0.3",
     "@astrojs/sitemap": "^1.0.0",
+    "@unocss/transformer-directives": "^0.46.5",
     "astro": "^1.6.10",
     "github-slugger": "^2.0.0"
   },
@@ -23,6 +24,7 @@
     "@unocss/astro": "^0.46.5",
     "@unocss/preset-icons": "^0.46.5",
     "@unocss/preset-typography": "^0.46.5",
+    "@unocss/preset-uno": "^0.46.5",
     "@unocss/reset": "^0.46.5",
     "@unocss/transformer-variant-group": "^0.46.5",
     "unocss": "^0.46.5"
