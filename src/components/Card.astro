@@ -14,12 +14,12 @@ const {
 ---
 
 <li class="flex flex-col sm:flex-col md:flex-row py-8 border-b border-solid border-zinc-200">
-  <p class="w-56 text-zinc-500">
+  <p class="w-56 text-zinc-600 font-bold">
     <i class="i-ri-calendar-line" />
     <time class="text-sm">{formatDate(date)}</time>
   </p>
   <a class="group flex-1" href={`/posts/${slugify(url)}`} rel="prefetch">
-    <h2 class="text-xl font-medium group-hover:(underline decoration-wavy underline-offset-4 text-zinc-900)">
+    <h2 class="text-xl font-bold group-hover:(underline decoration-wavy underline-offset-4 text-zinc-900)">
       {title}
     </h2>
     <p class="mt-2 text-base">

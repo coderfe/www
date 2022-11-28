@@ -1,6 +1,7 @@
 ---
 import Footer from '@/components/Footer.astro'
 import Head from '@/components/Head.astro'
+import Menu from '@/components/Menu.astro'
 import Navigation from '@/components/Navigation.astro'
 import Social from '@/components/Social.astro'
 
@@ -18,13 +19,12 @@ const { title, description } = Astro.props
 
   <body class="relative bg-zinc-100">
     <header class="py-3 sticky z-10 top-0 left-0 right-0 bg-black text-white">
-      <div class="max-w-5xl mx-auto px-4 flex items-center justify-between">
-        <div class="flex items-center">
-          <Navigation />
-        </div>
-        <div class="flex space-x-4">
+      <div class="relative max-w-5xl mx-auto px-4 flex items-center justify-center sm:justify-between">
+        <Navigation />
+        <div class="hidden sm:flex space-x-4">
           <Social />
         </div>
+        <Menu />
       </div>
     </header>
 

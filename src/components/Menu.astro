@@ -1,0 +1,56 @@
+---
+import Social from "./Social.astro"
+---
+
+<>
+  <button id="menuIcon" class="absolute right-4 cursor-pointer">
+    <i class="i-ri-menu-line" />
+  </button>
+  <section id="menu" class="animate-fade-in-top-right animate-duration-300 hidden fixed top-14 left-4 right-4 bottom-4 bg-white rounded-lg shadow-md p-4 menu">
+    <nav class="flex flex-col uppercase">
+      <a href="/" class="group flex justify-between items-center py-3 text-zinc-700 font-bold transition-colors hover:text-zinc-900">
+        <span>
+          <i class="i-ri-home-smile-line relative -top-px"></i>
+          Home
+        </span>
+        <i class="i-ri-arrow-right-line transition-transform group-hover:translate-x-2" />
+      </a>
+      <a href="/tags" class="group flex justify-between items-center py-3 text-zinc-700 font-bold transition-colors hover:text-zinc-900">
+        <span>
+          <i class="i-ri-hashtag relative -top-px"></i>
+          Tags
+        </span>
+        <i class="i-ri-arrow-right-line transition-transform group-hover:translate-x-2" />
+      </a>
+      <a href="/about" class="group flex justify-between items-center py-3 text-zinc-700 font-bold transition-colors hover:text-zinc-900">
+        <span>
+          <i class="i-ri-account-circle-line relative -top-px"></i>
+          About
+        </span>
+        <i class="i-ri-arrow-right-line transition-transform group-hover:translate-x-2" />
+      </a>
+    </nav>
+    <div class="absolute bottom-4 left-0 right-0 text-center space-x-4 social">
+      <Social />
+    </div>
+  </section>
+</>
+
+<script>
+  const menuIcon = document.querySelector('#menuIcon')
+  const menu = document.querySelector('#menu')
+  // @ts-ignore
+  menuIcon.addEventListener('click', () => {
+    // @ts-ignore
+    menu.classList.toggle('hidden')
+  })
+</script>
+
+<style is:global>
+  .menu .social a i {
+    @apply text-zinc-700;
+  }
+  .menu .social a i:hover {
+    @apply text-zinc-900;
+  }
+</style>
