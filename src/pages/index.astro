@@ -1,8 +1,8 @@
 ---
 import Card from '@/components/Card.astro'
 import Layout from '@/layouts/Layout.astro'
-import type { Frontmatter } from '@/types';
-import { getSortedPosts } from '@/utils';
+import type { Frontmatter } from '@/types'
+import { getSortedPosts } from '@/utils'
 
 const posts = await Astro.glob<Frontmatter>('../content/**/*.mdx')
 
@@ -10,7 +10,7 @@ const sortedPosts = getSortedPosts(posts)
 ---
 
 <Layout title="首页 | Posts" description="coderfee space, CSpace">
-  <section class="h-96 bg-no-repeat bg-center bg-cover banner" slot="banner"></section>
+  <section class="h-96 bg-black bg-contain sm:bg-cover bg-no-repeat bg-center banner" slot="banner"></section>
   <ul>
     {sortedPosts.map((post) => <Card post={post} />)}
   </ul>
@@ -18,6 +18,6 @@ const sortedPosts = getSortedPosts(posts)
 
 <style>
   .banner {
-    background-image: url("/assets/banner.jpg");
+    background-image: url('/assets/banner.jpg');
   }
 </style>
