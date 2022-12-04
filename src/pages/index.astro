@@ -1,23 +1,49 @@
 ---
-import Card from '@/components/Card.astro'
-import Layout from '@/layouts/Layout.astro'
-import type { Frontmatter } from '@/types'
-import { getSortedPosts } from '@/utils'
-
-const posts = await Astro.glob<Frontmatter>('../content/**/*.mdx')
-
-const sortedPosts = getSortedPosts(posts)
+import Head from '@/components/Head.astro'
 ---
 
-<Layout title="首页 | Posts" description="coderfee space, CSpace">
-  <section class="h-96 bg-black bg-contain sm:bg-cover bg-no-repeat bg-center banner" slot="banner"></section>
-  <ul>
-    {sortedPosts.map((post) => <Card post={post} />)}
-  </ul>
-</Layout>
-
-<style>
-  .banner {
-    background-image: url('/assets/banner.jpg');
-  }
-</style>
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <Head title="主页 | Home" description="CSPace, coderfe, coderfee" />
+  <body>
+    <section class="bg-black w-screen h-screen overflow-hidden flex justify-center items-center">
+      <main class="bg-black w-prose px-24 py-20 shadow-md rounded-md border border-amber">
+        <h1 class="text-4xl text-amber text-center">
+          <a href="/posts" class="underline decoration-wavy underline-offset-10" rel="prefetch">{import.meta.env.SITE_NAME}</a>
+        </h1>
+        <p class="text-amber text-center text-lg mt-8">
+          Hello, I am coderfee, and I'm a developer, based in Beijing China
+        </p>
+        <p class="text-amber text-center text-lg mt-4">你好，我是 coderfee，一名前端开发者，目前在中国北京</p>
+        <div class="mt-8 text-center space-x-4">
+          <a
+            href="https://github.com/coderfe"
+            target="_blank"
+            class="inline-block px-4 py-2 bg-amber/10 rounded-md cursor-pointer transition-colors hover:bg-amber/30"
+          >
+            <i class="i-ri-github-fill text-amber text-2xl"></i>
+          </a>
+          <a
+            href="https://twitter.com/coderfe"
+            target="_blank"
+            class="inline-block px-4 py-2 bg-amber/10 rounded-md cursor-pointer transition-colors hover:bg-amber/30"
+          >
+            <i class="i-ri-twitter-fill text-amber text-2xl"></i>
+          </a>
+          <a
+            href="mailto:coderfee@outlook.com"
+            class="inline-block px-4 py-2 bg-amber/10 rounded-md cursor-pointer transition-colors hover:bg-amber/30"
+          >
+            <i class="i-ri-mail-fill text-amber text-2xl"></i>
+          </a>
+          <a
+            href="/rss.xml"
+            class="inline-block px-4 py-2 bg-amber/10 rounded-md cursor-pointer transition-colors hover:bg-amber/30"
+          >
+            <i class="i-ri-rss-fill text-amber text-2xl"></i>
+          </a>
+        </div>
+      </main>
+    </section>
+  </body>
+</html>
