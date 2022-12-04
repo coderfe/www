@@ -11,7 +11,7 @@ export const get = () => rss({
   site: import.meta.env.SITE,
   stylesheet: '/rss/style.xsl',
   items: posts.map(({ url, frontmatter: { title, date, tldr } }) => ({
-    link: slugify(url),
+    link: `/posts/${slugify(url)}`,
     description: tldr,
     title: title,
     pubDate: new Date(date),
