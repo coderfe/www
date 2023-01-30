@@ -15,7 +15,7 @@
     "@astrojs/prefetch": "^0.1.1",
     "@astrojs/rss": "^1.0.3",
     "@astrojs/sitemap": "^1.0.0",
-    "@unocss/transformer-directives": "^0.47.5",
+    "@unocss/transformer-directives": "^0.49.1",
     "astro": "^1.6.10",
     "github-slugger": "^2.0.0"
   },
