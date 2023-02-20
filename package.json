@@ -13,7 +13,7 @@
   "dependencies": {
     "@astrojs/mdx": "^0.16.0",
     "@astrojs/prefetch": "^0.1.1",
-    "@astrojs/rss": "^1.0.3",
+    "@astrojs/rss": "^2.1.1",
     "@astrojs/sitemap": "^1.0.0",
     "@unocss/transformer-directives": "^0.49.4",
     "astro": "^1.6.10",
