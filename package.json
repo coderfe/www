@@ -16,7 +16,7 @@
     "@astrojs/rss": "^2.1.1",
     "@astrojs/sitemap": "^1.0.0",
     "@unocss/transformer-directives": "^0.49.4",
-    "astro": "^1.6.10",
+    "astro": "^2.0.17",
     "github-slugger": "^2.0.0"
   },
   "devDependencies": {
