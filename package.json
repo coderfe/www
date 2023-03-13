@@ -24,7 +24,7 @@
     "@unocss/astro": "^0.47.5",
     "@unocss/preset-icons": "^0.49.4",
     "@unocss/preset-typography": "^0.50.4",
-    "@unocss/preset-uno": "^0.47.6",
+    "@unocss/preset-uno": "^0.50.4",
     "@unocss/reset": "^0.47.5",
     "@unocss/transformer-variant-group": "^0.50.4",
     "unocss": "^0.49.4"
