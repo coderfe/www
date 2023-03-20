@@ -27,6 +27,6 @@
     "@unocss/preset-uno": "^0.50.4",
     "@unocss/reset": "^0.47.5",
     "@unocss/transformer-variant-group": "^0.50.4",
-    "unocss": "^0.49.4"
+    "unocss": "^0.50.6"
   }
 }
