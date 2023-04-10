@@ -21,7 +21,7 @@
   },
   "devDependencies": {
     "@iconify-json/ri": "^1.1.4",
-    "@unocss/astro": "^0.50.4",
+    "@unocss/astro": "^0.51.2",
     "@unocss/preset-icons": "^0.49.4",
     "@unocss/preset-typography": "^0.50.4",
     "@unocss/preset-uno": "^0.50.4",
