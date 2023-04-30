@@ -1,7 +1,7 @@
-<footer class="py-8 flex flex-col items-center">
-  <div class="text-xs">
-    Copyright &copy; {new Date().getFullYear()}
-    {import.meta.env.SITE_NAME}
-    | All rights reserved.
-  </div>
+---
+const today = new Date();
+---
+
+<footer class="p-4 text-sm text-center">
+  &copy; {today.getFullYear()} coderfee All rights reserved.
 </footer>

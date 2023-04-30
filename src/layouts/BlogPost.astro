@@ -1,0 +1,47 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import FormattedDate from '../components/FormattedDate.astro';
+import Emoji from '../components/Emoji.astro';
+import { renderTags } from '../helper';
+
+type Props = CollectionEntry<'blog'>['data'];
+
+const { title, tldr, date, tags, heroImage } = Astro.props;
+---
+
+<html lang="zh-Hans">
+  <head>
+    <BaseHead title={title} description={tldr} />
+  </head>
+
+  <body>
+    <Header />
+    <main class="mx-auto py-4 prose">
+      <article>
+        <h1>{title}</h1>
+        <div class="space-x-4">
+          <span>
+            <Emoji symbol="📅" />
+            <FormattedDate date={date} />
+          </span>
+          {
+            tags && (
+              <span>
+                <Emoji symbol="🏷️" />
+                <span class="space-x-1" set:html={renderTags(tags)} />
+              </span>
+            )
+          }
+        </div>
+        <blockquote>{tldr}</blockquote>
+        {heroImage && <img src={heroImage} alt="hero image" />}
+        <hr />
+        <slot />
+      </article>
+    </main>
+    <Footer />
+  </body>
+</html>

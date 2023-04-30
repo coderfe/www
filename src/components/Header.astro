@@ -1,0 +1,16 @@
+---
+import HeaderLink from './HeaderLink.astro';
+import { SITE_TITLE } from '../consts';
+---
+
+<header class="py-4 border-b">
+  <div class="max-w-prose mx-auto flex justify-between items-center">
+    <a href="/">
+      <h2 class="text-accent-1 font-bold text-xl">{SITE_TITLE}</h2>
+    </a>
+    <nav class="space-x-4">
+      <HeaderLink href="https://twitter.com/coderfe" target="_blank">Twitter</HeaderLink>
+      <HeaderLink href="https://github.com/coderfe" target="_blank">GitHub</HeaderLink>
+    </nav>
+  </div>
+</header>
