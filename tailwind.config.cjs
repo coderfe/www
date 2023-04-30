@@ -11,10 +11,6 @@ module.exports = {
         'text-1': '#242f5a',
         'bg-1': '#fdfdff',
       },
-      fontFamily: {
-        sans: ['LXGW WenKai', ...defaultTheme.fontFamily.sans],
-        mono: ['MonoLisa', ...defaultTheme.fontFamily.mono],
-      },
     },
   },
   plugins: [require('@tailwindcss/typography')],

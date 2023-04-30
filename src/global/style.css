@@ -1,5 +1,3 @@
-@import 'lxgw-wenkai-lite-webfont/style.css';
-
 html,
 body {
   @apply bg-bg-1 font-sans text-text-1;
