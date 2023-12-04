@@ -329,7 +329,7 @@ throw new CustomError('MY_CODE', 400, 'Error description')
 
 我通常会把这些错误保存在**最外层有状态组件**，并且将其渲染为一个静态 UI 元素，它可以是屏幕顶部的一个红色条幅，一个模态框或者其他任何东西，具体的设计实现取决于你自己。
 
-<img src={GlobalErrors} alt="UI for global errors" />
+<img src={GlobalErrors.src} alt="UI for global errors" />
 
 让我们看看代码实现：
 
@@ -452,7 +452,7 @@ class GenericErrorReq extends Component {
 
 #### 处理特定请求错误
 
-<img src={OriginErrors} alt="Handling specific request errors" />
+<img src={OriginErrors.src} alt="Handling specific request errors" />
 
 和全局错误类似，我们可以在其它组件中包含**局部错误状态**。程序是类似的：
 
@@ -509,7 +509,7 @@ export default SpecificErrorRequest
 
 #### 前端自身错误
 
-<img src={OriginErrors} alt="Frontend origin errors" />
+<img src={OriginErrors.src} alt="Frontend origin errors" />
 
 正如之前提到过，这些错误可以使用与处理从后端返回特定错误的相同方式来处理。让我们用一个输入字段的例子来说明，这次我们允许用户在输入之后删除一个城市：
 
