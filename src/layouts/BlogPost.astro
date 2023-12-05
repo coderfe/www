@@ -4,8 +4,8 @@ import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import FormattedDate from '../components/FormattedDate.astro';
-import Emoji from '../components/Emoji.astro';
 import { renderTags } from '../helper';
+import { Icon } from '@iconify/react';
 
 type Props = CollectionEntry<'blog'>['data'];
 
@@ -22,15 +22,15 @@ const { title, tldr, date, tags, heroImage } = Astro.props;
     <main class="mx-auto py-4 prose">
       <article>
         <h1>{title}</h1>
-        <div class="space-x-4">
-          <span>
-            <Emoji symbol="📅" />
+        <div class="flex gap-8">
+          <span class="flex items-center gap-1">
+            <Icon icon="tabler:calendar" client:load />
             <FormattedDate date={date} />
           </span>
           {
             tags && (
-              <span>
-                <Emoji symbol="🏷️" />
+              <span class="flex items-center gap-1">
+                <Icon icon="tabler:tag" client:load />
                 <span class="space-x-1" set:html={renderTags(tags)} />
               </span>
             )
