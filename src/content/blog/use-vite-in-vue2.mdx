@@ -5,10 +5,10 @@ tldr: 随着 Vue3 的发布，尤大新推了一个前端构建工具——Vite�
 tags: ['Vue', 'Vite']
 ---
 
-import ViteDev from '../../images/blog/use-vite-in-vue2/vite-dev.png'
-import VueServe from '../../images/blog/use-vite-in-vue2/vue-serve.png'
-import ViteInAction from '../../images/blog/use-vite-in-vue2/vite-in-action.png'
-import VuecliInAction from '../../images/blog/use-vite-in-vue2/vuecli-in-action.png'
+import ViteDev from '../../assets/blog/use-vite-in-vue2/vite-dev.png';
+import VueServe from '../../assets/blog/use-vite-in-vue2/vue-serve.png';
+import ViteInAction from '../../assets/blog/use-vite-in-vue2/vite-in-action.png';
+import VuecliInAction from '../../assets/blog/use-vite-in-vue2/vuecli-in-action.png';
 
 ## Vite 是个啥
 
@@ -45,7 +45,7 @@ npm init vite@latest
 Vite 会生成一个 vite.config.js 的配置文件，类似之前的 vue.config.js，可以直接使用 ES6 的语法：
 
 ```jsx
-import { defineConfig } from 'vite'
+import { defineConfig } from 'vite';
 
 export default () =>
   defineConfig({
@@ -55,7 +55,7 @@ export default () =>
     plugins: [
       /**/
     ],
-  })
+  });
 ```
 
 ### 根目录
@@ -73,12 +73,12 @@ npm i -D vite-plugin-vue2
 修改一下配置文件：
 
 ```javascript
-import { createVuePlugin } from 'vite-plugin-vue2'
+import { createVuePlugin } from 'vite-plugin-vue2';
 
 export default () =>
   defineConfig({
     plugins: [createVuePlugin({ jsx: true })],
-  })
+  });
 ```
 
 ### CSS 预处理器
@@ -115,8 +115,8 @@ SOME_KEY=321
 在 html 中使用需要先安装插件 `vite-plugin-html`，例如需要用到应用的运行模式 `mode` 变量，可以如下修改配置文件：
 
 ```javascript
-import { createVuePlugin } from 'vite-plugin-vue2'
-import { injectHtml } from 'vite-plugin-html'
+import { createVuePlugin } from 'vite-plugin-vue2';
+import { injectHtml } from 'vite-plugin-html';
 
 export default ({ mode }) =>
   defineConfig({
@@ -128,7 +128,7 @@ export default ({ mode }) =>
         },
       }),
     ],
-  })
+  });
 ```
 
 在 html 中使用 EJS 的方式插入对应的变量名称，编译之后就能直接得到变量的值：
@@ -146,13 +146,13 @@ export default ({ mode }) =>
 在项目中我们通常会像下面这样引用组件：
 
 ```javascript
-import Card from '@/compoennts/Card.vue'
+import Card from '@/compoennts/Card.vue';
 ```
 
 Vue CLI 生成的项目 `@` 是通过 Webpack 来配置的，只是 Vue CLI 帮我们做了这个配置。而 Vite 需要手动配置一下：
 
 ```javascript
-import path from 'path'
+import path from 'path';
 
 export default () =>
   defineConfig({
@@ -161,7 +161,7 @@ export default () =>
         '@': path.resolve(__dirname, 'src'),
       },
     },
-  })
+  });
 ```
 
 ### 代理

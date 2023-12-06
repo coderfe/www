@@ -2,10 +2,10 @@
 title: 记一次 npm dependencies 优化升级
 date: 2021-11-06
 tldr: 每次看到老项目 package.json 里的 dependencies，我就很焦虑，有些人竟然能把 npm/install 等安装为 devDependecies，更有甚者装了但不用，就是玩儿，我就气不打一处来。终于在双十一之前有时间能整理一波了
-tags: ["Vue"]
+tags: ['Vue']
 ---
 
-import NpmGuide from "../../images/blog/npm-dependencies-upgrade-guide.png";
+import NpmGuide from '../../assets/blog/npm-dependencies-upgrade-guide.png';
 
 <img src={NpmGuide.src} alt="npm dependencies upgrade guide" />
 
@@ -33,10 +33,10 @@ devDependencies
 
 ```javascript
 // 删除
-import { debounce } from "throttle-debounce";
+import { debounce } from 'throttle-debounce';
 
 // 新增
-import { debounce } from "lodash";
+import { debounce } from 'lodash';
 ```
 
 目前项目中只存在一处 throttle-debounce 的引用
@@ -99,7 +99,7 @@ module.exports = {
 
 ```javascript
 module.exports = {
-  purge: ["./src/**/*.{js,ts,jsx,tsx,html,vue}", "./public/index.html"],
+  purge: ['./src/**/*.{js,ts,jsx,tsx,html,vue}', './public/index.html'],
   darkMode: false,
   theme: {
     extend: {},
@@ -117,7 +117,7 @@ module.exports = {
 在 Vue 入口文件引入 tailwindcss
 
 ```javascript
-import "tailwindcss/tailwind.css";
+import 'tailwindcss/tailwind.css';
 ```
 
 ### 实际使用
@@ -144,8 +144,8 @@ Tailwind v2.1+ 新增了 [Just-In-Time](https://tailwindcss.com/docs/just-in-tim
 // tailwind.config.js
 
 module.exports = {
-  purge: ["./src/**/*.{js,ts,jsx,tsx,html,vue}", "./public/index.html"],
-  mode: "jit",
+  purge: ['./src/**/*.{js,ts,jsx,tsx,html,vue}', './public/index.html'],
+  mode: 'jit',
 };
 ```
 

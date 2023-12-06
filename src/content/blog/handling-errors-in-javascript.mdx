@@ -5,9 +5,9 @@ tldr: 错误并不可怕。通过这些错误我们可以了解哪些事情不�
 tags: ['JavaScript', '译文']
 ---
 
-import GlobalErrors from '../../images/blog/global-error-ui.jpg'
-import HandleSpecificErrors from '../../images/blog/handling-specific-request-error.jpg'
-import OriginErrors from '../../images/blog/frontend-origin-errors.jpg'
+import GlobalErrors from '../../assets/blog/global-error-ui.jpg';
+import HandleSpecificErrors from '../../assets/blog/handling-specific-request-error.jpg';
+import OriginErrors from '../../assets/blog/frontend-origin-errors.jpg';
 
 > 原文链接：[Handling Errors in JavaScript: The Definitive Guide](https://levelup.gitconnected.com/the-definite-guide-to-handling-errors-gracefully-in-javascript-58424d9c60e6)
 
@@ -24,8 +24,8 @@ import OriginErrors from '../../images/blog/frontend-origin-errors.jpg'
 Error 对象为我们提供了两个内置属性。第一个是 `message`，就是你传递给 Error 构造函数的参数。例如：`new Error('This is message')`，这样的话就可以通过 `message` 属性来访问：
 
 ```javascript
-const myError = new Error('please improve your code')
-console.log(myError.message) // please improve your code
+const myError = new Error('please improve your code');
+console.log(myError.message); // please improve your code
 ```
 
 第二个是非常重要的属性是错误堆栈。你可以通过 `stack` 属性来访问它。错误堆栈会给你一些哪些文件导致发生错误的历史记录（调用堆栈）。堆栈还包括顶部的信息，然后紧接着是实际堆栈，以最近的错误或错误隔离点开始，然后转到最外层的“负责”文件。
@@ -52,15 +52,15 @@ Error: please improve your code
 这是最简单，也是经常最容易被忘记的处理错误的一种方式——由于 `async/await` 的出现，它的用途也更加多样。看看下面的例子，它可以用来捕获各种**同步**代码错误：
 
 ```javascript
-const a = 5
+const a = 5;
 
 try {
-  console.log(b) // b 未定义，抛出错误
+  console.log(b); // b 未定义，抛出错误
 } catch (err) {
-  console.error(err) // 打印错误堆栈
+  console.error(err); // 打印错误堆栈
 }
 
-console.log(a) // 5
+console.log(a); // 5
 ```
 
 如果不把 `console.log(b)` 放在 `try...catch` 语句块中的话，脚本就会中断执行。
@@ -70,14 +70,14 @@ console.log(a) // 5
 有时必须要执行一些代码，无论有没有错误。这时你可以选择第三种方式，即 `try...catch` 的可选语句块 `finally`。它和在 `try...catch` 语句块后写一行代码的作用相同，但有些情况下非常有用。
 
 ```javascript
-const a = 5
+const a = 5;
 
 try {
-  console.log(b) // b 未定义，抛出错误
+  console.log(b); // b 未定义，抛出错误
 } catch (err) {
-  console.error(err) // 打印错误堆栈
+  console.error(err); // 打印错误堆栈
 } finally {
-  console.log(a) // 5
+  console.log(a); // 5
 }
 ```
 
@@ -87,9 +87,9 @@ try {
 
 ```javascript
 myAsyncFunc(someInput, (err, result) => {
-  if (err) return console.log(err)
-  console.log(result)
-})
+  if (err) return console.log(err);
+  console.log(result);
+});
 ```
 
 如果出现错误，参数 `err` 将会等于 Error。如果没有 `err` 就是 `undefined` 或者 `null`。所以在 `if (err)` 中返回或者将其它代码写在 `else` 块中非常重要。除此之外，你可能还会遇到其它错误，例如，`result` 是 `undefined`，而你想访问其 `data` 属性等等其它类似情况。
@@ -108,23 +108,23 @@ myAsyncFunc(someInput, (err, result) => {
 ```javascript
 Promise.resolve(1)
   .then((res) => {
-    console.log(res) // 1
-    throw new Error('something went wrong')
-    return Promise.resolve(2)
+    console.log(res); // 1
+    throw new Error('something went wrong');
+    return Promise.resolve(2);
   })
   .then((res) => {
-    console.log(res) // 2
+    console.log(res); // 2
   })
   .catch((err) => {
-    console.log(err)
-    return Promise.resolve(3)
+    console.log(err);
+    return Promise.resolve(3);
   })
   .then((res) => {
-    console.log(res) // 3
+    console.log(res); // 3
   })
   .catch((err) => {
-    console.log(err)
-  })
+    console.log(err);
+  });
 ```
 
 #### 再谈 try...catch
@@ -132,13 +132,13 @@ Promise.resolve(1)
 随着 JavaScript 中引入 async/await，我们又回到了最初处理错误的方式，使用 `try...catch`，这使得处理错误变得比较容易:
 
 ```javascript
-;(async function () {
+(async function () {
   try {
-    await someFuncThatThrowsAnError()
+    await someFuncThatThrowsAnError();
   } catch (err) {
-    console.error(err)
+    console.error(err);
   }
-})()
+})();
 ```
 
 因为这和我们用于处理同步代码错误的方式相同，因此如果有需要，使用范围更广的 `catch` 语句更加容易。
@@ -196,17 +196,17 @@ module.exports = CustemError;
 下面是路由处理器的代码：
 
 ```javascript
-const express = require('express')
-const router = express.Router()
-const CustomError = require('../CustomError')
+const express = require('express');
+const router = express.Router();
+const CustomError = require('../CustomError');
 
 router.use(async (req, res) => {
   try {
-    const route = require(`.${req.path}`)[req.method]
+    const route = require(`.${req.path}`)[req.method];
 
     try {
-      const result = route(req) // 把 request 传递个路由函数
-      res.send(result) // 把从路由函数返回的数据发送给客户端
+      const result = route(req); // 把 request 传递个路由函数
+      res.send(result); // 把从路由函数返回的数据发送给客户端
     } catch (err) {
       // 如果路由函数中发生错误，将会执行以下代码
       if (err instanceof CustomError) {
@@ -214,16 +214,15 @@ router.use(async (req, res) => {
         return res.status(err.status).send({
           error: err.code,
           description: err.messsage,
-        })
+        });
       } else {
-        console.error(err)
+        console.error(err);
 
         // 未处理错误，我们只要返回通用的错误对象
         return res.status(500).send({
           error: 'GENERIC',
-          description:
-            'Something went wrong. Please try again or contact support.',
-        })
+          description: 'Something went wrong. Please try again or contact support.',
+        });
       }
     }
   } catch {
@@ -231,52 +230,42 @@ router.use(async (req, res) => {
     res.status(404).send({
       error: 'NOT_FOUND',
       description: 'The resource you tried to access does not exist.',
-    })
+    });
   }
-})
+});
 ```
 
 我希望你可以阅读代码中的注释，因为我觉得这比我在这里解释更有意义。接下来让我们看一下真实的路由文件：
 
 ```javascript
-const CustomError = require('../CustomError')
+const CustomError = require('../CustomError');
 
 const GET = (req) => {
-  return { name: 'Rio de Janeiro' }
-}
+  return { name: 'Rio de Janeiro' };
+};
 
 const POST = (req) => {
-  throw new Error(
-    'Some unexpected error, may also be thrown by a library or the runtime.'
-  )
-}
+  throw new Error('Some unexpected error, may also be thrown by a library or the runtime.');
+};
 
 const DELETE = (req) => {
-  throw new CustomError(
-    'CITY_NOT_FOUND',
-    404,
-    'The city you are trying to delete could not be found.'
-  )
-}
+  throw new CustomError('CITY_NOT_FOUND', 404, 'The city you are trying to delete could not be found.');
+};
 
 const PATCH = (req) => {
   try {
-    throw new Error('Some internal error')
+    throw new Error('Some internal error');
   } catch (err) {
-    throw new CustomError(
-      'CITY_NOT_EDITABLE',
-      400,
-      'The city you are trying to edit is not editable.'
-    )
+    throw new CustomError('CITY_NOT_EDITABLE', 400, 'The city you are trying to edit is not editable.');
   }
-}
+};
 
 module.exports = {
   GET,
   POST,
   DELETE,
   PATCH,
-}
+};
 ```
 
 在这些例子中，我没有对实际请求做任何事情，我只是模拟了各种不同的错误场景。例如，`GET /city` 在第 3 行，`POST /city` 在第 8 行。这些接口也可以和查询参数一起使用，如：`GET /city?startWith=R`。对于未处理错误，前端将会接收如下错误信息：
@@ -291,7 +280,7 @@ module.exports = {
 或者你可以手动抛出 `CustomError` 错误：
 
 ```javascript
-throw new CustomError('MY_CODE', 400, 'Error description')
+throw new CustomError('MY_CODE', 400, 'Error description');
 ```
 
 它将会被转化为：
@@ -334,19 +323,19 @@ throw new CustomError('MY_CODE', 400, 'Error description')
 让我们看看代码实现：
 
 ```javascript
-import React, { Component } from 'react'
-import GlobalError from './GlobalError'
+import React, { Component } from 'react';
+import GlobalError from './GlobalError';
 
 class Application extends Component {
   constructor(props) {
-    super(props)
+    super(props);
 
     this.state = {
       error: '',
-    }
+    };
 
-    this._resetError = this._resetError.bind(this)
-    this._setError = this._setError.bind(this)
+    this._resetError = this._resetError.bind(this);
+    this._setError = this._setError.bind(this);
   }
 
   render() {
@@ -355,19 +344,19 @@ class Application extends Component {
         <GlobalError error={this.state.error} resetError={this._resetError} />
         <h1>Handling Errors</h1>
       </div>
-    )
+    );
   }
 
   _resetError() {
-    this.setState({ error: '' })
+    this.setState({ error: '' });
   }
 
   _setError(newError) {
-    this.setState({ error: newError })
+    this.setState({ error: newError });
   }
 }
 
-export default Application
+export default Application;
 ```
 
 正如我们看到的，我们把错误保存在 `Application.js` 的状态中，我们也有重置和改变错误值的方法。我们把错误值和重置方法传递给 `GlobalError` 组件，它负责显示错误，以及在点击 “X” 时重置错误。让我们看看 `GlobalError` 组件的代码：
@@ -395,11 +384,7 @@ class GlobalError extends Component {
       >
         {this.props.error}
         &nbsp;
-        <i
-          className="material-icons"
-          style={{ cursor: 'pointer' }}
-          onClick={this.props.resetError}
-        >
+        <i className="material-icons" style={{ cursor: 'pointer' }} onClick={this.props.resetError}>
           close
         </i>
       </div>
@@ -415,14 +400,14 @@ export default GlobalError;
 现在你可以在任何地方使用这个全局错误组件，只需从 `Application.js` 传递 `_setError`，而且你也可以设置全局错误，例如，一个请求从后台返回的字段是 `error: 'GENERIC'`：
 
 ```javascript
-import React, { Component } from 'react'
-import axios from 'axios'
+import React, { Component } from 'react';
+import axios from 'axios';
 
 class GenericErrorReq extends Component {
   constructor(props) {
-    super(props)
+    super(props);
 
-    this._callBackend = this._callBackend.bind(this)
+    this._callBackend = this._callBackend.bind(this);
   }
 
   render() {
@@ -430,7 +415,7 @@ class GenericErrorReq extends Component {
       <div>
         <button onClick={this._callBackend}>Click me to call backend</button>
       </div>
-    )
+    );
   }
 
   _callBackend() {
@@ -441,9 +426,9 @@ class GenericErrorReq extends Component {
       })
       .catch((err) => {
         if (err.response.data.error === 'GENERIC') {
-          this.props._setError({ error: err.response.data.error })
+          this.props._setError({ error: err.response.data.error });
         }
-      })
+      });
   }
 }
 ```
@@ -457,20 +442,20 @@ class GenericErrorReq extends Component {
 和全局错误类似，我们可以在其它组件中包含**局部错误状态**。程序是类似的：
 
 ```javascript
-import React, { Component } from 'react'
-import axios from 'axios'
+import React, { Component } from 'react';
+import axios from 'axios';
 
-import InlineError from './InlineError'
+import InlineError from './InlineError';
 
 class SpecificErrorRequest extends Component {
   constructor(props) {
-    super(props)
+    super(props);
 
     this.state = {
       error: '',
-    }
+    };
 
-    this._callBackend = this._callBackend.bind(this)
+    this._callBackend = this._callBackend.bind(this);
   }
 
   render() {
@@ -479,11 +464,11 @@ class SpecificErrorRequest extends Component {
         <button onClick={this._callBackend}>Delete you city</button>
         <InlineError error={this.state.error} />
       </div>
-    )
+    );
   }
 
   _callBackend() {
-    this.setState({ error: '' })
+    this.setState({ error: '' });
 
     axios
       .delete('/api/city')
@@ -492,17 +477,17 @@ class SpecificErrorRequest extends Component {
       })
       .catch((err) => {
         if (err.response.data.error === 'GENERIC') {
-          this.props.setError(err.response.data.description)
+          this.props.setError(err.response.data.description);
         } else {
           this.setState({
             error: err.response.data.description,
-          })
+          });
         }
-      })
+      });
   }
 }
 
-export default SpecificErrorRequest
+export default SpecificErrorRequest;
 ```
 
 需要记住的一点是，清除错误的方式通常有所不同。在这里使用 “X” 清除错误没有意义，更好的方式是在发起一次新请求的时候清除错误，例如，当输入框的值发生了变化。
@@ -514,57 +499,52 @@ export default SpecificErrorRequest
 正如之前提到过，这些错误可以使用与处理从后端返回特定错误的相同方式来处理。让我们用一个输入字段的例子来说明，这次我们允许用户在输入之后删除一个城市：
 
 ```javascript
-import React, { Component } from 'react'
-import axios from 'axios'
+import React, { Component } from 'react';
+import axios from 'axios';
 
-import InlineError from './InlineError'
+import InlineError from './InlineError';
 
 class SpecificErrorRequest extends Component {
   constructor(props) {
-    super(props)
+    super(props);
 
     this.state = {
       error: '',
       city: '',
-    }
+    };
 
-    this._callBackend = this._callBackend.bind(this)
-    this._changeCity = this._changeCity.bind(this)
+    this._callBackend = this._callBackend.bind(this);
+    this._changeCity = this._changeCity.bind(this);
   }
 
   render() {
     return (
       <div>
-        <input
-          type="text"
-          value={this.state.city}
-          style={{ marginRight: 15 }}
-          onChange={this._changeCity}
-        />
+        <input type="text" value={this.state.city} style={{ marginRight: 15 }} onChange={this._changeCity} />
         <button onClick={this._callBackend}>Delete you city</button>
         <InlineError error={this.props._callBackend} />
       </div>
-    )
+    );
   }
 
   _changeCity(e) {
     this.setState({
       error: '',
       city: e.target.value,
-    })
+    });
   }
 
   _validate() {
-    if (!this.state.city.length) throw new Error('Please provide a city name.')
+    if (!this.state.city.length) throw new Error('Please provide a city name.');
   }
 
   _callBackend() {
-    this.setState({ error: '' })
+    this.setState({ error: '' });
 
     try {
-      this._validate()
+      this._validate();
     } catch (err) {
-      return this.setState({ error: err.message })
+      return this.setState({ error: err.message });
     }
 
     axios
@@ -574,17 +554,17 @@ class SpecificErrorRequest extends Component {
       })
       .catch((err) => {
         if (err.response.data.error === 'GENERIC') {
-          this.props.setError(err.response.data.description)
+          this.props.setError(err.response.data.description);
         } else {
           this.setState({
             error: err.response.data.description,
-          })
+          });
         }
-      })
+      });
   }
 }
 
-export default SpecificErrorRequest
+export default SpecificErrorRequest;
 ```
 
 #### 使用错误代码进行错误国际化
