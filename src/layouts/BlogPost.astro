@@ -37,7 +37,7 @@ const { title, tldr, date, tags, heroImage } = Astro.props;
           }
         </div>
         <blockquote>{tldr}</blockquote>
-        {heroImage && <img src={heroImage} alt="hero image" />}
+        {heroImage && <img src={heroImage} alt={title} />}
         <hr />
         <slot />
       </article>
