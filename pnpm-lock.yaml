@@ -12,8 +12,8 @@ dependencies:
     specifier: ^3.0.7
     version: 3.0.7(@types/react-dom@18.2.17)(@types/react@18.2.41)(react-dom@18.2.0)(react@18.2.0)(vite@5.0.5)
   '@astrojs/rss':
-    specifier: ^4.0.0
-    version: 4.0.0
+    specifier: ^4.0.1
+    version: 4.0.1
   '@astrojs/sitemap':
     specifier: ^3.0.3
     version: 3.0.3
@@ -158,8 +158,8 @@ packages:
       - vite
     dev: false
 
-  /@astrojs/rss@4.0.0:
-    resolution: {integrity: sha512-Lu7xBVg2qe/+Ja3vJY9qprWDl5K2MjztQXekes4jCz/VcDrqRWLUiRQGLXOVqu/k9aORuj6yiU5hTcsiJb9zuA==}
+  /@astrojs/rss@4.0.1:
+    resolution: {integrity: sha512-fzXWsrAp17atO02OZJETM8e8McRz+dNWzMeO7ENb6xgod2nWj5mH/auPBFs1a9FzMUi1nOQmzSPHO1hxZZpkwQ==}
     dependencies:
       fast-xml-parser: 4.3.2
       kleur: 4.1.5
