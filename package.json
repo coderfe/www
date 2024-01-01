@@ -13,7 +13,7 @@
     "@astrojs/mdx": "^2.0.2",
     "@astrojs/react": "^3.0.8",
     "@astrojs/rss": "^4.0.1",
-    "@astrojs/sitemap": "^3.0.3",
+    "@astrojs/sitemap": "^3.0.4",
     "@astrojs/tailwind": "^5.0.4",
     "@sentry/astro": "^7.91.0",
     "@spotlightjs/astro": "^1.0.9",
