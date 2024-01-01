@@ -14,7 +14,7 @@
     "@astrojs/react": "^3.0.8",
     "@astrojs/rss": "^4.0.1",
     "@astrojs/sitemap": "^3.0.3",
-    "@astrojs/tailwind": "^5.0.4",
+    "@astrojs/tailwind": "^5.1.0",
     "@sentry/astro": "^7.91.0",
     "@spotlightjs/astro": "^1.0.9",
     "@types/react": "^18.2.45",
