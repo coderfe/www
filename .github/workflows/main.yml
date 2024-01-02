@@ -4,24 +4,23 @@ on: [push]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
-    - name: Install Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: '18.14.2'
-    - name: Install npm dependencies
-      run: npm install
-    - name: Run build task
-      run: npm run build
-    - name: Deploy to Server
-      uses: easingthemes/ssh-deploy@main
-      env:
+      - uses: actions/checkout@v3
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '21.5.0'
+      - name: Install npm dependencies
+        run: npm install
+      - name: Run build task
+        run: npm run build
+      - name: Deploy to Server
+        uses: easingthemes/ssh-deploy@main
+        env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-          SOURCE: "dist/"
+          SOURCE: 'dist/'
           REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
           REMOTE_USER: ${{ secrets.REMOTE_USER }}
           TARGET: ${{ secrets.REMOTE_TARGET }}

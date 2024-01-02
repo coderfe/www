@@ -10,5 +10,17 @@ import spotlightjs from '@spotlightjs/astro';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://coderfee.com',
-  integrations: [mdx(), sitemap(), tailwind(), react(), sentry(), spotlightjs()],
+  integrations: [
+    mdx(),
+    sitemap(),
+    tailwind(),
+    react(),
+    sentry({
+      sourceMapsUploadOptions: {
+        enabled: false,
+        telemetry: false,
+      },
+    }),
+    spotlightjs(),
+  ],
 });
