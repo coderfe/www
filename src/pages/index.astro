@@ -25,7 +25,7 @@ const posts = collection.sort(
       {
         posts.map((post) => (
           <section>
-            <div class="text-sm flex gap-4">
+            <div class="text-sm flex gap-4 h-4">
               <span class="flex items-center gap-1">
                 <Icon icon="tabler:calendar" client:load />
                 <FormattedDate date={post.data.date} />
