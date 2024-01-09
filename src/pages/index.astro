@@ -21,24 +21,24 @@ const posts = collection.sort(
   </head>
   <body>
     <Header />
-    <main class="py-4 space-y-8 max-w-prose mx-auto">
+    <main class="py-4 space-y-10 max-w-prose mx-auto">
       {
         posts.map((post) => (
           <section>
+            <div class="text-base font-bold mb-2 leading-relaxed text-primary/80 transition-all duration-300 hover:text-primary">
+              <a href={`/blog/${post.slug}`}>{post.data.title}</a>
+            </div>
             <div class="text-sm flex gap-4 h-4">
               <span class="flex items-center gap-1">
-                <Icon icon="tabler:calendar" client:load />
+                <Icon icon="tabler:calendar-time" className="relative -top-px" client:load />
                 <FormattedDate date={post.data.date} />
               </span>
               {post.data.tags && (
                 <span class="flex items-center gap-1">
-                  <Icon icon="tabler:tag" client:load />
+                  <Icon icon="tabler:hash" className="relative -top-px" client:load />
                   <span class="space-x-1" set:html={renderTags(post.data.tags)} />
                 </span>
               )}
-            </div>
-            <div class="text-base font-bold mt-1 leading-relaxed underline underline-offset-4 decoration-black decoration-2 transition-all duration-300 hover:text-primary hover:font-bold">
-              <a href={`/blog/${post.slug}`}>{post.data.title}</a>
             </div>
           </section>
         ))

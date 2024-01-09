@@ -24,13 +24,13 @@ const { title, tldr, date, tags, heroImage } = Astro.props;
         <h1>{title}</h1>
         <div class="flex gap-8">
           <span class="flex items-center gap-1">
-            <Icon icon="tabler:calendar" client:load />
+            <Icon icon="tabler:calendar-time" client:load />
             <FormattedDate date={date} />
           </span>
           {
             tags && (
               <span class="flex items-center gap-1">
-                <Icon icon="tabler:tag" client:load />
+                <Icon icon="tabler:hash" client:load />
                 <span class="space-x-1" set:html={renderTags(tags)} />
               </span>
             )
