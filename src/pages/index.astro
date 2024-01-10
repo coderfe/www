@@ -1,9 +1,9 @@
 ---
 import { getCollection } from 'astro:content';
-import BaseHead from '../components/BaseHead.astro';
-import Footer from '../components/Footer.astro';
-import FormattedDate from '../components/FormattedDate.astro';
-import Header from '../components/Header.astro';
+import BaseHead from '../components/header/BaseHead.astro';
+import Footer from '../components/footer/Footer.astro';
+import FormatTime from '../components/FormateTime.astro';
+import Header from '../components/header/Header.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 import { renderTags } from '../helper';
 import { Icon } from '@iconify/react';
@@ -25,13 +25,13 @@ const posts = collection.sort(
       {
         posts.map((post) => (
           <section>
-            <div class="text-base font-bold mb-2 leading-relaxed text-primary/80 transition-all duration-300 hover:text-primary">
+            <div class="text-base font-bold mb-2 leading-relaxed text-black/80 transition-all duration-300 hover:text-black">
               <a href={`/blog/${post.slug}`}>{post.data.title}</a>
             </div>
             <div class="text-sm flex gap-4 h-4">
               <span class="flex items-center gap-1">
                 <Icon icon="tabler:calendar-time" className="relative -top-px" client:load />
-                <FormattedDate date={post.data.date} />
+                <FormatTime date={post.data.date} />
               </span>
               {post.data.tags && (
                 <span class="flex items-center gap-1">

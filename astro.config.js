@@ -13,9 +13,7 @@ export default defineConfig({
   integrations: [
     mdx(),
     sitemap(),
-    tailwind({
-      applyBaseStyles: false,
-    }),
+    tailwind(),
     react(),
     sentry({
       sourceMapsUploadOptions: {

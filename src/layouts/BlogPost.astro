@@ -1,10 +1,10 @@
 ---
 import { Icon } from '@iconify/react';
 import type { CollectionEntry } from 'astro:content';
-import BaseHead from '../components/BaseHead.astro';
-import Footer from '../components/Footer.astro';
-import FormattedDate from '../components/FormattedDate.astro';
-import Header from '../components/Header.astro';
+import BaseHead from '../components/header/BaseHead.astro';
+import Footer from '../components/footer/Footer.astro';
+import FormatTime from '../components/FormateTime.astro';
+import Header from '../components/header/Header.astro';
 import { renderTags } from '../helper';
 
 type Props = CollectionEntry<'blog'>['data'];
@@ -17,31 +17,29 @@ const { title, tldr, date, tags, heroImage } = Astro.props;
     <BaseHead title={title} description={tldr} />
   </head>
 
-  <body>
-    <Header />
-    <main class="mx-auto py-4 prose">
-      <article>
-        <h1>{title}</h1>
-        <div class="flex gap-8">
-          <span class="flex items-center gap-1">
-            <Icon icon="tabler:calendar-time" client:load />
-            <FormattedDate date={date} />
-          </span>
-          {
-            tags && (
-              <span class="flex items-center gap-1">
-                <Icon icon="tabler:hash" client:load />
-                <span class="space-x-1" set:html={renderTags(tags)} />
-              </span>
-            )
-          }
-        </div>
-        <blockquote>{tldr}</blockquote>
-        {heroImage && <img src={heroImage} alt={title} />}
-        <hr />
-        <slot />
-      </article>
-    </main>
-    <Footer />
-  </body>
+  <Header />
+  <main class="mx-auto py-4 prose">
+    <article>
+      <h1>{title}</h1>
+      <div class="flex gap-8">
+        <span class="flex items-center gap-1">
+          <Icon icon="tabler:calendar-time" client:load />
+          <FormatTime date={date} />
+        </span>
+        {
+          tags && (
+            <span class="flex items-center gap-1">
+              <Icon icon="tabler:hash" client:load />
+              <span class="space-x-1" set:html={renderTags(tags)} />
+            </span>
+          )
+        }
+      </div>
+      <blockquote>{tldr}</blockquote>
+      {heroImage && <img src={heroImage} alt={title} />}
+      <hr />
+      <slot />
+    </article>
+  </main>
+  <Footer />
 </html>
