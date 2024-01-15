@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   '@astrojs/mdx':
-    specifier: ^2.0.3
-    version: 2.0.3(astro@4.1.1)
+    specifier: ^2.0.4
+    version: 2.0.4(astro@4.1.1)
   '@astrojs/react':
     specifier: ^3.0.9
     version: 3.0.9(@types/react-dom@18.2.18)(@types/react@18.2.47)(react-dom@18.2.0)(react@18.2.0)(vite@5.0.11)
@@ -111,8 +111,8 @@ packages:
       - supports-color
     dev: false
 
-  /@astrojs/mdx@2.0.3(astro@4.1.1):
-    resolution: {integrity: sha512-wFjQX5CihU5B4UAQNwc2R48ph0flpc6/yvDCFANE0agtgI2+BaVcAjuW0EhGOQCZ65dQDqnFKE0lvGs7EADYpg==}
+  /@astrojs/mdx@2.0.4(astro@4.1.1):
+    resolution: {integrity: sha512-8q8p7AfiGa6CEKUEEWDLZ7HsfonmZlzx8HITZp8eJnkh+n6mmD9vQTpuFNjJc3hiiMEEKLGTIjOUGAU4aGBkrA==}
     engines: {node: '>=18.14.1'}
     peerDependencies:
       astro: ^4.0.0
