@@ -36,8 +36,8 @@ dependencies:
     specifier: ^4.1.1
     version: 4.1.1
   daisyui:
-    specifier: ^4.5.0
-    version: 4.5.0(postcss@8.4.33)
+    specifier: ^4.6.0
+    version: 4.6.0(postcss@8.4.33)
   lxgw-wenkai-lite-webfont:
     specifier: ^1.7.0
     version: 1.7.0
@@ -1894,8 +1894,8 @@ packages:
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
     dev: false
 
-  /daisyui@4.5.0(postcss@8.4.33):
-    resolution: {integrity: sha512-RWQCPQ0vBUaxGy768O7Ku8SRQgwdoto1lDzuKeVOcMtYghuSbUY7NoPoMK+k8JH4s1J02OvpNAgtB9MeKpZIwg==}
+  /daisyui@4.6.0(postcss@8.4.33):
+    resolution: {integrity: sha512-B5ZB/sczXpp4LMdo/SZrtYY/U2hq+Vr9I15QawuWZ0VwgtSAbuZpAZUftKVryEsPuv3BM0yVlBED0nAmtis/dw==}
     engines: {node: '>=16.9.0'}
     dependencies:
       css-selector-tokenizer: 0.8.0
