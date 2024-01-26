@@ -4,7 +4,7 @@ export default function Timeline({ profiles }) {
       <div className="w-full overflow-auto">
         <ul className="timeline my-0 pl-0">
           {profiles.map((item, index) => (
-            <li class="m-0 p-0" key={item.year}>
+            <li className="m-0 p-0" key={item.year}>
               {index > 0 && <hr />}
               <div className="timeline-start">{item.year}</div>
               <TimelineMiddle />
