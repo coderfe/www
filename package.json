@@ -12,7 +12,7 @@
   "dependencies": {
     "@astrojs/mdx": "^2.0.6",
     "@astrojs/react": "^3.0.9",
-    "@astrojs/rss": "^4.0.3",
+    "@astrojs/rss": "^4.0.4",
     "@astrojs/sitemap": "^3.0.5",
     "@astrojs/tailwind": "^5.1.0",
     "@sentry/astro": "^7.94.1",
