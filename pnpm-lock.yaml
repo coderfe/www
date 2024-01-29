@@ -7,7 +7,7 @@ settings:
 dependencies:
   '@astrojs/mdx':
     specifier: ^2.0.6
-    version: 2.0.6(astro@4.2.3)
+    version: 2.0.6(astro@4.2.6)
   '@astrojs/react':
     specifier: ^3.0.9
     version: 3.0.9(@types/react-dom@18.2.18)(@types/react@18.2.48)(react-dom@18.2.0)(react@18.2.0)(vite@5.0.12)
@@ -19,13 +19,13 @@ dependencies:
     version: 3.0.5
   '@astrojs/tailwind':
     specifier: ^5.1.0
-    version: 5.1.0(astro@4.2.3)(tailwindcss@3.4.1)
+    version: 5.1.0(astro@4.2.6)(tailwindcss@3.4.1)
   '@sentry/astro':
     specifier: ^7.94.1
-    version: 7.94.1(astro@4.2.3)
+    version: 7.94.1(astro@4.2.6)
   '@spotlightjs/astro':
     specifier: ^1.0.10
-    version: 1.0.10(@sentry/astro@7.94.1)(astro@4.2.3)
+    version: 1.0.10(@sentry/astro@7.94.1)(astro@4.2.6)
   '@types/react':
     specifier: ^18.2.48
     version: 18.2.48
@@ -33,8 +33,8 @@ dependencies:
     specifier: ^18.2.18
     version: 18.2.18
   astro:
-    specifier: ^4.2.3
-    version: 4.2.3
+    specifier: ^4.2.6
+    version: 4.2.6
   daisyui:
     specifier: ^4.6.0
     version: 4.6.0(postcss@8.4.33)
@@ -111,7 +111,7 @@ packages:
       - supports-color
     dev: false
 
-  /@astrojs/mdx@2.0.6(astro@4.2.3):
+  /@astrojs/mdx@2.0.6(astro@4.2.6):
     resolution: {integrity: sha512-PY6FYN5TN8dsRFSzcPIt5ofJ/w+v+5GtUUyDYbznu8zmFWlL9TkTLJ9U1zaQ3s2Qh6r1cAeLdEYjW/hW+vZzlw==}
     engines: {node: '>=18.14.1'}
     peerDependencies:
@@ -120,7 +120,7 @@ packages:
       '@astrojs/markdown-remark': 4.2.0
       '@mdx-js/mdx': 3.0.0
       acorn: 8.11.3
-      astro: 4.2.3
+      astro: 4.2.6
       es-module-lexer: 1.4.1
       estree-util-visit: 2.0.0
       github-slugger: 2.0.0
@@ -178,13 +178,13 @@ packages:
       zod: 3.22.4
     dev: false
 
-  /@astrojs/tailwind@5.1.0(astro@4.2.3)(tailwindcss@3.4.1):
+  /@astrojs/tailwind@5.1.0(astro@4.2.6)(tailwindcss@3.4.1):
     resolution: {integrity: sha512-BJoCDKuWhU9FT2qYg+fr6Nfb3qP4ShtyjXGHKA/4mHN94z7BGcmauQK23iy+YH5qWvTnhqkd6mQPQ1yTZTe9Ig==}
     peerDependencies:
       astro: ^3.0.0 || ^4.0.0
       tailwindcss: ^3.0.24
     dependencies:
-      astro: 4.2.3
+      astro: 4.2.6
       autoprefixer: 10.4.17(postcss@8.4.33)
       postcss: 8.4.33
       postcss-load-config: 4.0.2(postcss@8.4.33)
@@ -896,7 +896,7 @@ packages:
       '@sentry/utils': 7.94.1
     dev: false
 
-  /@sentry/astro@7.94.1(astro@4.2.3):
+  /@sentry/astro@7.94.1(astro@4.2.6):
     resolution: {integrity: sha512-/ps41ywlxLd0wThMckcW9Q5lTyF00HBAiiTpIkDCLzPG/k0SbE7atb9hp6GQk/3UpWamyeJNRbKQF4DFAim1AQ==}
     engines: {node: '>=18.14.1'}
     peerDependencies:
@@ -908,7 +908,7 @@ packages:
       '@sentry/types': 7.94.1
       '@sentry/utils': 7.94.1
       '@sentry/vite-plugin': 2.10.3
-      astro: 4.2.3
+      astro: 4.2.6
     transitivePeerDependencies:
       - encoding
       - supports-color
@@ -1081,16 +1081,16 @@ packages:
       - supports-color
     dev: false
 
-  /@spotlightjs/astro@1.0.10(@sentry/astro@7.94.1)(astro@4.2.3):
+  /@spotlightjs/astro@1.0.10(@sentry/astro@7.94.1)(astro@4.2.6):
     resolution: {integrity: sha512-1b4sg8Ko3FzKGUU46B731dci9BsoT9UHLt2RgyYT5+NkvxpJP6X0TBnAAb5q6okI4o0B3BTaMBnPCuynOwoTSg==}
     peerDependencies:
       '@sentry/astro': '>=7.84.0'
       astro: '>=3.4.0 || >=4.0.0-beta'
     dependencies:
-      '@sentry/astro': 7.94.1(astro@4.2.3)
+      '@sentry/astro': 7.94.1(astro@4.2.6)
       '@spotlightjs/overlay': 1.3.0
       '@spotlightjs/sidecar': 1.3.4
-      astro: 4.2.3
+      astro: 4.2.6
       source-map: 0.7.4
     dev: false
 
@@ -1344,8 +1344,8 @@ packages:
     hasBin: true
     dev: false
 
-  /astro@4.2.3:
-    resolution: {integrity: sha512-6bfSogmcwMdaTRAxuhJ7aISGin/T3ovI/69JWPRYOHBkPZxA/EfsNQOI2TiRHFJSF9XtoMnFlgvT+iYapkhOwg==}
+  /astro@4.2.6:
+    resolution: {integrity: sha512-k5i8pEI2r45JTkoE0I4JyhOH/dZFpjUA4AONbRd9Gr1LtnGOhKHDftiYOrRLUGx91q7BzoW3DOk+h4yZM4yC3g==}
     engines: {node: '>=18.14.1', npm: '>=6.14.0'}
     hasBin: true
     dependencies:
@@ -1369,6 +1369,7 @@ packages:
       clsx: 2.1.0
       common-ancestor-path: 1.0.1
       cookie: 0.6.0
+      cssesc: 3.0.0
       debug: 4.3.4
       deterministic-object-hash: 2.0.2
       devalue: 4.3.2
