@@ -10,27 +10,27 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/mdx": "^2.0.6",
-    "@astrojs/react": "^3.0.9",
-    "@astrojs/rss": "^4.0.3",
-    "@astrojs/sitemap": "^3.0.5",
+    "@astrojs/mdx": "^2.1.1",
+    "@astrojs/react": "^3.0.10",
+    "@astrojs/rss": "^4.0.5",
+    "@astrojs/sitemap": "^3.1.1",
     "@astrojs/tailwind": "^5.1.0",
-    "@sentry/astro": "^7.94.1",
-    "@spotlightjs/astro": "^1.0.10",
-    "@types/react": "^18.2.48",
-    "@types/react-dom": "^18.2.18",
-    "astro": "^4.2.3",
-    "daisyui": "^4.6.0",
+    "@sentry/astro": "^7.104.0",
+    "@spotlightjs/astro": "^1.0.16",
+    "@types/react": "^18.2.61",
+    "@types/react-dom": "^18.2.19",
+    "astro": "^4.4.8",
+    "daisyui": "^4.7.2",
     "lxgw-wenkai-lite-webfont": "^1.7.0",
     "markdown-it": "^14.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "sanitize-html": "^2.11.0",
+    "sanitize-html": "^2.12.1",
     "tailwindcss": "^3.4.1"
   },
   "devDependencies": {
     "@iconify/react": "^4.1.1",
     "@tailwindcss/typography": "^0.5.10",
-    "prettier": "^3.2.4"
+    "prettier": "^3.2.5"
   }
 }

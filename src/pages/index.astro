@@ -9,9 +9,9 @@ import { renderTags } from '../helper';
 import { Icon } from '@iconify/react';
 
 const collection = await getCollection('blog');
-const posts = collection.sort(
-  ({ data: { date: dateA } }, { data: { date: dateB } }) => dateB.valueOf() - dateA.valueOf(),
-);
+const posts = collection
+  .filter(({ data: { draft = false } }) => !draft)
+  .sort(({ data: { date: dateA } }, { data: { date: dateB } }) => dateB.valueOf() - dateA.valueOf());
 ---
 
 <!doctype html>
