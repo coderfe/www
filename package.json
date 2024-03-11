@@ -19,7 +19,7 @@
     "@spotlightjs/astro": "^1.0.16",
     "@types/react": "^18.2.61",
     "@types/react-dom": "^18.2.19",
-    "astro": "^4.4.8",
+    "astro": "^4.5.0",
     "daisyui": "^4.7.2",
     "lxgw-wenkai-lite-webfont": "^1.7.0",
     "markdown-it": "^14.0.0",
