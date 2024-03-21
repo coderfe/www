@@ -1,5 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
 import BaseHead from '../components/header/BaseHead.astro';
 import Footer from '../components/footer/Footer.astro';
 import FormatTime from '../components/FormateTime.astro';
@@ -7,6 +8,7 @@ import Header from '../components/header/Header.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 import { renderTags } from '../helper';
 import { Icon } from '@iconify/react';
+import defaultCover from '@/assets/default-cover.png';
 
 const collection = await getCollection('blog');
 const posts = collection
@@ -21,26 +23,41 @@ const posts = collection
   </head>
   <body>
     <Header />
-    <main class="py-4 space-y-10 max-w-prose mx-auto">
+    <main class="max-w-5xl grid grid-cols-3 gap-6 py-4 mx-auto">
       {
         posts.map((post) => (
-          <section>
-            <div class="text-base font-bold mb-2 leading-relaxed text-black/80 transition-all duration-300 hover:text-black">
-              <a href={`/blog/${post.slug}`}>{post.data.title}</a>
+          <a
+            href={`/blog/${post.slug}`}
+            class="flex flex-col rounded-xl overflow-hidden border border-gray-200 transition-all hover:bg-orange-50"
+          >
+            <div class="h-40 overflow-hidden">
+              <Image
+                class="max-w-full transition-all duration-500 hover:scale-105"
+                src={post.data.cover || defaultCover}
+                alt={post.data.title}
+              />
             </div>
-            <div class="text-sm flex gap-4 h-4">
-              <span class="flex items-center gap-1">
-                <Icon icon="tabler:calendar-time" className="relative -top-px" client:load />
-                <FormatTime date={post.data.date} />
-              </span>
-              {post.data.tags && (
+            <div class="p-4">
+              <div class="line-clamp-3 text-base font-bold mb-2 leading-relaxed text-black/80 transition-all duration-300 hover:text-black">
+                <p class="mb-2">{post.data.title}</p>
+                <p class="line-clamp-1 font-normal text-black/60 text-sm">{post.data.tldr}</p>
+              </div>
+              <div class="text-black/60 text-sm flex gap-4 h-4 mb-2">
+                {post.data.tags && (
+                  <span class="flex items-center gap-1">
+                    <Icon icon="tabler:hash" className="relative-top-px" client:load />
+                    <span class="space-x-1" set:html={renderTags(post.data.tags)} />
+                  </span>
+                )}
+              </div>
+              <div class="text-black/60 text-sm flex gap-4 h-4">
                 <span class="flex items-center gap-1">
-                  <Icon icon="tabler:hash" className="relative -top-px" client:load />
-                  <span class="space-x-1" set:html={renderTags(post.data.tags)} />
+                  <Icon icon="tabler:calendar-time" className="relative-top-px" client:load />
+                  <FormatTime date={post.data.date} />
                 </span>
-              )}
+              </div>
             </div>
-          </section>
+          </a>
         ))
       }
     </main>
