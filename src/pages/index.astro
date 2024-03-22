@@ -21,14 +21,20 @@ const posts = collection
   <head>
     <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
   </head>
-  <body>
+  <body
+    style="background-color: #fff;
+    opacity: 1;
+    background-image:  radial-gradient(#444cf7 0.5px, transparent 0.5px), radial-gradient(#444cf7 0.5px, #fff 0.5px);
+    background-size: 20px 20px;
+    background-position: 0 0,10px 10px;"
+  >
     <Header />
-    <main class="max-w-5xl grid grid-cols-3 gap-6 py-4 mx-auto">
+    <main class="max-w-5xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 py-4 mx-auto">
       {
         posts.map((post) => (
           <a
             href={`/blog/${post.slug}`}
-            class="flex flex-col rounded-xl overflow-hidden border border-gray-200 transition-all hover:bg-orange-50"
+            class="flex flex-col rounded-xl overflow-hidden border border-gray-200 bg-white transition-all hover:bg-orange-50"
           >
             <div class="h-40 overflow-hidden">
               <Image
