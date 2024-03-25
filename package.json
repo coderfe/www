@@ -22,7 +22,7 @@
     "astro": "^4.5.5",
     "daisyui": "^4.7.3",
     "lxgw-wenkai-lite-webfont": "^1.7.0",
-    "markdown-it": "^14.0.0",
+    "markdown-it": "^14.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "sanitize-html": "^2.12.1",
