@@ -24,8 +24,8 @@ dependencies:
     specifier: ^7.107.0
     version: 7.107.0(astro@4.5.5)
   '@spotlightjs/astro':
-    specifier: ^1.0.17
-    version: 1.0.17(@sentry/astro@7.107.0)(astro@4.5.5)
+    specifier: ^1.0.19
+    version: 1.0.19(@sentry/astro@7.107.0)(astro@4.5.5)
   '@types/react':
     specifier: ^18.2.66
     version: 18.2.66
@@ -1294,21 +1294,21 @@ packages:
     resolution: {integrity: sha512-OlFvx+nyr5C8zpcMBnSGir0YPD6K11uYhouqhNmm1qLiis4GA7SsGtu07r9gKS9omks8RtQqHrJL4S+lqWK01A==}
     dev: false
 
-  /@spotlightjs/astro@1.0.17(@sentry/astro@7.107.0)(astro@4.5.5):
-    resolution: {integrity: sha512-MD8nYUuaA3gz2xw6LNfz76cgBqwPPsJPgSoSk4VI6zn4Y5c/tlGtUvEYiCwrN0my60X3KZooQH72ZFRha4Msuw==}
+  /@spotlightjs/astro@1.0.19(@sentry/astro@7.107.0)(astro@4.5.5):
+    resolution: {integrity: sha512-7b2UIhJGBCoh5+ay68/8JkoD5sSAYpUu7oc2i0qtXLE9znSSD+H1EiQsMjUouYwC73h8lCqgYQSvo/jHvFwqxw==}
     peerDependencies:
       '@sentry/astro': '>=7.84.0'
       astro: '>=3.4.0 || >=4.0.0-beta'
     dependencies:
       '@sentry/astro': 7.107.0(astro@4.5.5)
-      '@spotlightjs/overlay': 1.8.0
+      '@spotlightjs/overlay': 1.8.2
       '@spotlightjs/sidecar': 1.4.0
       astro: 4.5.5
       source-map: 0.7.4
     dev: false
 
-  /@spotlightjs/overlay@1.8.0:
-    resolution: {integrity: sha512-yRcxp7Je4OXyr/JNJp5TAixu7gV9Hq99MQ94bMvoLv+WtS1ngd1lBmxMwAWKGp5TFUXCidNzKIjc11T4nCQ6FQ==}
+  /@spotlightjs/overlay@1.8.2:
+    resolution: {integrity: sha512-g3pzaJFKK67pBIl72qSNoFJIfP/dmdFoSPWZZQW6MKAdU7IOY5yf3BB52xEc6iSfeLGG/KpYNThefpobX3hb7Q==}
     dev: false
 
   /@spotlightjs/sidecar@1.4.0:
