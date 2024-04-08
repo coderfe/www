@@ -2,7 +2,7 @@ import mdx from '@astrojs/mdx';
 import react from '@astrojs/react';
 import sitemap from '@astrojs/sitemap';
 import tailwind from '@astrojs/tailwind';
-import { defineConfig } from 'astro/config';
+import { defineConfig, squooshImageService } from 'astro/config';
 
 import sentry from '@sentry/astro';
 import spotlightjs from '@spotlightjs/astro';
@@ -10,6 +10,9 @@ import spotlightjs from '@spotlightjs/astro';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://coderfee.com',
+  image: {
+    service: squooshImageService(),
+  },
   markdown: {
     syntaxHighlight: 'shiki',
     gfm: true,
