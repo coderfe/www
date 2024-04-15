@@ -21,12 +21,10 @@
     "@types/react-dom": "^18.2.25",
     "astro": "^4.6.0",
     "daisyui": "^4.10.1",
-    "lxgw-wenkai-lite-webfont": "^1.7.0",
     "markdown-it": "^14.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "sanitize-html": "^2.13.0",
-    "sharp": "^0.33.3",
     "tailwindcss": "^3.4.3"
   },
   "devDependencies": {
