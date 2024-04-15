@@ -38,9 +38,6 @@ dependencies:
   daisyui:
     specifier: ^4.10.1
     version: 4.10.1(postcss@8.4.38)
-  lxgw-wenkai-lite-webfont:
-    specifier: ^1.7.0
-    version: 1.7.0
   markdown-it:
     specifier: ^14.1.0
     version: 14.1.0
@@ -2982,10 +2979,6 @@ packages:
     engines: {node: '>=10'}
     dependencies:
       yallist: 4.0.0
-    dev: false
-
-  /lxgw-wenkai-lite-webfont@1.7.0:
-    resolution: {integrity: sha512-VcQYNRpdXAxaZsJ18rfT1mmAreGqkIFNZ/9pdVLbT2Tkb+2lLWJDXq4zYxMEk9AcecSnxO31R2LHh5ieLlxjRg==}
     dev: false
 
   /magic-string@0.30.8:
