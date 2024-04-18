@@ -7,7 +7,7 @@ settings:
 dependencies:
   '@astrojs/mdx':
     specifier: ^2.3.0
-    version: 2.3.0(astro@4.6.1)
+    version: 2.3.0(astro@4.6.2)
   '@astrojs/react':
     specifier: ^3.3.0
     version: 3.3.0(@types/react-dom@18.2.25)(@types/react@18.2.78)(react-dom@18.2.0)(react@18.2.0)(vite@5.2.8)
@@ -19,13 +19,13 @@ dependencies:
     version: 3.1.2
   '@astrojs/tailwind':
     specifier: ^5.1.0
-    version: 5.1.0(astro@4.6.1)(tailwindcss@3.4.3)
+    version: 5.1.0(astro@4.6.2)(tailwindcss@3.4.3)
   '@sentry/astro':
     specifier: ^7.110.0
-    version: 7.110.0(astro@4.6.1)
+    version: 7.110.0(astro@4.6.2)
   '@spotlightjs/astro':
     specifier: ^1.0.20
-    version: 1.0.20(@sentry/astro@7.110.0)(astro@4.6.1)
+    version: 1.0.20(@sentry/astro@7.110.0)(astro@4.6.2)
   '@types/react':
     specifier: ^18.2.78
     version: 18.2.78
@@ -33,8 +33,8 @@ dependencies:
     specifier: ^18.2.25
     version: 18.2.25
   astro:
-    specifier: ^4.6.1
-    version: 4.6.1
+    specifier: ^4.6.2
+    version: 4.6.2
   daisyui:
     specifier: ^4.10.1
     version: 4.10.1(postcss@8.4.38)
@@ -112,7 +112,7 @@ packages:
       - supports-color
     dev: false
 
-  /@astrojs/mdx@2.3.0(astro@4.6.1):
+  /@astrojs/mdx@2.3.0(astro@4.6.2):
     resolution: {integrity: sha512-8Lqr3kK1R6B3rukM71GSYTc4BHm5/j+UVdp7UEa18WHW/EVstmhKupabGUHj2Em2L/5AQdFMNmOBVkKzzcPO4g==}
     engines: {node: ^18.17.1 || ^20.3.0 || >=21.0.0}
     peerDependencies:
@@ -121,7 +121,7 @@ packages:
       '@astrojs/markdown-remark': 5.1.0
       '@mdx-js/mdx': 3.0.1
       acorn: 8.11.3
-      astro: 4.6.1
+      astro: 4.6.2
       es-module-lexer: 1.5.0
       estree-util-visit: 2.0.0
       github-slugger: 2.0.0
@@ -179,13 +179,13 @@ packages:
       zod: 3.22.4
     dev: false
 
-  /@astrojs/tailwind@5.1.0(astro@4.6.1)(tailwindcss@3.4.3):
+  /@astrojs/tailwind@5.1.0(astro@4.6.2)(tailwindcss@3.4.3):
     resolution: {integrity: sha512-BJoCDKuWhU9FT2qYg+fr6Nfb3qP4ShtyjXGHKA/4mHN94z7BGcmauQK23iy+YH5qWvTnhqkd6mQPQ1yTZTe9Ig==}
     peerDependencies:
       astro: ^3.0.0 || ^4.0.0
       tailwindcss: ^3.0.24
     dependencies:
-      astro: 4.6.1
+      astro: 4.6.2
       autoprefixer: 10.4.19(postcss@8.4.38)
       postcss: 8.4.38
       postcss-load-config: 4.0.2(postcss@8.4.38)
@@ -1122,7 +1122,7 @@ packages:
       '@sentry/utils': 7.110.0
     dev: false
 
-  /@sentry/astro@7.110.0(astro@4.6.1):
+  /@sentry/astro@7.110.0(astro@4.6.2):
     resolution: {integrity: sha512-q+AAUmjbGzsyKQim5z2IxAmoii5XnBPDufx2/q2/okFIAKsvg8KXssomhCDvilsAv3w/jo86eAoAToymG1WTyg==}
     engines: {node: '>=18.14.1'}
     peerDependencies:
@@ -1134,7 +1134,7 @@ packages:
       '@sentry/types': 7.110.0
       '@sentry/utils': 7.110.0
       '@sentry/vite-plugin': 2.16.1
-      astro: 4.6.1
+      astro: 4.6.2
     transitivePeerDependencies:
       - encoding
       - supports-color
@@ -1316,16 +1316,16 @@ packages:
     resolution: {integrity: sha512-7fedsBfuILDTBmrYZNFI8B6ATTxhQAasUHllHmjvSZPnoq4bULWoTpHwmuQvZ8Aq03/tAa2IGo6RXqWtHdWaCA==}
     dev: false
 
-  /@spotlightjs/astro@1.0.20(@sentry/astro@7.110.0)(astro@4.6.1):
+  /@spotlightjs/astro@1.0.20(@sentry/astro@7.110.0)(astro@4.6.2):
     resolution: {integrity: sha512-3j4GqodpdaNPcsP2KbQylg2dF2nlRLe1z8UH/TgWx1MZJM16V2WP474nHUeP54kVmBaFwaJmF9OCkCMBqfKYfw==}
     peerDependencies:
       '@sentry/astro': '>=7.84.0'
       astro: '>=3.4.0 || >=4.0.0-beta'
     dependencies:
-      '@sentry/astro': 7.110.0(astro@4.6.1)
+      '@sentry/astro': 7.110.0(astro@4.6.2)
       '@spotlightjs/overlay': 1.8.3
       '@spotlightjs/sidecar': 1.4.0
-      astro: 4.6.1
+      astro: 4.6.2
       source-map: 0.7.4
     dev: false
 
@@ -1383,6 +1383,10 @@ packages:
     resolution: {integrity: sha512-WXCyOcRtH37HAUkpXhUduaxdm82b4GSlyTqajXviN4EfiuPgNYR109xMCKvpl6zPIpua0DGlMEDCq+g8EdoheQ==}
     dependencies:
       '@babel/types': 7.24.0
+    dev: false
+
+  /@types/cookie@0.5.4:
+    resolution: {integrity: sha512-7z/eR6O859gyWIAjuvBWFzNURmf2oPBmJlfVWkwehU5nzIyjwBsTh7WMmEEV4JFnHuQ3ex4oyTvfKzcyJVDBNA==}
     dev: false
 
   /@types/debug@4.1.12:
@@ -1574,8 +1578,8 @@ packages:
     hasBin: true
     dev: false
 
-  /astro@4.6.1:
-    resolution: {integrity: sha512-gcL22NEhuRi4wu9/x5Kn2eJf7nT6GeU5BxdN6AHbUnX6UzEDIWtpgHs5lBIZYExKbHKN9PjEGXWQzQtFwLU+5g==}
+  /astro@4.6.2:
+    resolution: {integrity: sha512-Kl+Wd7MJMQFnI3+V0JxF4HPbs8M67eltqQgtztReOwDLSl0VnOd39rM61W/3LEh10FZ0F13xrDgtdgfXzuLVbg==}
     engines: {node: ^18.17.1 || ^20.3.0 || >=21.0.0, npm: '>=9.6.5', pnpm: '>=7.1.0'}
     hasBin: true
     dependencies:
@@ -1590,6 +1594,7 @@ packages:
       '@babel/traverse': 7.24.1
       '@babel/types': 7.24.0
       '@types/babel__core': 7.20.5
+      '@types/cookie': 0.5.4
       acorn: 8.11.3
       aria-query: 5.3.0
       axobject-query: 4.0.0
