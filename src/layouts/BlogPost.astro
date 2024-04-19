@@ -18,7 +18,7 @@ const { title, tldr, date, tags, heroImage } = Astro.props;
   </head>
 
   <Header />
-  <main class="mx-auto py-4 prose">
+  <main transition:animate="slide" class="mx-auto py-4 prose">
     <article>
       <h1>{title}</h1>
       <div class="flex gap-8">
