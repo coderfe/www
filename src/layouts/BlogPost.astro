@@ -17,29 +17,31 @@ const { title, tldr, date, tags, heroImage } = Astro.props;
     <BaseHead title={title} description={tldr} />
   </head>
 
-  <Header />
-  <main transition:animate="slide" class="mx-auto py-4 prose">
-    <article>
-      <h1>{title}</h1>
-      <div class="flex gap-8">
-        <span class="flex items-center gap-1">
-          <Icon icon="tabler:calendar-time" client:load />
-          <FormatTime date={date} />
-        </span>
-        {
-          tags && (
-            <span class="flex items-center gap-1">
-              <Icon icon="tabler:hash" client:load />
-              <span class="space-x-1" set:html={renderTags(tags)} />
-            </span>
-          )
-        }
-      </div>
-      <blockquote>{tldr}</blockquote>
-      {heroImage && <img src={heroImage} alt={title} />}
-      <hr class="my-4" />
-      <slot />
-    </article>
-  </main>
-  <Footer />
+  <body>
+    <Header />
+    <main transition:animate="slide" class="mx-auto py-4 prose">
+      <article>
+        <h1>{title}</h1>
+        <div class="flex gap-8">
+          <span class="flex items-center gap-1">
+            <Icon icon="tabler:calendar-time" client:load />
+            <FormatTime date={date} />
+          </span>
+          {
+            tags && (
+              <span class="flex items-center gap-1">
+                <Icon icon="tabler:hash" client:load />
+                <span class="space-x-1" set:html={renderTags(tags)} />
+              </span>
+            )
+          }
+        </div>
+        <blockquote>{tldr}</blockquote>
+        {heroImage && <img src={heroImage} alt={title} />}
+        <hr class="my-4" />
+        <slot />
+      </article>
+    </main>
+    <Footer />
+  </body>
 </html>
