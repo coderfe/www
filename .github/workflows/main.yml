@@ -21,6 +21,9 @@ jobs:
         run: pnpm install
       - name: Run build task
         run: pnpm run build
+        env:
+          PUBLIC_SUPABASE_URL: ${{ secrets.PUBLIC_SUPABASE_URL }}
+          PUBLIC_SUPABASE_KEY: ${{ secrets.PUBLIC_SUPABASE_KEY }}
       - name: Deploy to Server
         uses: easingthemes/ssh-deploy@main
         env:
