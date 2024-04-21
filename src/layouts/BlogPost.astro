@@ -10,13 +10,13 @@ import Tags from '@/components/tags/Tags.astro';
 
 type Props = CollectionEntry<'blog'>['data'];
 
-const { title, tldr, date, tags = [], heroImage } = Astro.props;
+const { title, tldr, date, tags = [], cover, heroImage } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="zh-Hans">
   <head>
-    <BaseHead title={title} description={tldr} />
+    <BaseHead title={title} description={tldr} image={cover?.src} />
   </head>
 
   <body class="bg-white dark:bg-slate-900">
