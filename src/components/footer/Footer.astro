@@ -1,17 +1,37 @@
 ---
 import { Visitors } from '../visitors';
-import { Astro } from 'astro/env';
 const today = new Date();
-const pathname = Astro.url.pathname
+const pathname = Astro.url.pathname;
+import { Icon } from '@iconify/react';
 ---
 
-<footer class="p-4 text-sm text-center">
+<footer
+  class="flex flex-col gap-4 justify-between items-center py-4 px-8 text-sm text-center font-mono bg-slate-700 text-white/80"
+>
+  <ul class="flex gap-4">
+    <li>
+      <a href="https://github.com/coderfe" target="_blank">
+        <Icon icon="tabler:brand-github" fontSize={24} client:load />
+      </a>
+    </li>
+    <li>
+      <a href="https://twitter.com/coderfee" target="_blank">
+        <Icon icon="tabler:brand-twitter" fontSize={24} client:load />
+      </a>
+    </li>
+    <li>
+      <a href="/rss.xml" target="_blank">
+        <Icon icon="tabler:rss" fontSize={24} client:load />
+      </a>
+    </li>
+  </ul>
   <div>
-    &copy; {today.getFullYear()} coderfee All rights reserved. <span class="text-gray-500">Powered By Astro</span>
-  </div>
-  <div class="mt-2">
-    <a href="https://beian.miit.gov.cn/" target="_blank">京ICP备19050952号-1</a>
+    <div>
+      &copy; {today.getFullYear()} coderfee All rights reserved. <span class="text-gray-500">Powered By Astro</span>
+    </div>
+    <div class="my-2">
+      <a href="https://beian.miit.gov.cn/" target="_blank">京ICP备19050952号-1</a>
+    </div>
+    <Visitors pathname={pathname} client:load />
   </div>
 </footer>
-
-<Visitors pathname={pathname} client:load />

@@ -35,7 +35,7 @@ export function Visitors({ pathname }) {
   }, []);
 
   return (
-    <div className="text-center text-sm space-x-4 pb-4">
+    <div className="text-center text-sm space-x-4">
       <span>👏欢迎，本页访问次数 {visitors}</span>
       <span>❤️</span>
       <span className="text-gray-500">Powered By Supabase</span>
