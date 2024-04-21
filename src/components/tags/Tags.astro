@@ -1,0 +1,15 @@
+---
+import { Icon } from '@iconify/react';
+const { tags } = Astro.props;
+---
+
+<>
+  {
+    tags.map((tag) => (
+      <span class="flex items-center text-xs border border-blue-500 rounded-full px-2 text-blue-500 h-5 cursor-pointer">
+        <Icon icon="tabler:hash" className="relative-top-px" client:load />
+        <span class="space-x-1">{tag}</span>
+      </span>
+    ))
+  }
+</>

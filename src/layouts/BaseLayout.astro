@@ -6,7 +6,7 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 ---
 
 <!doctype html>
-<html transition:animate="slide" lang="zh-Hans">
+<html lang="zh-Hans">
   <head>
     <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
     <script type="text/javascript">
@@ -24,13 +24,7 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
       })(window, document, 'clarity', 'script', 'lyx0b4zl60');
     </script>
   </head>
-  <body
-    style="background-color: #fff;
-    opacity: 1;
-    background-image:  radial-gradient(#444cf7 0.5px, transparent 0.5px), radial-gradient(#444cf7 0.5px, #fff 0.5px);
-    background-size: 20px 20px;
-    background-position: 0 0,10px 10px;"
-  >
+  <body class="bg-white dark:bg-slate-900 dark:text-white">
     <Header />
     <main class="max-w-5xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 py-4 mx-auto">
       <slot />

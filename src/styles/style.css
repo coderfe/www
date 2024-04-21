@@ -1,6 +1,6 @@
 html,
 body {
-  @apply font-sans text-black;
+  @apply font-sans;
 }
 
 main {

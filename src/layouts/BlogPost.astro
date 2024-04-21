@@ -6,35 +6,34 @@ import Footer from '../components/footer/Footer.astro';
 import FormatTime from '../components/FormateTime.astro';
 import Header from '../components/header/Header.astro';
 import { renderTags } from '../helper';
+import Tags from '@/components/tags/Tags.astro';
 
 type Props = CollectionEntry<'blog'>['data'];
 
-const { title, tldr, date, tags, heroImage } = Astro.props;
+const { title, tldr, date, tags = [], heroImage } = Astro.props;
 ---
 
+<!doctype html>
 <html lang="zh-Hans">
   <head>
     <BaseHead title={title} description={tldr} />
   </head>
 
-  <body>
+  <body class="bg-white dark:bg-slate-900">
     <Header />
-    <main transition:animate="slide" class="mx-auto py-4 prose">
+    <main
+      class="mx-auto py-4 prose dark:prose-invert prose-img:rounded-md prose-a:text-blue-500 prose-a:no-underline prose-a:border-b-2 prose-a:border-blue-500 transition-all duration-200"
+    >
       <article>
         <h1>{title}</h1>
-        <div class="flex gap-8">
+        <div class="flex gap-8 font-mono">
           <span class="flex items-center gap-1">
             <Icon icon="tabler:calendar-time" client:load />
             <FormatTime date={date} />
           </span>
-          {
-            tags && (
-              <span class="flex items-center gap-1">
-                <Icon icon="tabler:hash" client:load />
-                <span class="space-x-1" set:html={renderTags(tags)} />
-              </span>
-            )
-          }
+          <div class="flex gap-2 items-center">
+            <Tags tags={tags} />
+          </div>
         </div>
         <blockquote>{tldr}</blockquote>
         {heroImage && <img src={heroImage} alt={title} />}

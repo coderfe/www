@@ -2,15 +2,19 @@
 import { SITE_TITLE } from '../../consts';
 ---
 
-<header class="p-4 border-b bg-white sticky start-0 top-0 z-50">
+<header
+  class="p-4 border-b bg-white backdrop-blur sticky start-0 top-0 z-50 border-slate-900/10 dark:border-slate-50/[0.06] bg-white/95 supports-backdrop-blur:bg-white/60 dark:bg-transparent font-mono"
+>
   <div class="max-w-prose mx-auto flex justify-between items-center">
     <a href="/">
-      <h2 class="font-bold text-xl">{SITE_TITLE}</h2>
+      <h2 class="font-bold text-xl text-blue-500">{SITE_TITLE}</h2>
     </a>
-    <ul class="menu menu-vertical lg:menu-horizontal bg-white rounded-box">
-      <li><a href="/">/home</a></li>
-      <li><a href="/blog/pages/uses">/uses</a></li>
-      <li><a href="/blog/pages/about">/about</a></li>
+    <ul class="flex gap-8 text-black/80 dark:text-white">
+      <li><a class="font-bold hover:text-blue-500 transition-colors duration-200" href="/">/home</a></li>
+      <li><a class="font-bold hover:text-blue-500 transition-colors duration-200" href="/blog/pages/uses">/uses</a></li>
+      <li>
+        <a class="font-bold hover:text-blue-500 transition-colors duration-200" href="/blog/pages/about">/about</a>
+      </li>
     </ul>
   </div>
 </header>
