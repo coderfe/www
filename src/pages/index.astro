@@ -1,10 +1,9 @@
 ---
-import defaultCover from '@/assets/default-cover.png';
+import defaultCover from '@/assets/blog/default-cover.png';
+import Tags from '@/components/tags/Tags.astro';
 import BaseLayout from '@/layouts/BaseLayout.astro';
-import { Icon } from '@iconify/react';
 import { Image } from 'astro:assets';
 import { getCollection } from 'astro:content';
-import Tags from '@/components/tags/Tags.astro';
 
 const collection = await getCollection('blog');
 const posts = collection
