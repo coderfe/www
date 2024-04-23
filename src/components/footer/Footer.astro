@@ -1,8 +1,10 @@
 ---
 import { Visitors } from '../visitors';
+import { Icon } from '@iconify/react';
+import SpeedInsights from '@vercel/speed-insights/astro';
+
 const today = new Date();
 const pathname = Astro.url.pathname;
-import { Icon } from '@iconify/react';
 ---
 
 <footer
@@ -39,3 +41,5 @@ import { Icon } from '@iconify/react';
     </div>
   </div>
 </footer>
+
+<SpeedInsights />
