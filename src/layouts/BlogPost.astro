@@ -24,7 +24,7 @@ const { title, tldr, date, tags = [], cover, heroImage, headings } = Astro.props
     >
       <article>
         <h1>{title}</h1>
-        <div class="flex gap-8 font-mono">
+        <div class="flex gap-8">
           <span class="flex items-center gap-1">
             <Icon icon="tabler:calendar-time" client:load />
             <FormatTime date={date} />

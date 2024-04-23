@@ -39,6 +39,12 @@ const { title, description, image = '/placeholder-social.jpg' } = Astro.props;
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={new URL(image, Astro.url)} />
+<link
+  rel="stylesheet"
+  href="https://npm.elemecdn.com/lxgw-wenkai-screen-webfont@1.7.0/style.css"
+  media="print"
+  onload="this.media='all'"
+/>
 
 <link rel="alternate" type="application/rss+xml" title={title} href={`${Astro.site}rss.xml`} />
 
