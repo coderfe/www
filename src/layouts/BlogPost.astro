@@ -6,10 +6,9 @@ import Footer from '../components/footer/Footer.astro';
 import FormatTime from '../components/FormateTime.astro';
 import Header from '../components/header/Header.astro';
 import Tags from '@/components/tags/Tags.astro';
+import Heading from '@/components/Heading.astro';
 
-type Props = CollectionEntry<'blog'>['data'];
-
-const { title, tldr, date, tags = [], cover, heroImage } = Astro.props;
+const { title, tldr, date, tags = [], cover, heroImage, headings } = Astro.props;
 ---
 
 <!doctype html>
@@ -40,6 +39,7 @@ const { title, tldr, date, tags = [], cover, heroImage } = Astro.props;
         <slot />
       </article>
     </main>
+    <!-- <Heading headings={headings} /> -->
     <Footer />
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
     <script is:inline>
