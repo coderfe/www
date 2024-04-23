@@ -14,6 +14,10 @@ import spotlightjs from '@spotlightjs/astro';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://coderfee.com',
+  prefetch: {
+    prefetchAll: true,
+    defaultStrategy: 'viewport',
+  },
   image: {
     service: squooshImageService(),
   },
@@ -49,4 +53,9 @@ export default defineConfig({
     }),
     spotlightjs(),
   ],
+  server: {
+    host: 'dev.coderfee.com',
+    port: 80,
+    open: '/',
+  },
 });

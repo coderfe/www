@@ -40,6 +40,8 @@ const { title, description, image = '/placeholder-social.jpg' } = Astro.props;
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={new URL(image, Astro.url)} />
 
+<link rel="alternate" type="application/rss+xml" title={title} href={`${Astro.site}rss.xml`} />
+
 <script is:inline>
   try {
     const darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
