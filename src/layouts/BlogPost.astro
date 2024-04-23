@@ -41,5 +41,23 @@ const { title, tldr, date, tags = [], cover, heroImage } = Astro.props;
       </article>
     </main>
     <Footer />
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+    <script is:inline>
+      let spreaded = false;
+      window.addEventListener('scroll', () => {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const scrollHeight = document.documentElement.scrollHeight;
+        const clientHeight = document.documentElement.clientHeight;
+        const scrollPercentage = (scrollTop / (scrollHeight - clientHeight)) * 100;
+        if (scrollPercentage >= 99 && !spreaded) {
+          confetti({
+            particleCount: 100,
+            spread: 70,
+            origin: { y: 0.6 },
+          });
+          spreaded = true;
+        }
+      });
+    </script>
   </body>
 </html>

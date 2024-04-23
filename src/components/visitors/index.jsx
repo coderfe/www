@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { supabase } from '@/lib/supabase.js';
 
-export function Visitors({ pathname }) {
+export function Visitors({ pathname, triggerOnload = true }) {
   const [visitors, setVisitors] = useState(0);
   const sulgPathname = slugify(pathname);
   useEffect(() => {
@@ -29,18 +29,12 @@ export function Visitors({ pathname }) {
       }
     }
 
-    setVisitor();
+    triggerOnload && setVisitor();
 
     getVisitors();
   }, []);
 
-  return (
-    <div className="text-center text-sm space-x-4">
-      <span>👏欢迎，本页访问次数 {visitors}</span>
-      <span>❤️</span>
-      <span className="text-gray-500">Powered By Supabase</span>
-    </div>
-  );
+  return <span>{visitors}</span>;
 }
 
 function slugify(str) {

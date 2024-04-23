@@ -1,40 +1,26 @@
 ---
-import defaultCover from '@/assets/blog/default-cover.png';
-import Tags from '@/components/tags/Tags.astro';
+import IndexPost from '@/components/IndexPost.astro';
 import BaseLayout from '@/layouts/BaseLayout.astro';
-import { Image } from 'astro:assets';
 import { getCollection } from 'astro:content';
+import { Icon } from '@iconify/react';
 
 const collection = await getCollection('blog');
 const posts = collection
+  .filter(({ data: { date } }) => date.getFullYear() >= new Date().getFullYear() - 2)
   .filter(({ data: { draft = false } }) => !draft)
   .sort(({ data: { date: dateA } }, { data: { date: dateB } }) => dateB.valueOf() - dateA.valueOf());
 ---
 
 <BaseLayout>
-  {
-    posts.map((post) => (
-      <a
-        href={`/blog/${post.slug}`}
-        class="group flex flex-col rounded-xl overflow-hidden ring-1 ring-slate-900/5 shadow-xl bg-white transition-all dark:bg-slate-800 dark:border-slate-950"
-      >
-        <div class="h-40 overflow-hidden">
-          <Image
-            class="max-w-full transition-all duration-500 group-hover:scale-105"
-            src={post.data.cover || defaultCover}
-            alt={post.data.title}
-          />
-        </div>
-        <div class="p-4">
-          <div class="line-clamp-3 text-base font-bold mb-2 leading-relaxed text-black/80 transition-all duration-300 hover:text-black dark:text-white/90 dark:hover:text-white/100">
-            <p class="mb-2">{post.data.title}</p>
-            <p class="line-clamp-1 font-normal text-black/60 dark:text-white/80 text-sm">{post.data.tldr}</p>
-          </div>
-          <div class="text-black/60 text-sm flex gap-2 mb-2 dark:text-white/70">
-            <Tags tags={post.data?.tags ?? []} />
-          </div>
-        </div>
-      </a>
-    ))
-  }
+  {posts.map((post) => <IndexPost post={post} />)}
+  <a
+    href="/archive"
+    title="查看更多"
+    class="group flex justify-center items-center text-center select-none rounded-xl overflow-hidden ring-1 ring-slate-900/5 shadow-xl text-blue-200 bg-white transition-all dark:bg-slate-800 dark:border-slate-950"
+  >
+    <div>
+      <Icon icon="tabler:archive" fontSize={100} client:load />
+      查看归档
+    </div>
+  </a>
 </BaseLayout>

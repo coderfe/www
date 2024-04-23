@@ -1,0 +1,14 @@
+---
+import IndexPost from '@/components/IndexPost.astro';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const collection = await getCollection('blog');
+const posts = collection
+  .filter(({ data: { draft = false } }) => !draft)
+  .sort(({ data: { date: dateA } }, { data: { date: dateB } }) => dateB.valueOf() - dateA.valueOf());
+---
+
+<BaseLayout title="归档">
+  {posts.map((post) => <IndexPost post={post} />)}
+</BaseLayout>

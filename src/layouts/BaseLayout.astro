@@ -3,12 +3,14 @@ import Footer from '../components/footer/Footer.astro';
 import BaseHead from '../components/header/BaseHead.astro';
 import Header from '../components/header/Header.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+
+const { title = SITE_TITLE, description = SITE_DESCRIPTION } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="zh-Hans">
   <head>
-    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+    <BaseHead title={title} description={description} />
     <script type="text/javascript">
       (function (c, l, a, r, i, t, y) {
         c[a] =

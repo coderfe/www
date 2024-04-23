@@ -1,0 +1,39 @@
+---
+import defaultCover from '@/assets/blog/default-cover.png';
+import Tags from '@/components/tags/Tags.astro';
+import { Image } from 'astro:assets';
+import { Visitors } from './visitors';
+import { Icon } from '@iconify/react';
+
+const { post } = Astro.props;
+const {
+  slug,
+  data: { title, cover = defaultCover, tldr, tags = [] },
+} = post;
+---
+
+<a
+  href={`/blog/${slug}`}
+  class="group flex flex-col rounded-xl overflow-hidden ring-1 ring-slate-900/5 shadow-xl bg-white transition-all dark:bg-slate-800 dark:border-slate-950"
+>
+  <div class="h-40 overflow-hidden">
+    <Image class="max-w-full transition-all duration-500 group-hover:scale-105" src={cover} alt={title} />
+  </div>
+  <div class="p-4">
+    <div
+      class="line-clamp-3 text-base font-bold mb-2 leading-relaxed text-black/80 transition-all duration-300 hover:text-black dark:text-white/90 dark:hover:text-white/100"
+    >
+      <p class="mb-2">{title}</p>
+      <p class="line-clamp-1 font-normal text-black/60 dark:text-white/80 text-sm">{tldr}</p>
+    </div>
+    <div class="flex justify-between text-sm">
+      <div class="text-black/40 font-mono flex items-center gap-1">
+        <Icon icon="tabler:eye" client:load />
+        <Visitors pathname={`/blog/${slug}`} triggerOnload={false} client:load /> Views
+      </div>
+      <div class="flex gap-2">
+        <Tags tags={tags} />
+      </div>
+    </div>
+  </div>
+</a>
