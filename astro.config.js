@@ -2,11 +2,13 @@ import mdx from '@astrojs/mdx';
 import react from '@astrojs/react';
 import sitemap from '@astrojs/sitemap';
 import tailwind from '@astrojs/tailwind';
-import rehypeExternalLinks from 'rehype-external-links';
-import remarkToc from 'remark-toc';
-import rehypeSlug from 'rehype-slug';
-import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import { defineConfig, squooshImageService } from 'astro/config';
+import rehypeAutolinkHeadings from 'rehype-autolink-headings';
+import rehypeExternalLinks from 'rehype-external-links';
+import rehypeCodeProps from 'rehype-mdx-code-props';
+import rehypeSlug from 'rehype-slug';
+import remarkToc from 'remark-toc';
+import { transformerNotationDiff, transformerMetaHighlight } from '@shikijs/transformers';
 
 import sentry from '@sentry/astro';
 import spotlightjs from '@spotlightjs/astro';
@@ -28,10 +30,12 @@ export default defineConfig({
     shikiConfig: {
       theme: 'vitesse-dark',
       wrap: true,
+      transformers: [transformerNotationDiff(), transformerMetaHighlight()],
     },
     remarkPlugins: [[remarkToc, { headings: ['h2', 'h3', 'h4'] }]],
     rehypePlugins: [
       [rehypeSlug, [rehypeAutolinkHeadings, { behavior: 'append' }]],
+      [rehypeCodeProps, []],
       [
         rehypeExternalLinks,
         {
@@ -58,6 +62,5 @@ export default defineConfig({
   server: {
     host: 'dev.coderfee.com',
     port: 80,
-    open: '/',
   },
 });

@@ -18,7 +18,13 @@ const {
   data-pagefind-ignore
 >
   <div class="h-40 overflow-hidden">
-    <Image class="max-w-full transition-all duration-500 group-hover:scale-105" src={cover} quality="mid" alt={title} />
+    <Image
+      class="max-w-full transition-all duration-500 group-hover:scale-105"
+      src={cover}
+      quality="mid"
+      inferSize={true}
+      alt={title}
+    />
   </div>
   <div class="p-4">
     <div
