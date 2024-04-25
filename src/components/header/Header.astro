@@ -1,9 +1,11 @@
 ---
 import { SITE_TITLE } from '@/consts';
+import Search from '../Search.astro';
 ---
 
 <header
   class="p-4 border-b backdrop-blur-md sticky start-0 top-0 z-50 border-slate-900/10 dark:border-slate-50/[0.06] supports-backdrop-blur:bg-white/60 dark:bg-transparent font-mono"
+  data-pagefind-ignore
 >
   <div class="max-w-prose mx-auto flex justify-between items-center">
     <a href="/">
@@ -14,6 +16,9 @@ import { SITE_TITLE } from '@/consts';
       <li><a class="font-bold hover:text-blue-500 transition-colors duration-200" href="/blog/pages/uses">/uses</a></li>
       <li>
         <a class="font-bold hover:text-blue-500 transition-colors duration-200" href="/blog/pages/about">/about</a>
+      </li>
+      <li>
+        <Search />
       </li>
     </ul>
   </div>

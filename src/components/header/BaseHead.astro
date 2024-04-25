@@ -46,7 +46,7 @@ const { title, description, image = '/placeholder-social.jpg' } = Astro.props;
   onload="this.media='all'"
 />
 
-<link rel="alternate" type="application/rss+xml" title={title} href={`${Astro.site}rss.xml`} />
+<link rel="alternate" type="application/rss+xml" href={`${Astro.site}rss.xml`} />
 
 <script is:inline>
   try {
@@ -76,3 +76,5 @@ const { title, description, image = '/placeholder-social.jpg' } = Astro.props;
     }
   }
 </script>
+
+<slot />

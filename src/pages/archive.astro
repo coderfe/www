@@ -6,6 +6,7 @@ import { getCollection } from 'astro:content';
 const collection = await getCollection('blog');
 const posts = collection
   .filter(({ data: { draft = false } }) => !draft)
+  .filter(({ data: { date } }) => date.getFullYear() < new Date().getFullYear() - 2)
   .sort(({ data: { date: dateA } }, { data: { date: dateB } }) => dateB.valueOf() - dateA.valueOf());
 ---
 

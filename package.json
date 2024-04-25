@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "astro build",
+    "build": "astro build && pagefind --site dist",
     "preview": "astro preview",
     "astro": "astro"
   },
@@ -24,8 +24,10 @@
     "@vercel/analytics": "^1.2.2",
     "@vercel/speed-insights": "^1.0.10",
     "astro": "^4.6.3",
+    "astro-pagefind": "^1.5.0",
     "daisyui": "^4.10.2",
     "markdown-it": "^14.1.0",
+    "pagefind": "^1.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "rehype-autolink-headings": "^7.1.0",
