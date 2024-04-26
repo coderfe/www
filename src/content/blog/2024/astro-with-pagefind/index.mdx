@@ -138,7 +138,7 @@ import Search from "@/components/Search.astro";
 
 `data-pagefind-body` 属性可以可以添加到页面的 `body` 元素上，如果我们的网站上存在一个此属性，那么在创建索引时，其余没有添加此属性的页面都会被忽略。
 
-这个属性我们可以添加在一些服务页面，例如 404、500 以及不需要创建索引的页面：
+如果你只想创建某个页面的索引，就在页面的 `body` 元素上添加此属性，此时，其它页面的都不会创建索引。
 
 ```astro
 <body data-pagefind-body>
