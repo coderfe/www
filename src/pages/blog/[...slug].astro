@@ -1,6 +1,9 @@
 ---
-import { type CollectionEntry, getCollection } from 'astro:content';
-import BlogPost from '../../layouts/BlogPost.astro';
+import Tags from '@/components/Tags.astro';
+import Time from '@/components/Time.astro';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { Icon } from '@iconify/react';
+import { getCollection, type CollectionEntry } from 'astro:content';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
@@ -15,8 +18,45 @@ type Props = CollectionEntry<'blog'>;
 
 const post = Astro.props;
 const { Content, headings } = await post.render();
+const { title, tldr, date, tags = [], cover } = post.data;
 ---
 
-<BlogPost {...post.data} headings={headings}>
-  <Content />
-</BlogPost>
+<BaseLayout title={title} description={tldr} ogImage={cover}>
+  <main
+    class="mx-auto py-4 prose dark:prose-invert prose-img:rounded-md prose-a:text-blue-500 prose-a:no-underline prose-a:border-b-2 prose-a:border-blue-500 prose-p:text-justify"
+  >
+    <article>
+      <h1>{title}</h1>
+      <div class="flex gap-8">
+        <span class="flex items-center gap-1">
+          <Icon icon="tabler:calendar-time" client:load />
+          <Time date={date} />
+        </span>
+        <div class="flex gap-2 items-center">
+          <Tags tags={tags} />
+        </div>
+      </div>
+      <blockquote>{tldr}</blockquote>
+      <hr class="my-4" />
+      <Content />
+    </article>
+  </main>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+  <script is:inline>
+    let spreaded = false;
+    window.addEventListener('scroll', () => {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      const scrollHeight = document.documentElement.scrollHeight;
+      const clientHeight = document.documentElement.clientHeight;
+      const scrollPercentage = (scrollTop / (scrollHeight - clientHeight)) * 100;
+      if (scrollPercentage >= 99 && !spreaded) {
+        confetti({
+          particleCount: 100,
+          spread: 70,
+          origin: { y: 0.6 },
+        });
+        spreaded = true;
+      }
+    });
+  </script>
+</BaseLayout>

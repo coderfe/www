@@ -1,16 +1,15 @@
 ---
-import Footer from '../components/footer/Footer.astro';
-import BaseHead from '../components/header/BaseHead.astro';
-import Header from '../components/header/Header.astro';
-import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+import Footer from './Footer.astro';
+import DocumentMeta from '@/layouts/DocumentMeta.astro';
+import Header from './Header.astro';
 
-const { title = SITE_TITLE, description = SITE_DESCRIPTION } = Astro.props;
+const { title, description, ogImage } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="zh-Hans">
   <head>
-    <BaseHead title={title} description={description} />
+    <DocumentMeta title={title} description={description} ogImage={ogImage} />
     <script type="text/javascript">
       (function (c, l, a, r, i, t, y) {
         c[a] =
@@ -28,9 +27,7 @@ const { title = SITE_TITLE, description = SITE_DESCRIPTION } = Astro.props;
   </head>
   <body class="bg-white dark:bg-slate-900 dark:text-white">
     <Header />
-    <main class="max-w-5xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 py-4 mx-auto">
-      <slot />
-    </main>
+    <slot />
     <Footer />
   </body>
 </html>

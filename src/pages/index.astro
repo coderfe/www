@@ -12,15 +12,17 @@ const posts = collection
 ---
 
 <BaseLayout>
-  {posts.map((post) => <IndexPost post={post} />)}
-  <a
-    href="/archive"
-    title="查看更多"
-    class="group flex justify-center items-center text-center select-none rounded-xl overflow-hidden ring-1 ring-slate-900/5 shadow-xl text-blue-200 bg-white transition-all dark:bg-slate-800 dark:border-slate-950"
-  >
-    <div>
-      <Icon icon="tabler:archive" fontSize={100} client:load />
-      查看归档
-    </div>
-  </a>
+  <main class="max-w-5xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 py-4 mx-auto">
+    {posts.map((post) => <IndexPost post={post} />)}
+    <a
+      href="/archive"
+      title="查看更多"
+      class="group flex justify-center items-center text-center select-none rounded-xl overflow-hidden ring-1 ring-slate-900/5 shadow-xl text-blue-200 bg-white transition-all dark:bg-slate-800 dark:border-slate-950"
+    >
+      <div>
+        <Icon icon="tabler:archive" fontSize={100} client:load />
+        查看归档
+      </div>
+    </a>
+  </main>
 </BaseLayout>
