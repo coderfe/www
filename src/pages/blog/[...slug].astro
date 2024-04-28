@@ -22,13 +22,15 @@ const { title, tldr, date, tags = [], cover } = post.data;
 ---
 
 <BaseLayout title={title} description={tldr} ogImage={cover}>
+  {date && <meta name="date" content={date.toLocaleDateString()} slot="head" />}
+
   <main
     class="mx-auto py-4 prose dark:prose-invert prose-img:rounded-md prose-a:text-blue-500 prose-a:no-underline prose-a:border-b-2 prose-a:border-blue-500 prose-p:text-justify"
   >
     <article>
       <h1>{title}</h1>
-      <div class="flex gap-8">
-        <span class="flex items-center gap-1">
+      <div class="flex gap-8 font-mono">
+        <span class="flex items-center gap-1" aria-label="发布时间">
           <Icon icon="tabler:calendar-time" client:load />
           <Time date={date} />
         </span>
