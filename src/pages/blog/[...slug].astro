@@ -1,4 +1,5 @@
 ---
+import Emoji from '@/components/Emoji.astro';
 import Tags from '@/components/Tags.astro';
 import Time from '@/components/Time.astro';
 import BaseLayout from '@/layouts/BaseLayout.astro';
@@ -31,7 +32,7 @@ const { title, tldr, date, tags = [], cover } = post.data;
       <h1>{title}</h1>
       <div class="flex gap-8 font-mono">
         <span class="flex items-center gap-1" aria-label="发布时间">
-          <Icon icon="tabler:calendar-time" client:load />
+          <Emoji>📅</Emoji>
           <Time date={date} />
         </span>
         <div class="flex gap-2 items-center">

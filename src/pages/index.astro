@@ -2,7 +2,7 @@
 import IndexPost from '@/components/IndexPost.astro';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
-import { Icon } from '@iconify/react';
+import Emoji from '@/components/Emoji.astro';
 
 const collection = await getCollection('blog');
 const posts = collection
@@ -12,16 +12,16 @@ const posts = collection
 ---
 
 <BaseLayout title="首页">
-  <main class="max-w-5xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 py-4 mx-auto">
+  <main class="max-w-prose flex flex-col gap-6 py-6 mx-auto">
     {posts.map((post) => <IndexPost post={post} />)}
     <a
       href="/archive"
       title="查看更多"
       class="group flex justify-center items-center text-center select-none rounded-xl overflow-hidden ring-1 ring-slate-900/5 shadow-xl text-blue-200 bg-white transition-all dark:bg-slate-800 dark:border-slate-950"
     >
-      <div>
-        <Icon icon="tabler:archive" fontSize={100} client:load />
-        查看归档
+      <div class="p-4 space-y-4 text-center">
+        <Emoji class="text-6xl">📂</Emoji>
+        <p>查看归档</p>
       </div>
     </a>
   </main>

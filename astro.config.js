@@ -57,8 +57,11 @@ export default defineConfig({
         telemetry: false,
       },
     }),
-    spotlightjs(),
+    // spotlightjs(),
   ],
+  devToolbar: {
+    enabled: false,
+  },
   server: {
     host: 'dev.coderfee.com',
     port: 80,

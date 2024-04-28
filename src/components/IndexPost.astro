@@ -1,44 +1,39 @@
 ---
-import defaultCover from '@/assets/blog/default-cover.png';
 import Tags from '@/components/Tags.astro';
-import { Image } from 'astro:assets';
-import { Visitors } from '@/components/Visitors';
-import { Icon } from '@iconify/react';
+import Emoji from './Emoji.astro';
+import Time from './Time.astro';
+import { Visitors } from './Visitors';
 
 const { post } = Astro.props;
 const {
   slug,
-  data: { title, cover = defaultCover, tldr, tags = [] },
+  data: { title, tldr, tags = [] },
 } = post;
 ---
 
 <a
   href={`/blog/${slug}`}
-  class="group flex flex-col rounded-xl overflow-hidden ring-1 ring-slate-900/5 shadow-xl bg-white transition-all dark:bg-slate-800 dark:border-slate-950"
+  class="group rounded-xl overflow-hidden ring-1 ring-slate-900/5 shadow-sm bg-white transition-shadow ease-in-out hover:shadow-lg hover:ring-2 hover:ring-blue-500 dark:bg-slate-800 dark:border-slate-950"
   data-pagefind-ignore
 >
-  <div class="h-40 overflow-hidden max-sm:hidden">
-    <Image
-      class="max-w-full transition-all duration-500 group-hover:scale-105"
-      src={cover}
-      quality="mid"
-      inferSize={true}
-      alt={title}
-    />
-  </div>
   <div class="p-4">
     <div
-      class="line-clamp-1 text-base font-bold mb-2 leading-relaxed text-black/90 transition-all duration-300 hover:text-black dark:text-white/90 dark:hover:text-white/100"
+      class="text-2xl leading-relaxed text-black/90 transition-colors duration-300 group-hover:text-blue-500 dark:text-white/90 dark:hover:text-white/100"
       title={title}
     >
       {title}
     </div>
-    <p class="my-2 line-clamp-1 font-normal text-black/80 dark:text-white/80 text-sm" title={tldr}>{tldr}</p>
-    <div class="flex justify-between text-sm font-mono">
-      <div class="text-black/80 flex items-center gap-1 dark:text-white/70">
-        <Icon icon="tabler:eye" client:load />
-        <Visitors pathname={`/blog/${slug}`} triggerOnload={false} client:load /> Views
+    <p class="line-clamp-2 mb-2 leading-6 font-normal text-black/80 dark:text-white/80 text-base" title={tldr}>
+      {tldr}
+    </p>
+    <div class="flex gap-6 text-sm font-mono text-black/80">
+      <div>
+        <Emoji>📅</Emoji><Time date={post.data.date} />
       </div>
+      <!-- <div class="text-black/80 flex items-center gap-1 dark:text-white/70">
+        <Emoji>👓</Emoji>
+        <Visitors href={new URL(`/blog/${slug}`, Astro.site)} triggerOnload={false} client:load /> Views
+      </div> -->
       <div class="flex gap-2">
         <Tags tags={tags} />
       </div>

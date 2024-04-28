@@ -3,11 +3,10 @@ import { Visitors } from '@/components/Visitors';
 import { Icon } from '@iconify/react';
 
 const today = new Date();
-const pathname = Astro.url.pathname;
 ---
 
 <footer
-  class="flex w-full flex-col gap-4 justify-between items-center py-4 px-8 text-sm text-center bg-slate-900 text-white/80"
+  class="flex w-full flex-col gap-4 justify-between items-center py-4 px-8 text-sm text-center bg-slate-900 text-white/80 font-mono"
 >
   <ul class="flex gap-4">
     <li>
@@ -33,8 +32,8 @@ const pathname = Astro.url.pathname;
     <div class="my-2">
       <a href="https://beian.miit.gov.cn/" target="_blank">京ICP备19050952号-1</a>
     </div>
-    <div class="text-center text-sm space-x-4">
-      <span>👏欢迎，本页访问次数 <Visitors pathname={pathname} client:load /></span>
+    <div class="text-center text-sm space-x-2">
+      <span>👏欢迎，本页访问次数 <Visitors href={new URL(Astro.url.pathname, Astro.site)} client:load /></span>
       <span>❤️</span>
       <span class="text-gray-500">Powered By Supabase</span>
     </div>
