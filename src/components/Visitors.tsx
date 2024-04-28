@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 
 export function Visitors({ href, triggerOnload = true }) {
   const [visitors, setVisitors] = useState(0);
-  const url = new URL(href).toString();
+  const url = new URL(href).href.replace(/\/$/g, '');
 
   useEffect(() => {
     async function getVisitors() {
