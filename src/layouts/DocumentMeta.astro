@@ -40,17 +40,18 @@ const { title = SITE_TITLE, description = SITE_DESCRIPTION, ogImage = '/placehol
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={new URL(ogImage, Astro.url)} />
-<link
+<!-- <link
   rel="stylesheet"
   href="https://npm.elemecdn.com/lxgw-wenkai-screen-webfont@1.7.0/style.css"
   media="print"
   onload="this.media='all'"
-/>
+/> -->
 <link rel="alternate" type="application/rss+xml" href={`${Astro.site}rss.xml`} />
 
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-2DSSE6LSDV"></script>
 <script>
+  // @ts-nocheck
   window.dataLayer = window.dataLayer || [];
   function gtag() {
     dataLayer.push(arguments);

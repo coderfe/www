@@ -1,7 +1,6 @@
 ---
 import { Visitors } from '@/components/Visitors';
 import { Icon } from '@iconify/react';
-import SpeedInsights from '@vercel/speed-insights/astro';
 
 const today = new Date();
 const pathname = Astro.url.pathname;
@@ -12,17 +11,17 @@ const pathname = Astro.url.pathname;
 >
   <ul class="flex gap-4">
     <li>
-      <a href="https://github.com/coderfe" target="_blank">
+      <a href="https://github.com/coderfe" title="GitHub" aria-label="GitHub" rel="noopener" target="_blank">
         <Icon icon="tabler:brand-github" fontSize={24} client:load />
       </a>
     </li>
     <li>
-      <a href="https://twitter.com/coderfee" target="_blank">
+      <a href="https://twitter.com/coderfee" title="Twitter" aria-label="Twitter" rel="noopener" target="_blank">
         <Icon icon="tabler:brand-twitter" fontSize={24} client:load />
       </a>
     </li>
     <li>
-      <a href="/rss.xml" target="_blank">
+      <a href="/rss.xml" title="RSS" aria-label="RSS" rel="noopener" target="_blank">
         <Icon icon="tabler:rss" fontSize={24} client:load />
       </a>
     </li>
@@ -41,5 +40,3 @@ const pathname = Astro.url.pathname;
     </div>
   </div>
 </footer>
-
-<SpeedInsights />

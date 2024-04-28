@@ -8,7 +8,7 @@ module.exports = {
   plugins: [require('@tailwindcss/typography')],
   theme: {
     fontFamily: {
-      sans: ['"LXGW WenKai Screen"', ...defaultTheme.fontFamily.sans],
+      sans: [...defaultTheme.fontFamily.sans],
       mono: ['"Geist Mono"', 'Monolisa', ...defaultTheme.fontFamily.mono],
     },
   },
