@@ -28,11 +28,12 @@ const {
   </div>
   <div class="p-4">
     <div
-      class="line-clamp-3 text-base font-bold mb-2 leading-relaxed text-black/90 transition-all duration-300 hover:text-black dark:text-white/90 dark:hover:text-white/100"
+      class="line-clamp-1 text-base font-bold mb-2 leading-relaxed text-black/90 transition-all duration-300 hover:text-black dark:text-white/90 dark:hover:text-white/100"
+      title={title}
     >
-      <p class="mb-2">{title}</p>
-      <p class="line-clamp-1 font-normal text-black/80 dark:text-white/80 text-sm">{tldr}</p>
+      {title}
     </div>
+    <p class="my-2 line-clamp-1 font-normal text-black/80 dark:text-white/80 text-sm" title={tldr}>{tldr}</p>
     <div class="flex justify-between text-sm font-mono">
       <div class="text-black/80 flex items-center gap-1 dark:text-white/70">
         <Icon icon="tabler:eye" client:load />
