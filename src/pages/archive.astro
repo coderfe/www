@@ -11,7 +11,7 @@ const posts = collection
 ---
 
 <BaseLayout title="归档" description="coderfee.com 归档页面">
-  <main class="max-w-5xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 py-4 mx-auto">
+  <main class="max-w-prose flex flex-col gap-6 py-4 mx-auto">
     {posts.map((post) => <IndexPost post={post} />)}
   </main>
 </BaseLayout>

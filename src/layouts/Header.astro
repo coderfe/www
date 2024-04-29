@@ -1,18 +1,21 @@
 ---
-import { SITE_TITLE } from '@/consts';
 import Search from '@/components/Search.astro';
+import Avatar from '@/assets/avatar.jpg';
 ---
 
 <header
-  class="p-4 border-b backdrop-blur-md sticky start-0 top-0 z-50 border-slate-900/10 dark:border-slate-50/[0.06] supports-backdrop-blur:bg-white/60 dark:bg-transparent font-mono"
+  class="p-4 backdrop-blur-md sticky start-0 top-0 z-50 supports-backdrop-blur:bg-white/60 dark:bg-transparent font-mono shadow-md"
   data-pagefind-ignore
 >
   <div class="max-w-prose mx-auto flex flex-row gap-4 justify-between items-center max-sm:flex-col">
-    <a href="/">
-      <h2 class="font-bold text-xl text-blue-500">{SITE_TITLE}</h2>
+    <a
+      href="/"
+      class="size-10 rounded-lg overflow-hidden ring-1 ring-slate-200 dark:ring-neutral-800 shadow-md select-none"
+    >
+      <img src={Avatar.src} alt="site owner avatar" />
     </a>
     <ul class="flex gap-8 text-black/80 dark:text-white">
-      <li><a class="font-bold hover:text-blue-500 transition-colors duration-200" href="/">/home</a></li>
+      <li><a class="font-bold hover:text-blue-500 transition-colors duration-200" href="/">/blog</a></li>
       <li><a class="font-bold hover:text-blue-500 transition-colors duration-200" href="/blog/pages/uses">/uses</a></li>
       <li>
         <a class="font-bold hover:text-blue-500 transition-colors duration-200" href="/blog/pages/about">/about</a>

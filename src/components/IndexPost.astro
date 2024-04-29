@@ -13,27 +13,23 @@ const {
 
 <a
   href={`/blog/${slug}`}
-  class="group rounded-xl overflow-hidden ring-1 ring-slate-900/5 shadow-sm bg-white transition-shadow ease-in-out hover:shadow-lg hover:ring-2 hover:ring-blue-500 dark:bg-slate-800 dark:border-slate-950"
+  class="group rounded-xl overflow-hidden bg-white hover:bg-blue-100 transition-all ease-in-out dark:bg-slate-900 dark:hover:bg-slate-800"
   data-pagefind-ignore
 >
   <div class="p-4">
     <div
-      class="text-2xl leading-relaxed text-black/90 transition-colors duration-300 group-hover:text-blue-500 dark:text-white/90 dark:hover:text-white/100"
+      class="text-xl leading-relaxed text-black/90 transition-colors duration-300 dark:text-white/90 dark:hover:text-white/100"
       title={title}
     >
       {title}
     </div>
-    <p class="line-clamp-2 mb-2 leading-6 font-normal text-black/80 dark:text-white/80 text-base" title={tldr}>
+    <p class="line-clamp-2 mb-2 leading-6 font-normal text-black/80 dark:text-white/80 text-sm">
       {tldr}
     </p>
-    <div class="flex gap-6 text-sm font-mono text-black/80">
+    <div class="flex gap-6 text-sm font-mono text-black/80 dark:text-white/80">
       <div>
         <Emoji>📅</Emoji><Time date={post.data.date} />
       </div>
-      <!-- <div class="text-black/80 flex items-center gap-1 dark:text-white/70">
-        <Emoji>👓</Emoji>
-        <Visitors href={new URL(`/blog/${slug}`, Astro.site)} triggerOnload={false} client:load /> Views
-      </div> -->
       <div class="flex gap-2">
         <Tags tags={tags} />
       </div>
