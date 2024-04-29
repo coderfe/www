@@ -35,8 +35,11 @@ const today = new Date();
       <span>&copy; {today.getFullYear()} coderfee.</span>
       <a href="https://beian.miit.gov.cn/" target="_blank"> 京ICP备19050952号-1 </a>
     </div>
-    <div>
+    <div class="flex gap-4 items-center">
       <span>👏欢迎，本页访问 <Visitors href={new URL(Astro.url.pathname, Astro.site)} client:load /> 次</span>
+      <a href="https://astro.build">
+        <img src="https://astro.badg.es/v2/built-with-astro/tiny.svg" alt="Built with Astro" width="120" height="20" />
+      </a>
     </div>
   </div>
 </footer>
