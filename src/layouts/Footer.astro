@@ -6,43 +6,36 @@ const today = new Date();
 ---
 
 <footer
-  class="flex w-full flex-col gap-4 justify-between items-center py-4 px-8 text-sm text-center bg-slate-900 text-white/80 font-mono"
+  class="flex w-full flex-col gap-4 justify-between items-center py-4 px-8 text-sm bg-slate-900 text-white/80 font-mono"
 >
-  <div class="space-y-2">
-    <div class="flex items-center gap-6">
-      <div>
-        &copy; {today.getFullYear()} coderfee.
-      </div>
-      <div>
-        <ul class="flex gap-4">
-          <li>
-            <a href="https://github.com/coderfe" title="GitHub" aria-label="GitHub" rel="noopener" target="_blank">
-              <Icon icon="tabler:brand-github" fontSize={24} client:load />
-            </a>
-          </li>
-          <li>
-            <a href="https://twitter.com/coderfee" title="Twitter" aria-label="Twitter" rel="noopener" target="_blank">
-              <Icon icon="tabler:brand-twitter" fontSize={24} client:load />
-            </a>
-          </li>
-          <li>
-            <a href="/rss.xml" title="RSS" aria-label="RSS" rel="noopener" target="_blank">
-              <Icon icon="tabler:rss" fontSize={24} client:load />
-            </a>
-          </li>
-          <li>
-            <a href="/sitemap-0.xml" title="站点地图" aria-label="站点地图" rel="noopener" target="_blank">
-              <Icon icon="tabler:map-search" fontSize={24} client:load />
-            </a>
-          </li>
-        </ul>
-      </div>
+  <div class="space-y-4">
+    <ul class="flex gap-4">
+      <li>
+        <a href="https://github.com/coderfe" title="GitHub" aria-label="GitHub" rel="noopener" target="_blank">
+          <Icon icon="tabler:brand-github" fontSize={24} client:load />
+        </a>
+      </li>
+      <li>
+        <a href="https://twitter.com/coderfee" title="Twitter" aria-label="Twitter" rel="noopener" target="_blank">
+          <Icon icon="tabler:brand-twitter" fontSize={24} client:load />
+        </a>
+      </li>
+      <li>
+        <a href="/rss.xml" title="RSS" aria-label="RSS" rel="noopener" target="_blank">
+          <Icon icon="tabler:rss" fontSize={24} client:load />
+        </a>
+      </li>
+      <li>
+        <a href="/sitemap-0.xml" title="站点地图" aria-label="站点地图" rel="noopener" target="_blank">
+          <Icon icon="tabler:map-search" fontSize={24} client:load />
+        </a>
+      </li>
+    </ul>
+    <div class="">
+      <span>&copy; {today.getFullYear()} coderfee.</span>
+      <a href="https://beian.miit.gov.cn/" target="_blank"> 京ICP备19050952号-1 </a>
     </div>
-    <div class="flex items-center gap-6">
-      <span>Powered by Astro</span>
-      <span>
-        <a href="https://beian.miit.gov.cn/" target="_blank">京ICP备19050952号-1</a>
-      </span>
+    <div>
       <span>👏欢迎，本页访问 <Visitors href={new URL(Astro.url.pathname, Astro.site)} client:load /> 次</span>
     </div>
   </div>

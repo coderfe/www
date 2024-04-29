@@ -1,17 +1,24 @@
 ---
-
+import Emoji from './Emoji.astro';
 ---
 
-<a class="font-bold hover:text-blue-500 cursor-pointer transition-colors duration-200" id="search-icon">/search</a>
+<div class="fixed bottom-8 right-6 flex flex-col gap-4" aria-label="floating button">
+  <button
+    class="flex items-center justify-center size-12 text-lg md:size-10 md:text-base outline-accent hover:opacity-100 focus:opacity-100 focus:outline-none rounded-xl border border-zinc-400/20 backdrop-blur-lg dark:border-zinc-500/30 dark:text-zinc-200 bg-zinc-50/80 shadow-lg dark:bg-slate-950/80 transition-all duration-500 ease-in-out"
+    id="search-icon"
+  >
+    <Emoji class:list="text-sm">🔍</Emoji>
+  </button>
+</div>
 
 <div class="hidden" id="search-box">
   <div
     id="search-backdrop"
-    class="fixed z-[1000] left-0 top-0 backdrop-blur-3xl h-screen w-screen overflow-hidden flex justify-center items-center bg-slate-900/20 dark:bg-slate-500/20"
+    class="fixed z-[1000] left-0 top-0 backdrop-blur-[2px] h-screen w-screen overflow-hidden flex justify-center items-center"
   >
   </div>
   <div
-    class="fixed left-1/2 top-32 -translate-x-1/2 z-[1001] max-sm:w-11/12 w-[560px] bg-slate-200 rounded-lg overflow-hidden shadow-xl dark:bg-slate-900"
+    class="fixed left-1/2 top-32 -translate-x-1/2 z-[1001] max-sm:w-11/12 w-[560px] bg-blue-50 rounded-lg overflow-hidden shadow-xl dark:bg-slate-900"
   >
     <div class="p-4">
       <input
