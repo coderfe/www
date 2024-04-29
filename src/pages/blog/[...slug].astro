@@ -3,7 +3,7 @@ import Emoji from '@/components/Emoji.astro';
 import Tags from '@/components/Tags.astro';
 import Time from '@/components/Time.astro';
 import BaseLayout from '@/layouts/BaseLayout.astro';
-import { Icon } from '@iconify/react';
+import FloatBtn from '@/components/FloatBtn.astro';
 import { getCollection, type CollectionEntry } from 'astro:content';
 
 export async function getStaticPaths() {
@@ -26,7 +26,7 @@ const { title, tldr, date, tags = [], cover } = post.data;
   {date && <meta name="date" content={date.toLocaleDateString()} slot="head" />}
 
   <main
-    class="mx-auto py-4 prose dark:prose-invert prose-img:rounded-md prose-a:text-blue-500 prose-a:no-underline prose-a:border-b-2 prose-a:border-blue-500 prose-p:text-justify"
+    class="mx-auto py-8 prose dark:prose-invert prose-img:rounded-md prose-a:text-blue-500 prose-a:no-underline prose-a:border-b-2 prose-a:border-blue-500 prose-p:text-justify"
   >
     <article>
       <h1>{title}</h1>
@@ -62,4 +62,6 @@ const { title, tldr, date, tags = [], cover } = post.data;
       }
     });
   </script>
+
+  <FloatBtn />
 </BaseLayout>

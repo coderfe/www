@@ -1,14 +1,28 @@
 ---
 import Emoji from './Emoji.astro';
+
+const { showAI = true } = Astro.props;
 ---
 
 <div class="fixed bottom-8 right-6 flex flex-col gap-4" aria-label="floating button">
   <button
     class="flex items-center justify-center size-12 text-lg md:size-10 md:text-base outline-accent hover:opacity-100 focus:opacity-100 focus:outline-none rounded-xl border border-zinc-400/20 backdrop-blur-lg dark:border-zinc-500/30 dark:text-zinc-200 bg-zinc-50/80 shadow-lg dark:bg-slate-950/80 transition-all duration-500 ease-in-out"
-    id="search-icon"
+    id="search-btn"
+    title="搜一搜"
   >
     <Emoji class:list="text-sm">🔍</Emoji>
   </button>
+  {
+    showAI && (
+      <button
+        class="flex items-center justify-center size-12 text-lg md:size-10 md:text-base outline-accent hover:opacity-100 focus:opacity-100 focus:outline-none rounded-xl border border-zinc-400/20 backdrop-blur-lg dark:border-zinc-500/30 dark:text-zinc-200 bg-zinc-50/80 shadow-lg dark:bg-slate-950/80 transition-all duration-500 ease-in-out"
+        id="ai-btn"
+        title="复制 Prompt"
+      >
+        <Emoji class:list="text-sm">🤖</Emoji>
+      </button>
+    )
+  }
 </div>
 
 <div class="hidden" id="search-box">
@@ -42,7 +56,7 @@ import Emoji from './Emoji.astro';
   pagefind.init();
   const resultEl = document.querySelector('#results');
   const searchInput = document.querySelector('#search-input');
-  const searchIcon = document.querySelector('#search-icon');
+  const searchIcon = document.querySelector('#search-btn');
   const searchBackdrop = document.querySelector('#search-backdrop');
 
   searchIcon.addEventListener('click', () => {
@@ -81,5 +95,58 @@ import Emoji from './Emoji.astro';
       data.length > 0
         ? html
         : '<div class="w-full min-h-48 text-5xl text-center flex justify-center items-center select-none"><div>🤔🔍</div></div>';
+  }
+</script>
+
+<script>
+  const prompt = `
+    '''
+    【📚 文章助手】你是一个文章阅读助手，你具有以下能力：
+    1. 快速阅读并总结文章大意，提炼核心观点；
+    2. 分析作者的论据和逻辑，为用户提供深入的思考角度；
+    3. 准确抓取并展示文章中的关键数据；
+    4. 批判性思考，检查文章的逻辑性和一致性。
+    5. 提出问题，引发读者思考
+    按照以上格式进行输出
+    '''
+    想要阅读的链接是：{}
+  `;
+  const aiBtn = document.querySelector('#ai-btn');
+  aiBtn?.addEventListener('click', () => {
+    const fullPrompt = prompt.replace('{}', window.location.href);
+    copyTextToClipboard(fullPrompt);
+  });
+
+  function copyTextToClipboard(text) {
+    if (!navigator.clipboard) {
+      fallbackCopyTextToClipboard(text);
+      return;
+    }
+
+    navigator.clipboard.writeText(text).then(
+      function () {
+        console.log('复制成功');
+      },
+      function (err) {
+        console.error('无法复制文字到剪贴板:', err);
+      },
+    );
+  }
+
+  function fallbackCopyTextToClipboard(text) {
+    var textarea = document.createElement('textarea');
+    textarea.value = text;
+    document.body.appendChild(textarea);
+    textarea.select();
+
+    try {
+      var successful = document.execCommand('copy');
+      var msg = successful ? '复制成功' : '无法复制文字到剪贴板，请手动复制。';
+      console.log(msg);
+    } catch (err) {
+      console.error('无法执行拷贝命令:', err);
+    }
+
+    document.body.removeChild(textarea);
   }
 </script>

@@ -1,23 +1,53 @@
 ---
 import Avatar from '@/assets/avatar.jpg';
+let pathname = new URL(Astro.request.url).pathname;
+pathname = pathname.slice(1);
 ---
 
 <header
-  class="p-4 backdrop-blur-md sticky start-0 top-0 z-50 supports-backdrop-blur:bg-white/60 dark:bg-transparent font-mono shadow-md"
+  class="max-w-prose mx-auto px-2 py-1 backdrop-blur-md sticky top-2 z-50 supports-backdrop-blur:bg-white/60 dark:bg-transparent font-mono ring-1 ring-slate-800/10 shadow-lg rounded-full"
   data-pagefind-ignore
 >
-  <div class="max-w-prose mx-auto flex flex-row gap-4 justify-between items-center max-sm:flex-col">
+  <div class="flex items-center justify-between">
     <a
       href="/"
-      class="size-10 rounded-lg overflow-hidden ring-1 ring-slate-200 dark:ring-neutral-800 shadow-md select-none"
+      class="size-10 rounded-full overflow-hidden ring-1 ring-slate-200 dark:ring-neutral-800 shadow-md select-none"
     >
       <img src={Avatar.src} alt="site owner avatar" />
     </a>
-    <ul class="flex gap-8 text-black/80 dark:text-white">
-      <li><a class="font-bold hover:text-blue-500 transition-colors duration-200" href="/">/blog</a></li>
-      <li><a class="font-bold hover:text-blue-500 transition-colors duration-200" href="/blog/pages/uses">/uses</a></li>
+    <ul class="flex gap-2 text-black/80 dark:text-white font-bold">
       <li>
-        <a class="font-bold hover:text-blue-500 transition-colors duration-200" href="/blog/pages/about">/about</a>
+        <a
+          class:list={{
+            'block px-4 py-1 rounded-full hover:text-white hover:bg-blue-500 hover:shadow-md transition-all duration-300 ease-in-out': true,
+            'text-white bg-blue-500 shadow-md': pathname === '',
+          }}
+          href="/"
+        >
+          /home
+        </a>
+      </li>
+      <li>
+        <a
+          class:list={{
+            'block px-4 py-1 rounded-full hover:text-white hover:bg-blue-500 hover:shadow-md transition-all duration-300 ease-in-out': true,
+            'text-white bg-blue-500 shadow-md': pathname === 'blog',
+          }}
+          href="/blog"
+        >
+          /blog
+        </a>
+      </li>
+      <li>
+        <a
+          class:list={{
+            'block px-4 py-1 rounded-full hover:text-white hover:bg-blue-500 hover:shadow-md transition-all duration-300 ease-in-out': true,
+            'text-white bg-blue-500 shadow-md': pathname === 'blog/pages/about',
+          }}
+          href="/blog/pages/about"
+        >
+          /about
+        </a>
       </li>
     </ul>
   </div>
