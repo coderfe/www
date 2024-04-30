@@ -6,7 +6,7 @@ type Res<T = any> = {
 };
 
 const http = ky.create({
-  prefixUrl: import.meta.env.DEV ? 'http://localhost:8787' : import.meta.env.PUCLIC_BASE_URL,
+  prefixUrl: import.meta.env.DEV ? 'http://localhost:8787' : import.meta.env.PUBLIC_BASE_API_URL,
   credentials: 'include',
 });
 
