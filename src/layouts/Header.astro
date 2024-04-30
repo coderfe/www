@@ -1,7 +1,7 @@
 ---
 import Avatar from '@/assets/avatar.jpg';
 let pathname = new URL(Astro.request.url).pathname;
-pathname = pathname.slice(1);
+pathname = pathname.replace(/^\/|\/$/g, '');
 ---
 
 <header
