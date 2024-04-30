@@ -25,6 +25,7 @@
     "astro": "^4.7.0",
     "astro-pagefind": "^1.5.0",
     "framer-motion": "^11.1.7",
+    "ky": "^1.2.4",
     "markdown-it": "^14.1.0",
     "pagefind": "^1.1.0",
     "react": "^18.3.1",

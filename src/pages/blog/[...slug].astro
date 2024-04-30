@@ -5,6 +5,7 @@ import Time from '@/components/Time.astro';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import FloatBtn from '@/components/FloatBtn.astro';
 import { getCollection, type CollectionEntry } from 'astro:content';
+import { PostSummary } from '@/components/PostSummary';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
@@ -39,7 +40,7 @@ const { title, tldr, date, tags = [], cover } = post.data;
           <Tags tags={tags} />
         </div>
       </div>
-      <blockquote>{tldr}</blockquote>
+      <PostSummary client:only />
       <hr class="my-4" />
       <Content />
     </article>
