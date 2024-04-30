@@ -40,12 +40,6 @@ const { title = SITE_TITLE, description = SITE_DESCRIPTION, ogImage = '/placehol
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={new URL(ogImage, Astro.url)} />
-<!-- <link
-  rel="stylesheet"
-  href="https://npm.elemecdn.com/lxgw-wenkai-screen-webfont@1.7.0/style.css"
-  media="print"
-  onload="this.media='all'"
-/> -->
 <link rel="alternate" type="application/rss+xml" href={`${Astro.site}rss.xml`} />
 
 <!-- Google tag (gtag.js) -->
@@ -57,38 +51,6 @@ const { title = SITE_TITLE, description = SITE_DESCRIPTION, ogImage = '/placehol
     dataLayer.push(arguments);
   }
   gtag('js', new Date());
-
   gtag('config', 'G-2DSSE6LSDV');
 </script>
-<slot />
-
-<script is:inline>
-  try {
-    const darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-    if (darkModeMediaQuery.matches) {
-      setTheme('dark');
-    } else {
-      setTheme('light');
-    }
-    darkModeMediaQuery.addEventListener('change', handleThemeChange);
-  } catch (e) {
-    console.error(e);
-  }
-
-  function setTheme(theme) {
-    if (theme === 'light') {
-      document.documentElement.classList.remove('dark');
-    } else {
-      document.documentElement.classList.add('dark');
-    }
-  }
-  function handleThemeChange(event) {
-    if (event.matches) {
-      setTheme('dark');
-    } else {
-      setTheme('light');
-    }
-  }
-</script>
-
 <slot />
