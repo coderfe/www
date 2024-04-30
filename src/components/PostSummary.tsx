@@ -36,7 +36,7 @@ async function fetchSummary() {
     const url = window.location.href.replace('http://dev.', 'https://');
     const content = document.querySelector('article')?.textContent;
     const res = await ky
-      .post('http://ai.coderfee.com/kimi/summary', {
+      .post('https://ai.coderfee.com/kimi/summary', {
         credentials: 'include',
         json: {
           url,
