@@ -1,7 +1,5 @@
 ---
 import Emoji from './Emoji.astro';
-
-const { showAI = true } = Astro.props;
 ---
 
 <div class="fixed bottom-8 right-6 flex flex-col gap-4" aria-label="floating button">
@@ -12,17 +10,13 @@ const { showAI = true } = Astro.props;
   >
     <Emoji class:list="text-sm">🔍</Emoji>
   </button>
-  {
-    showAI && (
-      <button
-        class="flex items-center justify-center size-12 text-lg md:size-10 md:text-base outline-accent hover:opacity-100 focus:opacity-100 focus:outline-none rounded-xl border border-zinc-400/20 backdrop-blur-lg dark:border-zinc-500/30 dark:text-zinc-200 bg-zinc-50/80 shadow-lg dark:bg-slate-950/80 transition-all duration-500 ease-in-out"
-        id="ai-btn"
-        title="复制 Prompt"
-      >
-        <Emoji class:list="text-sm">🤖</Emoji>
-      </button>
-    )
-  }
+  <button
+    class="flex items-center justify-center size-12 text-lg md:size-10 md:text-base outline-accent hover:opacity-100 focus:opacity-100 focus:outline-none rounded-xl border border-zinc-400/20 backdrop-blur-lg dark:border-zinc-500/30 dark:text-zinc-200 bg-zinc-50/80 shadow-lg dark:bg-slate-950/80 transition-all duration-500 ease-in-out"
+    id="ai-btn"
+    title="复制 Prompt"
+  >
+    <Emoji class:list="text-sm">🤖</Emoji>
+  </button>
 </div>
 
 <div class="hidden" id="search-box">

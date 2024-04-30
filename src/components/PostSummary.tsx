@@ -1,5 +1,6 @@
+import { fetchSummary } from '@/api';
 import KimiLogo from '@/assets/kimi.png';
-import ky from 'ky';
+import { getHref } from '@/helper';
 import { useEffect, useState } from 'react';
 
 export function PostSummary() {
@@ -7,13 +8,9 @@ export function PostSummary() {
   const [loading, setLoading] = useState(false);
   useEffect(() => {
     setLoading(true);
-    fetchSummary()
-      .then((text) => {
-        setSummary(text);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
+    getSummary()
+      .then((text) => setSummary(text))
+      .finally(() => setLoading(false));
   }, []);
   return (
     <div className="bg-slate-100 rounded-lg p-4 mt-2 dark:bg-slate-800">
@@ -26,27 +23,14 @@ export function PostSummary() {
   );
 }
 
-type Res = {
-  success: boolean;
-  data: string;
-};
-
-async function fetchSummary() {
+async function getSummary() {
   try {
-    const url = window.location.href.replace('http://dev.', 'https://');
+    const url = getHref();
     const content = document.querySelector('article')?.textContent;
-    const res = await ky
-      .post('https://ai.coderfee.com/kimi/summary', {
-        credentials: 'include',
-        json: {
-          url,
-          content,
-        },
-      })
-      .json<Res>();
-    const { success, data } = res;
+    const { success, data } = await fetchSummary(url, content!);
     return success ? data : '🤖奔溃了……';
   } catch (e) {
+    console.log(e);
     return '🤖超时了……';
   }
 }

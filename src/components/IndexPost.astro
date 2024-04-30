@@ -30,6 +30,9 @@ const {
       <div>
         <Emoji>📅</Emoji><Time date={post.data.date} />
       </div>
+      <!-- <div>
+        <Emoji>👓</Emoji><Visitors href={new URL(Astro.url.pathname, Astro.site)} client:only />
+      </div> -->
       <div class="flex gap-2">
         <Tags tags={tags} />
       </div>
