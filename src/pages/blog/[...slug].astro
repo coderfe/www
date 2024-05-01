@@ -40,7 +40,7 @@ const { title, tldr, date, tags = [], cover } = post.data;
           <Tags tags={tags} />
         </div>
       </div>
-      <PostSummary client:only />
+      <PostSummary client:load />
       <hr class="my-4" />
       <Content />
     </article>

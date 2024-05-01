@@ -5,7 +5,7 @@ import Emoji from '../Emoji.astro';
 <div class="hidden" id="search-box">
   <div
     id="search-backdrop"
-    class="fixed z-[1000] left-0 top-0 backdrop-blur-[2px] h-screen w-screen overflow-hidden flex justify-center items-center"
+    class="fixed z-[100] left-0 top-0 backdrop-blur-[2px] h-screen w-screen overflow-hidden flex justify-center items-center"
   >
   </div>
   <div
@@ -36,7 +36,7 @@ import Emoji from '../Emoji.astro';
   <Emoji class:list="text-sm">🔍</Emoji>
 </button>
 
-<script type="module">
+<script type="module" is:inline>
   const pagefind = await import('/pagefind/pagefind.js');
   pagefind.init();
   const resultEl = document.querySelector('#results');
