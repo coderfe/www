@@ -1,13 +1,13 @@
 ---
 import { Hello } from '@/components/home/Hello';
+import DocumentMeta from '@/layouts/DocumentMeta.astro';
+import { SITE_DESCRIPTION } from '@/consts';
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="zh-Hans">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <DocumentMeta title="Hi👋" description={SITE_DESCRIPTION} />
   </head>
   <body>
     <Hello client:load />
