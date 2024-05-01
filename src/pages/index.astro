@@ -1,31 +1,15 @@
 ---
-import IndexPost from '@/components/IndexPost.astro';
-import BaseLayout from '@/layouts/BaseLayout.astro';
-import { getCollection } from 'astro:content';
-import Emoji from '@/components/Emoji.astro';
-import FloatBtn from '@/components/fab/FloatBtn.astro';
-
-const collection = await getCollection('blog');
-const posts = collection
-  .filter(({ data: { date } }) => date.getFullYear() >= new Date().getFullYear() - 2)
-  .filter(({ data: { draft = false } }) => !draft)
-  .sort(({ data: { date: dateA } }, { data: { date: dateB } }) => dateB.valueOf() - dateA.valueOf());
+import { Hello } from '@/components/home/Hello';
 ---
 
-<BaseLayout title="首页">
-  <main class="max-w-prose flex flex-col gap-6 py-6 mx-auto">
-    {posts.map((post) => <IndexPost post={post} />)}
-    <a
-      href="/archive"
-      title="查看更多"
-      class="group flex justify-center items-center text-center select-none rounded-xl overflow-hidden bg-white transition-all dark:bg-slate-900"
-    >
-      <div class="p-4 space-y-4 text-center">
-        <Emoji class="text-6xl">📂</Emoji>
-        <p>查看归档</p>
-      </div>
-    </a>
-  </main>
-
-  <FloatBtn />
-</BaseLayout>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <Hello client:load />
+  </body>
+</html>
