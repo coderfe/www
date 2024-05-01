@@ -4,17 +4,21 @@ import { useEffect, useState } from 'react';
 
 export function Visitors({ triggerOnload = true }) {
   const [visitors, setVisitors] = useState(0);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    updateVisitorsByUrl(getHref(), triggerOnload).then((res) => {
-      const {
-        data: { count },
-        success,
-      } = res;
-      if (!success) return;
-      setVisitors(count);
-    });
+    setLoading(true);
+    updateVisitorsByUrl(getHref(), triggerOnload)
+      .then((res) => {
+        const {
+          data: { count },
+          success,
+        } = res;
+        if (!success) return;
+        setVisitors(count);
+      })
+      .finally(() => setLoading(false));
   }, []);
 
-  return <span>{visitors}</span>;
+  return loading ? <span className="inline-block animate-spin">⏳</span> : <span>{visitors}</span>;
 }
