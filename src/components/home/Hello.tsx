@@ -15,7 +15,7 @@ export function Hello() {
   return (
     <div className="grid grid-rows-2 text-base md:grid-cols-2 md:grid-rows-none md:justify-center md:items-center lg:text-4xl font-mono w-screen h-screen bg-white text-black font-light">
       <div className="h-full flex justify-center items-center">
-        <div>
+        <h1>
           {isVisible && (
             <>
               <motion.div className="mb-2" transition={{ duration: 1, delay: 0.5 }}>
@@ -62,7 +62,7 @@ export function Hello() {
               </motion.div>
             </>
           )}
-        </div>
+        </h1>
       </div>
       <div className="h-full flex justify-center items-center">
         {isVisible && (

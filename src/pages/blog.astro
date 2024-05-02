@@ -3,7 +3,7 @@ import IndexPost from '@/components/IndexPost.astro';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 import Emoji from '@/components/Emoji.astro';
-import FloatBtn from '@/components/fab/FloatBtn.astro';
+import FloatBtn from '@/components/fab/FloatActionBtn.astro';
 
 const collection = await getCollection('blog');
 const posts = collection
