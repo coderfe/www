@@ -10,10 +10,11 @@ const http = ky.create({
   credentials: 'include',
 });
 
-export async function fetchSummary(url: string, content: string) {
+export async function aiSummary(url: string, title: string, content: string) {
   return await http
-    .post('kimi/summary', {
+    .post('pages/summary', {
       json: {
+        title,
         url,
         content,
       },
@@ -21,12 +22,12 @@ export async function fetchSummary(url: string, content: string) {
     .json<Res>();
 }
 
-export async function updateVisitorsByUrl(url: string, visited: boolean = false) {
+export async function pageView(url: string, title: string) {
   return await http
-    .post('visitor', {
-      json: {
+    .get('pages/view', {
+      searchParams: {
         url,
-        visited,
+        title,
       },
     })
     .json<Res>();

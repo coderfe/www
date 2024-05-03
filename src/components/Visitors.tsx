@@ -1,4 +1,5 @@
-import { updateVisitorsByUrl } from '@/api';
+import { pageView } from '@/api';
+import { SITE_TITLE } from '@/consts';
 import { getHref } from '@/helper';
 import { useEffect, useState } from 'react';
 
@@ -8,14 +9,12 @@ export function Visitors({ triggerOnload = true }) {
 
   useEffect(() => {
     setLoading(true);
-    updateVisitorsByUrl(getHref(), triggerOnload)
+    const title = document.querySelector('h1')?.textContent ?? SITE_TITLE;
+    pageView(getHref(), title)
       .then((res) => {
-        const {
-          data: { count },
-          success,
-        } = res;
+        const { data, success } = res;
         if (!success) return;
-        setVisitors(count);
+        setVisitors(data);
       })
       .finally(() => setLoading(false));
   }, []);

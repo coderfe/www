@@ -1,4 +1,4 @@
-import { fetchSummary } from '@/api';
+import { aiSummary } from '@/api';
 import KimiLogo from '@/assets/kimi.png';
 import { getHref } from '@/helper';
 import { useEffect, useState } from 'react';
@@ -40,11 +40,27 @@ export function PostSummary() {
 async function getSummary() {
   try {
     const url = getHref();
-    const content = document.querySelector('article')?.textContent;
-    const { success, data } = await fetchSummary(url, content!);
+    const content = document.querySelector('#content')?.innerHTML;
+    const title = document.querySelector('h1')?.textContent;
+    const { success, data } = await aiSummary(url, title!, cleanHtml(content!));
     return success ? data : '🤖奔溃了……';
   } catch (e) {
     console.log(e);
     return '🤖超时了……';
   }
+}
+
+function cleanHtml(html: string) {
+  function removePreCode(htmlText) {
+    var tempDiv = document.createElement('div');
+    tempDiv.innerHTML = htmlText;
+    var preElements = tempDiv.getElementsByTagName('pre');
+    for (var i = 0; i < preElements.length; i++) {
+      preElements[i].textContent = '';
+    }
+    return tempDiv.innerHTML;
+  }
+  return removePreCode(html)
+    .replace(/<[^>]+>/g, '')
+    .replace(/\s+/g, ' ');
 }

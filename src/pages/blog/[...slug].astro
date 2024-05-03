@@ -41,7 +41,9 @@ const { title, tldr, date, tags = [], cover } = post.data;
         </div>
       </div>
       <PostSummary client:load />
-      <Content />
+      <section id="content">
+        <Content />
+      </section>
     </article>
     <hr />
     <section class="mt-4 text-sm leading-loose text-gray-600 dark:text-slate-400">
