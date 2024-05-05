@@ -12,7 +12,7 @@ const http = ky.create({
 
 export async function aiSummary(url: string, title: string, content: string) {
   return await http
-    .post('pages/summary', {
+    .post('web/summary', {
       json: {
         title,
         url,
@@ -24,7 +24,7 @@ export async function aiSummary(url: string, title: string, content: string) {
 
 export async function pageView(url: string, title: string) {
   return await http
-    .get('pages/view', {
+    .get('web/view', {
       searchParams: {
         url,
         title,
