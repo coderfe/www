@@ -5,24 +5,25 @@ pathname = pathname.replace(/^\/|\/$/g, '');
 ---
 
 <header
-  class="max-w-prose mx-auto p-2 backdrop-blur-md sticky top-2 z-50 supports-backdrop-blur:bg-white/60 dark:bg-transparent font-mono ring-1 ring-slate-800/10 dark:ring-slate-950 shadow-lg rounded-full"
+  class="max-w-prose mx-auto p-1 backdrop-blur-md sticky top-2 z-50 supports-backdrop-blur:bg-white/60 dark:bg-transparent font-mono ring-1 ring-slate-800/10 dark:ring-slate-950 shadow-lg rounded-full"
   data-pagefind-ignore
 >
   <div class="flex items-center justify-between">
     <a
       href="/"
-      class="size-10 rounded-full overflow-hidden ring-1 ring-slate-200 dark:ring-neutral-800 shadow-md select-none"
+      class="size-8 rounded-full overflow-hidden ring-1 ring-slate-200 dark:ring-neutral-800 shadow-md select-none"
     >
-      <img src={Avatar.src} alt="site owner avatar" />
+      <img src="https://assets.coderfee.com/avatar.jpg" alt="site owner avatar" />
     </a>
     <ul class="flex gap-2 text-black/80 dark:text-white font-bold">
       <li>
         <a
           class:list={{
-            'block px-4 py-1 rounded-full hover:text-white hover:bg-blue-500 hover:shadow-md transition-all duration-300 ease-in-out': true,
-            'text-white bg-blue-500 shadow-md': pathname === '',
+            "block px-2 text-sm py-1 rounded-full hover:text-blue-500 transition-all duration-300 ease-in-out": true,
+            "text-blue-500": pathname === "",
           }}
           href="/"
+          target="_blank"
         >
           /home
         </a>
@@ -30,8 +31,8 @@ pathname = pathname.replace(/^\/|\/$/g, '');
       <li>
         <a
           class:list={{
-            'block px-4 py-1 rounded-full hover:text-white hover:bg-blue-500 hover:shadow-md transition-all duration-300 ease-in-out': true,
-            'text-white bg-blue-500 shadow-md': pathname === 'blog',
+            "block px-2 text-sm py-1 rounded-full hover:text-blue-500 transition-all duration-300 ease-in-out": true,
+            "text-blue-500": pathname === "blog",
           }}
           href="/blog"
         >
@@ -41,8 +42,8 @@ pathname = pathname.replace(/^\/|\/$/g, '');
       <li>
         <a
           class:list={{
-            'block px-4 py-1 rounded-full hover:text-white hover:bg-blue-500 hover:shadow-md transition-all duration-300 ease-in-out': true,
-            'text-white bg-blue-500 shadow-md': pathname === 'blog/pages/about',
+            "block px-2 text-sm py-1 rounded-full hover:text-blue-500 transition-all duration-300 ease-in-out": true,
+            "text-blue-500": pathname === "blog/pages/about",
           }}
           href="/blog/pages/about"
         >

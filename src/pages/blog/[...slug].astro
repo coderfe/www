@@ -1,14 +1,15 @@
 ---
-import { type CollectionEntry, getCollection } from 'astro:content';
-import Emoji from '@/components/Emoji.astro';
-import FloatBtn from '@/components/fab/FloatActionBtn.astro';
-import { PostSummary } from '@/components/post/PostSummary';
-import Tags from '@/components/post/Tags.astro';
-import Time from '@/components/post/Time.astro';
-import BaseLayout from '@/layouts/BaseLayout.astro';
+import { type CollectionEntry, getCollection } from "astro:content";
+import Emoji from "@/components/Emoji.astro";
+import FloatBtn from "@/components/fab/FloatActionBtn.astro";
+import { Liked } from "@/components/post/Liked";
+import { PostSummary } from "@/components/post/PostSummary";
+import Tags from "@/components/post/Tags.astro";
+import Time from "@/components/post/Time.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
 
 export async function getStaticPaths() {
-  const posts = await getCollection('blog');
+  const posts = await getCollection("blog");
   return posts
     .map((post) => ({
       params: { slug: post.slug },
@@ -16,7 +17,7 @@ export async function getStaticPaths() {
     }))
     .flat();
 }
-type Props = CollectionEntry<'blog'>;
+type Props = CollectionEntry<"blog">;
 
 const post = Astro.props;
 const { Content, headings } = await post.render();
@@ -36,6 +37,7 @@ const { title, tldr, date, tags = [], cover } = post.data;
           <Emoji>📅</Emoji>
           <Time date={date} />
         </span>
+        <Liked client:load />
         <div class="flex gap-2 items-center">
           <Tags tags={tags} />
         </div>
@@ -57,7 +59,7 @@ const { title, tldr, date, tags = [], cover } = post.data;
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
   <script is:inline>
     let spreaded = false;
-    window.addEventListener('scroll', () => {
+    window.addEventListener("scroll", () => {
       const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
       const scrollHeight = document.documentElement.scrollHeight;
       const clientHeight = document.documentElement.clientHeight;
@@ -73,5 +75,5 @@ const { title, tldr, date, tags = [], cover } = post.data;
     });
   </script>
 
-  <FloatBtn />
+  <FloatBtn showLike={true} />
 </BaseLayout>

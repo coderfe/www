@@ -1,4 +1,3 @@
-import Avatar from '@/assets/avatar.jpg';
 import { socials } from '@/consts';
 import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';

@@ -1,3 +1,4 @@
+import type { Post } from '@/store';
 import ky from 'ky';
 
 type Res<T = any> = {
@@ -10,25 +11,21 @@ const http = ky.create({
   credentials: 'include',
 });
 
-export async function aiSummary(url: string, title: string, content: string) {
+type PostView = {
+  summary: string;
+  viewCount: number;
+  likeCount: number;
+};
+export async function viewPost(post: Post) {
   return await http
-    .post('web/summary', {
-      json: {
-        title,
-        url,
-        content,
-      },
+    .post('web/view', {
+      json: post,
     })
-    .json<Res>();
+    .json<Res<PostView>>();
 }
 
-export async function pageView(url: string, title: string) {
-  return await http
-    .get('web/view', {
-      searchParams: {
-        url,
-        title,
-      },
-    })
-    .json<Res>();
+export const cookie = () => http.get('web').text();
+
+export async function likePost(url: string) {
+  return await http.get('web/like', { searchParams: { url } }).text();
 }

@@ -1,9 +1,17 @@
 ---
+import { LikePost } from './LikePost';
 import { ModeToggle } from './ModeToggle';
 import Search from './Search.astro';
+
+type Props = {
+  showLike?: boolean;
+};
+
+const { showLike = false } = Astro.props;
 ---
 
 <div class="fixed z-[100] bottom-8 right-6 flex flex-col gap-4" aria-label="floating button">
   <Search />
+  {showLike && <LikePost client:load />}
   <ModeToggle client:load />
 </div>
