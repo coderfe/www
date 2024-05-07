@@ -1,7 +1,20 @@
 import { SITE_TITLE } from '@/consts';
 import { getHref } from '@/helper';
 import { usePostDetail } from '@/store';
+import { animate, motion, useMotionValue, useTransform } from 'framer-motion';
 import { useEffect } from 'react';
+
+function ViewCount({ count }) {
+  const motionValue = useMotionValue(0);
+  const roundedCount = useTransform(motionValue, (v) => Math.round(v));
+
+  useEffect(() => {
+    const controls = animate(motionValue, count, { duration: 3 });
+    return () => controls.stop();
+  }, []);
+
+  return <motion.span>{roundedCount}</motion.span>;
+}
 
 export function Visitors({ triggerOnload = true }) {
   const viewCount = usePostDetail((state) => state.viewCount);
@@ -12,7 +25,7 @@ export function Visitors({ triggerOnload = true }) {
     fetcher(getPost());
   }, []);
 
-  return loading ? <span className="inline-block m-0 text-xs animate-spin">⌛️</span> : <span>{viewCount}</span>;
+  return loading ? <span className="inline-block m-0 text-xs animate-spin">⌛️</span> : <ViewCount count={viewCount} />;
 }
 
 function getPost() {
@@ -27,7 +40,7 @@ function getPost() {
 }
 
 function cleanHtml(html: string) {
-  function removePreCode(htmlText) {
+  function removePreCode(htmlText: string) {
     var tempDiv = document.createElement('div');
     tempDiv.innerHTML = htmlText;
     var preElements = tempDiv.getElementsByTagName('pre');

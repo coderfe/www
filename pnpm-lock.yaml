@@ -93,9 +93,12 @@ importers:
       '@biomejs/biome':
         specifier: 1.7.3
         version: 1.7.3
-      '@iconify/react':
-        specifier: ^4.1.1
-        version: 4.1.1(react@18.3.1)
+      '@iconify-json/tabler':
+        specifier: ^1.1.111
+        version: 1.1.111
+      '@iconify/tailwind':
+        specifier: ^1.0.1
+        version: 1.0.1
       '@tailwindcss/typography':
         specifier: ^0.5.13
         version: 0.5.13(tailwindcss@3.4.3)
@@ -478,10 +481,11 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@iconify/react@4.1.1':
-    resolution: {integrity: sha512-jed14EjvKjee8mc0eoscGxlg7mSQRkwQG3iX3cPBCO7UlOjz0DtlvTqxqEcHUJGh+z1VJ31Yhu5B9PxfO0zbdg==}
-    peerDependencies:
-      react: '>=16'
+  '@iconify-json/tabler@1.1.111':
+    resolution: {integrity: sha512-0qCmOCUUgcBXtvSUwaKMM4yum6XNrjPLxZBwueRPn14pAmWhS7Un15chxJ+ULfE1hBaVM7gSPIYz4JAUOo28Aw==}
+
+  '@iconify/tailwind@1.0.1':
+    resolution: {integrity: sha512-Y0AbOvabPJ4qjhQGWvCfhWoYC7aETqYAg9V++xkHFqy9gcUteKnEEmgOEsoOf6T7V9Xz34qKNLnaIAVkt1gLtQ==}
 
   '@iconify/types@2.0.0':
     resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
@@ -3285,10 +3289,13 @@ snapshots:
   '@esbuild/win32-x64@0.20.2':
     optional: true
 
-  '@iconify/react@4.1.1(react@18.3.1)':
+  '@iconify-json/tabler@1.1.111':
     dependencies:
       '@iconify/types': 2.0.0
-      react: 18.3.1
+
+  '@iconify/tailwind@1.0.1':
+    dependencies:
+      '@iconify/types': 2.0.0
 
   '@iconify/types@2.0.0': {}
 

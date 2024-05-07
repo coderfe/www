@@ -41,7 +41,8 @@
   },
   "devDependencies": {
     "@biomejs/biome": "1.7.3",
-    "@iconify/react": "^4.1.1",
+    "@iconify-json/tabler": "^1.1.111",
+    "@iconify/tailwind": "^1.0.1",
     "@tailwindcss/typography": "^0.5.13",
     "@types/node": "^20.12.10",
     "lefthook": "^1.6.10"

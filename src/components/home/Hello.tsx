@@ -1,6 +1,7 @@
 import { socials } from '@/consts';
 import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
+import Social from './Social';
 
 export function Hello() {
   const [isVisible, setIsVisible] = useState(false);
@@ -42,8 +43,8 @@ export function Hello() {
                 ))}
               </motion.div>
 
-              <motion.div className="space-x-4 text-2xl">
-                {socials.map(({ name, url, icon }, index) => (
+              <motion.div className="flex gap-4 items-center text-xl text-black">
+                {socials.map(({ name, url, icon, color }, index) => (
                   <motion.a
                     key={name}
                     href={url}
@@ -53,9 +54,10 @@ export function Hello() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: index * 0.1 + 5 }}
                     title={name}
+                    className="inline-block"
                     aria-label={`link to ${name}`}
                   >
-                    {icon}
+                    <Social social={{ name, url, icon, color }} />
                   </motion.a>
                 ))}
               </motion.div>
