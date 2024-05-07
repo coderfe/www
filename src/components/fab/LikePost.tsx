@@ -1,5 +1,5 @@
 import { getHref, throttle } from '@/helper';
-import { usePostDetail } from '@/store';
+import { usePostDetail } from '@/store/postDetail';
 import { Button } from './button';
 
 export function LikePost() {

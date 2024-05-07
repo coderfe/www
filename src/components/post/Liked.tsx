@@ -1,15 +1,14 @@
-import { usePostDetail } from '@/store';
+import { usePostDetail } from '@/store/postDetail';
 import { animate, motion, useMotionValue, useTransform } from 'framer-motion';
 import { useEffect } from 'react';
 
-export const Liked = () => {
+export function Liked() {
   const { likeCount, loading } = usePostDetail();
   const count = useMotionValue(0);
   const rounded = useTransform(count, (v) => Math.round(v));
 
   useEffect(() => {
     const controls = animate(count, likeCount);
-
     return () => controls.stop();
   });
 
@@ -23,4 +22,4 @@ export const Liked = () => {
       )}
     </span>
   );
-};
+}

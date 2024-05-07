@@ -1,13 +1,12 @@
 import KimiLogo from '@/assets/kimi.png';
-import { usePostDetail } from '@/store';
+import { usePostDetail } from '@/store/postDetail';
 
 function Skeleton() {
   return <div className=" bg-slate-200 dark:bg-slate-800 h-4 rounded animate-pulse" />;
 }
 
 export function PostSummary() {
-  const summary = usePostDetail((state) => state.summary);
-  const loading = usePostDetail((state) => state.loading);
+  const { summary, loading } = usePostDetail();
 
   return (
     <div className="border rounded-xl space-y-1 dark:border-slate-800 p-4 mt-4" aria-label="文章摘要">

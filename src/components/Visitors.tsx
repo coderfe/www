@@ -1,6 +1,6 @@
 import { SITE_TITLE } from '@/consts';
 import { getHref } from '@/helper';
-import { usePostDetail } from '@/store';
+import { usePostDetail } from '@/store/postDetail';
 import { animate, motion, useMotionValue, useTransform } from 'framer-motion';
 import { useEffect } from 'react';
 

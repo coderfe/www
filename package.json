@@ -24,7 +24,7 @@
     "@types/react-dom": "^18.3.0",
     "astro": "^4.7.1",
     "astro-pagefind": "^1.5.0",
-    "framer-motion": "^11.1.8",
+    "framer-motion": "^11.1.9",
     "ky": "^1.2.4",
     "markdown-it": "^14.1.0",
     "pagefind": "^1.1.0",

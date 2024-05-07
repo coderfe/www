@@ -1,6 +1,8 @@
 ---
 import Tags from '@/components/post/Tags.astro';
+import { url } from 'inspector';
 import Emoji from './Emoji.astro';
+import { PostStat } from './post/PostStat';
 import Time from './post/Time.astro';
 
 const { post } = Astro.props;
@@ -25,10 +27,11 @@ const {
     <p class="line-clamp-2 mb-2 leading-6 font-normal text-black/80 dark:text-white/80 text-sm">
       {tldr}
     </p>
-    <div class="flex gap-6 text-sm font-mono text-black/80 dark:text-white/80">
+    <div class="flex items-center gap-6 text-sm font-mono text-black/80 dark:text-white/80">
       <div>
         <Emoji>📅</Emoji><Time date={post.data.date} />
       </div>
+      <PostStat url={`${Astro.site}blog/${slug}`} client:load />
       <div class="flex gap-2">
         <Tags tags={tags} />
       </div>

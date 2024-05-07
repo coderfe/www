@@ -1,12 +1,12 @@
-import type { Post } from '@/store';
+import type { Post } from '@/store/postDetail';
 import ky from 'ky';
 
-type Res<T = any> = {
+export type ApiResponse<T = unknown> = {
   success: boolean;
   data: T;
 };
 
-const http = ky.create({
+export const http = ky.create({
   prefixUrl: import.meta.env.DEV ? 'http://localhost:8787' : import.meta.env.PUBLIC_BASE_API_URL,
   credentials: 'include',
 });
@@ -21,7 +21,7 @@ export async function viewPost(post: Post) {
     .post('web/view', {
       json: post,
     })
-    .json<Res<PostView>>();
+    .json<ApiResponse<PostView>>();
 }
 
 export const cookie = () => http.get('web').text();
