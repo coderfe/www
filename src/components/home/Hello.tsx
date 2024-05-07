@@ -73,7 +73,7 @@ export function Hello() {
             transition={{ duration: 1, delay: 1 }}
             aria-label="site owner avatar"
             className="size-52 bg-contain rounded-full ring-1 ring-slate-300/20 shadow-md"
-            style={{ backgroundImage: `url(https://assets.coderfee.com/avatar.jpg)` }}
+            style={{ backgroundImage: `url(https://assets.coderfee.com/avatar-hometown.jpg)` }}
           />
         )}
       </div>
