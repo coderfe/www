@@ -7,7 +7,8 @@
     "start": "astro dev",
     "build": "astro build && pagefind --site dist",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "check": "pnpx @biomejs/biome check --apply ./src"
   },
   "dependencies": {
     "@astrojs/mdx": "^2.3.1",
@@ -38,9 +39,11 @@
     "tailwindcss": "^3.4.3"
   },
   "devDependencies": {
+    "@biomejs/biome": "1.7.3",
     "@iconify/react": "^4.1.1",
     "@tailwindcss/typography": "^0.5.13",
     "@types/node": "^20.12.8",
+    "lefthook": "^1.6.10",
     "prettier": "^3.2.5"
   }
 }

@@ -1,11 +1,11 @@
 ---
+import { type CollectionEntry, getCollection } from 'astro:content';
 import Emoji from '@/components/Emoji.astro';
+import FloatBtn from '@/components/fab/FloatActionBtn.astro';
+import { PostSummary } from '@/components/post/PostSummary';
 import Tags from '@/components/post/Tags.astro';
 import Time from '@/components/post/Time.astro';
 import BaseLayout from '@/layouts/BaseLayout.astro';
-import FloatBtn from '@/components/fab/FloatActionBtn.astro';
-import { getCollection, type CollectionEntry } from 'astro:content';
-import { PostSummary } from '@/components/post/PostSummary';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
