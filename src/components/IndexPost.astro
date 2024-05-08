@@ -1,20 +1,14 @@
 ---
-import Tags from '@/components/post/Tags.astro';
-import { url } from 'inspector';
-import Emoji from './Emoji.astro';
-import { PostStat } from './post/PostStat';
-import Time from './post/Time.astro';
-
 const { post } = Astro.props;
 const {
   slug,
-  data: { title, tldr, tags = [] },
+  data: { title, tldr, tags = [], date },
 } = post;
 ---
 
 <a
   href={`/blog/${slug}`}
-  class="group rounded-xl overflow-hidden hover:bg-blue-100 transition-all ease-in-out duration-500 dark:hover:bg-slate-800"
+  class="group rounded-xl overflow-hidden hover:bg-blue-100 transition-all ease-in-out duration-500 dark:hover:bg-zinc-800"
   data-pagefind-ignore
 >
   <div class="p-4">
@@ -27,13 +21,18 @@ const {
     <p class="line-clamp-2 mb-2 leading-6 font-normal text-black/80 dark:text-white/80 text-sm">
       {tldr}
     </p>
-    <div class="flex items-center gap-6 text-sm font-mono text-black/80 dark:text-white/80">
+    <div
+      class="flex items-center gap-4 text-sm font-mono text-black/80 dark:text-white/50 *:flex *:gap-1 *:items-center"
+    >
       <div>
-        <Emoji>📅</Emoji><Time date={post.data.date} />
+        <span class="text-lg icon-[tabler--calendar]"></span>
+        <span>{date?.toLocaleDateString()}</span>
       </div>
-      <PostStat url={`${Astro.site}blog/${slug}`} client:load />
-      <div class="flex gap-2">
-        <Tags tags={tags} />
+      <div>
+        <span class="text-lg icon-[tabler--tags]"></span>
+        <span>
+          {tags.join("、")}
+        </span>
       </div>
     </div>
   </div>

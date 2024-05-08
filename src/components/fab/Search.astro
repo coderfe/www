@@ -1,7 +1,3 @@
----
-import Emoji from '../Emoji.astro';
----
-
 <div class="hidden" id="search-box">
   <div
     id="search-backdrop"
@@ -9,12 +5,12 @@ import Emoji from '../Emoji.astro';
   >
   </div>
   <div
-    class="fixed left-1/2 top-32 -translate-x-1/2 z-[1001] max-sm:w-11/12 w-[560px] bg-blue-50 rounded-lg overflow-hidden shadow-xl dark:bg-slate-900"
+    class="fixed left-1/2 top-32 -translate-x-1/2 z-[1001] max-sm:w-11/12 w-[560px] bg-blue-50 rounded-lg overflow-hidden shadow-xl dark:bg-zinc-900"
   >
     <div class="p-4">
       <input
         id="search-input"
-        class="w-full p-2 border-2 border-blue-500 rounded-lg focus:ring-0 focus:border-blue-500 outline-none dark:bg-slate-950"
+        class="w-full p-2 border-2 border-blue-500 rounded-lg focus:ring-0 focus:border-blue-500 outline-none dark:bg-zinc-950"
         type="text"
         placeholder="搜索 coderfee.com"
       />
@@ -29,50 +25,50 @@ import Emoji from '../Emoji.astro';
 </div>
 
 <button
-  class="flex items-center justify-center size-12 text-lg md:size-10 md:text-base outline-accent hover:opacity-100 focus:opacity-100 focus:outline-none rounded-xl border border-zinc-400/20 backdrop-blur-lg dark:border-zinc-500/30 dark:text-zinc-200 bg-zinc-50/80 shadow-lg dark:bg-slate-950/80 transition-all duration-500 ease-in-out"
+  class="flex items-center justify-center size-12 text-lg md:size-10 md:text-base outline-accent hover:opacity-100 focus:opacity-100 focus:outline-none rounded-xl border border-zinc-400/20 backdrop-blur-lg dark:border-zinc-500/30 dark:text-zinc-200 bg-zinc-50/80 shadow-lg dark:bg-zinc-950/80 transition-all duration-500 ease-in-out"
   id="search-btn"
   title="搜一搜"
 >
-  <Emoji class:list="text-sm">🔍</Emoji>
+  <span class="icon-[tabler--search]"></span>
 </button>
 
 <script type="module" is:inline>
-  const pagefind = await import('/pagefind/pagefind.js');
+  const pagefind = await import("/pagefind/pagefind.js");
   pagefind.init();
-  const resultEl = document.querySelector('#results');
-  const searchInput = document.querySelector('#search-input');
-  const searchIcon = document.querySelector('#search-btn');
-  const searchBackdrop = document.querySelector('#search-backdrop');
+  const resultEl = document.querySelector("#results");
+  const searchInput = document.querySelector("#search-input");
+  const searchIcon = document.querySelector("#search-btn");
+  const searchBackdrop = document.querySelector("#search-backdrop");
 
-  searchIcon.addEventListener('click', () => {
+  searchIcon.addEventListener("click", () => {
     toggleSearchBox();
   });
-  searchBackdrop.addEventListener('click', () => {
+  searchBackdrop.addEventListener("click", () => {
     toggleSearchBox();
   });
 
-  searchInput.addEventListener('input', handleSearch);
+  searchInput.addEventListener("input", handleSearch);
 
   function toggleSearchBox() {
-    const searchBox = document.querySelector('#search-box');
-    searchBox.classList.toggle('hidden');
-    if (!searchBox.classList.contains('hidden')) {
-      document.body.style.overflow = 'hidden';
+    const searchBox = document.querySelector("#search-box");
+    searchBox.classList.toggle("hidden");
+    if (!searchBox.classList.contains("hidden")) {
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = 'auto';
+      document.body.style.overflow = "auto";
     }
   }
   async function handleSearch(e) {
     const { value } = e.target;
-    let html = '';
+    let html = "";
     const search = await pagefind.search(value);
     const results = search.results.map((item) => item.data());
     const data = await Promise.all(results);
     data.map(({ meta: { title }, url, excerpt }) => {
       html += `
-      <div class="bg-white dark:bg-slate-800 p-2 rounded-lg shadow-xl">
+      <div class="bg-white dark:bg-zinc-800 p-2 rounded-lg shadow-xl">
         <a href="${url}" class="text-blue-500 hover:text-blue-600 transition-colors duration-200">${title}</a>
-        <p class="text-gray-500 text-sm line-clamp-1 text-ellipsis mt-1 ml-4">${excerpt.replaceAll('<mark', '<mark class="bg-blue-500 text-white"')}</p>
+        <p class="text-gray-500 text-sm line-clamp-1 text-ellipsis mt-1 ml-4">${excerpt.replaceAll("<mark", '<mark class="bg-blue-500 text-white"')}</p>
       </div>
     `;
     });

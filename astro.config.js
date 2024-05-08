@@ -47,7 +47,9 @@ export default defineConfig({
     pagefind(),
     mdx(),
     sitemap(),
-    tailwind(),
+    tailwind({
+      // applyBaseStyles: false,
+    }),
     react(),
     sentry({
       sourceMapsUploadOptions: {

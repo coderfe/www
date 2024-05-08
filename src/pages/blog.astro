@@ -1,9 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
-import Emoji from '@/components/Emoji.astro';
 import IndexPost from '@/components/IndexPost.astro';
 import FloatBtn from '@/components/fab/FloatActionBtn.astro';
-import { PostStatMain } from '@/components/post/PostStatMain';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 
 const collection = await getCollection('blog');
@@ -14,16 +12,15 @@ const posts = collection
 ---
 
 <BaseLayout title="首页">
-  <PostStatMain client:load />
   <main class="max-w-prose flex flex-col gap-6 py-6 mx-auto">
     {posts.map((post) => <IndexPost post={post} />)}
     <a
       href="/archive"
       title="查看更多"
-      class="group flex justify-center items-center text-center select-none rounded-xl overflow-hidden bg-white transition-all dark:bg-slate-900"
+      class="group flex justify-center items-center text-center select-none rounded-xl overflow-hidden bg-white transition-all dark:bg-zinc-900 dark:hover:bg-zinc-800"
     >
-      <div class="p-4 space-y-4 text-center">
-        <Emoji class="text-6xl">📂</Emoji>
+      <div class="p-4 space-y-4 text-center dark:text-white/50">
+        <span class="icon-[tabler--loader] text-2xl animate-spin"></span>
         <p>查看归档</p>
       </div>
     </a>

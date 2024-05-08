@@ -1,4 +1,4 @@
-import { getHref, throttle } from '@/helper';
+import { getHref, throttle } from '@/lib/helper';
 import { usePostDetail } from '@/store/postDetail';
 import { Button } from './button';
 
@@ -7,5 +7,7 @@ export function LikePost() {
   const handleClick = () => like(getHref());
   const TEN_SECONDS = 1000 * 10;
   const throttledClick = throttle(handleClick, TEN_SECONDS);
-  return <Button title="点个赞" onClick={throttledClick} render={() => <span>❤️</span>} />;
+  return (
+    <Button title="点个赞" onClick={throttledClick} render={() => <span className="icon-[tabler--thumb-up]"></span>} />
+  );
 }

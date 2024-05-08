@@ -4,9 +4,9 @@ import { Visitors } from '@/components/Visitors';
 const today = new Date();
 ---
 
-<footer class="flex w-full flex-col gap-4 items-center py-4 px-8 text-sm bg-slate-900 text-white/80 font-mono">
+<footer class="flex w-full flex-col gap-4 items-center py-4 px-8 text-sm bg-zinc-900 text-white/80 font-mono">
   <div class="space-y-2">
-    <ul class="flex gap-4">
+    <ul class="flex gap-4 justify-between">
       <li>
         <a href="https://github.com/coderfe" title="GitHub" aria-label="GitHub" rel="noopener" target="_blank">
           <span class="icon-[tabler--brand-github] text-2xl"></span>
@@ -28,12 +28,8 @@ const today = new Date();
         </a>
       </li>
     </ul>
-    <div class="">
-      <span>&copy; {today.getFullYear()} coderfee.</span>
-      <a href="https://beian.miit.gov.cn/" target="_blank"> 京ICP备19050952号-1 </a>
-    </div>
     <div class="flex gap-4 items-center">
-      <span>👏欢迎，本页访问 <Visitors client:load /> 次</span>
+      <span>欢迎，本页访问 <Visitors client:load /> 次</span>
     </div>
   </div>
 </footer>

@@ -1,11 +1,7 @@
 ---
 import { type CollectionEntry, getCollection } from "astro:content";
-import Emoji from "@/components/Emoji.astro";
 import FloatBtn from "@/components/fab/FloatActionBtn.astro";
-import { Liked } from "@/components/post/Liked";
 import { PostSummary } from "@/components/post/PostSummary";
-import Tags from "@/components/post/Tags.astro";
-import Time from "@/components/post/Time.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 
 export async function getStaticPaths() {
@@ -28,27 +24,17 @@ const { title, tldr, date, tags = [], cover } = post.data;
   {date && <meta name="date" content={date.toLocaleDateString()} slot="head" />}
 
   <main
-    class="mx-auto py-8 prose dark:prose-invert prose-img:rounded-md prose-a:text-blue-500 prose-a:no-underline prose-a:border-b-2 prose-a:border-blue-500 prose-p:text-justify"
+    class="mx-auto py-8 prose dark:prose-invert prose-img:rounded-md prose-a:font-medium prose-a:text-black prose-a:no-underline prose-a:border-b-2 prose-a:border-black dark:prose-a:text-white dark:prose-a:border-white prose-p:text-justify"
   >
     <article>
       <h1>{title}</h1>
-      <div class="flex gap-8 font-mono">
-        <span class="flex items-center gap-1" aria-label="发布时间">
-          <Emoji>📅</Emoji>
-          <Time date={date} />
-        </span>
-        <Liked client:load />
-        <div class="flex gap-2 items-center">
-          <Tags tags={tags} />
-        </div>
-      </div>
-      <PostSummary client:load />
+      <PostSummary date={date} tags={tags} client:load />
       <section id="content">
         <Content />
       </section>
     </article>
     <hr />
-    <section class="mt-4 text-sm leading-loose text-gray-600 dark:text-slate-400">
+    <section class="mt-4 text-sm leading-loose text-gray-600 dark:text-zinc-400">
       商业转载请联系站长获得授权，非商业转载请注明本文出处及文章链接，您可以自由地在任何媒体以任何形式复制和分发作品，也可以修改和创作，但是分发衍生作品时必须采用相同的许可协议。<br
       />
       本文采用<a target="_blank" rel="noopener noreferrer" href="https://creativecommons.org/licenses/by-nc-sa/4.0/"

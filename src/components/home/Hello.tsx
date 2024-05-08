@@ -1,3 +1,4 @@
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import { socials } from '@/consts';
 import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
@@ -13,70 +14,78 @@ export function Hello() {
   });
 
   return (
-    <div className="grid grid-rows-2 text-base md:grid-cols-2 md:grid-rows-none md:justify-center md:items-center lg:text-4xl font-mono w-screen h-screen bg-white text-black font-light">
-      <div className="h-full flex justify-center items-center">
-        <h1>
-          {isVisible && (
-            <>
-              <motion.div className="mb-2" transition={{ duration: 1, delay: 0.5 }}>
-                {hello.map((char, index) => (
-                  <motion.span
-                    key={index}
-                    initial={{ opacity: 0, y: 100 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                  >
-                    {char}
-                  </motion.span>
-                ))}
-              </motion.div>
-              <motion.div className="mb-8" transition={{ duration: 1, delay: 1.5 }}>
-                {txt.map((char, index) => (
-                  <motion.span
-                    key={index}
-                    initial={{ opacity: 0, y: 100 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: index * 0.1 + 2 }}
-                  >
-                    {char}
-                  </motion.span>
-                ))}
-              </motion.div>
+    <TooltipProvider>
+      <div className="grid grid-rows-2 text-base md:grid-cols-2 md:grid-rows-none md:justify-center md:items-center lg:text-4xl font-mono w-screen h-screen bg-white text-black font-light">
+        <div className="h-full flex justify-center items-center">
+          <h1>
+            {isVisible && (
+              <>
+                <motion.div className="mb-2" transition={{ duration: 1, delay: 0.5 }}>
+                  {hello.map((char, index) => (
+                    <motion.span
+                      key={index}
+                      initial={{ opacity: 0, y: 100 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.5, delay: index * 0.1 }}
+                    >
+                      {char}
+                    </motion.span>
+                  ))}
+                </motion.div>
+                <motion.div className="mb-8" transition={{ duration: 1, delay: 1.5 }}>
+                  {txt.map((char, index) => (
+                    <motion.span
+                      key={index}
+                      initial={{ opacity: 0, y: 100 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.5, delay: index * 0.1 + 2 }}
+                    >
+                      {char}
+                    </motion.span>
+                  ))}
+                </motion.div>
 
-              <motion.div className="flex gap-4 items-center text-xl text-black">
-                {socials.map(({ name, url, icon, color }, index) => (
-                  <motion.a
-                    key={name}
-                    href={url}
-                    target={url === '/blog' ? '_self' : '_blank'}
-                    rel="noopener noreferrer"
-                    initial={{ opacity: 0, y: 100 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: index * 0.1 + 5 }}
-                    title={name}
-                    className="inline-block"
-                    aria-label={`link to ${name}`}
-                  >
-                    <Social social={{ name, url, icon, color }} />
-                  </motion.a>
-                ))}
-              </motion.div>
-            </>
+                <motion.div className="flex gap-4 items-center text-xl text-black">
+                  {socials.map(({ name, url, icon, color }, index) => (
+                    <motion.a
+                      key={name}
+                      href={url}
+                      target={url === '/blog' ? '_self' : '_blank'}
+                      rel="noopener noreferrer"
+                      initial={{ opacity: 0, y: 100 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.5, delay: index * 0.1 + 5 }}
+                      className="inline-block"
+                      aria-label={`link to ${name}`}
+                    >
+                      <Tooltip>
+                        <TooltipTrigger>
+                          <Social social={{ name, url, icon, color }} />
+                        </TooltipTrigger>
+                        <TooltipContent>
+                          <p>{name}</p>
+                        </TooltipContent>
+                      </Tooltip>
+                    </motion.a>
+                  ))}
+                </motion.div>
+              </>
+            )}
+          </h1>
+        </div>
+        <div className="h-full flex justify-center items-center">
+          {isVisible && (
+            <motion.div
+              initial={{ opacity: 0, x: 200 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 1, delay: 1 }}
+              aria-label="site owner avatar"
+              className="size-52 bg-contain rounded-full ring-1 ring-zinc-300/20 shadow-md"
+              style={{ backgroundImage: `url(https://assets.coderfee.com/avatar-hometown.jpg)` }}
+            />
           )}
-        </h1>
+        </div>
       </div>
-      <div className="h-full flex justify-center items-center">
-        {isVisible && (
-          <motion.div
-            initial={{ opacity: 0, x: 200 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1, delay: 1 }}
-            aria-label="site owner avatar"
-            className="size-52 bg-contain rounded-full ring-1 ring-slate-300/20 shadow-md"
-            style={{ backgroundImage: `url(https://assets.coderfee.com/avatar-hometown.jpg)` }}
-          />
-        )}
-      </div>
-    </div>
+    </TooltipProvider>
   );
 }

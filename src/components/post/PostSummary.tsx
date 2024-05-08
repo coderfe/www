@@ -1,30 +1,59 @@
-import KimiLogo from '@/assets/kimi.png';
+import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
+import { Skeleton } from '@/components/ui/skeleton';
 import { usePostDetail } from '@/store/postDetail';
+import { animate, motion, useMotionValue, useTransform } from 'framer-motion';
+import { useEffect } from 'react';
 
-function Skeleton() {
-  return <div className=" bg-slate-200 dark:bg-slate-800 h-4 rounded animate-pulse" />;
-}
+type Props = {
+  date: Date;
+  tags: string[];
+};
 
-export function PostSummary() {
+export function PostSummary({ date, tags }: Props) {
   const { summary, loading } = usePostDetail();
 
   return (
-    <div className="border rounded-xl space-y-1 dark:border-slate-800 p-4 mt-4" aria-label="文章摘要">
-      <p className="flex items-center gap-2 m-0">
-        <span className="size-5 bg-contain" style={{ backgroundImage: `url(${KimiLogo.src})` }}></span>
-        <span className="text-black dark:text-white font-semibold">AI 生成的摘要</span>
-      </p>
-      <div className="space-y-2 transition-[height] duration-300 ease-in-out">
-        {loading ? (
-          <>
-            <Skeleton />
-            <Skeleton />
-            <Skeleton />
-          </>
-        ) : (
-          <div className="m-0 text-sm">{summary}</div>
-        )}
+    <div className="space-y-4">
+      <div className="flex gap-4 items-center text-sm dark:text-white/50 *:flex *:gap-1 *:items-center">
+        <div>
+          <span className="text-lg icon-[tabler--calendar]" />
+          <span>{date?.toLocaleDateString()}</span>
+        </div>
+        <Liked />
+        <div>
+          <span className="text-lg icon-[tabler--tags]" />
+          <span>{tags.join('、')}</span>
+        </div>
       </div>
+      <Alert>
+        <AlertTitle>AI 摘要</AlertTitle>
+        {loading ? (
+          <div className="space-y-2">
+            <Skeleton className="h-4" />
+            <Skeleton className="h-4" />
+          </div>
+        ) : (
+          <AlertDescription>{summary}</AlertDescription>
+        )}
+      </Alert>
+    </div>
+  );
+}
+
+export function Liked() {
+  const { likeCount } = usePostDetail();
+  const count = useMotionValue(0);
+  const rounded = useTransform(count, (v) => Math.round(v));
+
+  useEffect(() => {
+    const controls = animate(count, likeCount);
+    return () => controls.stop();
+  });
+
+  return (
+    <div>
+      <span className="text-lg icon-[tabler--hearts]"></span>
+      <motion.span>{rounded}</motion.span>
     </div>
   );
 }

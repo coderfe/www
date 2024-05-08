@@ -60,16 +60,16 @@ pnpx pagefind --site dist
 <div class="hidden" id="search-box">
   <div
     id="search-backdrop"
-    class="fixed z-[1000] left-0 top-0 backdrop-blur-3xl h-screen w-screen overflow-hidden flex justify-center items-center bg-slate-900/20 dark:bg-slate-500/20"
+    class="fixed z-[1000] left-0 top-0 backdrop-blur-3xl h-screen w-screen overflow-hidden flex justify-center items-center bg-zinc-900/20 dark:bg-zinc-500/20"
   >
   </div>
   <div
-    class="fixed left-1/2 top-32 -translate-x-1/2 z-[1001] w-[560px] bg-slate-200 rounded-lg overflow-hidden shadow-xl dark:bg-slate-900"
+    class="fixed left-1/2 top-32 -translate-x-1/2 z-[1001] w-[560px] bg-zinc-200 rounded-lg overflow-hidden shadow-xl dark:bg-zinc-900"
   >
     <div class="p-4">
       <input
         id="search-input"
-        class="w-full p-2 border-2 border-blue-500 rounded-lg focus:ring-0 focus:border-blue-500 outline-none dark:bg-slate-950"
+        class="w-full p-2 border-2 border-blue-500 rounded-lg focus:ring-0 focus:border-blue-500 outline-none dark:bg-zinc-950"
         type="text"
         placeholder="搜索文档"
       />
@@ -108,7 +108,7 @@ async function handleSearch(e) {
     const data = await Promise.all(results);
     data.map(({ meta: { title }, url, excerpt }) => {
       html += `
-      <div class="bg-white dark:bg-slate-800 p-2 rounded-lg shadow-xl">
+      <div class="bg-white dark:bg-zinc-800 p-2 rounded-lg shadow-xl">
         <a href="${url}" class="text-blue-500 hover:text-blue-600 transition-colors duration-200">${title}</a>
         <p class="text-gray-500 text-sm line-clamp-1 text-ellipsis mt-1 ml-4">${excerpt.replaceAll('<mark', '<mark class="bg-blue-500 text-white"')}</p>
       </div>
