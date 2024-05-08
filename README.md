@@ -15,4 +15,6 @@ pnpm dev
 
 ## 🚀Deployment
 
-用的是 [Vercel](https://vercel.com/docs) 的免费方案。
+- [Cloudflare Pages](https://pages.cloudflare.com/)
+- [Cloudflare Workers](https://workers.cloudflare.com/)
+- [Cloudflare D1](https://developers.cloudflare.com/d1/)
