@@ -7,10 +7,6 @@ body {
   @apply font-mono;
 }
 
-main {
+/* main {
   @apply min-w-[360px] w-full px-4;
-}
-
-::selection {
-  @apply bg-blue-500 text-white;
-}
+} */

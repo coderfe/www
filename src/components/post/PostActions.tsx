@@ -8,7 +8,7 @@ import {
 } from '@/components/ui/menubar';
 import { Toaster } from '@/components/ui/toaster';
 import { useToast } from '@/components/ui/use-toast';
-import { copyTextToClipboard, getHref, throttle } from '@/lib/helper';
+import { copyTextToClipboard, getHref } from '@/lib/helper';
 import { usePostDetail } from '@/store/postDetail';
 import type { MarkdownHeading } from 'astro';
 import { useEffect, useState } from 'react';
@@ -21,10 +21,8 @@ export function PostActions({ headings }: Props) {
   return (
     <>
       <Toaster />
-      <div className="sticky left-1/2 translate-x-[-50%] w-[216px] bottom-4 mb-8">
+      <div className="sticky left-1/2 translate-x-[-50%] w-[174px] bottom-4 mb-8">
         <Menubar>
-          <MenuSearch />
-
           <MenuLike />
 
           <MenuOutline headings={headings} />
@@ -35,32 +33,6 @@ export function PostActions({ headings }: Props) {
         </Menubar>
       </div>
     </>
-  );
-}
-
-function MenuSearch() {
-  const { toast } = useToast();
-  const handleSelect = (description: string) => toast({ title: 'TODO', description });
-  return (
-    <MenubarMenu>
-      <MenubarTrigger className="cursor-pointer">
-        <span className="icon-[tabler--search]"></span>
-      </MenubarTrigger>
-      <MenubarContent>
-        <MenubarItem onSelect={() => handleSelect('别着急，在写了…')}>
-          <span className="mr-2 icon-[tabler--brand-openai]" />
-          搜索“人工智能”
-        </MenubarItem>
-        <MenubarItem onSelect={() => handleSelect('疯狂写代码中…')}>
-          <span className="mr-2 icon-[tabler--brand-javascript]" />
-          搜索“JavaScript”
-        </MenubarItem>
-        <MenubarItem onSelect={() => handleSelect('坐和放宽…')}>
-          <span className="mr-2 icon-[tabler--dice-6]" />
-          碰碰运气
-        </MenubarItem>
-      </MenubarContent>
-    </MenubarMenu>
   );
 }
 
