@@ -6,7 +6,7 @@ export interface PostDetail {
   viewCount: number;
   likeCount: number;
   loading: boolean;
-  like: (url: string) => void;
+  like: (url: string) => Promise<void>;
   fetch: (param: Post) => Promise<void>;
 }
 

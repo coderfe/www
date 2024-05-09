@@ -1,6 +1,7 @@
 ---
 import { type CollectionEntry, getCollection } from "astro:content";
 import FloatBtn from "@/components/fab/FloatActionBtn.astro";
+import { PostActions } from "@/components/post/PostActions";
 import { PostSummary } from "@/components/post/PostSummary";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 
@@ -42,6 +43,8 @@ const { title, tldr, date, tags = [], cover } = post.data;
       </a>国际进行许可。
     </section>
   </main>
+  <PostActions headings={headings} client:load />
+
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
   <script is:inline>
     let spreaded = false;
@@ -60,6 +63,4 @@ const { title, tldr, date, tags = [], cover } = post.data;
       }
     });
   </script>
-
-  <FloatBtn showLike={true} />
 </BaseLayout>

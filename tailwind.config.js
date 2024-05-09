@@ -31,5 +31,5 @@ module.exports = {
     },
   },
   plugins: [require('tailwindcss-animate'), addDynamicIconSelectors(), require('@tailwindcss/typography')],
-  safelist: ['icon-[tabler--mail]', 'icon-[tabler--home]'],
+  safelist: ['icon-[tabler--mail]', 'icon-[tabler--home]', 'icon-[tabler--external-link]'],
 };

@@ -37,7 +37,13 @@ export default defineConfig({
       [
         rehypeExternalLinks,
         {
-          content: { type: 'text', value: '🔗' },
+          content: {
+            type: 'element',
+            tagName: 'span',
+            properties: {
+              className: 'icon-[tabler--external-link]',
+            },
+          },
           target: '_blank',
         },
       ],
@@ -48,7 +54,7 @@ export default defineConfig({
     mdx(),
     sitemap(),
     tailwind({
-      // applyBaseStyles: false,
+      applyBaseStyles: false,
     }),
     react(),
     sentry({
