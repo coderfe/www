@@ -1,6 +1,6 @@
 ---
 import { type CollectionEntry, getCollection } from "astro:content";
-import FloatBtn from "@/components/fab/FloatActionBtn.astro";
+import License from "@/components/License.astro";
 import { PostActions } from "@/components/post/PostActions";
 import { PostSummary } from "@/components/post/PostSummary";
 import BaseLayout from "@/layouts/BaseLayout.astro";
@@ -27,21 +27,15 @@ const { title, tldr, date, tags = [], cover } = post.data;
   <main
     class="prose lg:prose-lg xl:prose-xl mx-auto py-8 dark:prose-invert prose-img:rounded-md prose-a:font-medium prose-a:text-black prose-a:no-underline prose-a:border-b-2 prose-a:border-black dark:prose-a:text-white dark:prose-a:border-white prose-p:text-justify"
   >
+    <h1>{title}</h1>
     <article>
-      <h1>{title}</h1>
       <PostSummary date={date} tags={tags} client:load />
       <section id="content">
         <Content />
       </section>
     </article>
     <hr />
-    <section class="mt-4 text-sm leading-loose text-gray-600 dark:text-zinc-400">
-      商业转载请联系站长获得授权，非商业转载请注明本文出处及文章链接，您可以自由地在任何媒体以任何形式复制和分发作品，也可以修改和创作，但是分发衍生作品时必须采用相同的许可协议。<br
-      />
-      本文采用<a target="_blank" rel="noopener noreferrer" href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
-        >CC BY-NC-SA 4.0 - 非商业性使用 - 相同方式共享 4.0
-      </a>国际进行许可。
-    </section>
+    <License />
   </main>
   <PostActions headings={headings} client:load />
 
