@@ -1,54 +1,89 @@
 ---
+import { Command } from '@/components/Command';
+import { ModeToggle } from '@/components/ModeToggle';
+
 let pathname = new URL(Astro.request.url).pathname;
-pathname = pathname.replace(/^\/|\/$/g, '');
+pathname = pathname.replace(/\/$/g, '');
+
+const navs = [
+  {
+    name: '/home',
+    cnName: '首页',
+    path: '/',
+    active: pathname === '',
+  },
+  {
+    name: '/blog',
+    cnName: '文章',
+    path: '/blog',
+    active: pathname === '/blog',
+  },
+  {
+    name: '/archive',
+    cnName: '归档',
+    path: '/archive',
+    active: pathname === '/archive',
+  },
+  {
+    name: '/about',
+    cnName: '关于',
+    path: '/blog/pages/about',
+    active: pathname === '/blog/pages/about',
+  },
+];
 ---
 
 <header
-  class="max-w-prose mx-auto p-1 backdrop-blur-md sticky top-2 z-50 supports-backdrop-blur:bg-white/60 dark:bg-transparent font-mono ring-1 ring-zinc-800/10 dark:ring-zinc-950 shadow-lg rounded-full"
+  class="fixed w-11/12 h-[50px] left-1/2 -translate-x-1/2 top-4 z-50 py-2 px-4 rounded-xl bg-white/50 dark:bg-zinc-950/10 border dark:border-zinc-800 backdrop-blur-xl overflow-hidden transition-all duration-300 ease-in-out"
   data-pagefind-ignore
 >
-  <div class="flex items-center justify-between">
-    <a
-      href="/"
-      class="size-8 rounded-full overflow-hidden ring-1 ring-zinc-200 dark:ring-zinc-800 shadow-md select-none"
+  <div
+    class="grid grid-cols-1 grid-rows-[32px_auto_auto] md:grid-rows-1 md:grid-cols-[minmax(32px,1fr)_auto_minmax(50px,1fr)] items-center justify-between"
+  >
+    <section class="flex items-center justify-between text-left h-8 overflow-hidden">
+      <a
+        href="/blog"
+        class="inline-block select-none size-8 rounded-full bg-contain bg-center bg-no-repeat bg-[url(https://assets.coderfee.com/avatar-hometown.jpg)] transition-transform ease-in-out hover:scale-105"
+        aria-label="site owner avatar"></a>
+      <span class="icon-[tabler--menu-2] cursor-pointer text-lg md:hidden" id="menu"></span>
+    </section>
+    <nav
+      class="flex flex-col py-8 space-y-4 md:block md:space-x-4 md:space-y-0 text-left md:text-center md:py-0 *:cursor-pointer *:font-semibold *:transition-colors *:duration-300"
     >
-      <img src="https://assets.coderfee.com/avatar-hometown.jpg" alt="site owner avatar" />
-    </a>
-    <ul class="flex gap-2 text-black/80 dark:text-white font-bold">
-      <li>
-        <a
-          class:list={{
-            "block px-2 text-sm py-1 rounded-full hover:text-blue-500 transition-all duration-300 ease-in-out": true,
-            "text-blue-500": pathname === "",
-          }}
-          href="/"
-          target="_blank"
-        >
-          /home
-        </a>
-      </li>
-      <li>
-        <a
-          class:list={{
-            "block px-2 text-sm py-1 rounded-full hover:text-blue-500 transition-all duration-300 ease-in-out": true,
-            "text-blue-500": pathname === "blog",
-          }}
-          href="/blog"
-        >
-          /blog
-        </a>
-      </li>
-      <li>
-        <a
-          class:list={{
-            "block px-2 text-sm py-1 rounded-full hover:text-blue-500 transition-all duration-300 ease-in-out": true,
-            "text-blue-500": pathname === "blog/pages/about",
-          }}
-          href="/blog/pages/about"
-        >
-          /about
-        </a>
-      </li>
-    </ul>
+      {
+        navs.map((nav) => (
+          <a
+            href={nav.path}
+            class:list={[
+              !nav.active && "text-zinc-600 dark:text-white/70",
+              "hover:text-black dark:hover:text-white",
+              nav.active ? "text-black dark:text-white" : "",
+            ]}
+          >
+            {nav.active ? nav.cnName : nav.name}
+          </a>
+        ))
+      }
+    </nav>
+    <section class="text-right">
+      <Command client:idle />
+      <ModeToggle client:load />
+    </section>
   </div>
 </header>
+<script is:inline>
+  const menu = document.getElementById("menu");
+  const header = document.querySelector("header");
+  let open = false;
+  menu.addEventListener("click", () => {
+    if (open) {
+      open = false;
+      header.classList.remove(["h-[288px]"]);
+      header.classList.add(["h-[50px]"]);
+    } else {
+      open = true;
+      header.classList.remove(["h-[50px]"]);
+      header.classList.add(["h-[288px]"]);
+    }
+  });
+</script>

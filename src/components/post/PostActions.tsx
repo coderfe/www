@@ -11,7 +11,8 @@ import { useToast } from '@/components/ui/use-toast';
 import { copyTextToClipboard, getHref } from '@/lib/helper';
 import { usePostDetail } from '@/store/postDetail';
 import type { MarkdownHeading } from 'astro';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
+import { ToastAction } from '../ui/toast';
 
 type Props = {
   headings: MarkdownHeading[];
@@ -21,13 +22,11 @@ export function PostActions({ headings }: Props) {
   return (
     <>
       <Toaster />
-      <div className="sticky left-1/2 translate-x-[-50%] w-[174px] bottom-4 mb-8">
+      <div className="sticky flex justify-center bottom-4 mb-8">
         <Menubar>
           <MenuLike />
 
           <MenuOutline headings={headings} />
-
-          <MenuThemeToggle />
 
           <MenuShare />
         </Menubar>
@@ -106,18 +105,32 @@ function MenuShare() {
   const handleCopyLink = () => {
     copyTextToClipboard(href).then(() => {
       toast({
-        description: 'Copied',
+        title: 'Copied',
+        description: href,
       });
     });
   };
   const handlePrint = () => window.print();
 
   useEffect(() => {
-    document.addEventListener('keydown', (e) => {
-      if (e.metaKey && e.shiftKey && e.key === 'c') {
+    const down = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === 'P') {
+        e.preventDefault();
+        handlePrint();
+      }
+    };
+    const copy = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.shiftKey && e.key === 'C') {
+        e.preventDefault();
         handleCopyLink();
       }
-    });
+    };
+    document.addEventListener('keydown', copy);
+    document.addEventListener('keydown', down);
+    return () => {
+      document.removeEventListener('keydown', down);
+      document.removeEventListener('keydown', copy);
+    };
   }, []);
   return (
     <MenubarMenu>
@@ -138,47 +151,6 @@ function MenuShare() {
           <span className="mr-2 icon-[tabler--printer]" />
           打印
           <MenubarShortcut>⌘+P</MenubarShortcut>
-        </MenubarItem>
-      </MenubarContent>
-    </MenubarMenu>
-  );
-}
-
-type Theme = 'light' | 'dark' | 'system';
-function MenuThemeToggle() {
-  const [theme, setThemeState] = useState<Theme>('light');
-
-  useEffect(() => {
-    const isDarkMode = document.documentElement.classList.contains('dark');
-    setThemeState(isDarkMode ? 'dark' : 'light');
-  }, []);
-
-  useEffect(() => {
-    const isDark =
-      theme === 'dark' || (theme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
-    document.documentElement.classList[isDark ? 'add' : 'remove']('dark');
-  }, [theme]);
-
-  function handleThemeChange(theme: Theme) {
-    setThemeState(theme);
-  }
-  return (
-    <MenubarMenu>
-      <MenubarTrigger className="cursor-pointer">
-        <span className="icon-[tabler--brush]"></span>
-      </MenubarTrigger>
-      <MenubarContent>
-        <MenubarItem onClick={() => handleThemeChange('light')}>
-          <span className="mr-2 icon-[tabler--sun]" />
-          Light
-        </MenubarItem>
-        <MenubarItem onClick={() => handleThemeChange('dark')}>
-          <span className="mr-2 icon-[tabler--moon-stars]" />
-          Dark
-        </MenubarItem>
-        <MenubarItem onClick={() => handleThemeChange('system')}>
-          <span className="mr-2 icon-[tabler--device-laptop]" />
-          System
         </MenubarItem>
       </MenubarContent>
     </MenubarMenu>

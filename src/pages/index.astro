@@ -2,6 +2,7 @@
 import { Hello } from '@/components/home/Hello';
 import { SITE_DESCRIPTION } from '@/consts';
 import DocumentMeta from '@/layouts/DocumentMeta.astro';
+import Header from '@/layouts/Header.astro';
 ---
 
 <!doctype html>
@@ -9,7 +10,8 @@ import DocumentMeta from '@/layouts/DocumentMeta.astro';
   <head>
     <DocumentMeta title="Hi👋" description={SITE_DESCRIPTION} />
   </head>
-  <body>
+  <body class="bg-white dark:bg-zinc-900 dark:text-white">
+    <Header />
     <Hello client:load />
   </body>
 </html>

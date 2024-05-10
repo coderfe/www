@@ -5,7 +5,7 @@ export const getHref = () => {
   return window.location.href.replace('http://dev.', 'https://').replace(/\/$/, '');
 };
 
-export function throttle(func: any, timeFrame: number) {
+export function throttle(func: Function, timeFrame: number) {
   let lastTime = 0;
   return function (...args: any) {
     const now = Date.now();
@@ -13,6 +13,20 @@ export function throttle(func: any, timeFrame: number) {
       func(...args);
       lastTime = now;
     }
+  };
+}
+
+export function debounce(func: Function, wait: number, immediate: boolean) {
+  let timeout: NodeJS.Timeout;
+  return function () {
+    let context = this,
+      args = arguments;
+    clearTimeout(timeout);
+    if (immediate && !timeout) func.apply(context, args);
+    timeout = setTimeout(function () {
+      clearTimeout(timeout);
+      if (!immediate) func.apply(context, args);
+    }, wait);
   };
 }
 
