@@ -49,7 +49,11 @@ function cleanHtml(html: string) {
     }
     return tempDiv.innerHTML;
   }
+  if (import.meta.env.DEV) {
+    return '';
+  }
   return removePreCode(html)
     .replace(/<[^>]+>/g, '')
-    .replace(/\s+/g, ' ');
+    .replace(/\s+/g, ' ')
+    .trim();
 }
