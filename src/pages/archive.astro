@@ -1,6 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
-import IndexPost from '@/components/IndexPost.astro';
+import PostCard from '@/components/post/PostCard.astro';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 
 const collection = await getCollection('blog');
@@ -12,6 +12,6 @@ const posts = collection
 
 <BaseLayout title="归档" description="coderfee.com 归档页面">
   <main class="flex flex-col gap-6 mx-auto">
-    {posts.map((post) => <IndexPost post={post} />)}
+    {posts.map((post) => <PostCard post={post} />)}
   </main>
 </BaseLayout>

@@ -7,7 +7,7 @@ import {
   CommandList,
 } from '@/components/ui/command';
 import { useEffect, useState } from 'react';
-import { Button } from './ui/button';
+import { Button } from '../ui/button';
 
 export function Command() {
   const [open, setOpen] = useState(false);

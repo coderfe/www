@@ -1,5 +1,3 @@
-import type { MarkdownHeading } from 'astro';
-
 export const getHref = () => {
   if (typeof window === 'undefined') return '';
   return window.location.href.replace('http://dev.', 'https://').replace(/\/$/, '');
