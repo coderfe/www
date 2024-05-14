@@ -28,12 +28,12 @@
     "@radix-ui/react-slot": "^1.0.2",
     "@radix-ui/react-toast": "^1.1.5",
     "@radix-ui/react-tooltip": "^1.0.7",
-    "@sentry/astro": "^7.113.0",
-    "@shikijs/transformers": "^1.4.0",
+    "@sentry/astro": "^7.114.0",
+    "@shikijs/transformers": "^1.5.1",
     "@spotlightjs/astro": "^1.0.20",
-    "@types/react": "^18.3.1",
+    "@types/react": "^18.3.2",
     "@types/react-dom": "^18.3.0",
-    "astro": "^4.8.2",
+    "astro": "^4.8.3",
     "astro-pagefind": "^1.5.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
@@ -59,9 +59,9 @@
   "devDependencies": {
     "@biomejs/biome": "1.7.3",
     "@iconify-json/tabler": "^1.1.111",
-    "@iconify/tailwind": "^1.0.1",
+    "@iconify/tailwind": "^1.1.1",
     "@tailwindcss/typography": "^0.5.13",
-    "@types/node": "^20.12.10",
-    "lefthook": "^1.6.10"
+    "@types/node": "^20.12.11",
+    "lefthook": "^1.6.11"
   }
 }
