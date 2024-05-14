@@ -61,7 +61,7 @@
     "@iconify-json/tabler": "^1.1.111",
     "@iconify/tailwind": "^1.1.1",
     "@tailwindcss/typography": "^0.5.13",
-    "@types/node": "^20.12.11",
+    "@types/node": "^20.12.12",
     "lefthook": "^1.6.11"
   }
 }
