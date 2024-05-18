@@ -31,7 +31,7 @@ export function Visitors({ triggerOnload = true }) {
 function getPost() {
   const url = getHref();
   const content = document.querySelector('#content')?.innerHTML;
-  const title = document.querySelector('h1')?.textContent ?? SITE_TITLE;
+  const title = document.querySelector('h1')?.textContent || document.title;
   return {
     url,
     title,

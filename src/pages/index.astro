@@ -1,4 +1,5 @@
 ---
+import { Visitors } from '@/components/common/Visitors';
 import { Hello } from '@/components/home/Hello';
 import { SITE_DESCRIPTION } from '@/consts';
 import DocumentMeta from '@/layouts/DocumentMeta.astro';
@@ -8,10 +9,14 @@ import Header from '@/layouts/Header.astro';
 <!doctype html>
 <html lang="zh-Hans">
   <head>
-    <DocumentMeta title="Hi👋" description={SITE_DESCRIPTION} />
+    <DocumentMeta title="首页" description={SITE_DESCRIPTION} />
   </head>
   <body class="bg-white dark:bg-zinc-900 dark:text-white">
     <Header />
     <Hello client:load />
+
+    <div class="hidden">
+      <Visitors client:load />
+    </div>
   </body>
 </html>

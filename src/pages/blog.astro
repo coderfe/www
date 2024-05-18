@@ -10,7 +10,7 @@ const posts = collection
   .sort(({ data: { date: dateA } }, { data: { date: dateB } }) => dateB.valueOf() - dateA.valueOf());
 ---
 
-<BaseLayout title="首页">
+<BaseLayout title="文章">
   <main class="flex flex-col gap-6 mx-auto pb-8">
     {posts.map((post) => <PostCard post={post} />)}
   </main>

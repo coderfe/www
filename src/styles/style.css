@@ -5,3 +5,7 @@
 main {
   @apply px-6 max-w-5xl;
 }
+
+::selection {
+  @apply bg-zinc-900 text-white dark:bg-white dark:text-zinc-900;
+}
