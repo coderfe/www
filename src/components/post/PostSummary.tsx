@@ -7,13 +7,14 @@ import { useEffect } from 'react';
 type Props = {
   date: Date;
   tags: string[];
+  tldr: string;
 };
 
-export function PostSummary({ date, tags }: Props) {
+export function PostSummary({ date, tags, tldr }: Props) {
   const { summary, loading } = usePostDetail();
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-4 my-4">
       <div className="flex gap-4 items-center text-sm dark:text-white/50 *:flex *:gap-1 *:items-center">
         <div>
           <span className="text-lg icon-[tabler--calendar]" />
@@ -26,14 +27,19 @@ export function PostSummary({ date, tags }: Props) {
         </div>
       </div>
       <Alert>
-        <AlertTitle>AI 摘要</AlertTitle>
+        <AlertTitle>
+          <span className="inline-flex items-center gap-1">
+            <span className="icon-[tabler--brand-openai]"></span>
+            <span className="font-bold">AI 摘要</span>
+          </span>
+        </AlertTitle>
         {loading ? (
           <div className="space-y-2">
             <Skeleton className="h-4" />
             <Skeleton className="h-4" />
           </div>
         ) : (
-          <AlertDescription>{summary}</AlertDescription>
+          <AlertDescription>{summary ? summary : tldr}</AlertDescription>
         )}
       </Alert>
     </div>

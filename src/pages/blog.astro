@@ -11,7 +11,7 @@ const posts = collection
 ---
 
 <BaseLayout title="首页">
-  <main class="flex flex-col gap-6 mx-auto">
+  <main class="flex flex-col gap-6 mx-auto pb-8">
     {posts.map((post) => <PostCard post={post} />)}
   </main>
 </BaseLayout>

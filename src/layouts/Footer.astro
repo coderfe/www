@@ -1,10 +1,10 @@
 ---
 import { Visitors } from '@/components/common/Visitors';
-
-const today = new Date();
 ---
 
-<footer class="flex w-full flex-col gap-4 items-center py-4 px-8 text-sm bg-zinc-900 text-white/80 font-mono">
+<footer
+  class="flex w-full flex-col gap-4 items-center py-4 px-8 text-sm bg-zinc-900 text-white/80 font-mono text-center"
+>
   <div class="space-y-2">
     <ul class="flex gap-4 justify-between">
       <li>
@@ -30,6 +30,9 @@ const today = new Date();
     </ul>
     <div class="flex gap-4 items-center">
       <span>欢迎，本页访问 <Visitors client:load /> 次</span>
+    </div>
+    <div>
+      <a href="https://beian.miit.gov.cn/" target="_blank">京ICP备19050952号-1</a>
     </div>
   </div>
 </footer>

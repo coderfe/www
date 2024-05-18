@@ -44,7 +44,7 @@ function MenuLike() {
   return (
     <MenubarMenu>
       <MenubarTrigger className="cursor-pointer" onClick={() => like(getHref())}>
-        <span className="icon-[tabler--hearts]"></span>
+        <span className="icon-[tabler--hearts] text-lg"></span>
       </MenubarTrigger>
       <MenubarContent>
         <MenubarItem onClick={() => handleClick('感谢老铁的点赞')}>
@@ -69,7 +69,7 @@ function MenuOutline({ headings }: Props) {
   return (
     <MenubarMenu>
       <MenubarTrigger className="cursor-pointer">
-        <span className="icon-[tabler--heading]"></span>
+        <span className="icon-[tabler--heading] text-lg"></span>
       </MenubarTrigger>
       <MenubarContent>
         {displayHeadings.map((heading) => {
@@ -135,7 +135,7 @@ function MenuShare() {
   return (
     <MenubarMenu>
       <MenubarTrigger className="cursor-pointer">
-        <span className="icon-[tabler--share]"></span>
+        <span className="icon-[tabler--share] text-lg"></span>
       </MenubarTrigger>
       <MenubarContent>
         <MenubarItem onClick={handleShareTwitter}>
