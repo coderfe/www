@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import Social from './Social';
 
-export function Hello() {
+export function Hello({ children }: { children?: React.ReactNode }) {
   const [isVisible, setIsVisible] = useState(false);
   const hello = "Hi👋, I'm coderfee.".split('');
   const txt = 'A FrontEnd <Developer />.'.split('');
@@ -82,7 +82,7 @@ export function Hello() {
               aria-label="site owner avatar"
               className="size-52 bg-contain rounded-full ring-1 ring-zinc-300/20 shadow-md"
               style={{ backgroundImage: `url(https://assets.coderfee.com/avatar-hometown.jpg)` }}
-            />
+            ></motion.div>
           )}
         </div>
       </div>

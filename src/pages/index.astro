@@ -1,6 +1,8 @@
 ---
 import { Visitors } from '@/components/common/Visitors';
 import { Hello } from '@/components/home/Hello';
+import { HomeTags } from '@/components/home/HomeTags';
+import Tags from '@/components/home/Tags.astro';
 import { SITE_DESCRIPTION } from '@/consts';
 import DocumentMeta from '@/layouts/DocumentMeta.astro';
 import Header from '@/layouts/Header.astro';
@@ -14,6 +16,10 @@ import Header from '@/layouts/Header.astro';
   <body class="bg-white dark:bg-zinc-900 dark:text-white">
     <Header />
     <Hello client:load />
+
+    <HomeTags client:load>
+      <Tags />
+    </HomeTags>
 
     <div class="hidden">
       <Visitors client:load />
