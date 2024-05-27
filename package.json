@@ -32,7 +32,7 @@
     "@sentry/astro": "^8.2.1",
     "@shikijs/transformers": "^1.5.2",
     "@spotlightjs/astro": "^1.0.20",
-    "@types/react": "^18.3.2",
+    "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "astro": "^4.8.6",
     "astro-pagefind": "^1.5.0",
