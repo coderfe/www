@@ -20,7 +20,7 @@ ssh-keygen -t rsa -b 4096 -C "mail@example.com"
 终端会提示我们 ssh-key 的存放路径，例如 `Enter file in which to save the key`，我们可以指定为 `/Users/xxx/.ssh/id_ed25519_github`。
 
 
-为 Coding 生成 ssh-key 的步骤也一样，只不过我们需要指定存放路径为 `/Users/xxx/.ssh/id_rsa_coding`。
+为 Coding 生成 ssh-key 的步骤也一样，只不过我们需要指定存放路径为 `/Users/xxx/.ssh/id_ed25519_coding`。
 
 ## 配置 ~/.ssh/config
 
@@ -38,7 +38,7 @@ Host github.com
 Host coding.net
   User git
   StrictHostKeyChecking no
-  IdentityFile ~/.ssh/id_rsa_coding
+  IdentityFile ~/.ssh/id_ed25519_coding
   IdentitiesOnly yes
 ```
 
