@@ -58,7 +58,7 @@
     "zustand": "^4.5.2"
   },
   "devDependencies": {
-    "@biomejs/biome": "1.7.3",
+    "@biomejs/biome": "1.8.0",
     "@iconify-json/tabler": "^1.1.113",
     "@iconify/tailwind": "^1.1.1",
     "@tailwindcss/typography": "^0.5.13",
