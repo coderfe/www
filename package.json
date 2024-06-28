@@ -8,7 +8,7 @@
     "build": "astro build && pagefind",
     "preview": "astro preview",
     "astro": "astro",
-    "check": "pnpx @biomejs/biome check --apply ./src",
+    "check": "pnpx @biomejs/biome check --write ./src",
     "add": "pnpx shadcn-ui@latest add",
     "upgrade": "pnpx @astrojs/upgrade"
   },
