@@ -28,7 +28,7 @@ export function Visitors({ triggerOnload = true }) {
   return loading ? <span className="inline-block m-0 text-xs animate-spin">⌛️</span> : <ViewCount count={viewCount} />;
 }
 
-function getPost() {
+export function getPost() {
   const url = getHref();
   const content = document.querySelector('#content')?.innerHTML;
   const title = document.querySelector('h1')?.textContent || document.title;

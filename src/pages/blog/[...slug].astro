@@ -1,9 +1,9 @@
 ---
-import { type CollectionEntry, getCollection } from "astro:content";
 import License from "@/components/post/License.astro";
 import { PostActions } from "@/components/post/PostActions";
 import { PostSummary } from "@/components/post/PostSummary";
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import { getCollection, type CollectionEntry } from "astro:content";
 
 export async function getStaticPaths() {
   const posts = await getCollection("blog");
