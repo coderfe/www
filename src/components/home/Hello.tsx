@@ -81,7 +81,7 @@ export function Hello({ children }: { children?: React.ReactNode }) {
               transition={{ duration: 1, delay: 1 }}
               aria-label="site owner avatar"
               className="size-52 bg-contain rounded-full ring-1 ring-zinc-300/20 shadow-md"
-              style={{ backgroundImage: `url(https://assets.coderfee.com/avatar-hometown.jpg)` }}
+              style={{ backgroundImage: `url(https://assets.coderfee.com/blog/avatar.jpg)` }}
             ></motion.div>
           )}
         </div>
