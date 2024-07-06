@@ -1,4 +1,5 @@
 ---
+import dayjs from 'dayjs';
 const { post } = Astro.props;
 const {
   slug,
@@ -25,7 +26,7 @@ const {
     >
       <div>
         <span class="text-lg icon-[tabler--calendar]"></span>
-        <span>{date?.toLocaleDateString()}</span>
+        <span>{dayjs(date).format('MMMM DD,YYYY')}</span>
       </div>
       <div>
         <span class="text-lg icon-[tabler--tags]"></span>

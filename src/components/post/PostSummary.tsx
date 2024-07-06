@@ -1,6 +1,7 @@
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { Skeleton } from '@/components/ui/skeleton';
 import { usePostDetail } from '@/store/postDetail';
+import dayjs from 'dayjs';
 import { animate, motion, useMotionValue, useTransform } from 'framer-motion';
 import { useEffect } from 'react';
 import { getPost } from '../common/Visitors';
@@ -18,13 +19,13 @@ export function PostSummary({ date, tags, tldr }: Props) {
 
   return (
     <div className="space-y-4 my-4">
-      <div className="flex gap-4 items-center text-sm dark:text-white/50 *:flex *:gap-1 *:items-center">
+      <div className="flex gap-4 items-center text-sm dark:text-white/50 *:flex *:gap-1 *:items-center font-mono">
         <div>
           <span className="text-lg icon-[tabler--calendar]" />
-          <span>{date?.toLocaleDateString()}</span>
+          <span>{dayjs(date).format('MMMM DD,YYYY')}</span>
         </div>
         <Liked />
-        <div>
+        <div className="font-sans">
           <span className="text-lg icon-[tabler--tags]" />
           <span>{tags.join('、')}</span>
         </div>
