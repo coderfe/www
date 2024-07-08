@@ -37,7 +37,7 @@ export function copyTextToClipboard(text: string): Promise<void> {
   });
 }
 
-function fallbackCopyTextToClipboard(text) {
+function fallbackCopyTextToClipboard(text: string) {
   const textArea = document.createElement('textarea');
   textArea.value = text;
 
