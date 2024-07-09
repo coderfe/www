@@ -30,7 +30,7 @@
     "@radix-ui/react-toast": "^1.2.1",
     "@radix-ui/react-tooltip": "^1.1.2",
     "@sentry/astro": "^8.15.0",
-    "@shikijs/transformers": "^1.10.1",
+    "@shikijs/transformers": "^1.10.3",
     "@spotlightjs/astro": "^1.0.20",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
@@ -39,7 +39,7 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "cmdk": "^1.0.0",
-    "framer-motion": "^11.2.13",
+    "framer-motion": "^11.2.14",
     "ky": "^1.4.0",
     "lucide-react": "^0.399.0",
     "markdown-it": "^14.1.0",
@@ -52,7 +52,7 @@
     "rehype-slug": "^6.0.0",
     "remark-toc": "^9.0.0",
     "sanitize-html": "^2.13.0",
-    "tailwind-merge": "^2.3.0",
+    "tailwind-merge": "^2.4.0",
     "tailwindcss": "^3.4.4",
     "tailwindcss-animate": "^1.0.7",
     "zustand": "^4.5.4"
@@ -64,6 +64,6 @@
     "@tailwindcss/typography": "^0.5.13",
     "@types/node": "^20.14.10",
     "dayjs": "^1.11.11",
-    "lefthook": "^1.6.18"
+    "lefthook": "^1.7.1"
   }
 }
