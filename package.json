@@ -64,6 +64,6 @@
     "@tailwindcss/typography": "^0.5.13",
     "@types/node": "^20.14.11",
     "dayjs": "^1.11.12",
-    "lefthook": "^1.7.4"
+    "lefthook": "^1.7.5"
   }
 }
