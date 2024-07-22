@@ -35,7 +35,7 @@
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "astro": "^4.12.2",
-    "astro-pagefind": "^1.5.0",
+    "astro-pagefind": "^1.6.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "cmdk": "^1.0.0",
