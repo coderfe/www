@@ -62,7 +62,7 @@
     "@iconify-json/tabler": "^1.1.119",
     "@iconify/tailwind": "^1.1.2",
     "@tailwindcss/typography": "^0.5.14",
-    "@types/node": "^20.14.15",
+    "@types/node": "^22.2.0",
     "dayjs": "^1.11.12",
     "lefthook": "^1.7.12"
   }
