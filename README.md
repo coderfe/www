@@ -2,7 +2,7 @@
 
 > Hi🤝，这是一个基于 Astro & React 开发的个人博客网站。持续更新中……欢迎关注👀、star🌟。
 
-[coderfee.com](https://coderfee.com) 在线体验。
+[coderfee.com](https://coderfee.com)
 
 ## 🔨Development
 
