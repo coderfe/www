@@ -34,16 +34,16 @@
     "@spotlightjs/astro": "^1.0.20",
     "@types/react": "^18.3.5",
     "@types/react-dom": "^18.3.0",
-    "astro": "^4.15.1",
+    "astro": "^4.15.2",
     "astro-pagefind": "^1.6.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "cmdk": "^1.0.0",
     "framer-motion": "^11.3.31",
-    "ky": "^1.7.1",
+    "ky": "^1.7.2",
     "lucide-react": "^0.399.0",
     "markdown-it": "^14.1.0",
-    "pagefind": "^1.1.0",
+    "pagefind": "^1.1.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "rehype-autolink-headings": "^7.1.0",
@@ -64,6 +64,6 @@
     "@tailwindcss/typography": "^0.5.15",
     "@types/node": "^20.16.3",
     "dayjs": "^1.11.13",
-    "lefthook": "^1.7.14"
+    "lefthook": "^1.7.15"
   }
 }
