@@ -30,33 +30,22 @@ export function PostSummary({ date, tags, tldr }: Props) {
           <span>{tags.join('、')}</span>
         </div>
       </div>
-      <div className="flex flex-col lg:flex-row gap-4">
-        <Alert>
-          <AlertTitle>
-            <span className="inline-flex items-center gap-1">
-              <span className="icon-[tabler--brand-openai] cursor-pointer" onClick={handleFetch}></span>
-              <span className="font-bold">AI 摘要</span>
-            </span>
-          </AlertTitle>
-          {loading ? (
-            <div className="space-y-2">
-              <Skeleton className="h-4" />
-              <Skeleton className="h-4" />
-            </div>
-          ) : (
-            <AlertDescription>{summary ? summary : '滴滴嘟嘟…AI失联了'}</AlertDescription>
-          )}
-        </Alert>
-        <Alert className="hidden lg:block">
-          <AlertTitle>
-            <span className="inline-flex items-center gap-1">
-              <span className="icon-[tabler--user-pentagon]"></span>
-              <span className="font-bold">我的摘要</span>
-            </span>
-          </AlertTitle>
-          <AlertDescription>{tldr}</AlertDescription>
-        </Alert>
-      </div>
+      <Alert>
+        <AlertTitle>
+          <span className="inline-flex items-center gap-1">
+            <span className="icon-[tabler--brand-openai] cursor-pointer" onClick={handleFetch}></span>
+            <span className="font-bold">AI 摘要</span>
+          </span>
+        </AlertTitle>
+        {loading ? (
+          <div className="space-y-2">
+            <Skeleton className="h-4" />
+            <Skeleton className="h-4" />
+          </div>
+        ) : (
+          <AlertDescription>{summary ? summary : '滴滴嘟嘟…AI失联了'}</AlertDescription>
+        )}
+      </Alert>
     </div>
   );
 }
