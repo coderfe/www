@@ -1,4 +1,4 @@
-import { likePost, viewPost } from '@/api';
+import { likePost, viewPost } from '@/services';
 import { create } from 'zustand';
 
 export interface PostDetail {
