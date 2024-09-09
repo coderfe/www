@@ -10,7 +10,7 @@ importers:
     dependencies:
       '@astrojs/mdx':
         specifier: ^3.1.5
-        version: 3.1.5(astro@4.15.3(@types/node@20.16.5)(rollup@4.21.2)(typescript@5.5.4))
+        version: 3.1.5(astro@4.15.4(@types/node@20.16.5)(rollup@4.21.2)(typescript@5.5.4))
       '@astrojs/react':
         specifier: ^3.6.2
         version: 3.6.2(@types/react-dom@18.3.0)(@types/react@18.3.5)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(vite@5.4.3(@types/node@20.16.5))
@@ -22,10 +22,10 @@ importers:
         version: 3.1.6
       '@astrojs/tailwind':
         specifier: ^5.1.0
-        version: 5.1.0(astro@4.15.3(@types/node@20.16.5)(rollup@4.21.2)(typescript@5.5.4))(tailwindcss@3.4.10)
+        version: 5.1.0(astro@4.15.4(@types/node@20.16.5)(rollup@4.21.2)(typescript@5.5.4))(tailwindcss@3.4.10)
       '@astrojs/vercel':
         specifier: ^7.8.0
-        version: 7.8.0(astro@4.15.3(@types/node@20.16.5)(rollup@4.21.2)(typescript@5.5.4))(react@18.3.1)
+        version: 7.8.0(astro@4.15.4(@types/node@20.16.5)(rollup@4.21.2)(typescript@5.5.4))(react@18.3.1)
       '@frank-mayer/react-tag-cloud':
         specifier: ^1.2.1
         version: 1.2.1(react@18.3.1)
@@ -58,13 +58,13 @@ importers:
         version: 1.1.2(@types/react-dom@18.3.0)(@types/react@18.3.5)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@sentry/astro':
         specifier: ^8.28.0
-        version: 8.28.0(astro@4.15.3(@types/node@20.16.5)(rollup@4.21.2)(typescript@5.5.4))
+        version: 8.28.0(astro@4.15.4(@types/node@20.16.5)(rollup@4.21.2)(typescript@5.5.4))
       '@shikijs/transformers':
         specifier: ^1.16.2
         version: 1.16.2
       '@spotlightjs/astro':
         specifier: ^1.0.20
-        version: 1.0.20(@sentry/astro@8.28.0(astro@4.15.3(@types/node@20.16.5)(rollup@4.21.2)(typescript@5.5.4)))(astro@4.15.3(@types/node@20.16.5)(rollup@4.21.2)(typescript@5.5.4))
+        version: 1.0.20(@sentry/astro@8.28.0(astro@4.15.4(@types/node@20.16.5)(rollup@4.21.2)(typescript@5.5.4)))(astro@4.15.4(@types/node@20.16.5)(rollup@4.21.2)(typescript@5.5.4))
       '@types/react':
         specifier: ^18.3.5
         version: 18.3.5
@@ -72,11 +72,11 @@ importers:
         specifier: ^18.3.0
         version: 18.3.0
       astro:
-        specifier: ^4.15.3
-        version: 4.15.3(@types/node@20.16.5)(rollup@4.21.2)(typescript@5.5.4)
+        specifier: ^4.15.4
+        version: 4.15.4(@types/node@20.16.5)(rollup@4.21.2)(typescript@5.5.4)
       astro-pagefind:
         specifier: ^1.6.0
-        version: 1.6.0(astro@4.15.3(@types/node@20.16.5)(rollup@4.21.2)(typescript@5.5.4))
+        version: 1.6.0(astro@4.15.4(@types/node@20.16.5)(rollup@4.21.2)(typescript@5.5.4))
       class-variance-authority:
         specifier: ^0.7.0
         version: 0.7.0
@@ -142,8 +142,8 @@ importers:
         specifier: 1.8.3
         version: 1.8.3
       '@iconify-json/tabler':
-        specifier: ^1.2.0
-        version: 1.2.0
+        specifier: ^1.2.1
+        version: 1.2.1
       '@iconify/tailwind':
         specifier: ^1.1.3
         version: 1.1.3
@@ -545,8 +545,8 @@ packages:
     peerDependencies:
       react: ^18.2.0
 
-  '@iconify-json/tabler@1.2.0':
-    resolution: {integrity: sha512-ke7ESt/wurkWr/VrMrAguN8jOmf8tD9LOOqhn3OwAx8kg0lYwMkOahV6jTGXh2zU90z1drsD34cKV7RoNe0PuQ==}
+  '@iconify-json/tabler@1.2.1':
+    resolution: {integrity: sha512-Ek2kVGZDuh3nD3+3FHnHRsthnwZScA1YQi8bNrEAZvU9C5gyNcUDRM9MBJ8eYR3C5P/2HkPjboMk+tIIewbc2w==}
 
   '@iconify/tailwind@1.1.3':
     resolution: {integrity: sha512-SfyeT+2b/aKWA6DjwdevXdLUqaEqJ5xWTegD92KItaWc47IYsGuqrt/GOz4dJCPcTVCrsUjlvMpy8cNd+uV5nQ==}
@@ -1885,8 +1885,8 @@ packages:
     peerDependencies:
       astro: ^2.0.4 || ^3.0.0 || ^4.0.0
 
-  astro@4.15.3:
-    resolution: {integrity: sha512-zwO8H+vnNYbrdKz0Pkh2a4B/JK06JUvI18w+FxL3B5u4jqPB/SU+LH9XVUUWdNQsyJ/DBHKAf0LDK0RmwxXQEw==}
+  astro@4.15.4:
+    resolution: {integrity: sha512-wqy+m3qygt9DmCSqMsckxyK4ccCUFtti2d/WlLkEpAlqHgyDIg20zRTLHO2v/H4YeSlJ8sAcN0RW2FhOeYbINg==}
     engines: {node: ^18.17.1 || ^20.3.0 || >=21.0.0, npm: '>=9.6.5', pnpm: '>=7.1.0'}
     hasBin: true
 
@@ -1947,8 +1947,8 @@ packages:
     resolution: {integrity: sha512-xlx1yCK2Oc1APsPXDL2LdlNP6+uu8OCDdhOBSVT279M/S+y75O30C2VuD8T2ogdePBBl7PfPF4504tnLgX3zfw==}
     engines: {node: '>=14.16'}
 
-  caniuse-lite@1.0.30001658:
-    resolution: {integrity: sha512-N2YVqWbJELVdrnsW5p+apoQyYt51aBMSsBZki1XZEfeBCexcM/sf4xiAHcXQBkuOwJBXtWF7aW1sYX6tKebPHw==}
+  caniuse-lite@1.0.30001659:
+    resolution: {integrity: sha512-Qxxyfv3RdHAfJcXelgf0hU4DFUVXBGTjqrBUZLUh8AtlGnsDo+CnncYtTd95+ZKfnANUOzxyIQCuU/UeBZBYoA==}
 
   ccount@2.0.1:
     resolution: {integrity: sha512-eyrF0jiFpY+3drT6383f1qhkbGsLSifNAjA61IUjZjmLCWjItY6LB9ft9YhoDgwfmclB2zhu51Lc7+95b8NRAg==}
@@ -1985,8 +1985,8 @@ packages:
     resolution: {integrity: sha512-TdHqgGf9odd8SXNuxtUBVx8Nv+qZOejE6qyqiy5NtbYYQOeFa6zmHkxlPzmaLxWWHsU6nJmB7AETdVPi+2NBUg==}
     engines: {node: '>=8'}
 
-  cjs-module-lexer@1.4.0:
-    resolution: {integrity: sha512-N1NGmowPlGBLsOZLPvm48StN04V4YvQRL0i6b7ctrVY3epjP/ct7hFLOItz6pDIvRjwpfPxi52a2UWV2ziir8g==}
+  cjs-module-lexer@1.4.1:
+    resolution: {integrity: sha512-cuSVIHi9/9E/+821Qjdvngor+xpnlwnuwIyZOaLmHBVdXL+gP+I6QQB9VkO7RI77YIcTV+S1W9AreJ5eN63JBA==}
 
   class-variance-authority@0.7.0:
     resolution: {integrity: sha512-jFI8IQw4hczaL4ALINxqLEXQbWcNjoSkloa4IaufXCJr6QawJyw7tuRysRsrE8w2p/4gGaxKIt/hX3qz/IbD1A==}
@@ -2156,8 +2156,8 @@ packages:
   eastasianwidth@0.2.0:
     resolution: {integrity: sha512-I88TYZWc9XiYHRQ4/3c5rjjfgkjhLyW2luGIheGERbNQ6OY7yTybanSpDXZa8y7VUP9YmDcYa+eyq4ca7iLqWA==}
 
-  electron-to-chromium@1.5.16:
-    resolution: {integrity: sha512-2gQpi2WYobXmz2q23FrOBYTLcI1O/P4heW3eqX+ldmPVDQELRqhiebV380EhlGG12NtnX1qbK/FHpN0ba+7bLA==}
+  electron-to-chromium@1.5.18:
+    resolution: {integrity: sha512-1OfuVACu+zKlmjsNdcJuVQuVE61sZOLbNM4JAQ1Rvh6EOj0/EUKhMJjRH73InPlXSh8HIJk1cVZ8pyOV/FMdUQ==}
 
   emoji-regex@10.4.0:
     resolution: {integrity: sha512-EC+0oUMY1Rqm4O6LLrgjtYDvcVYTy7chDnM4Q7030tP4Kwj3u/pR6gP9ygnp2CJMK5Gq+9Q2oqmrFJAz01DXjw==}
@@ -3445,8 +3445,8 @@ packages:
     engines: {node: '>=12.0.0', npm: '>=5.6.0'}
     hasBin: true
 
-  source-map-js@1.2.0:
-    resolution: {integrity: sha512-itJW8lvSA0TXEphiRoawsCksnlf8SyvmFzIhltqAHluXd88pkCd+cXJVHTDwdCr0IzwptSm035IHQktUu1QUMg==}
+  source-map-js@1.2.1:
+    resolution: {integrity: sha512-UXWMKhLOwVKb728IUtQPXxfYU+usdybtUrK/8uGE8CQMvrhOpwvzDBwj0QhSL7MQc7vIsISBG8VQ8+IDQxpfQA==}
     engines: {node: '>=0.10.0'}
 
   source-map@0.7.4:
@@ -3503,14 +3503,11 @@ packages:
   strnum@1.0.5:
     resolution: {integrity: sha512-J8bbNyKKXl5qYcR36TIO8W3mVGVHrmmxsd5PAItGkmyzwJvybiw2IVq5nqd0i4LSNSkB/sx9VHllbfFdr9k1JA==}
 
-  style-to-js@1.1.13:
-    resolution: {integrity: sha512-+43kvxwjrW9n5gFR40Rv98A0/Mcjew7Lt+p5Nnw1KGR9SZf/ZaKqmMwl9Enj9EnYNcJ5VzuCjejC5KZzvH2lOA==}
+  style-to-js@1.1.14:
+    resolution: {integrity: sha512-+FGNddHGLPY4NOPneEEdFj8dIy+oV4mHGrPZpB38P+YXrCAG9mp70dbcsAWnM8BFZULkJRvMqD0CXRjZLOYJFA==}
 
   style-to-object@0.4.4:
     resolution: {integrity: sha512-HYNoHZa2GorYNyqiCaBgsxvcJIn7OHq6inEga+E6Ke3m5JkoqpQbnFssk4jwe+K7AhGa2fcha4wSOf1Kn01dMg==}
-
-  style-to-object@1.0.6:
-    resolution: {integrity: sha512-khxq+Qm3xEyZfKd/y9L3oIWQimxuc4STrQKtQn8aSDRHb8mFgpukgX1hdzfrMEW6JCjyJ8p89x+IUMVnCBI1PA==}
 
   style-to-object@1.0.7:
     resolution: {integrity: sha512-uSjr59G5u6fbxUfKbb8GcqMGT3Xs9v5IbPkjb0S16GyOeBLAzSRK0CixBv5YrYvzO6TDLzIS6QCn78tkqWngPw==}
@@ -3876,12 +3873,12 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@astrojs/mdx@3.1.5(astro@4.15.3(@types/node@20.16.5)(rollup@4.21.2)(typescript@5.5.4))':
+  '@astrojs/mdx@3.1.5(astro@4.15.4(@types/node@20.16.5)(rollup@4.21.2)(typescript@5.5.4))':
     dependencies:
       '@astrojs/markdown-remark': 5.2.0
       '@mdx-js/mdx': 3.0.1
       acorn: 8.12.1
-      astro: 4.15.3(@types/node@20.16.5)(rollup@4.21.2)(typescript@5.5.4)
+      astro: 4.15.4(@types/node@20.16.5)(rollup@4.21.2)(typescript@5.5.4)
       es-module-lexer: 1.5.4
       estree-util-visit: 2.0.0
       gray-matter: 4.0.3
@@ -3923,9 +3920,9 @@ snapshots:
       stream-replace-string: 2.0.0
       zod: 3.23.8
 
-  '@astrojs/tailwind@5.1.0(astro@4.15.3(@types/node@20.16.5)(rollup@4.21.2)(typescript@5.5.4))(tailwindcss@3.4.10)':
+  '@astrojs/tailwind@5.1.0(astro@4.15.4(@types/node@20.16.5)(rollup@4.21.2)(typescript@5.5.4))(tailwindcss@3.4.10)':
     dependencies:
-      astro: 4.15.3(@types/node@20.16.5)(rollup@4.21.2)(typescript@5.5.4)
+      astro: 4.15.4(@types/node@20.16.5)(rollup@4.21.2)(typescript@5.5.4)
       autoprefixer: 10.4.20(postcss@8.4.45)
       postcss: 8.4.45
       postcss-load-config: 4.0.2(postcss@8.4.45)
@@ -3945,13 +3942,13 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@astrojs/vercel@7.8.0(astro@4.15.3(@types/node@20.16.5)(rollup@4.21.2)(typescript@5.5.4))(react@18.3.1)':
+  '@astrojs/vercel@7.8.0(astro@4.15.4(@types/node@20.16.5)(rollup@4.21.2)(typescript@5.5.4))(react@18.3.1)':
     dependencies:
       '@astrojs/internal-helpers': 0.4.1
       '@vercel/analytics': 1.3.1(react@18.3.1)
       '@vercel/edge': 1.1.2
       '@vercel/nft': 0.27.4
-      astro: 4.15.3(@types/node@20.16.5)(rollup@4.21.2)(typescript@5.5.4)
+      astro: 4.15.4(@types/node@20.16.5)(rollup@4.21.2)(typescript@5.5.4)
       esbuild: 0.21.5
       fast-glob: 3.3.2
       web-vitals: 3.5.2
@@ -4240,7 +4237,7 @@ snapshots:
       TagCloud: 2.5.0
       react: 18.3.1
 
-  '@iconify-json/tabler@1.2.0':
+  '@iconify-json/tabler@1.2.1':
     dependencies:
       '@iconify/types': 2.0.0
 
@@ -5248,7 +5245,7 @@ snapshots:
       '@sentry/types': 8.28.0
       '@sentry/utils': 8.28.0
 
-  '@sentry/astro@8.28.0(astro@4.15.3(@types/node@20.16.5)(rollup@4.21.2)(typescript@5.5.4))':
+  '@sentry/astro@8.28.0(astro@4.15.4(@types/node@20.16.5)(rollup@4.21.2)(typescript@5.5.4))':
     dependencies:
       '@sentry/browser': 8.28.0
       '@sentry/core': 8.28.0
@@ -5256,7 +5253,7 @@ snapshots:
       '@sentry/types': 8.28.0
       '@sentry/utils': 8.28.0
       '@sentry/vite-plugin': 2.22.4
-      astro: 4.15.3(@types/node@20.16.5)(rollup@4.21.2)(typescript@5.5.4)
+      astro: 4.15.4(@types/node@20.16.5)(rollup@4.21.2)(typescript@5.5.4)
     transitivePeerDependencies:
       - encoding
       - supports-color
@@ -5404,12 +5401,12 @@ snapshots:
 
   '@shikijs/vscode-textmate@9.2.0': {}
 
-  '@spotlightjs/astro@1.0.20(@sentry/astro@8.28.0(astro@4.15.3(@types/node@20.16.5)(rollup@4.21.2)(typescript@5.5.4)))(astro@4.15.3(@types/node@20.16.5)(rollup@4.21.2)(typescript@5.5.4))':
+  '@spotlightjs/astro@1.0.20(@sentry/astro@8.28.0(astro@4.15.4(@types/node@20.16.5)(rollup@4.21.2)(typescript@5.5.4)))(astro@4.15.4(@types/node@20.16.5)(rollup@4.21.2)(typescript@5.5.4))':
     dependencies:
-      '@sentry/astro': 8.28.0(astro@4.15.3(@types/node@20.16.5)(rollup@4.21.2)(typescript@5.5.4))
+      '@sentry/astro': 8.28.0(astro@4.15.4(@types/node@20.16.5)(rollup@4.21.2)(typescript@5.5.4))
       '@spotlightjs/overlay': 1.8.3
       '@spotlightjs/sidecar': 1.4.0
-      astro: 4.15.3(@types/node@20.16.5)(rollup@4.21.2)(typescript@5.5.4)
+      astro: 4.15.4(@types/node@20.16.5)(rollup@4.21.2)(typescript@5.5.4)
       source-map: 0.7.4
 
   '@spotlightjs/overlay@1.8.3': {}
@@ -5640,14 +5637,14 @@ snapshots:
 
   astring@1.9.0: {}
 
-  astro-pagefind@1.6.0(astro@4.15.3(@types/node@20.16.5)(rollup@4.21.2)(typescript@5.5.4)):
+  astro-pagefind@1.6.0(astro@4.15.4(@types/node@20.16.5)(rollup@4.21.2)(typescript@5.5.4)):
     dependencies:
       '@pagefind/default-ui': 1.1.1
-      astro: 4.15.3(@types/node@20.16.5)(rollup@4.21.2)(typescript@5.5.4)
+      astro: 4.15.4(@types/node@20.16.5)(rollup@4.21.2)(typescript@5.5.4)
       pagefind: 1.1.1
       sirv: 2.0.4
 
-  astro@4.15.3(@types/node@20.16.5)(rollup@4.21.2)(typescript@5.5.4):
+  astro@4.15.4(@types/node@20.16.5)(rollup@4.21.2)(typescript@5.5.4):
     dependencies:
       '@astrojs/compiler': 2.10.3
       '@astrojs/internal-helpers': 0.4.1
@@ -5735,7 +5732,7 @@ snapshots:
   autoprefixer@10.4.20(postcss@8.4.45):
     dependencies:
       browserslist: 4.23.3
-      caniuse-lite: 1.0.30001658
+      caniuse-lite: 1.0.30001659
       fraction.js: 4.3.7
       normalize-range: 0.1.2
       picocolors: 1.1.0
@@ -5782,8 +5779,8 @@ snapshots:
 
   browserslist@4.23.3:
     dependencies:
-      caniuse-lite: 1.0.30001658
-      electron-to-chromium: 1.5.16
+      caniuse-lite: 1.0.30001659
+      electron-to-chromium: 1.5.18
       node-releases: 2.0.18
       update-browserslist-db: 1.1.0(browserslist@4.23.3)
 
@@ -5791,7 +5788,7 @@ snapshots:
 
   camelcase@7.0.1: {}
 
-  caniuse-lite@1.0.30001658: {}
+  caniuse-lite@1.0.30001659: {}
 
   ccount@2.0.1: {}
 
@@ -5827,7 +5824,7 @@ snapshots:
 
   ci-info@4.0.0: {}
 
-  cjs-module-lexer@1.4.0: {}
+  cjs-module-lexer@1.4.1: {}
 
   class-variance-authority@0.7.0:
     dependencies:
@@ -5967,7 +5964,7 @@ snapshots:
 
   eastasianwidth@0.2.0: {}
 
-  electron-to-chromium@1.5.16: {}
+  electron-to-chromium@1.5.18: {}
 
   emoji-regex@10.4.0: {}
 
@@ -6236,7 +6233,7 @@ snapshots:
       mdast-util-mdx-jsx: 3.1.3
       property-information: 6.5.0
       space-separated-tokens: 2.0.2
-      style-to-js: 1.1.13
+      style-to-js: 1.1.14
     transitivePeerDependencies:
       - supports-color
 
@@ -6368,14 +6365,14 @@ snapshots:
     dependencies:
       acorn: 8.12.1
       acorn-import-attributes: 1.9.5(acorn@8.12.1)
-      cjs-module-lexer: 1.4.0
+      cjs-module-lexer: 1.4.1
       module-details-from-path: 1.0.3
 
   import-in-the-middle@1.7.1:
     dependencies:
       acorn: 8.12.1
       acorn-import-assertions: 1.9.0(acorn@8.12.1)
-      cjs-module-lexer: 1.4.0
+      cjs-module-lexer: 1.4.1
       module-details-from-path: 1.0.3
     optional: true
 
@@ -6596,7 +6593,7 @@ snapshots:
     dependencies:
       '@babel/parser': 7.25.6
       '@babel/types': 7.25.6
-      source-map-js: 1.2.0
+      source-map-js: 1.2.1
 
   make-dir@3.1.0:
     dependencies:
@@ -7327,7 +7324,7 @@ snapshots:
     dependencies:
       nanoid: 3.3.7
       picocolors: 1.1.0
-      source-map-js: 1.2.0
+      source-map-js: 1.2.1
 
   postgres-array@2.0.0: {}
 
@@ -7718,7 +7715,7 @@ snapshots:
       arg: 5.0.2
       sax: 1.4.1
 
-  source-map-js@1.2.0: {}
+  source-map-js@1.2.1: {}
 
   source-map@0.7.4: {}
 
@@ -7771,17 +7768,13 @@ snapshots:
 
   strnum@1.0.5: {}
 
-  style-to-js@1.1.13:
+  style-to-js@1.1.14:
     dependencies:
-      style-to-object: 1.0.6
+      style-to-object: 1.0.7
 
   style-to-object@0.4.4:
     dependencies:
       inline-style-parser: 0.1.1
-
-  style-to-object@1.0.6:
-    dependencies:
-      inline-style-parser: 0.2.3
 
   style-to-object@1.0.7:
     dependencies:
