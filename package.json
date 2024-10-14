@@ -33,7 +33,7 @@
     "@shikijs/transformers": "^1.22.0",
     "@spotlightjs/astro": "^1.0.20",
     "@types/react": "^18.3.11",
-    "@types/react-dom": "^18.3.0",
+    "@types/react-dom": "^18.3.1",
     "astro": "^4.16.0",
     "astro-pagefind": "^1.6.0",
     "class-variance-authority": "^0.7.0",
