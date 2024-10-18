@@ -18,7 +18,7 @@
     "@astrojs/rss": "^4.0.9",
     "@astrojs/sitemap": "^3.2.1",
     "@astrojs/tailwind": "^5.1.2",
-    "@astrojs/vercel": "^7.8.1",
+    "@astrojs/vercel": "^7.8.2",
     "@frank-mayer/react-tag-cloud": "^1.2.1",
     "@radix-ui/react-avatar": "^1.1.1",
     "@radix-ui/react-dialog": "^1.1.2",
@@ -34,7 +34,7 @@
     "@spotlightjs/astro": "^1.0.20",
     "@types/react": "^18.3.11",
     "@types/react-dom": "^18.3.1",
-    "astro": "^4.16.5",
+    "astro": "^4.16.6",
     "astro-pagefind": "^1.6.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
@@ -58,12 +58,12 @@
     "zustand": "^4.5.5"
   },
   "devDependencies": {
-    "@biomejs/biome": "^1.9.3",
+    "@biomejs/biome": "^1.9.4",
     "@iconify-json/tabler": "^1.2.5",
     "@iconify/tailwind": "^1.1.3",
     "@tailwindcss/typography": "^0.5.15",
     "@types/node": "latest",
     "dayjs": "^1.11.13",
-    "lefthook": "^1.7.18"
+    "lefthook": "^1.7.21"
   }
 }
