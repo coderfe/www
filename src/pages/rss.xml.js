@@ -9,7 +9,7 @@ export async function GET(context) {
     .sort(({ data: { date: dateA } }, { data: { date: dateB } }) => dateB.valueOf() - dateA.valueOf());
   return rss({
     title: SITE_TITLE,
-    description: SITE_DESCRIPTION,
+    description: `${SITE_DESCRIPTION} feedId:52340201851637784+userId:55812696340985856`,
     site: context.site,
     stylesheet: '/rss/styles.xsl',
     items: posts.map((post) => {
