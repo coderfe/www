@@ -23,7 +23,7 @@ export async function GET(context) {
     title: SITE_TITLE,
     description: `${SITE_DESCRIPTION} feedId:52340201851637784+userId:55812696340985856`,
     site: context.site,
-    stylesheet: '/rss/styles.xsl',
+    // stylesheet: '/rss/styles.xsl',
     items: await Promise.all(
       posts.map(async (post) => ({
         ...post.data,
