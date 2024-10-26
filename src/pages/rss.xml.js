@@ -1,31 +1,37 @@
+import { loadRenderers } from 'astro:container';
 import { getCollection } from 'astro:content';
+import { SITE_DESCRIPTION, SITE_TITLE } from '@/consts';
+import { getContainerRenderer } from '@astrojs/mdx';
 import rss from '@astrojs/rss';
-import MarkdownIt from 'markdown-it';
-import sanitizeHtml from 'sanitize-html';
-import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
-const parser = new MarkdownIt();
+import { experimental_AstroContainer as AstroContainer } from 'astro/container';
 
 export async function GET(context) {
-  const collection = await getCollection('blog');
-  const posts = collection
+  if (!context.site) {
+    throw new TypeError('context.site falsy');
+  }
+
+  const container = await AstroContainer.create({
+    renderers: await loadRenderers([getContainerRenderer()]),
+  });
+
+  const blog = await getCollection('blog');
+  const posts = blog
     .filter(({ data: { draft = false } }) => !draft)
     .sort(({ data: { date: dateA } }, { data: { date: dateB } }) => dateB.valueOf() - dateA.valueOf());
+
   return rss({
     title: SITE_TITLE,
     description: `${SITE_DESCRIPTION} feedId:52340201851637784+userId:55812696340985856`,
     site: context.site,
     stylesheet: '/rss/styles.xsl',
-    items: posts.map((post) => {
-      const { tldr = '', date } = post.data;
-      return {
+    items: await Promise.all(
+      posts.map(async (post) => ({
         ...post.data,
-        pubDate: date,
-        description: tldr,
+        pubDate: post.data.date,
+        description: post.data.tldr,
         link: `/blog/${post.slug}/`,
-        content: sanitizeHtml(parser.render(post.body), {
-          allowedTags: sanitizeHtml.defaults.allowedTags.concat(['img']),
-        }),
-      };
-    }),
+        content: await container.renderToString((await post.render()).Content),
+      })),
+    ),
   });
 }
