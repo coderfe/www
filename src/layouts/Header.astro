@@ -34,7 +34,7 @@ const navs = [
 ---
 
 <header
-  class="fixed w-11/12 h-[50px] left-1/2 -translate-x-1/2 top-4 z-50 py-2 px-4 rounded-xl bg-white/50 dark:bg-zinc-950/10 border dark:border-zinc-800 backdrop-blur-xl overflow-hidden transition-all duration-300 ease-in-out"
+  class="fixed w-1/2 h-[50px] left-1/2 -translate-x-1/2 top-4 z-50 py-2 px-4 rounded-full bg-white/50 dark:bg-zinc-950/10 border dark:border-zinc-800 backdrop-blur-xl overflow-hidden transition-all duration-300 ease-in-out"
   data-pagefind-ignore
 >
   <div
@@ -55,9 +55,9 @@ const navs = [
           <a
             href={nav.path}
             class:list={[
-              !nav.active && "text-zinc-600 dark:text-white/70",
+              !nav.active && "inline-block w-24 text-center text-zinc-600 dark:text-white/70",
               "hover:text-black dark:hover:text-white",
-              nav.active ? "text-black dark:text-white" : "",
+              nav.active ? "inline-block w-24 text-center text-black dark:text-white" : "",
             ]}
           >
             {nav.active ? nav.cnName : nav.name}
