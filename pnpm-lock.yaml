@@ -10,7 +10,7 @@ importers:
     dependencies:
       '@astrojs/mdx':
         specifier: ^3.1.9
-        version: 3.1.9(astro@4.16.14(@types/node@22.10.0)(rollup@4.27.4)(typescript@5.5.4))
+        version: 3.1.9(astro@4.16.15(@types/node@22.10.0)(rollup@4.27.4)(typescript@5.5.4))
       '@astrojs/react':
         specifier: ^3.6.3
         version: 3.6.3(@types/node@22.10.0)(@types/react-dom@18.3.1)(@types/react@18.3.12)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -22,10 +22,10 @@ importers:
         version: 3.2.1
       '@astrojs/tailwind':
         specifier: ^5.1.2
-        version: 5.1.2(astro@4.16.14(@types/node@22.10.0)(rollup@4.27.4)(typescript@5.5.4))(tailwindcss@3.4.15)
+        version: 5.1.2(astro@4.16.15(@types/node@22.10.0)(rollup@4.27.4)(typescript@5.5.4))(tailwindcss@3.4.15)
       '@astrojs/vercel':
         specifier: ^7.8.2
-        version: 7.8.2(astro@4.16.14(@types/node@22.10.0)(rollup@4.27.4)(typescript@5.5.4))(react@18.3.1)
+        version: 7.8.2(astro@4.16.15(@types/node@22.10.0)(rollup@4.27.4)(typescript@5.5.4))(react@18.3.1)
       '@frank-mayer/react-tag-cloud':
         specifier: ^1.2.1
         version: 1.2.1(react@18.3.1)
@@ -58,13 +58,13 @@ importers:
         version: 1.1.4(@types/react-dom@18.3.1)(@types/react@18.3.12)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@sentry/astro':
         specifier: ^8.40.0
-        version: 8.40.0(astro@4.16.14(@types/node@22.10.0)(rollup@4.27.4)(typescript@5.5.4))
+        version: 8.40.0(astro@4.16.15(@types/node@22.10.0)(rollup@4.27.4)(typescript@5.5.4))
       '@shikijs/transformers':
         specifier: ^1.23.1
         version: 1.23.1
       '@spotlightjs/astro':
         specifier: ^1.0.20
-        version: 1.0.20(@sentry/astro@8.40.0(astro@4.16.14(@types/node@22.10.0)(rollup@4.27.4)(typescript@5.5.4)))(astro@4.16.14(@types/node@22.10.0)(rollup@4.27.4)(typescript@5.5.4))
+        version: 1.0.20(@sentry/astro@8.40.0(astro@4.16.15(@types/node@22.10.0)(rollup@4.27.4)(typescript@5.5.4)))(astro@4.16.15(@types/node@22.10.0)(rollup@4.27.4)(typescript@5.5.4))
       '@types/react':
         specifier: ^18.3.12
         version: 18.3.12
@@ -72,14 +72,14 @@ importers:
         specifier: ^18.3.1
         version: 18.3.1
       astro:
-        specifier: ^4.16.14
-        version: 4.16.14(@types/node@22.10.0)(rollup@4.27.4)(typescript@5.5.4)
+        specifier: ^4.16.15
+        version: 4.16.15(@types/node@22.10.0)(rollup@4.27.4)(typescript@5.5.4)
       astro-pagefind:
         specifier: ^1.6.0
-        version: 1.6.0(astro@4.16.14(@types/node@22.10.0)(rollup@4.27.4)(typescript@5.5.4))
+        version: 1.6.0(astro@4.16.15(@types/node@22.10.0)(rollup@4.27.4)(typescript@5.5.4))
       class-variance-authority:
-        specifier: ^0.7.0
-        version: 0.7.0
+        specifier: ^0.7.1
+        version: 0.7.1
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
@@ -1801,8 +1801,8 @@ packages:
     peerDependencies:
       astro: ^2.0.4 || ^3.0.0 || ^4.0.0
 
-  astro@4.16.14:
-    resolution: {integrity: sha512-2IuLkIp4idyspugq+F52rHZyNqHHi2AdQzuKp3SGytg/YAm50dNeWhP/7l+enjgWZLloLq5xsH5gVQpoDFoyFg==}
+  astro@4.16.15:
+    resolution: {integrity: sha512-usybZ7nEUiwYKT7r47l4VbkqjKfaE+BgWV/ed4PT3mE3vFRTBWFsXLnkzrN7awfN6+/ekZTAcE+MAkdA551Umw==}
     engines: {node: ^18.17.1 || ^20.3.0 || >=21.0.0, npm: '>=9.6.5', pnpm: '>=7.1.0'}
     hasBin: true
 
@@ -1900,8 +1900,8 @@ packages:
   cjs-module-lexer@1.4.1:
     resolution: {integrity: sha512-cuSVIHi9/9E/+821Qjdvngor+xpnlwnuwIyZOaLmHBVdXL+gP+I6QQB9VkO7RI77YIcTV+S1W9AreJ5eN63JBA==}
 
-  class-variance-authority@0.7.0:
-    resolution: {integrity: sha512-jFI8IQw4hczaL4ALINxqLEXQbWcNjoSkloa4IaufXCJr6QawJyw7tuRysRsrE8w2p/4gGaxKIt/hX3qz/IbD1A==}
+  class-variance-authority@0.7.1:
+    resolution: {integrity: sha512-Ka+9Trutv7G8M6WT6SeiRWz792K5qEqIGEGzXKhAE6xOWAY6pPH8U+9IY3oCMv6kqTmLsv7Xh/2w2RigkePMsg==}
 
   cli-boxes@3.0.0:
     resolution: {integrity: sha512-/lzGpEWL/8PfI0BmBOPRwp0c/wFNX1RdUML3jK/RcSBA9T8mZDdQpqYBKtCFTOfQbwPqWEOpjqW+Fnayc0969g==}
@@ -1913,10 +1913,6 @@ packages:
 
   cli-spinners@2.9.2:
     resolution: {integrity: sha512-ywqV+5MmyL4E7ybXgKys4DugZbX0FC6LnwrhjuykIjnK9k8OQacQ7axGKnjDXWNhns0xot3bZI5h55H8yo9cJg==}
-    engines: {node: '>=6'}
-
-  clsx@2.0.0:
-    resolution: {integrity: sha512-rQ1+kcj+ttHG0MKVGBUXwayCCF1oh39BF5COIpRzuCEv8Mwjv0XucrI2ExNTOn9IlLifGClWQcU9BrZORvtw6Q==}
     engines: {node: '>=6'}
 
   clsx@2.1.1:
@@ -2602,8 +2598,8 @@ packages:
     peerDependencies:
       react: ^16.5.1 || ^17.0.0 || ^18.0.0 || ^19.0.0-rc
 
-  magic-string@0.30.13:
-    resolution: {integrity: sha512-8rYBO+MsWkgjDSOvLomYnzhdwEG51olQ4zL5KXnNJWV5MNmrb4rTZdrtkhxjnD/QyZUqR/Z/XDsUs/4ej2nx0g==}
+  magic-string@0.30.14:
+    resolution: {integrity: sha512-5c99P1WKTed11ZC0HMJOj6CDIue6F8ySu+bJL+85q1zBEIY8IklrJ1eiKC2NDRh3Ct3FcvmJPyQHb9erXMTJNw==}
 
   magic-string@0.30.8:
     resolution: {integrity: sha512-ISQTe55T2ao7XtlAStud6qwYPZjE4GK1S/BeVPus4jrq6JuOnQ00YKQC581RWhR122W7msZV263KzVeLoqidyQ==}
@@ -2850,8 +2846,8 @@ packages:
   mz@2.7.0:
     resolution: {integrity: sha512-z81GNO7nnYMEhrGh9LeymoE4+Yr0Wn5McHIZMK5cfQCl+NDX08sCZgUc9/6MHni9IWuFLm1Z3HTCXu2z9fN62Q==}
 
-  nanoid@3.3.7:
-    resolution: {integrity: sha512-eSRppjcPIatRIMC1U6UngP8XFcz8MQWGQdt1MTBQ7NaAmvXDfvNxbvWV3x2y6CdEUciCSsDHDQZbhYaB8QEo2g==}
+  nanoid@3.3.8:
+    resolution: {integrity: sha512-WNLf5Sd8oZxOm+TzppcYk8gVOgP+l58xNy58D0nbUnOxOWRWvlcCV4kUF7ltmI6PsrLl/BgKEyS4mqsGChFN0w==}
     engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
     hasBin: true
 
@@ -3779,12 +3775,12 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@astrojs/mdx@3.1.9(astro@4.16.14(@types/node@22.10.0)(rollup@4.27.4)(typescript@5.5.4))':
+  '@astrojs/mdx@3.1.9(astro@4.16.15(@types/node@22.10.0)(rollup@4.27.4)(typescript@5.5.4))':
     dependencies:
       '@astrojs/markdown-remark': 5.3.0
       '@mdx-js/mdx': 3.1.0(acorn@8.14.0)
       acorn: 8.14.0
-      astro: 4.16.14(@types/node@22.10.0)(rollup@4.27.4)(typescript@5.5.4)
+      astro: 4.16.15(@types/node@22.10.0)(rollup@4.27.4)(typescript@5.5.4)
       es-module-lexer: 1.5.4
       estree-util-visit: 2.0.0
       gray-matter: 4.0.3
@@ -3834,9 +3830,9 @@ snapshots:
       stream-replace-string: 2.0.0
       zod: 3.23.8
 
-  '@astrojs/tailwind@5.1.2(astro@4.16.14(@types/node@22.10.0)(rollup@4.27.4)(typescript@5.5.4))(tailwindcss@3.4.15)':
+  '@astrojs/tailwind@5.1.2(astro@4.16.15(@types/node@22.10.0)(rollup@4.27.4)(typescript@5.5.4))(tailwindcss@3.4.15)':
     dependencies:
-      astro: 4.16.14(@types/node@22.10.0)(rollup@4.27.4)(typescript@5.5.4)
+      astro: 4.16.15(@types/node@22.10.0)(rollup@4.27.4)(typescript@5.5.4)
       autoprefixer: 10.4.20(postcss@8.4.49)
       postcss: 8.4.49
       postcss-load-config: 4.0.2(postcss@8.4.49)
@@ -3856,13 +3852,13 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@astrojs/vercel@7.8.2(astro@4.16.14(@types/node@22.10.0)(rollup@4.27.4)(typescript@5.5.4))(react@18.3.1)':
+  '@astrojs/vercel@7.8.2(astro@4.16.15(@types/node@22.10.0)(rollup@4.27.4)(typescript@5.5.4))(react@18.3.1)':
     dependencies:
       '@astrojs/internal-helpers': 0.4.1
       '@vercel/analytics': 1.4.1(react@18.3.1)
       '@vercel/edge': 1.1.2
       '@vercel/nft': 0.27.6
-      astro: 4.16.14(@types/node@22.10.0)(rollup@4.27.4)(typescript@5.5.4)
+      astro: 4.16.15(@types/node@22.10.0)(rollup@4.27.4)(typescript@5.5.4)
       esbuild: 0.21.5
       fast-glob: 3.3.2
       web-vitals: 3.5.2
@@ -5081,14 +5077,14 @@ snapshots:
       '@sentry/core': 8.40.0
       '@sentry/types': 8.40.0
 
-  '@sentry/astro@8.40.0(astro@4.16.14(@types/node@22.10.0)(rollup@4.27.4)(typescript@5.5.4))':
+  '@sentry/astro@8.40.0(astro@4.16.15(@types/node@22.10.0)(rollup@4.27.4)(typescript@5.5.4))':
     dependencies:
       '@sentry/browser': 8.40.0
       '@sentry/core': 8.40.0
       '@sentry/node': 8.40.0
       '@sentry/types': 8.40.0
       '@sentry/vite-plugin': 2.22.6
-      astro: 4.16.14(@types/node@22.10.0)(rollup@4.27.4)(typescript@5.5.4)
+      astro: 4.16.15(@types/node@22.10.0)(rollup@4.27.4)(typescript@5.5.4)
     transitivePeerDependencies:
       - encoding
       - supports-color
@@ -5254,12 +5250,12 @@ snapshots:
 
   '@shikijs/vscode-textmate@9.3.0': {}
 
-  '@spotlightjs/astro@1.0.20(@sentry/astro@8.40.0(astro@4.16.14(@types/node@22.10.0)(rollup@4.27.4)(typescript@5.5.4)))(astro@4.16.14(@types/node@22.10.0)(rollup@4.27.4)(typescript@5.5.4))':
+  '@spotlightjs/astro@1.0.20(@sentry/astro@8.40.0(astro@4.16.15(@types/node@22.10.0)(rollup@4.27.4)(typescript@5.5.4)))(astro@4.16.15(@types/node@22.10.0)(rollup@4.27.4)(typescript@5.5.4))':
     dependencies:
-      '@sentry/astro': 8.40.0(astro@4.16.14(@types/node@22.10.0)(rollup@4.27.4)(typescript@5.5.4))
+      '@sentry/astro': 8.40.0(astro@4.16.15(@types/node@22.10.0)(rollup@4.27.4)(typescript@5.5.4))
       '@spotlightjs/overlay': 1.8.3
       '@spotlightjs/sidecar': 1.4.0
-      astro: 4.16.14(@types/node@22.10.0)(rollup@4.27.4)(typescript@5.5.4)
+      astro: 4.16.15(@types/node@22.10.0)(rollup@4.27.4)(typescript@5.5.4)
       source-map: 0.7.4
 
   '@spotlightjs/overlay@1.8.3': {}
@@ -5481,14 +5477,14 @@ snapshots:
 
   astring@1.9.0: {}
 
-  astro-pagefind@1.6.0(astro@4.16.14(@types/node@22.10.0)(rollup@4.27.4)(typescript@5.5.4)):
+  astro-pagefind@1.6.0(astro@4.16.15(@types/node@22.10.0)(rollup@4.27.4)(typescript@5.5.4)):
     dependencies:
       '@pagefind/default-ui': 1.2.0
-      astro: 4.16.14(@types/node@22.10.0)(rollup@4.27.4)(typescript@5.5.4)
+      astro: 4.16.15(@types/node@22.10.0)(rollup@4.27.4)(typescript@5.5.4)
       pagefind: 1.2.0
       sirv: 2.0.4
 
-  astro@4.16.14(@types/node@22.10.0)(rollup@4.27.4)(typescript@5.5.4):
+  astro@4.16.15(@types/node@22.10.0)(rollup@4.27.4)(typescript@5.5.4):
     dependencies:
       '@astrojs/compiler': 2.10.3
       '@astrojs/internal-helpers': 0.4.1
@@ -5527,7 +5523,7 @@ snapshots:
       http-cache-semantics: 4.1.1
       js-yaml: 4.1.0
       kleur: 4.1.5
-      magic-string: 0.30.13
+      magic-string: 0.30.14
       magicast: 0.3.5
       micromatch: 4.0.8
       mrmime: 2.0.0
@@ -5660,9 +5656,9 @@ snapshots:
 
   cjs-module-lexer@1.4.1: {}
 
-  class-variance-authority@0.7.0:
+  class-variance-authority@0.7.1:
     dependencies:
-      clsx: 2.0.0
+      clsx: 2.1.1
 
   cli-boxes@3.0.0: {}
 
@@ -5671,8 +5667,6 @@ snapshots:
       restore-cursor: 5.1.0
 
   cli-spinners@2.9.2: {}
-
-  clsx@2.0.0: {}
 
   clsx@2.1.1: {}
 
@@ -6416,7 +6410,7 @@ snapshots:
     dependencies:
       react: 18.3.1
 
-  magic-string@0.30.13:
+  magic-string@0.30.14:
     dependencies:
       '@jridgewell/sourcemap-codec': 1.5.0
 
@@ -6944,7 +6938,7 @@ snapshots:
       object-assign: 4.1.1
       thenify-all: 1.6.0
 
-  nanoid@3.3.7: {}
+  nanoid@3.3.8: {}
 
   neotraverse@0.6.18: {}
 
@@ -7149,7 +7143,7 @@ snapshots:
 
   postcss@8.4.49:
     dependencies:
-      nanoid: 3.3.7
+      nanoid: 3.3.8
       picocolors: 1.1.1
       source-map-js: 1.2.1
 
