@@ -3,15 +3,13 @@ import react from '@astrojs/react';
 import sitemap from '@astrojs/sitemap';
 import tailwind from '@astrojs/tailwind';
 import { transformerMetaHighlight, transformerNotationDiff } from '@shikijs/transformers';
+import pagefind from 'astro-pagefind';
 import { defineConfig } from 'astro/config';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeExternalLinks from 'rehype-external-links';
 import rehypeCodeProps from 'rehype-mdx-code-props';
 import rehypeSlug from 'rehype-slug';
 import remarkToc from 'remark-toc';
-
-import sentry from '@sentry/astro';
-import pagefind from 'astro-pagefind';
 
 export default defineConfig({
   site: 'https://coderfee.com',
@@ -47,25 +45,15 @@ export default defineConfig({
     ],
   },
   integrations: [
-    pagefind(),
-    mdx(),
-    sitemap(),
+    react(),
     tailwind({
       applyBaseStyles: false,
     }),
-    react(),
-    sentry({
-      sourceMapsUploadOptions: {
-        enabled: false,
-        telemetry: false,
-      },
-    }),
+    mdx(),
+    sitemap(),
+    pagefind(),
   ],
   devToolbar: {
     enabled: false,
-  },
-  server: {
-    host: 'dev.coderfee.com',
-    port: 80,
   },
 });

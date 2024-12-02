@@ -1,4 +1,4 @@
-import { type Social, socials } from '@/consts';
+import { type Social } from '@/consts';
 import { motion } from 'framer-motion';
 
 type Props = {

@@ -1,7 +1,9 @@
-const { addDynamicIconSelectors } = require('@iconify/tailwind');
+import { addDynamicIconSelectors } from '@iconify/tailwind';
+import typography from '@tailwindcss/typography';
+import animate from 'tailwindcss-animate';
 
 /** @type {import('tailwindcss').Config} */
-module.exports = {
+export default {
   darkMode: ['class'],
   content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
   prefix: '',
@@ -30,6 +32,6 @@ module.exports = {
       },
     },
   },
-  plugins: [require('tailwindcss-animate'), addDynamicIconSelectors(), require('@tailwindcss/typography')],
+  plugins: [addDynamicIconSelectors(), animate, typography],
   safelist: ['icon-[tabler--mail]', 'icon-[tabler--home]', 'icon-[tabler--external-link]'],
 };
