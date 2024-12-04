@@ -1,8 +1,0 @@
----
-const posts = await Astro.glob('../../content/blog/*.{md,mdx}');
-
-const tags = posts.map((item) => item.frontmatter?.tags ?? []).flat();
-const uniqueTags = [...new Set(tags)].map((tag) => tag.trim());
----
-
-{uniqueTags.join(",")}

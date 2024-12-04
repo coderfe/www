@@ -53,7 +53,7 @@ export function Command() {
 
   return (
     <>
-      <Button className="h-8" variant="ghost" onClick={() => setOpen(true)}>
+      <Button className="h-8 rounded-full" variant="ghost" onClick={() => setOpen(true)}>
         <span className="icon-[tabler--search] text-lg"></span>
       </Button>
 

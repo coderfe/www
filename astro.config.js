@@ -56,4 +56,11 @@ export default defineConfig({
   devToolbar: {
     enabled: false,
   },
+  vite: {
+    server: {
+      watch: {
+        usePolling: true,
+      },
+    },
+  },
 });
