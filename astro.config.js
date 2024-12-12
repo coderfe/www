@@ -57,6 +57,11 @@ export default defineConfig({
     enabled: false,
   },
   vite: {
+    build: {
+      rollupOptions: {
+        external: ['fsevents'],
+      },
+    },
     server: {
       watch: {
         usePolling: true,
