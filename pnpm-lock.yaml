@@ -133,8 +133,8 @@ importers:
         specifier: ^1.9.4
         version: 1.9.4
       '@iconify-json/tabler':
-        specifier: ^1.2.11
-        version: 1.2.11
+        specifier: ^1.2.12
+        version: 1.2.12
       '@iconify/tailwind':
         specifier: ^1.2.0
         version: 1.2.0
@@ -637,8 +637,8 @@ packages:
   '@floating-ui/utils@0.2.8':
     resolution: {integrity: sha512-kym7SodPp8/wloecOpcmSnWJsK7M0E5Wg8UcFA+uO4B9s5d0ywXOEro/8HM9x0rW+TljRzul/14UYz3TleT3ig==}
 
-  '@iconify-json/tabler@1.2.11':
-    resolution: {integrity: sha512-sOZRVC+QaGmagdogWlz/cTmgXyo5OfRMaac28fAv0+CgESO/eQRBbnjgP4boKG+eKWxjQvRACDOI1HZ1J6Jh7Q==}
+  '@iconify-json/tabler@1.2.12':
+    resolution: {integrity: sha512-g9uhcq8o+BZyHqn+NPLumDuFv3m+28KFQLw1/ZCB2FVQ5i7UCMgmXbgk2vZ9gBFEx1YmYEK7gqUN6NnuvivOCQ==}
 
   '@iconify/tailwind@1.2.0':
     resolution: {integrity: sha512-KgpIHWOTcRYw1XcoUqyNSrmYyfLLqZYu3AmP8zdfLk0F5TqRO8YerhlvlQmGfn7rJXgPeZN569xPAJnJ53zZxA==}
@@ -3974,7 +3974,7 @@ snapshots:
 
   '@floating-ui/utils@0.2.8': {}
 
-  '@iconify-json/tabler@1.2.11':
+  '@iconify-json/tabler@1.2.12':
     dependencies:
       '@iconify/types': 2.0.0
 
