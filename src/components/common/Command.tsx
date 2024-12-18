@@ -65,6 +65,7 @@ export function Command() {
               handleSearch(e.currentTarget.value);
             }
           }}
+          className="print:hidden"
           placeholder="搜一搜..."
         />
         <CommandList>

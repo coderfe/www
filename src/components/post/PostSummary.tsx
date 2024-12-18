@@ -18,7 +18,7 @@ export function PostSummary({ date, tags, tldr }: Props) {
   const handleFetch = () => fetcher(getPost());
 
   return (
-    <div className="space-y-4 my-4">
+    <div className="space-y-4 my-4 print:hidden">
       <div className="flex gap-4 items-center text-sm dark:text-white/50 *:flex *:gap-1 *:items-center font-mono">
         <div>
           <span className="text-lg icon-[tabler--calendar]" />
