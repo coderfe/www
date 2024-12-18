@@ -17,8 +17,8 @@ export const socials: Social[] = [
     color: '#6cc644',
   },
   {
-    name: 'Twitter',
-    url: 'https://twitter.com/coderfee',
+    name: 'X',
+    url: 'https://x.com/oxproto55071',
     icon: 'brand-twitter',
     color: '#14171a',
   },
