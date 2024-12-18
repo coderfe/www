@@ -12,7 +12,6 @@ import { copyTextToClipboard, getHref } from '@/lib/helper';
 import { usePostDetail } from '@/store/postDetail';
 import type { MarkdownHeading } from 'astro';
 import { useEffect } from 'react';
-import { ToastAction } from '../ui/toast';
 
 type Props = {
   headings: MarkdownHeading[];
@@ -22,11 +21,11 @@ export function PostActions({ headings }: Props) {
   return (
     <>
       <Toaster />
-      <div className="sticky flex justify-center bottom-4 mb-8">
+      <div className="sticky flex justify-center bottom-4 mb-8 print:hidden">
         <Menubar>
           <MenuLike />
 
-          <MenuOutline headings={headings} />
+          {headings.length > 0 && <MenuOutline headings={headings} />}
 
           <MenuShare />
         </Menubar>
