@@ -1,0 +1,29 @@
+---
+import { getCollection } from 'astro:content';
+import { slugify } from '@/lib/utils';
+
+const allPosts = await getCollection('blog');
+const allTags = Array.from(new Set(allPosts.flatMap(post => post.data.tags || [])));
+
+const tagCounts = allTags.reduce((acc, tag) => {
+  acc[tag] = allPosts.filter(post => post.data.tags?.includes(tag)).length;
+  return acc;
+}, {});
+
+allTags.sort((a, b) => tagCounts[b] - tagCounts[a]);
+
+const getFontSize = (count) => {
+  if (count > 10) return 'text-2xl';
+  if (count > 5) return 'text-xl';
+  return 'text-lg';
+};
+---
+
+<h1 class="text-3xl font-bold mb-4" role="heading" aria-level="1">标签</h1>
+<ul class="list-disc pl-5" role="list">
+  {allTags.map(tag => (
+    <li key={tag} class="mb-2" role="listitem">
+      <a href={`/tags/${slugify(tag)}`} class={`text-blue-500 hover:underline ${getFontSize(tagCounts[tag])}`} aria-label={`查看 ${tag} 标签的文章`}>{tag} ({tagCounts[tag]})</a>
+    </li>
+  ))}
+</ul>

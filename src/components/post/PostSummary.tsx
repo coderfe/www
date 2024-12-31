@@ -5,6 +5,7 @@ import dayjs from 'dayjs';
 import { animate, motion, useMotionValue, useTransform } from 'framer-motion';
 import { useEffect } from 'react';
 import { getPost } from '../common/Visitors';
+import { slugify } from '@/lib/utils';
 
 type Props = {
   date: Date;
@@ -27,7 +28,11 @@ export function PostSummary({ date, tags, tldr }: Props) {
         <Liked />
         <div className="font-sans">
           <span className="text-lg icon-[tabler--tags]" />
-          <span>{tags.join('、')}</span>
+          <span>
+            {tags.map(tag => (
+              <a href={`/tags/${slugify(tag)}`} className="text-blue-500 hover:underline" aria-label={`查看 ${tag} 标签的文章`}>{tag}</a>
+            ))}
+          </span>
         </div>
       </div>
       <Alert>

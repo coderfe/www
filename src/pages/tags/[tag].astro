@@ -1,0 +1,17 @@
+---
+import { getCollection } from 'astro:content';
+import { slugify } from '@/lib/utils';
+
+const { tag } = Astro.params;
+const allPosts = await getCollection('blog');
+const filteredPosts = allPosts.filter(post => post.data.tags?.includes(tag));
+---
+
+<h1 class="text-3xl font-bold mb-4" role="heading" aria-level="1">标签: {tag}</h1>
+<ul class="list-disc pl-5" role="list">
+  {filteredPosts.map(post => (
+    <li key={post.slug} class="mb-2" role="listitem">
+      <a href={`/blog/${post.slug}`} class="text-blue-500 hover:underline" aria-label={`查看 ${post.data.title} 文章`}>{post.data.title}</a>
+    </li>
+  ))}
+</ul>

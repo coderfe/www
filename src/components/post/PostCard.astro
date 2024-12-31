@@ -1,5 +1,6 @@
 ---
 import dayjs from 'dayjs';
+import { slugify } from '@/lib/utils';
 const { post } = Astro.props;
 const {
   slug,
@@ -25,13 +26,15 @@ const {
       class="flex items-center gap-4 text-sm font-mono text-black/80 dark:text-white/50 *:flex *:gap-1 *:items-center"
     >
       <div>
-        <span class="text-lg icon-[tabler--calendar]"></span>
+        <span class="text-lg icon-[tabler--calendar]" aria-hidden="true"></span>
         <span>{dayjs(date).format('MMMM DD,YYYY')}</span>
       </div>
       <div>
-        <span class="text-lg icon-[tabler--tags]"></span>
+        <span class="text-lg icon-[tabler--tags]" aria-hidden="true"></span>
         <span>
-          {tags.join("、")}
+          {tags.map(tag => (
+            <a href={`/tags/${slugify(tag)}`} class="text-blue-500 hover:underline" aria-label={`查看 ${tag} 标签的文章`}>{tag}</a>
+          ))}
         </span>
       </div>
     </div>
