@@ -1,18 +1,18 @@
-// import { loadRenderers } from 'astro:container';
+import { loadRenderers } from 'astro:container';
 import { getCollection } from 'astro:content';
 import { SITE_DESCRIPTION, SITE_TITLE } from '@/consts';
-// import { getContainerRenderer } from '@astrojs/mdx';
+import { getContainerRenderer } from '@astrojs/mdx';
 import rss from '@astrojs/rss';
-// import { experimental_AstroContainer as AstroContainer } from 'astro/container';
+import { experimental_AstroContainer as AstroContainer } from 'astro/container';
 
 export async function GET(context) {
   if (!context.site) {
     throw new TypeError('context.site falsy');
   }
 
-  // const container = await AstroContainer.create({
-  //   renderers: await loadRenderers([getContainerRenderer()]),
-  // });
+  const container = await AstroContainer.create({
+    renderers: await loadRenderers([getContainerRenderer()]),
+  });
 
   const blog = await getCollection('blog');
   const posts = blog
@@ -30,7 +30,7 @@ export async function GET(context) {
         pubDate: post.data.date,
         description: post.data.tldr,
         link: `/blog/${post.slug}/`,
-        // content: await container.renderToString((await post.render()).Content),
+        content: await container.renderToString((await post.render()).Content),
       })),
     ),
   });
