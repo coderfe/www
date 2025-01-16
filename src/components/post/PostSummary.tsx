@@ -5,6 +5,7 @@ import dayjs from 'dayjs';
 import { animate, motion, useMotionValue, useTransform } from 'framer-motion';
 import { useEffect } from 'react';
 import { getPost } from '../common/Visitors';
+import { Badge } from '../ui/badge';
 
 type Props = {
   date: Date;
@@ -12,7 +13,7 @@ type Props = {
   tldr: string;
 };
 
-export function PostSummary({ date, tags, tldr }: Props) {
+export function PostSummary({ date }: Props) {
   const { summary, fetch: fetcher, loading } = usePostDetail();
 
   const handleFetch = () => fetcher(getPost());
@@ -25,10 +26,6 @@ export function PostSummary({ date, tags, tldr }: Props) {
           <span>{dayjs(date).format('MMMM DD,YYYY')}</span>
         </div>
         <Liked />
-        <div className="font-sans">
-          <span className="text-lg icon-[tabler--tags]" />
-          <span>{tags.join('、')}</span>
-        </div>
       </div>
       <Alert>
         <AlertTitle>

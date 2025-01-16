@@ -1,12 +1,13 @@
 ---
-import License from "@/components/post/License.astro";
-import { PostActions } from "@/components/post/PostActions";
-import { PostSummary } from "@/components/post/PostSummary";
-import BaseLayout from "@/layouts/BaseLayout.astro";
-import { getCollection, type CollectionEntry } from "astro:content";
+import { type CollectionEntry, getCollection } from 'astro:content';
+import License from '@/components/post/License.astro';
+import { PostActions } from '@/components/post/PostActions';
+import { PostSummary } from '@/components/post/PostSummary';
+import { Badge } from '@/components/ui/badge';
+import BaseLayout from '@/layouts/BaseLayout.astro';
 
 export async function getStaticPaths() {
-  const posts = await getCollection("blog");
+  const posts = await getCollection('blog');
   return posts
     .map((post) => ({
       params: { slug: post.slug },
@@ -14,7 +15,7 @@ export async function getStaticPaths() {
     }))
     .flat();
 }
-type Props = CollectionEntry<"blog">;
+type Props = CollectionEntry<'blog'>;
 
 const post = Astro.props;
 const { Content, headings } = await post.render();
@@ -34,6 +35,9 @@ const { title, tldr, date, tags = [], cover } = post.data;
         <Content />
       </section>
     </article>
+    {tags.map(tag => (
+      <Badge className="mr-2">#{tag}</Badge>
+    ))}
     <hr />
     <License />
   </main>

@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import PostCard from '@/components/post/PostCard.astro';
+import { Badge } from '@/components/ui/badge';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 
 const collection = await getCollection('blog');
@@ -8,10 +9,31 @@ const posts = collection
   .filter(({ data: { date } }) => date.getFullYear() >= new Date().getFullYear() - 2)
   .filter(({ data: { draft = false } }) => !draft)
   .sort(({ data: { date: dateA } }, { data: { date: dateB } }) => dateB.valueOf() - dateA.valueOf());
+
+const tagCount = collection.reduce((acc, { data: { tags = [] } }) => {
+  tags.forEach((tag) => {
+    acc[tag] = (acc[tag] || 0) + 1;
+  });
+  return acc;
+}, {});
+
+const tagsWithCount = Object.entries(tagCount).map(([tag, count]) => ({
+  tag,
+  count: count as number,
+}));
 ---
 
 <BaseLayout title="文章">
-  <main class="flex flex-col gap-6 mx-auto pb-8">
-    {posts.map((post) => <PostCard post={post} />)}
+  <main class="grid grid-cols-1 mx-auto">
+    <div class="flex flex-col gap-6">
+      {posts.map((post) => <PostCard post={post} />)}
+    </div>
+    <aside>
+      <div class="flex flex-wrap gap-2 my-4">
+        {tagsWithCount.map(({ tag, count }) => (
+          <Badge className="cursor-pointer">#{tag}·{count}</Badge>
+        ))}
+      </div>
+    </aside>
   </main>
 </BaseLayout>
