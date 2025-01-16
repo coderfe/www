@@ -1,0 +1,32 @@
+---
+import { getCollection } from 'astro:content';
+import PostCard from '@/components/post/PostCard.astro';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  const collection = await getCollection('blog');
+  const posts = collection
+    .filter(({ data: { draft = false } }) => !draft)
+    .sort(({ data: { date: dateA } }, { data: { date: dateB } }) => dateB.valueOf() - dateA.valueOf());
+  const tags = posts.map(({ data: { tags = [] } }) => tags).flat();
+  const uniqueTags = [...new Set(tags)];
+  return uniqueTags.map((tag) => ({ params: { tag } }));
+}
+const { tag } = Astro.params;
+const collection = await getCollection('blog');
+const posts = collection
+  .filter(({ data: { tags = [] } }) => tags.includes(tag))
+  .filter(({ data: { draft = false } }) => !draft)
+  .sort(({ data: { date: dateA } }, { data: { date: dateB } }) => dateB.valueOf() - dateA.valueOf());
+---
+
+<BaseLayout title={tag}>
+  <main class="mx-auto mb-4 min-h-screen">
+    <h2 class="text-2xl font-bold mb-4 text-center">#{tag} · {posts.length}</h2>
+    <div class="grid grid-cols-1 gap-6">
+      {posts.map((post) => (
+        <PostCard post={post} />
+      ))}
+    </div>
+  </main>
+</BaseLayout>

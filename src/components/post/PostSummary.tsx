@@ -13,7 +13,7 @@ type Props = {
   tldr: string;
 };
 
-export function PostSummary({ date }: Props) {
+export function PostSummary({ date, tags }: Props) {
   const { summary, fetch: fetcher, loading } = usePostDetail();
 
   const handleFetch = () => fetcher(getPost());
@@ -26,6 +26,16 @@ export function PostSummary({ date }: Props) {
           <span>{dayjs(date).format('MMMM DD,YYYY')}</span>
         </div>
         <Liked />
+        <div className="font-sans">
+          <span className="text-lg icon-[tabler--tags]" />
+          <div className="flex gap-1">
+            {tags.map((tag) => (
+              <a className="!border-none text-sm" href={`/blog/tags/${tag}`} key={tag}>
+                #{tag}
+              </a>
+            ))}
+          </div>
+        </div>
       </div>
       <Alert>
         <AlertTitle>

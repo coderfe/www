@@ -5,12 +5,11 @@ import { Badge } from '@/components/ui/badge';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 
 const collection = await getCollection('blog');
-const posts = collection
-  .filter(({ data: { date } }) => date.getFullYear() >= new Date().getFullYear() - 2)
+const published = collection
   .filter(({ data: { draft = false } }) => !draft)
   .sort(({ data: { date: dateA } }, { data: { date: dateB } }) => dateB.valueOf() - dateA.valueOf());
-
-const tagCount = collection.reduce((acc, { data: { tags = [] } }) => {
+const posts = published.filter(({ data: { date } }) => date.getFullYear() >= new Date().getFullYear() - 2);
+const tagCount = published.reduce((acc, { data: { tags = [] } }) => {
   tags.forEach((tag) => {
     acc[tag] = (acc[tag] || 0) + 1;
   });
@@ -31,7 +30,9 @@ const tagsWithCount = Object.entries(tagCount).map(([tag, count]) => ({
     <aside>
       <div class="flex flex-wrap gap-2 my-4">
         {tagsWithCount.map(({ tag, count }) => (
-          <Badge className="cursor-pointer">#{tag}·{count}</Badge>
+          <Badge className="cursor-pointer">
+            <a href={`/blog/tags/${tag}`}>#{tag} · {count}</a>
+          </Badge>
         ))}
       </div>
     </aside>

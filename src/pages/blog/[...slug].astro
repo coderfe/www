@@ -35,9 +35,6 @@ const { title, tldr, date, tags = [], cover } = post.data;
         <Content />
       </section>
     </article>
-    {tags.map(tag => (
-      <Badge className="mr-2">#{tag}</Badge>
-    ))}
     <hr />
     <License />
   </main>
