@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@astrojs/mdx": "^4.0.7",
-    "@astrojs/react": "^4.1.6",
+    "@astrojs/react": "^4.2.0",
     "@astrojs/rss": "^4.0.11",
     "@astrojs/sitemap": "^3.2.1",
     "@astrojs/tailwind": "^5.1.5",
@@ -31,7 +31,7 @@
     "@shikijs/transformers": "^1.29.1",
     "@types/react": "^18.3.18",
     "@types/react-dom": "^18.3.5",
-    "astro": "^5.1.9",
+    "astro": "^5.1.10",
     "astro-pagefind": "^1.8.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
