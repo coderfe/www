@@ -2,7 +2,6 @@ import mdx from '@astrojs/mdx';
 import react from '@astrojs/react';
 import sitemap from '@astrojs/sitemap';
 import tailwind from '@astrojs/tailwind';
-import { transformerMetaHighlight, transformerNotationDiff } from '@shikijs/transformers';
 import pagefind from 'astro-pagefind';
 import { defineConfig } from 'astro/config';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
@@ -23,7 +22,6 @@ export default defineConfig({
     shikiConfig: {
       theme: 'vitesse-dark',
       wrap: true,
-      transformers: [transformerNotationDiff(), transformerMetaHighlight()],
     },
     remarkPlugins: [[remarkToc, { headings: ['h2', 'h3', 'h4'] }]],
     rehypePlugins: [
