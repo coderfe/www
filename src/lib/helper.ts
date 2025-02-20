@@ -1,6 +1,9 @@
 export const getHref = () => {
   if (typeof window === 'undefined') return '';
-  return window.location.href.replace('http://dev.', 'https://').replace(/\/$/, '');
+  const url = new URL(window.location.href);
+  // 处理更多开发环境的情况
+  const hostname = url.hostname.replace(/^(dev\.|local\.)/, '');
+  return `https://${hostname}${url.pathname}`.replace(/\/$/, '');
 };
 
 export function throttle(func: Function, timeFrame: number) {
