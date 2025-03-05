@@ -6,12 +6,12 @@ import {
   MenubarShortcut,
   MenubarTrigger,
 } from '@/components/ui/menubar';
-import { Toaster } from '@/components/ui/toaster';
-import { useToast } from '@/components/ui/use-toast';
+import { Toaster } from '@/components/ui/sonner';
 import { copyTextToClipboard, getHref } from '@/lib/helper';
 import { usePostDetail } from '@/store/postDetail';
 import type { MarkdownHeading } from 'astro';
 import { useEffect } from 'react';
+import { toast } from 'sonner';
 
 type Props = {
   headings: MarkdownHeading[];
@@ -35,10 +35,9 @@ export function PostActions({ headings }: Props) {
 }
 
 function MenuLike() {
-  const { toast } = useToast();
   const { like } = usePostDetail();
   const handleClick = (description?: string) => {
-    like(getHref()).then(() => toast({ title: '谢谢', description }));
+    like(getHref()).then(() => toast('谢谢', { description }));
   };
   return (
     <MenubarMenu>
@@ -97,14 +96,12 @@ function MenuOutline({ headings }: Props) {
 }
 
 function MenuShare() {
-  const { toast } = useToast();
   const href = getHref();
   const handleShareTwitter = () =>
     window.open(`https://twitter.com/intent/tweet?url=${href}`, '_blank', 'noopener,noreferrer');
   const handleCopyLink = () => {
     copyTextToClipboard(href).then(() => {
-      toast({
-        title: 'Copied',
+      toast('Copied', {
         description: href,
       });
     });

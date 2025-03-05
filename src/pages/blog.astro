@@ -23,7 +23,7 @@ const tagsWithCount = Object.entries(tagCount).map(([tag, count]) => ({
 ---
 
 <BaseLayout title="文章">
-  <main class="grid grid-cols-1 mx-auto">
+  <main class="px-6 max-w-5xl grid grid-cols-1 mx-auto">
     <div class="flex flex-col gap-6">
       {posts.map((post) => <PostCard post={post} />)}
     </div>

@@ -1,7 +1,7 @@
 import mdx from '@astrojs/mdx';
 import react from '@astrojs/react';
 import sitemap from '@astrojs/sitemap';
-import tailwind from '@astrojs/tailwind';
+import tailwindcss from '@tailwindcss/vite';
 import pagefind from 'astro-pagefind';
 import { defineConfig } from 'astro/config';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
@@ -42,19 +42,12 @@ export default defineConfig({
       ],
     ],
   },
-  integrations: [
-    react(),
-    tailwind({
-      applyBaseStyles: false,
-    }),
-    mdx(),
-    sitemap(),
-    pagefind(),
-  ],
+  integrations: [react(), mdx(), sitemap(), pagefind()],
   devToolbar: {
     enabled: false,
   },
   vite: {
+    plugins: [tailwindcss()],
     build: {
       rollupOptions: {
         external: ['fsevents'],
