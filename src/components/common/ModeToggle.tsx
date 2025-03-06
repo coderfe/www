@@ -31,7 +31,7 @@ export function ModeToggle() {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button className="h-8 rounded-full" variant="ghost">
-          <span className="icon-[tabler--sun-moon] text-lg"></span>
+          <span className="iconify icon-[tabler--sun-moon] text-lg"></span>
           <span className="sr-only">切换主题</span>
         </Button>
       </DropdownMenuTrigger>

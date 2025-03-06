@@ -42,19 +42,19 @@ function MenuLike() {
   return (
     <MenubarMenu>
       <MenubarTrigger className="cursor-pointer" onClick={() => like(getHref())}>
-        <span className="icon-[tabler--hearts] text-lg"></span>
+        <span className="iconify icon-[tabler--hearts] text-lg"></span>
       </MenubarTrigger>
       <MenubarContent>
         <MenubarItem onClick={() => handleClick('感谢老铁的点赞')}>
-          <span className="mr-2 icon-[tabler--thumb-up]"></span>
+          <span className="mr-2 iconify icon-[tabler--thumb-up]"></span>
           点赞
         </MenubarItem>
         <MenubarItem onClick={() => handleClick('你很喜欢，我很开心')}>
-          <span className="mr-2 icon-[tabler--heart]"></span>
+          <span className="mr-2 iconify icon-[tabler--heart]"></span>
           喜欢
         </MenubarItem>
         <MenubarItem onClick={() => handleClick('就写、就写')}>
-          <span className="mr-2 icon-[tabler--user-question]"></span>
+          <span className="mr-2 iconify icon-[tabler--user-question]"></span>
           写的很好，不许再写了
         </MenubarItem>
       </MenubarContent>
@@ -67,7 +67,7 @@ function MenuOutline({ headings }: Props) {
   return (
     <MenubarMenu>
       <MenubarTrigger className="cursor-pointer">
-        <span className="icon-[tabler--heading] text-lg"></span>
+        <span className="iconify icon-[tabler--heading] text-lg"></span>
       </MenubarTrigger>
       <MenubarContent>
         {displayHeadings.map((heading) => {
@@ -75,14 +75,14 @@ function MenuOutline({ headings }: Props) {
             <MenubarItem key={heading.slug} onClick={() => (window.location.hash = `#${heading.slug}`)}>
               {heading.depth === 2 && (
                 <>
-                  <span className="mr-2 icon-[tabler--h-2]" />
+                  <span className="mr-2 iconify icon-[tabler--h-2]" />
                   {heading.text}
                 </>
               )}
               {heading.depth === 3 && (
                 <>
                   <span className="pl-4 flex items-center">
-                    <span className="mr-2 icon-[tabler--h-3]" />
+                    <span className="mr-2 iconify icon-[tabler--h-3]" />
                     {heading.text}
                   </span>
                 </>
@@ -131,20 +131,20 @@ function MenuShare() {
   return (
     <MenubarMenu>
       <MenubarTrigger className="cursor-pointer">
-        <span className="icon-[tabler--share] text-lg"></span>
+        <span className="iconify icon-[tabler--share] text-lg"></span>
       </MenubarTrigger>
       <MenubarContent>
         <MenubarItem onClick={handleShareTwitter}>
-          <span className="mr-2 icon-[tabler--brand-twitter]" />
+          <span className="mr-2 iconify icon-[tabler--brand-twitter]" />
           Twitter
         </MenubarItem>
         <MenubarItem onClick={handleCopyLink}>
-          <span className="mr-2 icon-[tabler--copy]" />
+          <span className="mr-2 iconify icon-[tabler--copy]" />
           复制链接
           <MenubarShortcut>⌘+⇧+C</MenubarShortcut>
         </MenubarItem>
         <MenubarItem onClick={handlePrint}>
-          <span className="mr-2 icon-[tabler--printer]" />
+          <span className="mr-2 iconify icon-[tabler--printer]" />
           打印
           <MenubarShortcut>⌘+P</MenubarShortcut>
         </MenubarItem>

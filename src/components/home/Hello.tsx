@@ -2,7 +2,7 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/comp
 import { socials } from '@/consts';
 import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
-import Social from './Social';
+// import Social from './Social';
 
 export function Hello({ children }: { children?: React.ReactNode }) {
   const [isVisible, setIsVisible] = useState(false);

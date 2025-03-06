@@ -54,7 +54,7 @@ export function Command() {
   return (
     <>
       <Button className="h-8 rounded-full" variant="ghost" onClick={() => setOpen(true)}>
-        <span className="icon-[tabler--search] text-lg"></span>
+        <span className="iconify icon-[tabler--search] text-lg"></span>
       </Button>
 
       <CommandDialog open={open} onOpenChange={setOpen}>

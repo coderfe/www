@@ -34,7 +34,7 @@ export default defineConfig({
             type: 'element',
             tagName: 'span',
             properties: {
-              className: 'icon-[tabler--external-link]',
+              className: 'iconify icon-[tabler--external-link]',
             },
           },
           target: '_blank',

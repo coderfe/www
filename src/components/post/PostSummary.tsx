@@ -22,12 +22,12 @@ export function PostSummary({ date, tags }: Props) {
     <div className="space-y-4 my-4 print:hidden">
       <div className="flex gap-4 items-center text-sm dark:text-white/50 *:flex *:gap-1 *:items-center font-mono">
         <div>
-          <span className="text-lg icon-[tabler--calendar]" />
+          <span className="text-lg iconify icon-[tabler--calendar]" />
           <span>{dayjs(date).format('MMMM DD,YYYY')}</span>
         </div>
         <Liked />
         <div className="font-sans">
-          <span className="text-lg icon-[tabler--tags]" />
+          <span className="text-lg iconify icon-[tabler--tags]" />
           <div className="flex gap-1">
             {tags.map((tag) => (
               <a className="!border-none text-sm" href={`/blog/tags/${tag}`} key={tag}>
@@ -40,7 +40,7 @@ export function PostSummary({ date, tags }: Props) {
       <Alert>
         <AlertTitle>
           <span className="inline-flex items-center gap-1">
-            <span className="icon-[tabler--brand-openai] cursor-pointer" onClick={handleFetch}></span>
+            <span className="iconify icon-[tabler--brand-openai] cursor-pointer" onClick={handleFetch}></span>
             <span className="font-bold">AI 摘要</span>
           </span>
         </AlertTitle>
@@ -69,7 +69,7 @@ export function Liked() {
 
   return (
     <div>
-      <span className="text-lg icon-[tabler--hearts]"></span>
+      <span className="text-lg iconify icon-[tabler--hearts]"></span>
       <motion.span>{rounded}</motion.span>
     </div>
   );

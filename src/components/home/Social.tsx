@@ -11,7 +11,7 @@ export default function Social({ social: { icon, color } }: Props) {
       className="size-8 rounded-full flex justify-center items-center text-white"
       style={{ backgroundColor: color }}
     >
-      <motion.span whileHover={{ scale: 1.2 }} className={`icon-[tabler--${icon}]`}></motion.span>
+      <motion.span whileHover={{ scale: 1.2 }} className={`iconify icon-[tabler--${icon}]`}></motion.span>
     </span>
   );
 }
