@@ -122,39 +122,38 @@ const { title, tldr, date, tags = [], cover } = post.data;
            border border-zinc-200/50 dark:border-zinc-700/50
            hover:bg-zinc-50 dark:hover:bg-zinc-700/80
            focus:outline-none transform translate-y-20 opacity-0 transition-all duration-300 cursor-pointer"
+    transition:persist
   >
     <span class="iconify icon-[tabler--arrow-up] text-lg"></span>
   </button>
   
   <script>
-    // 处理返回顶部按钮
-    const handleBackToTop = () => {
+    document.addEventListener('astro:page-load', () => {
       const backToTopButton = document.getElementById('backToTop');
+      if (!backToTopButton) return;
       
-      if (backToTopButton) {
-        // 滚动显示/隐藏
-        window.addEventListener('scroll', () => {
-          if (window.scrollY > 500) {
-            backToTopButton.classList.remove('translate-y-20', 'opacity-0');
-          } else {
-            backToTopButton.classList.add('translate-y-20', 'opacity-0');
-          }
+      const handleScroll = () => {
+        if (window.scrollY > 500) {
+          backToTopButton.classList.remove('translate-y-20', 'opacity-0');
+        } else {
+          backToTopButton.classList.add('translate-y-20', 'opacity-0');
+        }
+      };
+      
+      // 初始检查滚动位置
+      handleScroll();
+      
+      // 添加滚动监听
+      window.addEventListener('scroll', handleScroll);
+      
+      // 返回顶部点击事件
+      backToTopButton.addEventListener('click', () => {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
         });
-        
-        // 点击返回顶部
-        backToTopButton.addEventListener('click', () => {
-          window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-          });
-        });
-      }
-    };
-    
-    // 初始化
-    document.addEventListener('DOMContentLoaded', () => {
-      handleBackToTop();
-    });
+      });
+    }, { once: false });
   </script>
   
   <style>
