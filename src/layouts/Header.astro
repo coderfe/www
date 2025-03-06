@@ -1,25 +1,22 @@
 ---
-import { Command } from '@/components/common/Command';
-import { ModeToggle } from '@/components/common/ModeToggle';
-
 let pathname = new URL(Astro.request.url).pathname;
 pathname = pathname.replace(/\/$/g, '');
 
 const navs = [
   {
-    name: '/home',
+    name: 'HOME',
     cnName: '首页',
     path: '/',
     active: pathname === '',
   },
   {
-    name: '/blog',
+    name: 'BLOG',
     cnName: '文章',
     path: '/blog',
     active: pathname === '/blog',
   },
   {
-    name: '/about',
+    name: 'ABOUT',
     cnName: '关于',
     path: '/blog/pages/about',
     active: pathname === '/blog/pages/about',
@@ -28,56 +25,169 @@ const navs = [
 ---
 
 <header
-  class="fixed w-11/12 h-[50px] left-1/2 -translate-x-1/2 top-4 z-50 py-2 px-2 rounded-lg lg:rounded-full lg:w-1/2 bg-white/50 dark:bg-zinc-950/10 border border-gray-200 dark:border-zinc-800 backdrop-blur-xl overflow-hidden transition-all duration-300 ease-in-out print:hidden"
+  class="fixed w-11/12 md:w-3/4 lg:w-2/3 left-1/2 -translate-x-1/2 top-6 z-50 rounded-[2rem] bg-white/40 dark:bg-zinc-900/30 backdrop-blur-2xl border border-white/10 dark:border-zinc-800/30 shadow-2xl shadow-violet-500/5 dark:shadow-violet-400/5 transition-all duration-500 print:hidden overflow-hidden group/header hover:shadow-violet-500/10 dark:hover:shadow-violet-400/10"
   data-pagefind-ignore
 >
-  <div
-    class="grid grid-cols-1 grid-rows-[32px_auto_auto] md:grid-rows-1 md:grid-cols-[minmax(32px,1fr)_auto_minmax(50px,1fr)] items-center justify-between"
-  >
-    <section class="flex items-center justify-between text-left h-8 overflow-hidden">
-      <a
-        href="/blog"
-        class="inline-block select-none size-8 rounded-full bg-contain bg-center bg-no-repeat bg-[url(https://assets.coderfee.com/blog/avatar.jpg)]"
-        aria-label="site owner avatar"></a>
-      <span class="icon-[tabler--menu-2] cursor-pointer text-lg md:hidden" id="menu"></span>
-    </section>
-    <nav
-      class="flex flex-col py-8 space-y-4 md:block md:space-x-4 md:space-y-0 text-left md:text-center md:py-0 *:cursor-pointer *:font-semibold *:transition-colors *:duration-300"
-    >
-      {
-        navs.map((nav) => (
+  <div class="relative">
+    <!-- 高级背景效果 -->
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(167,139,250,0.1),transparent_50%),radial-gradient(ellipse_at_bottom,_rgba(139,92,246,0.1),transparent_50%)] dark:bg-[radial-gradient(ellipse_at_top,_rgba(139,92,246,0.2),transparent_50%),radial-gradient(ellipse_at_bottom,_rgba(167,139,250,0.2),transparent_50%)]"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-violet-500/5 via-transparent to-indigo-500/5 dark:from-violet-400/5 dark:to-indigo-400/5 opacity-0 group-hover/header:opacity-100 transition-opacity duration-700 ease-out"></div>
+    <div class="absolute -inset-[100%] bg-[radial-gradient(circle_at_50%_50%,rgba(167,139,250,0.1),transparent_20%)] dark:bg-[radial-gradient(circle_at_50%_50%,rgba(139,92,246,0.2),transparent_20%)] animate-[glow_8s_ease-in-out_infinite] opacity-0 group-hover/header:opacity-100 transition-opacity duration-700"></div>
+    
+    <!-- 主导航区域 -->
+    <nav class="relative px-8 py-5">
+      <div class="flex items-center justify-between">
+        <!-- Logo区域 -->
+        <div class="flex items-center gap-4 group/logo">
           <a
-            href={nav.path}
-            class:list={[
-              !nav.active && "inline-block w-24 text-center text-zinc-600 dark:text-white/70",
-              "hover:text-black dark:hover:text-white",
-              nav.active ? "inline-block w-24 text-center text-black dark:text-white" : "",
-            ]}
+            href="/blog"
+            class="relative size-12 rounded-xl bg-gradient-to-br from-violet-200 to-indigo-200 dark:from-violet-800/30 dark:to-indigo-800/30 p-0.5 transition-all duration-500 hover:scale-110 hover:rotate-[360deg] ease-out"
           >
-            {nav.active ? nav.cnName : nav.name}
+            <div class="absolute inset-0 rounded-xl bg-gradient-to-br from-violet-500/20 to-indigo-500/20 opacity-0 group-hover/logo:opacity-100 transition-opacity duration-300"></div>
+            <div class="absolute inset-0 rounded-xl bg-gradient-to-br from-violet-500/10 to-indigo-500/10 blur-xl scale-150 opacity-0 group-hover/logo:opacity-100 transition-all duration-500"></div>
+            <div class="relative size-full rounded-lg bg-contain bg-center bg-no-repeat bg-[url(https://assets.coderfee.com/blog/avatar.jpg)] transition-transform duration-500 hover:scale-105"></div>
           </a>
-        ))
-      }
+          <span class="hidden sm:block font-bold text-xl bg-clip-text text-transparent bg-gradient-to-r from-violet-600 to-indigo-600 dark:from-violet-400 dark:to-indigo-400 transition-all duration-300 group-hover/logo:tracking-wider">Coderfee</span>
+        </div>
+
+        <!-- 桌面端导航 - 简化设计，只保留文字高亮 -->
+        <div class="hidden md:flex items-center gap-6">
+          <div class="flex items-center gap-5">
+            {
+              navs.map((nav) => (
+                <a
+                  href={nav.path}
+                  class:list={[
+                    "relative font-medium transition-all duration-300 ease-out",
+                    nav.active 
+                      ? "text-violet-600 dark:text-violet-400" 
+                      : "text-zinc-700 dark:text-zinc-300 hover:text-violet-600 dark:hover:text-violet-400"
+                  ]}
+                >
+                  {nav.active ? nav.cnName : nav.name}
+                </a>
+              ))
+            }
+          </div>
+          
+          <button class="relative size-10 flex items-center justify-center rounded-xl bg-white/30 dark:bg-zinc-900/50 border border-violet-200/20 dark:border-violet-800/20 shadow-inner shadow-white/10 dark:shadow-black/5 backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-violet-500/5 dark:hover:shadow-violet-400/5">
+            <span class="icon-[tabler--moon] size-5 text-violet-600 dark:text-violet-400"></span>
+          </button>
+        </div>
+
+        <!-- 移动端菜单按钮 -->
+        <button
+          id="menu-toggle"
+          class="md:hidden relative size-11 rounded-xl hover:bg-violet-50/50 dark:hover:bg-violet-900/20 transition-all duration-300 hover:shadow-lg hover:shadow-violet-500/10 dark:hover:shadow-violet-400/10"
+          aria-label="Toggle menu"
+        >
+          <div id="menu-icon" class="absolute inset-0 flex flex-col items-center justify-center gap-1.5 transition-all duration-300">
+            <span class="w-6 h-0.5 bg-violet-600 dark:bg-violet-400 rounded-full transform origin-center transition-all duration-300"></span>
+            <span class="w-6 h-0.5 bg-violet-600 dark:bg-violet-400 rounded-full transform origin-center transition-all duration-300"></span>
+          </div>
+        </button>
+      </div>
+
+      <!-- 移动端菜单 -->
+      <div
+        id="mobile-menu"
+        class="md:hidden h-0 opacity-0 transition-all duration-500 ease-in-out overflow-hidden"
+      >
+        <div class="py-4 space-y-2">
+          {
+            navs.map((nav) => (
+              <a
+                href={nav.path}
+                class:list={[
+                  "block px-5 py-3 rounded-xl font-medium transition-all duration-300",
+                  "hover:bg-violet-50/50 dark:hover:bg-violet-900/20 hover:shadow-lg hover:shadow-violet-500/10 dark:hover:shadow-violet-400/10",
+                  nav.active 
+                    ? "text-violet-600 dark:text-violet-400 bg-violet-50/50 dark:bg-violet-900/20" 
+                    : "text-zinc-600 dark:text-zinc-300"
+                ]}
+              >
+                <div class="flex items-center">
+                  <span class="flex-1">{nav.active ? nav.cnName : nav.name}</span>
+                  <span class="icon-[tabler--chevron-right] opacity-50 transition-transform duration-300 group-hover:translate-x-1"></span>
+                </div>
+              </a>
+            ))
+          }
+        </div>
+      </div>
     </nav>
-    <section class="text-right">
-      <Command client:idle />
-      <!-- <ModeToggle client:load /> -->
-    </section>
   </div>
 </header>
-<script is:inline>
-  const menu = document.getElementById("menu");
-  const header = document.querySelector("header");
-  let open = false;
-  menu.addEventListener("click", () => {
-    if (open) {
-      open = false;
-      header.classList.remove(["h-[288px]"]);
-      header.classList.add(["h-[50px]"]);
+
+<script>
+  const menuToggle = document.getElementById('menu-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const menuIcon = document.getElementById('menu-icon');
+  const header = document.querySelector('header');
+  
+  let isOpen = false;
+
+  menuToggle?.addEventListener('click', () => {
+    isOpen = !isOpen;
+    
+    // 更新菜单图标
+    if (isOpen) {
+      menuIcon?.classList.add('rotate-45');
+      menuIcon?.querySelectorAll('span').forEach((span, index) => {
+        if (index === 0) span.classList.add('rotate-90', 'translate-y-2');
+        if (index === 1) span.classList.add('opacity-0');
+      });
     } else {
-      open = true;
-      header.classList.remove(["h-[50px]"]);
-      header.classList.add(["h-[288px]"]);
+      menuIcon?.classList.remove('rotate-45');
+      menuIcon?.querySelectorAll('span').forEach((span, index) => {
+        if (index === 0) span.classList.remove('rotate-90', 'translate-y-2');
+        if (index === 1) span.classList.remove('opacity-0');
+      });
+    }
+    
+    // 更新菜单高度和透明度
+    if (mobileMenu) {
+      mobileMenu.style.height = isOpen ? `${mobileMenu.scrollHeight}px` : '0';
+      mobileMenu.style.opacity = isOpen ? '1' : '0';
     }
   });
 </script>
+
+<style>
+  @keyframes nav-ping {
+    0% {
+      opacity: 0;
+      transform: scale(0.8);
+    }
+    50% {
+      opacity: 0.6;
+      transform: scale(1.1);
+    }
+    100% {
+      opacity: 0;
+      transform: scale(0.8);
+    }
+  }
+
+  @keyframes glow {
+    0% {
+      transform: rotate(0deg);
+      filter: blur(8px);
+    }
+    50% {
+      transform: rotate(180deg);
+      filter: blur(12px);
+    }
+    100% {
+      transform: rotate(360deg);
+      filter: blur(8px);
+    }
+  }
+  
+  @media (max-width: 768px) {
+    #mobile-menu {
+      overflow: hidden;
+      transition: height 0.3s ease-in-out, opacity 0.2s ease-in-out;
+    }
+  }
+</style>

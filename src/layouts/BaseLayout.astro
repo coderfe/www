@@ -1,7 +1,6 @@
 ---
+import { ClientRouter } from 'astro:transitions';
 import DocumentMeta from '@/layouts/DocumentMeta.astro';
-import Footer from './Footer.astro';
-import Header from './Header.astro';
 
 const { title, description, ogImage } = Astro.props;
 ---
@@ -10,12 +9,60 @@ const { title, description, ogImage } = Astro.props;
 <html lang="zh-Hans">
   <head>
     <DocumentMeta title={title} description={description} ogImage={ogImage} />
+    <ClientRouter />
     <slot name="head" />
   </head>
   <body class="bg-white dark:bg-zinc-900 dark:text-white">
-    <div class="h-24"></div>
-    <Header />
     <slot />
-    <Footer />
   </body>
 </html>
+
+<style is:global>
+  /* 页面切换动画 */
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none;
+    mix-blend-mode: normal;
+  }
+
+  /* 暗色模式适配 */
+  .dark::view-transition-old(root) {
+    z-index: 1;
+  }
+  .dark::view-transition-new(root) {
+    z-index: 9999;
+  }
+
+  /* 页面切换时保持滚动条位置 */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  @keyframes slide-from-right {
+    from {
+      opacity: 0;
+      transform: translateX(20px);
+    }
+  }
+
+  @keyframes slide-to-left {
+    to {
+      opacity: 0;
+      transform: translateX(-20px);
+    }
+  }
+
+  /* 自定义过渡效果 */
+  :root {
+    --motion-duration: 0.3s;
+    --motion-ease: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  ::view-transition-old(root) {
+    animation: slide-to-left var(--motion-duration) var(--motion-ease) both;
+  }
+
+  ::view-transition-new(root) {
+    animation: slide-from-right var(--motion-duration) var(--motion-ease) both;
+  }
+</style>

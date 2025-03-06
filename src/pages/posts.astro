@@ -5,7 +5,9 @@ import PageHeader from '@/components/ai/PageHeader.astro';
 import PostCard from '@/components/ai/PostCard.astro';
 import SidebarInfo from '@/components/ai/SidebarInfo.astro';
 import TagCloud from '@/components/ai/TagCloud.astro';
+import { Visitors } from '@/components/common/Visitors';
 import BaseLayout from '@/layouts/BaseLayout.astro';
+import dayjs from 'dayjs';
 
 // 获取博客文章集合
 const allPosts = await getCollection('blog');

@@ -1,10 +1,8 @@
 ---
 import { type CollectionEntry, getCollection } from 'astro:content';
 import License from '@/components/post/License.astro';
-import { PostActions } from '@/components/post/PostActions';
-import { PostSummary } from '@/components/post/PostSummary';
-import { Badge } from '@/components/ui/badge';
 import BaseLayout from '@/layouts/BaseLayout.astro';
+import dayjs from 'dayjs';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
@@ -18,45 +16,176 @@ export async function getStaticPaths() {
 type Props = CollectionEntry<'blog'>;
 
 const post = Astro.props;
-const { Content, headings } = await post.render();
+const { Content } = await post.render();
 const { title, tldr, date, tags = [], cover } = post.data;
 ---
 
 <BaseLayout title={title} description={tldr} ogImage={cover}>
   {date && <meta name="date" content={date.toLocaleDateString()} slot="head" />}
 
-  <main
-    class="prose mx-auto dark:prose-invert prose-img:rounded-md prose-a:font-medium prose-a:text-black prose-a:no-underline prose-a:border-b-2 prose-a:border-black dark:prose-a:text-white dark:prose-a:border-white prose-p:text-justify pb-8"
-  >
-    <h1 class="!text-4xl font-medium !mb-0">{title}</h1>
-    <article>
-      <PostSummary tldr={tldr} date={date} tags={tags} client:load />
-      <section id="content">
+  <article class="relative min-h-screen">
+    <!-- 页面背景 -->
+    <div class="fixed inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.12),rgba(255,255,255,0))] dark:bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.15),rgba(13,13,13,0))] -z-10"></div>
+    <div class="fixed inset-0 bg-[linear-gradient(to_right,#f8f8f8_1px,transparent_1px),linear-gradient(to_bottom,#f8f8f8_1px,transparent_1px)] bg-[size:24px_24px] dark:bg-[linear-gradient(to_right,#262626_1px,transparent_1px),linear-gradient(to_bottom,#262626_1px,transparent_1px)] opacity-[0.4] -z-10"></div>
+    
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 py-12">
+      <!-- 返回链接 -->
+      <div class="mb-10">
+        <a 
+          href="/" 
+          class="group inline-flex items-center text-sm text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors"
+        >
+          <span class="icon-[tabler--arrow-left] mr-1.5 group-hover:-translate-x-0.5 transition-transform"></span>
+          返回文章列表
+        </a>
+      </div>
+
+      <!-- 文章标题区 -->
+      <div>
+        <h1 class="text-4xl sm:text-5xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100 mb-6">
+          {title}
+        </h1>
+        
+        <!-- 文章元数据 -->
+        <div class="flex flex-wrap items-center gap-4 font-mono text-xs text-zinc-500 dark:text-zinc-400">
+          {date && (
+            <time datetime={date.toISOString()} class="flex items-center">
+              <span class="icon-[tabler--calendar] mr-1.5 opacity-70"></span>
+              {dayjs(date).format("DD, MMM YY")}
+            </time>
+          )}
+          
+          {/* 标签列表 */}
+          {tags.length > 0 && (
+            <div class="flex flex-wrap gap-2">
+              {tags.map((tag) => (
+                <a 
+                  href={`/blog/tags/${tag}`} 
+                  class="inline-flex items-center px-2 py-0.5 rounded-md text-xs font-medium 
+                         text-zinc-600 dark:text-zinc-400
+                         hover:text-zinc-900 dark:hover:text-zinc-200
+                         transition-colors duration-300"
+                >
+                  <span class="icon-[tabler--hash] mr-1 opacity-70"></span>
+                  {tag}
+                </a>
+              ))}
+            </div>
+          )}
+        </div>
+        
+        {/* 摘要 */}
+        {tldr && (
+          <div class="mt-8">
+            <p class="font-serif text-lg text-zinc-600 dark:text-zinc-300 italic">
+              {tldr}
+            </p>
+          </div>
+        )}
+      </div>
+
+      <!-- 分隔标识 -->
+      <div class="relative py-12 flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 flex items-center">
+          <div class="w-full border-t border-zinc-200/30 dark:border-zinc-700/30"></div>
+        </div>
+        <div class="relative flex items-center justify-center w-8 h-8 rounded-full bg-gradient-to-b from-zinc-50/80 to-white/80 dark:from-zinc-800/80 dark:to-zinc-900/80 backdrop-blur-sm shadow-sm">
+          <span class="icon-[tabler--arrow-down] text-zinc-400 dark:text-zinc-500"></span>
+        </div>
+      </div>
+
+      <!-- 文章主体 -->
+      <div class="prose prose-zinc dark:prose-invert max-w-none
+           prose-headings:font-bold prose-headings:tracking-tight 
+           prose-headings:text-zinc-900 dark:prose-headings:text-zinc-100
+           prose-p:text-zinc-600 dark:prose-p:text-zinc-300
+           prose-img:rounded-xl prose-img:shadow-lg">
         <Content />
-      </section>
-    </article>
-    <hr />
-    <License />
-  </main>
-
-  <PostActions headings={headings} client:load />
-
-  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
-  <script is:inline>
-    let spreaded = false;
-    window.addEventListener("scroll", () => {
-      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-      const scrollHeight = document.documentElement.scrollHeight;
-      const clientHeight = document.documentElement.clientHeight;
-      const scrollPercentage = (scrollTop / (scrollHeight - clientHeight)) * 100;
-      if (scrollPercentage >= 99 && !spreaded) {
-        confetti({
-          particleCount: 100,
-          spread: 70,
-          origin: { y: 0.6 },
+      </div>
+      
+      <hr class="my-12 border-zinc-200/50 dark:border-zinc-800/50" />
+      
+      <!-- 文章底部 -->
+      <footer>
+        <License />
+      </footer>
+    </div>
+  </article>
+  
+  <!-- 返回顶部按钮 -->
+  <button 
+    id="backToTop" 
+    class="fixed bottom-8 right-8 p-3 w-11 h-11 rounded-full 
+           bg-white/80 dark:bg-zinc-800/80
+           text-zinc-600 dark:text-zinc-400
+           shadow-lg backdrop-blur-sm
+           border border-zinc-200/50 dark:border-zinc-700/50
+           hover:bg-zinc-50 dark:hover:bg-zinc-700/80
+           focus:outline-none transform translate-y-20 opacity-0 transition-all duration-300 cursor-pointer"
+  >
+    <span class="icon-[tabler--arrow-up] text-lg"></span>
+  </button>
+  
+  <script>
+    // 处理返回顶部按钮
+    const handleBackToTop = () => {
+      const backToTopButton = document.getElementById('backToTop');
+      
+      if (backToTopButton) {
+        // 滚动显示/隐藏
+        window.addEventListener('scroll', () => {
+          if (window.scrollY > 500) {
+            backToTopButton.classList.remove('translate-y-20', 'opacity-0');
+          } else {
+            backToTopButton.classList.add('translate-y-20', 'opacity-0');
+          }
         });
-        spreaded = true;
+        
+        // 点击返回顶部
+        backToTopButton.addEventListener('click', () => {
+          window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+          });
+        });
       }
+    };
+    
+    // 初始化
+    document.addEventListener('DOMContentLoaded', () => {
+      handleBackToTop();
     });
   </script>
+  
+  <style>
+    @import "tailwindcss";
+    /* 平滑滚动 */
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 2rem;
+    }
+    
+    /* 优化滚动条样式 */
+    ::-webkit-scrollbar {
+      width: 4px;
+    }
+    
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    
+    ::-webkit-scrollbar-thumb {
+      background-color: rgba(161, 161, 170, 0.5);
+      border-radius: 2px;
+    }
+    
+    /* 图片悬停效果 */
+    .prose img {
+      @apply transition-all duration-300;
+    }
+    
+    .prose img:hover {
+      @apply transform scale-[1.02] shadow-xl;
+    }
+  </style>
 </BaseLayout>
