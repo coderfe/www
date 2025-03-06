@@ -127,7 +127,7 @@ const { title, tldr, date, tags = [], cover } = post.data;
     <span class="iconify icon-[tabler--arrow-up] text-lg"></span>
   </button>
   
-  <script>
+  <script is:inline data-astro-rerun>
     document.addEventListener('astro:page-load', () => {
       const backToTopButton = document.getElementById('backToTop');
       if (!backToTopButton) return;
