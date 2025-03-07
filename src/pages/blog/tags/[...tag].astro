@@ -20,13 +20,48 @@ const posts = collection
   .sort(({ data: { date: dateA } }, { data: { date: dateB } }) => dateB.valueOf() - dateA.valueOf());
 ---
 
-<BaseLayout title={tag}>
-  <main class="px-6 max-w-5xl mx-auto mb-4 min-h-screen">
-    <h2 class="text-2xl font-bold mb-4 text-center">#{tag} · {posts.length}</h2>
-    <div class="grid grid-cols-1 gap-6">
-      {posts.map((post, index) => (
-        <PostCard post={post} index={index} />
-      ))}
+<BaseLayout title={`#${tag} · 标签文章`}>
+  <div class="relative min-h-[80vh]">
+    <!-- 页面背景装饰 -->
+    <div class="fixed inset-0 -z-10">
+      <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(167,139,250,0.05),transparent_50%),radial-gradient(ellipse_at_bottom,_rgba(139,92,246,0.05),transparent_50%)]"></div>
+      <div class="absolute inset-0 bg-gradient-to-br from-violet-500/5 via-transparent to-fuchsia-500/5"></div>
     </div>
-  </main>
+
+    <main class="container max-w-4xl mx-auto px-4 py-10">
+      <!-- 返回按钮 -->
+      <div class="mb-10">
+        <button 
+          onclick="history.back()"
+          class="group inline-flex items-center text-sm text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors cursor-pointer"
+        >
+          <span class="icon-[tabler--arrow-left] mr-1.5 group-hover:-translate-x-0.5 transition-transform"></span>
+          返回
+        </button>
+      </div>
+
+      <header class="mb-12 relative overflow-hidden">
+        <div class="absolute inset-0 -z-10 bg-gradient-to-r from-violet-50/40 to-sky-50/40 dark:from-violet-950/40 dark:to-sky-950/40 blur-3xl opacity-70"></div>
+        
+        <!-- 标签标题 -->
+        <h1 class="py-6 text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-zinc-800 via-zinc-600 to-zinc-700 dark:from-zinc-100 dark:via-zinc-300 dark:to-zinc-200 hover:from-violet-600 hover:via-fuchsia-500 hover:to-violet-600 transition-all duration-500 text-center">
+          #{tag}
+        </h1>
+      </header>
+
+      <!-- 文章列表 -->
+      {posts.length > 0 ? (
+        <div class="space-y-6">
+          {posts.map((post, index) => (
+            <PostCard post={post} index={index} />
+          ))}
+        </div>
+      ) : (
+        <div class="flex flex-col items-center justify-center p-10 bg-white/60 dark:bg-zinc-900/60 backdrop-blur-md rounded-xl border border-zinc-200/50 dark:border-zinc-800/50 text-center">
+          <span class="icon-[tabler--article-off] w-10 h-10 text-zinc-400 mb-3"></span>
+          <p class="text-zinc-600 dark:text-zinc-400">暂无相关文章</p>
+        </div>
+      )}
+    </main>
+  </div>
 </BaseLayout>

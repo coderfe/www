@@ -31,13 +31,14 @@ const { title, tldr, date, tags = [], cover } = post.data;
     <div class="max-w-3xl mx-auto px-4 sm:px-6 py-12">
       <!-- 返回链接 -->
       <div class="mb-10">
-        <a 
-          href="/" 
-          class="group inline-flex items-center text-sm text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors"
+        <button
+          type="button" 
+          onclick="history.back()"
+          class="group inline-flex items-center text-sm text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors cursor-pointer"
         >
           <span class="iconify icon-[tabler--arrow-left] mr-1.5 group-hover:-translate-x-0.5 transition-transform"></span>
-          返回文章列表
-        </a>
+          返回
+        </button>
       </div>
 
       <!-- 文章标题区 -->
