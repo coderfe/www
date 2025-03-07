@@ -1,21 +1,33 @@
 ---
 import { type CollectionEntry, getCollection } from 'astro:content';
 import License from '@/components/post/License.astro';
+import RelatedPosts from '@/components/post/RelatedPosts.astro';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import dayjs from 'dayjs';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
-  return posts
-    .map((post) => ({
-      params: { slug: post.slug },
-      props: post,
-    }))
-    .flat();
-}
-type Props = CollectionEntry<'blog'>;
+  const sortedPosts = posts
+    .filter((post) => !post.data.draft)
+    .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
-const post = Astro.props;
+  return sortedPosts.map((post, index) => {
+    const prev = index + 1 < sortedPosts.length ? sortedPosts[index + 1] : null;
+    const next = index - 1 >= 0 ? sortedPosts[index - 1] : null;
+    return {
+      params: { slug: post.slug },
+      props: { post, prev, next },
+    };
+  });
+}
+
+type Props = {
+  post: CollectionEntry<'blog'>;
+  prev: CollectionEntry<'blog'> | null;
+  next: CollectionEntry<'blog'> | null;
+};
+
+const { post, prev, next } = Astro.props;
 const { Content } = await post.render();
 const { title, tldr, date, tags = [], cover } = post.data;
 ---
@@ -105,6 +117,42 @@ const { title, tldr, date, tags = [], cover } = post.data;
       </div>
       
       <hr class="my-12 border-zinc-200/50 dark:border-zinc-800/50" />
+
+      <!-- 上一篇/下一篇导航 -->
+      <nav class="flex justify-between gap-4 mb-12">
+        {prev && (
+          <a
+            href={`/blog/${prev.slug}`}
+            class="group flex-1 p-4 rounded-xl bg-white/40 dark:bg-zinc-900/40 backdrop-blur-sm border border-zinc-200/50 dark:border-zinc-800/50 transition-all duration-300 hover:shadow-lg hover:shadow-violet-500/5 dark:hover:shadow-violet-400/5"
+          >
+            <div class="text-sm text-zinc-500 dark:text-zinc-400 mb-2 flex items-center gap-1">
+              <span class="iconify icon-[tabler--arrow-left] group-hover:-translate-x-0.5 transition-transform"></span>
+              <span>上一篇</span>
+            </div>
+            <div class="text-zinc-800 dark:text-zinc-200 font-medium line-clamp-2 group-hover:text-violet-600 dark:group-hover:text-violet-400 transition-colors">
+              {prev.data.title}
+            </div>
+          </a>
+        )}
+        
+        {next && (
+          <a
+            href={`/blog/${next.slug}`}
+            class="group flex-1 p-4 rounded-xl bg-white/40 dark:bg-zinc-900/40 backdrop-blur-sm border border-zinc-200/50 dark:border-zinc-800/50 transition-all duration-300 hover:shadow-lg hover:shadow-violet-500/5 dark:hover:shadow-violet-400/5 text-right"
+          >
+            <div class="text-sm text-zinc-500 dark:text-zinc-400 mb-2 flex items-center justify-end gap-1">
+              <span>下一篇</span>
+              <span class="iconify icon-[tabler--arrow-right] group-hover:translate-x-0.5 transition-transform"></span>
+            </div>
+            <div class="text-zinc-800 dark:text-zinc-200 font-medium line-clamp-2 group-hover:text-violet-600 dark:group-hover:text-violet-400 transition-colors">
+              {next.data.title}
+            </div>
+          </a>
+        )}
+      </nav>
+
+      <!-- 相关文章 -->
+      <RelatedPosts currentSlug={post.slug} tags={tags} />
       
       <!-- 文章底部 -->
       <footer>

@@ -1,40 +1,94 @@
 ---
 import { getCollection } from 'astro:content';
-import PostCard from '@/components/post/PostCard.astro';
-import { Badge } from '@/components/ui/badge';
+import BackgroundDecoration from '@/components/ai/BackgroundDecoration.astro';
+import PageHeader from '@/components/ai/PageHeader.astro';
+import PostCard from '@/components/ai/PostCard.astro';
+import SidebarInfo from '@/components/ai/SidebarInfo.astro';
+import TagCloud from '@/components/ai/TagCloud.astro';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 
-const collection = await getCollection('blog');
-const published = collection
+// 获取博客文章集合
+const allPosts = await getCollection('blog');
+
+// 过滤掉草稿并按日期降序排序
+const posts = allPosts
   .filter(({ data: { draft = false } }) => !draft)
   .sort(({ data: { date: dateA } }, { data: { date: dateB } }) => dateB.valueOf() - dateA.valueOf());
-const posts = published.filter(({ data: { date } }) => date.getFullYear() >= new Date().getFullYear() - 2);
-const tagCount = published.reduce((acc, { data: { tags = [] } }) => {
-  tags.forEach((tag) => {
-    acc[tag] = (acc[tag] || 0) + 1;
-  });
-  return acc;
-}, {});
 
-const tagsWithCount = Object.entries(tagCount).map(([tag, count]) => ({
-  tag,
-  count: count as number,
-}));
+// 收集所有标签
+const tagMap = new Map();
+posts.forEach((post) => {
+  (post.data.tags || []).forEach((tag) => {
+    tagMap.set(tag, (tagMap.get(tag) || 0) + 1);
+  });
+});
+const allTags = Array.from(tagMap.entries())
+  .map(([tag, count]) => ({ tag, count }))
+  .sort((a, b) => b.count - a.count);
 ---
 
-<BaseLayout title="文章">
-  <main class="px-6 max-w-5xl grid grid-cols-1 mx-auto">
-    <div class="flex flex-col gap-6">
-      {posts.map((post) => <PostCard post={post} />)}
-    </div>
-    <aside>
-      <div class="flex flex-wrap gap-2 my-4">
-        {tagsWithCount.map(({ tag, count }) => (
-          <Badge className="cursor-pointer">
-            <a href={`/blog/tags/${tag}`}>#{tag} · {count}</a>
-          </Badge>
-        ))}
+<BaseLayout title="首页">
+  <div class="relative min-h-screen">
+    <!-- 背景装饰 -->
+    <BackgroundDecoration />
+    
+    <!-- 主内容 -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-16 sm:py-24">
+      <!-- 页面标题 -->
+      <PageHeader title="Dong's Blog" />
+      
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12">
+        <!-- 主内容区 -->
+        <main class="lg:col-span-8 space-y-16">
+          {posts.map((post, index) => (
+            <PostCard post={post} index={index} />
+          ))}
+        </main>
+        
+        <!-- 侧边栏 - 增加滚动固定效果 -->
+        <aside class="lg:col-span-4 relative">
+          <div class="sticky top-10 space-y-10">
+            <!-- 标签云 -->
+            <TagCloud tags={allTags} />
+            
+            <!-- 侧边栏信息 -->
+            <SidebarInfo />
+          </div>
+        </aside>
       </div>
-    </aside>
-  </main>
+    </div>
+  </div>
 </BaseLayout>
+
+<style>
+  /* 添加微妙的动效 */
+  @keyframes gentle-float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+  }
+  
+  /* 调整页面滚动行为，使其更平滑 */
+  html {
+    scroll-behavior: smooth;
+  }
+</style>
+
+<script>
+  // 处理侧边栏滚动逻辑
+  document.addEventListener('DOMContentLoaded', () => {
+    const stickyContainer = document.querySelector('.sticky');
+    
+    // 监听滚动事件，添加平滑过渡效果
+    if (stickyContainer) {
+      window.addEventListener('scroll', () => {
+        // 已经由CSS sticky处理固定定位，这里只需要处理额外的视觉效果
+        const scrollY = window.scrollY;
+        if (scrollY > 100) {
+          stickyContainer.classList.add('has-scrolled');
+        } else {
+          stickyContainer.classList.remove('has-scrolled');
+        }
+      });
+    }
+  });
+</script>
