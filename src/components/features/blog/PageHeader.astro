@@ -95,10 +95,12 @@ function initTypingEffect() {
     const currentPhrase = phrases[phraseIndex];
     
     if (isDeleting) {
+      // @ts-ignore
       typingText.textContent = currentPhrase.substring(0, charIndex - 1);
       charIndex--;
       typingDelay = 50;
     } else {
+      // @ts-ignore
       typingText.textContent = currentPhrase.substring(0, charIndex + 1);
       charIndex++;
       typingDelay = 100 + Math.random() * 50;

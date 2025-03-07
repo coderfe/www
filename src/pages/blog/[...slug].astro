@@ -1,8 +1,8 @@
 ---
 import { type CollectionEntry, getCollection } from 'astro:content';
+import License from '@/components/features/post/License.astro';
+import RelatedPosts from '@/components/features/post/RelatedPosts.astro';
 import BaseLayout from '@/components/layouts/BaseLayout.astro';
-import License from '@/components/post/License.astro';
-import RelatedPosts from '@/components/post/RelatedPosts.astro';
 import dayjs from 'dayjs';
 
 export async function getStaticPaths() {
