@@ -1,6 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
-import PostCard from '@/components/post/PostCard.astro';
+import PostCard from '@/components/ai/PostCard.astro';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 
 export async function getStaticPaths() {
@@ -24,8 +24,8 @@ const posts = collection
   <main class="px-6 max-w-5xl mx-auto mb-4 min-h-screen">
     <h2 class="text-2xl font-bold mb-4 text-center">#{tag} · {posts.length}</h2>
     <div class="grid grid-cols-1 gap-6">
-      {posts.map((post) => (
-        <PostCard post={post} />
+      {posts.map((post, index) => (
+        <PostCard post={post} index={index} />
       ))}
     </div>
   </main>
