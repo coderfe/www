@@ -30,7 +30,7 @@ type Props = {
 };
 
 const { post, prev, next } = Astro.props;
-const { Content, headings } = await post.render();
+const { Content } = await post.render();
 const { title, tldr, date, tags = [], cover } = post.data;
 ---
 
@@ -50,7 +50,7 @@ const { title, tldr, date, tags = [], cover } = post.data;
           onclick="history.back()"
           class="group inline-flex items-center text-sm text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors cursor-pointer"
         >
-          <span class="iconify icon-[tabler--arrow-left] mr-1.5 group-hover:-translate-x-0.5 transition-transform"></span>
+          <span class="icon-[tabler--arrow-left] mr-1.5 group-hover:-translate-x-0.5 transition-transform"></span>
           返回
         </button>
       </div>

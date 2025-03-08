@@ -1,0 +1,34 @@
+---
+interface Props {
+  currentIndex: number;
+  total: number;
+}
+
+const { currentIndex, total } = Astro.props;
+---
+
+<div class="lg:hidden fixed top-0 left-0 right-0 z-30 bg-white/80 dark:bg-gray-950/80 backdrop-blur-sm px-4 py-3 border-b border-gray-200/50 dark:border-gray-800/50">
+  <div class="flex items-center justify-between">
+    <button
+      id="show-newsletter-list"
+      class="flex items-center gap-2 text-sm font-medium text-indigo-600/90 dark:text-indigo-400/90 hover:text-indigo-700 dark:hover:text-indigo-300 transition-colors"
+      aria-label="显示周刊列表"
+    >
+      <span class="icon-[tabler--list]" aria-hidden="true"></span>
+      周刊列表
+    </button>
+    <span class="text-sm text-zinc-500 dark:text-zinc-400">第 {currentIndex} 期 / 共 {total} 期</span>
+  </div>
+</div>
+
+<script>
+  const showListButton = document.getElementById('show-newsletter-list');
+  const sidebar = document.getElementById('newsletter-sidebar');
+  
+  if (showListButton && sidebar) {
+    showListButton.addEventListener('click', () => {
+      sidebar.classList.add('sidebar-active');
+      document.body.classList.add('overflow-hidden');
+    });
+  }
+</script>

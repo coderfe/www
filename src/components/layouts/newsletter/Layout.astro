@@ -1,0 +1,19 @@
+---
+import BackgroundDecoration from '../BackgroundDecoration.astro';
+import BaseLayout from '../BaseLayout.astro';
+
+const { title, description, cover } = Astro.props;
+---
+<BaseLayout title={title} description={description} omImage={cover}>
+  <div class="relative">
+    <!-- 背景装饰 -->
+    <BackgroundDecoration />
+    
+    <!-- Newsletter特定的顶部装饰 -->
+    <div class="absolute top-0 left-0 w-full h-64 bg-gradient-to-b from-blue-50/30 dark:from-blue-900/10 to-transparent z-[-1]"></div>
+    <div class="absolute top-8 left-8 w-24 h-24 rounded-full bg-blue-200/20 dark:bg-blue-800/10 blur-xl z-[-1]"></div>
+    <div class="absolute top-12 right-16 w-32 h-32 rounded-full bg-purple-200/20 dark:bg-purple-800/10 blur-xl z-[-1]"></div>
+      <slot />
+    </div>
+  </div>
+</BaseLayout>

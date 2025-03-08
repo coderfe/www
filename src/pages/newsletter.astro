@@ -1,0 +1,8 @@
+---
+import { getCollection } from 'astro:content';
+const collection = await getCollection('newsletter');
+
+const [newest] = collection;
+
+return Astro.redirect(`/newsletter/${newest.slug}`, 301);
+---

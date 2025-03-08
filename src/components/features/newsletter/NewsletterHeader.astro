@@ -1,0 +1,44 @@
+---
+import dayjs from 'dayjs';
+
+interface Props {
+  title: string;
+  cover?: string;
+  description?: string;
+  date: Date;
+  issue: number | string;
+  total: number;
+}
+
+const { title, cover, description, date, issue, total } = Astro.props;
+const formattedDate = dayjs(date).format('MMM DD, YY');
+---
+
+<div class="mb-6">
+  <div class="flex items-center text-sm text-zinc-500 dark:text-zinc-400 mb-3">
+    <div class="flex items-center gap-2 mr-4">
+      <span class="icon-[tabler--calendar] w-4 h-4" aria-hidden="true"></span>
+      <time datetime={date.toISOString()}>{formattedDate}</time>
+    </div>
+    <div class="flex items-center gap-2">
+      <span class="icon-[tabler--book] w-4 h-4" aria-hidden="true"></span>
+      <span>第 {issue} 期</span>
+    </div>
+  </div>
+
+  <h1 class="text-3xl md:text-4xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-zinc-800 via-zinc-900 to-zinc-800 dark:from-white dark:via-zinc-100 dark:to-white leading-[1.15]">{title}</h1>
+
+  {description && (
+    <div class="relative my-6">
+      <p class="font-serif text-lg italic leading-relaxed tracking-wide text-zinc-600 dark:text-zinc-300">
+        {description}
+      </p>
+    </div>
+  )}
+
+  {cover && 
+    <div class="mb-8">
+      <img src={cover} alt={title} class="object-cover rounded-xl mb-4 shadow-lg shadow-indigo-500/5 dark:shadow-indigo-400/5 hover:shadow-xl hover:shadow-indigo-500/10 dark:hover:shadow-indigo-400/10 transition-all duration-300" />
+    </div>
+  }
+</div>

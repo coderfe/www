@@ -1,0 +1,58 @@
+---
+import { type CollectionEntry, getCollection } from 'astro:content';
+import MobileNavbar from '@/components/features/newsletter/MobileNavbar.astro';
+import NewsletterHeader from '@/components/features/newsletter/NewsletterHeader.astro';
+import NewsletterSidebar from '@/components/features/newsletter/NewsletterSidebar.astro';
+import Layout from '@/components/layouts/newsletter/Layout.astro';
+
+export async function getStaticPaths() {
+  const collection = await getCollection('newsletter');
+  const sorted = collection
+    .filter((post) => !post.data.draft)
+    .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+  return sorted.map((newsletter) => {
+    return {
+      params: { slug: newsletter.slug },
+      props: { newsletter },
+    };
+  });
+}
+
+type Props = {
+  newsletter: CollectionEntry<'newsletter'>;
+};
+
+const { newsletter } = Astro.props;
+const { Content } = await newsletter.render();
+const { title, description, cover, date, issue } = newsletter.data;
+const collection = await getCollection('newsletter', ({ data }) => !data.draft);
+const sorted = collection.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const currentIndex = sorted.findIndex((item) => item.slug === newsletter.slug) + 1;
+---
+
+<Layout title={title} description={description} cover={cover}>
+  <MobileNavbar currentIndex={currentIndex} total={sorted.length} />
+  
+  <div class="flex h-[100dvh] lg:h-screen w-full">
+    <NewsletterSidebar items={sorted} currentSlug={newsletter.slug} />
+    
+    <main class="flex-1 h-full overflow-y-auto pt-14 lg:pt-0">
+      <div class="max-w-3xl mx-auto px-4 lg:px-8 py-6">
+        <NewsletterHeader 
+          title={title}
+          cover={cover as string}
+          description={description}
+          date={date}
+          issue={issue}
+          total={sorted.length}
+        />
+        
+        <article class="prose dark:prose-invert max-w-none"
+        >
+          <Content />
+        </article>
+      </div>
+    </main>
+  </div>
+</Layout>

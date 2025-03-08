@@ -1,0 +1,86 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import NewsletterList from './NewsletterList.astro';
+
+interface Props {
+  items: CollectionEntry<'newsletter'>[];
+  currentSlug: string;
+}
+
+const { items, currentSlug } = Astro.props;
+---
+
+<aside 
+  id="newsletter-sidebar"
+  class="fixed lg:relative w-full lg:w-64 xl:w-72 h-full z-40 
+    bg-gradient-to-br from-white/95 to-white/90 dark:from-gray-950/95 dark:to-gray-950/90 backdrop-blur-md
+    lg:border-r border-slate-100 dark:border-slate-800/50
+    transform -translate-x-full lg:translate-x-0 transition-all duration-300 ease-out"
+>
+  <div class="h-full flex flex-col overflow-hidden p-4 lg:p-5">
+    <div class="flex justify-between items-center mb-5">
+      <h2 class="text-base font-medium flex items-center gap-2 text-zinc-800 dark:text-zinc-200">
+        <span class="icon-[tabler--mail] w-5 h-5 text-indigo-500/90 dark:text-indigo-400/90" aria-hidden="true"></span>
+        所有周刊
+      </h2>
+      <button 
+        id="close-newsletter-list" 
+        class="lg:hidden p-2 rounded-full hover:bg-zinc-100/70 dark:hover:bg-zinc-800/70 text-zinc-500 dark:text-zinc-400 transition-colors"
+        aria-label="关闭周刊列表"
+      >
+        <span class="icon-[tabler--x]" aria-hidden="true"></span>
+      </button>
+    </div>
+    
+    <div class="flex-1 overflow-y-auto -mx-4 px-4 
+      scroll-smooth scrollbar-thin scrollbar-thumb-indigo-200/50 hover:scrollbar-thumb-indigo-300/50 
+      dark:scrollbar-thumb-indigo-800/30 dark:hover:scrollbar-thumb-indigo-700/30 scrollbar-track-transparent"
+    >
+      <NewsletterList items={items} currentSlug={currentSlug} />
+    </div>
+
+    <div class="mt-5 text-center border-t border-slate-100 dark:border-slate-800/50 pt-5">
+      <a
+        href="/"
+        class="group inline-flex items-center justify-center gap-1.5 text-sm text-zinc-500 dark:text-zinc-400 
+        hover:text-zinc-800 dark:hover:text-zinc-200 transition-colors"
+      >
+        <span class="icon-[tabler--arrow-left] group-hover:-translate-x-0.5 transition-transform"></span>
+        返回首页
+      </a>
+    </div>
+  </div>
+</aside>
+
+<script>
+  const closeListButton = document.getElementById('close-newsletter-list');
+  const sidebar = document.getElementById('newsletter-sidebar');
+  
+  if (closeListButton && sidebar) {
+    closeListButton.addEventListener('click', () => {
+      sidebar.classList.remove('sidebar-active');
+      document.body.classList.remove('overflow-hidden');
+    });
+  }
+
+  // 处理点击外部关闭侧边栏
+  document.addEventListener('click', (e) => {
+    const target = e.target as HTMLElement;
+    if (
+      sidebar?.classList.contains('sidebar-active') && 
+      !sidebar.contains(target) && 
+      target.id !== 'show-newsletter-list'
+    ) {
+      sidebar.classList.remove('sidebar-active');
+      document.body.classList.remove('overflow-hidden');
+    }
+  });
+</script>
+
+<style>
+  @media (max-width: 1023px) {
+    .sidebar-active {
+      transform: translateX(0) !important;
+    }
+  }
+</style>
