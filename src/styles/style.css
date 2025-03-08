@@ -1,7 +1,7 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 @plugin "tailwindcss-animate";
-@plugin "./icons.mjs";
+@plugin "@iconify/tailwind4";
 
 ::selection {
   @apply bg-zinc-900 text-white dark:bg-white dark:text-zinc-900;

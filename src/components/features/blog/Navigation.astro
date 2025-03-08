@@ -7,13 +7,6 @@ const menuItems = [
     description: '每周精选的有趣内容',
     color: 'violet',
   },
-  {
-    href: '/blog/archive',
-    icon: 'archive',
-    text: '归档',
-    description: '所有文章的时间归档',
-    color: 'indigo',
-  },
 ];
 ---
 
@@ -37,7 +30,7 @@ const menuItems = [
         <div class="flex items-center gap-12 z-10">
           <div class="flex items-center gap-3 min-w-[120px]">
             <span 
-              class={`iconify icon-[tabler--${item.icon}] text-xl
+              class={`iconify icon-[tabler--mail] text-xl
                       text-zinc-500 dark:text-zinc-400
                       group-hover:text-${item.color}-500
                       dark:group-hover:text-${item.color}-400
