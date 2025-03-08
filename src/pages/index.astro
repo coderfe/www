@@ -1,8 +1,8 @@
 ---
 import { getCollection } from 'astro:content';
+import AboutMe from '@/components/features/blog/AboutMe.astro';
 import PageHeader from '@/components/features/blog/PageHeader.astro';
 import PostCard from '@/components/features/blog/PostCard.astro';
-import SidebarInfo from '@/components/features/blog/SidebarInfo.astro';
 import TagCloud from '@/components/features/blog/TagCloud.astro';
 import BackgroundDecoration from '@/components/layouts/BackgroundDecoration.astro';
 import BaseLayout from '@/components/layouts/BaseLayout.astro';
@@ -52,7 +52,7 @@ const allTags = Array.from(tagMap.entries())
             <TagCloud tags={allTags} />
             
             <!-- 侧边栏信息 -->
-            <SidebarInfo />
+            <AboutMe />
           </div>
         </aside>
       </div>
