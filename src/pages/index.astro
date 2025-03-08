@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import AboutMe from '@/components/features/blog/AboutMe.astro';
+import Navigation from '@/components/features/blog/Navigation.astro';
 import PageHeader from '@/components/features/blog/PageHeader.astro';
 import PostCard from '@/components/features/blog/PostCard.astro';
 import TagCloud from '@/components/features/blog/TagCloud.astro';
@@ -48,6 +49,9 @@ const allTags = Array.from(tagMap.entries())
         <!-- 侧边栏 - 增加滚动固定效果 -->
         <aside class="lg:col-span-4 relative">
           <div class="sticky top-10 space-y-10">
+            <!-- 导航区 -->
+            <Navigation />
+            
             <!-- 标签云 -->
             <TagCloud tags={allTags} />
             

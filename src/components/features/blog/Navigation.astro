@@ -1,0 +1,77 @@
+---
+const menuItems = [
+  {
+    href: '/newsletter',
+    icon: 'mail',
+    text: '周刊',
+    description: '每周精选的有趣内容',
+    color: 'violet',
+  },
+  {
+    href: '/blog/archive',
+    icon: 'archive',
+    text: '归档',
+    description: '所有文章的时间归档',
+    color: 'indigo',
+  },
+];
+---
+
+<nav class="w-full">
+  <div class="flex flex-col space-y-1">
+    {menuItems.map(item => (
+      <a 
+        href={item.href}
+        class="group relative flex items-center px-4 py-3
+               transition-all duration-300 ease-out
+               hover:pl-6"
+      >
+        {/* 左侧装饰线 */}
+        <div class={`absolute left-0 top-0 h-full w-[2px]
+                     bg-gradient-to-b from-transparent via-${item.color}-400/0 to-transparent
+                     group-hover:via-${item.color}-400
+                     transition-all duration-300`}>
+        </div>
+
+        {/* 内容区 */}
+        <div class="flex items-center gap-12 z-10">
+          <div class="flex items-center gap-3 min-w-[120px]">
+            <span 
+              class={`iconify icon-[tabler--${item.icon}] text-xl
+                      text-zinc-500 dark:text-zinc-400
+                      group-hover:text-${item.color}-500
+                      dark:group-hover:text-${item.color}-400
+                      transition-colors duration-300`}
+              aria-hidden="true"
+            ></span>
+            <span 
+              class={`font-medium text-zinc-700 dark:text-zinc-300
+                      group-hover:text-${item.color}-700
+                      dark:group-hover:text-${item.color}-200
+                      transition-colors duration-300`}
+            >
+              {item.text}
+            </span>
+          </div>
+          
+          <p class={`text-sm text-zinc-500 dark:text-zinc-400
+                     opacity-60 group-hover:opacity-100
+                     transition-opacity duration-300`}>
+            {item.description}
+          </p>
+        </div>
+
+        {/* 右侧箭头 */}
+        <span 
+          class={`absolute right-4 
+                  iconify icon-[tabler--arrow-right]
+                  text-zinc-400 dark:text-zinc-500
+                  opacity-0 group-hover:opacity-100 
+                  -translate-x-2 group-hover:translate-x-0
+                  transition-all duration-300`}
+          aria-hidden="true"
+        ></span>
+      </a>
+    ))}
+  </div>
+</nav>
