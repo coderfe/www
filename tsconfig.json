@@ -6,9 +6,8 @@
     "jsxImportSource": "react",
     "baseUrl": ".",
     "paths": {
-      "@/*": [
-        "./src/*"
-      ]
-    }
+      "@/*": ["./src/*"]
+    },
+    "types": ["unplugin-icons/types/astro"]
   }
 }

@@ -1,5 +1,9 @@
 ---
 import { Visitors } from '@/components/common/Visitors';
+import GitHubIcon from '@/components/icons/GitHubIcon.astro';
+import MapIcon from '@/components/icons/MapIcon.astro';
+import RSSIcon from '@/components/icons/RSSIcon.astro';
+import TwitterIcon from '@/components/icons/TwitterIcon.astro';
 ---
 
 <div class="relative bg-white/40 dark:bg-zinc-900/40 backdrop-blur-md rounded-2xl overflow-hidden shadow-sm">
@@ -14,19 +18,19 @@ import { Visitors } from '@/components/common/Visitors';
     <!-- 社交链接 - 更加一体化的设计 -->
     <div class="grid grid-cols-2 gap-3 mb-6">
       <a href="https://github.com/coderfe" title="GitHub" aria-label="GitHub" rel="noopener" target="_blank" class="flex items-center gap-2 px-3 py-2.5 rounded-lg bg-zinc-100/70 dark:bg-zinc-800/50 hover:bg-gradient-to-r hover:from-violet-500/20 hover:to-indigo-500/20 dark:hover:from-violet-800/30 dark:hover:to-indigo-800/30 transition-all duration-300 hover:-translate-y-0.5 group/link">
-        <span class="iconify tabler--brand-github text-lg text-zinc-600 dark:text-zinc-400 group-hover/link:text-violet-700 dark:group-hover/link:text-violet-300 transition-colors"></span>
+        <GitHubIcon class="text-lg text-zinc-600 dark:text-zinc-400 group-hover/link:text-violet-700 dark:group-hover/link:text-violet-300 transition-colors"></GitHubIcon>
         <span class="text-xs text-zinc-700 dark:text-zinc-300">GitHub</span>
       </a>
       <a href="https://twitter.com/coderfee" title="Twitter" aria-label="Twitter" rel="noopener" target="_blank" class="flex items-center gap-2 px-3 py-2.5 rounded-lg bg-zinc-100/70 dark:bg-zinc-800/50 hover:bg-gradient-to-r hover:from-violet-500/20 hover:to-indigo-500/20 dark:hover:from-violet-800/30 dark:hover:to-indigo-800/30 transition-all duration-300 hover:-translate-y-0.5 group/link">
-        <span class="iconify tabler--brand-twitter text-lg text-zinc-600 dark:text-zinc-400 group-hover/link:text-violet-700 dark:group-hover/link:text-violet-300 transition-colors"></span>
+        <TwitterIcon class="text-lg text-zinc-600 dark:text-zinc-400 group-hover/link:text-violet-700 dark:group-hover/link:text-violet-300 transition-colors"></TwitterIcon>
         <span class="text-xs text-zinc-700 dark:text-zinc-300">Twitter</span>
       </a>
       <a href="/rss.xml" title="RSS" aria-label="RSS" rel="noopener" target="_blank" class="flex items-center gap-2 px-3 py-2.5 rounded-lg bg-zinc-100/70 dark:bg-zinc-800/50 hover:bg-gradient-to-r hover:from-violet-500/20 hover:to-indigo-500/20 dark:hover:from-violet-800/30 dark:hover:to-indigo-800/30 transition-all duration-300 hover:-translate-y-0.5 group/link">
-        <span class="iconify tabler--rss text-lg text-zinc-600 dark:text-zinc-400 group-hover/link:text-violet-700 dark:group-hover/link:text-violet-300 transition-colors"></span>
+        <RSSIcon class="text-lg text-zinc-600 dark:text-zinc-400 group-hover/link:text-violet-700 dark:group-hover/link:text-violet-300 transition-colors"></RSSIcon>
         <span class="text-xs text-zinc-700 dark:text-zinc-300">RSS</span>
       </a>
       <a href="/sitemap-0.xml" title="站点地图" aria-label="站点地图" rel="noopener" target="_blank" class="flex items-center gap-2 px-3 py-2.5 rounded-lg bg-zinc-100/70 dark:bg-zinc-800/50 hover:bg-gradient-to-r hover:from-violet-500/20 hover:to-indigo-500/20 dark:hover:from-violet-800/30 dark:hover:to-indigo-800/30 transition-all duration-300 hover:-translate-y-0.5 group/link">
-        <span class="iconify tabler--sitemap text-lg text-zinc-600 dark:text-zinc-400 group-hover/link:text-violet-700 dark:group-hover/link:text-violet-300 transition-colors"></span>
+        <MapIcon class="text-lg text-zinc-600 dark:text-zinc-400 group-hover/link:text-violet-700 dark:group-hover/link:text-violet-300 transition-colors"></MapIcon>
         <span class="text-xs text-zinc-700 dark:text-zinc-300">站点地图</span>
       </a>
     </div>

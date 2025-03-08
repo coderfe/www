@@ -1,4 +1,6 @@
 ---
+import IconMail from '~icons/tabler/mail';
+
 const menuItems = [
   {
     href: '/newsletter',
@@ -29,14 +31,14 @@ const menuItems = [
         {/* 内容区 */}
         <div class="flex items-center gap-12 z-10">
           <div class="flex items-center gap-3 min-w-[120px]">
-            <span 
-              class={`iconify tabler--mail text-xl
+            <IconMail
+              class={`text-xl
                       text-zinc-500 dark:text-zinc-400
                       group-hover:text-${item.color}-500
                       dark:group-hover:text-${item.color}-400
                       transition-colors duration-300`}
               aria-hidden="true"
-            ></span>
+            ></IconMail>
             <span 
               class={`font-medium text-zinc-700 dark:text-zinc-300
                       group-hover:text-${item.color}-700

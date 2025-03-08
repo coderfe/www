@@ -9,6 +9,7 @@ import rehypeExternalLinks from 'rehype-external-links';
 import rehypeCodeProps from 'rehype-mdx-code-props';
 import rehypeSlug from 'rehype-slug';
 import remarkToc from 'remark-toc';
+import Icons from 'unplugin-icons/vite';
 
 export default defineConfig({
   site: 'https://coderfee.com',
@@ -47,7 +48,12 @@ export default defineConfig({
     enabled: false,
   },
   vite: {
-    plugins: [tailwindcss()],
+    plugins: [
+      tailwindcss(),
+      Icons({
+        compiler: 'astro',
+      }),
+    ],
     build: {
       rollupOptions: {
         external: ['fsevents'],

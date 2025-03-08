@@ -48,7 +48,8 @@
     "@tailwindcss/typography": "^0.5.16",
     "@types/node": "latest",
     "dayjs": "^1.11.13",
-    "lefthook": "^1.11.3"
+    "lefthook": "^1.11.3",
+    "unplugin-icons": "^22.1.0"
   },
   "pnpm": {
     "onlyBuiltDependencies": ["@biomejs/biome", "esbuild", "lefthook", "sharp"]
