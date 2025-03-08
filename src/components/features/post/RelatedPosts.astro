@@ -36,7 +36,7 @@ const relatedPosts = posts
 {relatedPosts.length > 0 && (
   <div class="my-12">
     <div class="flex items-center gap-2 mb-6">
-      <span class="iconify icon-[tabler--arrows-right-left] text-xl text-zinc-400"></span>
+      <span class="iconify tabler--arrows-right-left text-xl text-zinc-400"></span>
       <h2 class="text-lg font-medium text-zinc-700 dark:text-zinc-300">相关文章</h2>
     </div>
     
@@ -57,7 +57,7 @@ const relatedPosts = posts
               </time>
               <span class="text-zinc-300 dark:text-zinc-600">·</span>
               <div class="flex items-center gap-1">
-                <span class="iconify icon-[tabler--tags] text-sm"></span>
+                <span class="iconify tabler--tags text-sm"></span>
                 <span>{post.data.tags?.join(', ')}</span>
               </div>
             </div>

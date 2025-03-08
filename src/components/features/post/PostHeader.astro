@@ -20,7 +20,7 @@ const { title, date, tags = [], tldr } = Astro.props;
   <div class="flex flex-wrap items-center gap-4 font-mono text-xs text-zinc-500 dark:text-zinc-400">
     {date && (
       <time datetime={date.toISOString()} class="flex items-center">
-        <span class="iconify icon-[tabler--calendar] mr-1.5 opacity-70"></span>
+        <span class="iconify tabler--calendar mr-1.5 opacity-70"></span>
         {dayjs(date).format("DD, MMM YY")}
       </time>
     )}
@@ -36,7 +36,7 @@ const { title, date, tags = [], tldr } = Astro.props;
                    hover:text-zinc-900 dark:hover:text-zinc-200
                    transition-colors duration-300"
           >
-            <span class="iconify icon-[tabler--hash] mr-1 opacity-70"></span>
+            <span class="iconify tabler--hash mr-1 opacity-70"></span>
             {tag}
           </a>
         ))}
