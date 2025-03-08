@@ -1,9 +1,11 @@
 ---
 import { type CollectionEntry, getCollection } from 'astro:content';
+import BackToTop from '@/components/common/BackToTop.astro';
 import License from '@/components/features/post/License.astro';
+import PostHeader from '@/components/features/post/PostHeader.astro';
+import PostNavigation from '@/components/features/post/PostNavigation.astro';
 import RelatedPosts from '@/components/features/post/RelatedPosts.astro';
 import BaseLayout from '@/components/layouts/BaseLayout.astro';
-import dayjs from 'dayjs';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
@@ -28,7 +30,7 @@ type Props = {
 };
 
 const { post, prev, next } = Astro.props;
-const { Content } = await post.render();
+const { Content, headings } = await post.render();
 const { title, tldr, date, tags = [], cover } = post.data;
 ---
 
@@ -54,48 +56,7 @@ const { title, tldr, date, tags = [], cover } = post.data;
       </div>
 
       <!-- 文章标题区 -->
-      <div>
-        <h1 class="text-4xl sm:text-5xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100 mb-6">
-          {title}
-        </h1>
-        
-        <!-- 文章元数据 -->
-        <div class="flex flex-wrap items-center gap-4 font-mono text-xs text-zinc-500 dark:text-zinc-400">
-          {date && (
-            <time datetime={date.toISOString()} class="flex items-center">
-              <span class="iconify icon-[tabler--calendar] mr-1.5 opacity-70"></span>
-              {dayjs(date).format("DD, MMM YY")}
-            </time>
-          )}
-          
-          {/* 标签列表 */}
-          {tags.length > 0 && (
-            <div class="flex flex-wrap gap-2">
-              {tags.map((tag) => (
-                <a 
-                  href={`/blog/tags/${tag}`} 
-                  class="inline-flex items-center px-2 py-0.5 rounded-md text-xs font-medium 
-                         text-zinc-600 dark:text-zinc-400
-                         hover:text-zinc-900 dark:hover:text-zinc-200
-                         transition-colors duration-300"
-                >
-                  <span class="iconify icon-[tabler--hash] mr-1 opacity-70"></span>
-                  {tag}
-                </a>
-              ))}
-            </div>
-          )}
-        </div>
-        
-        {/* 摘要 */}
-        {tldr && (
-          <div class="mt-8">
-            <p class="font-serif text-lg text-zinc-600 dark:text-zinc-300 italic">
-              {tldr}
-            </p>
-          </div>
-        )}
-      </div>
+      <PostHeader title={title} date={date} tags={tags} tldr={tldr} />
 
       <!-- 分隔标识 -->
       <div class="relative py-12 flex items-center justify-center overflow-hidden">
@@ -119,37 +80,7 @@ const { title, tldr, date, tags = [], cover } = post.data;
       <hr class="my-12 border-zinc-200/50 dark:border-zinc-800/50" />
 
       <!-- 上一篇/下一篇导航 -->
-      <nav class="flex justify-between gap-4 mb-12">
-        {prev && (
-          <a
-            href={`/blog/${prev.slug}`}
-            class="group flex-1 p-4 rounded-xl bg-white/40 dark:bg-zinc-900/40 backdrop-blur-sm border border-zinc-200/50 dark:border-zinc-800/50 transition-all duration-300 hover:shadow-lg hover:shadow-violet-500/5 dark:hover:shadow-violet-400/5"
-          >
-            <div class="text-sm text-zinc-500 dark:text-zinc-400 mb-2 flex items-center gap-1">
-              <span class="iconify icon-[tabler--arrow-left] group-hover:-translate-x-0.5 transition-transform"></span>
-              <span>上一篇</span>
-            </div>
-            <div class="text-zinc-800 dark:text-zinc-200 font-medium line-clamp-2 group-hover:text-violet-600 dark:group-hover:text-violet-400 transition-colors">
-              {prev.data.title}
-            </div>
-          </a>
-        )}
-        
-        {next && (
-          <a
-            href={`/blog/${next.slug}`}
-            class="group flex-1 p-4 rounded-xl bg-white/40 dark:bg-zinc-900/40 backdrop-blur-sm border border-zinc-200/50 dark:border-zinc-800/50 transition-all duration-300 hover:shadow-lg hover:shadow-violet-500/5 dark:hover:shadow-violet-400/5 text-right"
-          >
-            <div class="text-sm text-zinc-500 dark:text-zinc-400 mb-2 flex items-center justify-end gap-1">
-              <span>下一篇</span>
-              <span class="iconify icon-[tabler--arrow-right] group-hover:translate-x-0.5 transition-transform"></span>
-            </div>
-            <div class="text-zinc-800 dark:text-zinc-200 font-medium line-clamp-2 group-hover:text-violet-600 dark:group-hover:text-violet-400 transition-colors">
-              {next.data.title}
-            </div>
-          </a>
-        )}
-      </nav>
+      <PostNavigation prev={prev} next={next} />
 
       <!-- 相关文章 -->
       <RelatedPosts currentSlug={post.slug} tags={tags} />
@@ -162,48 +93,7 @@ const { title, tldr, date, tags = [], cover } = post.data;
   </article>
   
   <!-- 返回顶部按钮 -->
-  <button 
-    id="backToTop" 
-    class="fixed bottom-8 right-8 p-3 w-11 h-11 rounded-full 
-           bg-white/80 dark:bg-zinc-800/80
-           text-zinc-600 dark:text-zinc-400
-           shadow-lg backdrop-blur-sm
-           border border-zinc-200/50 dark:border-zinc-700/50
-           hover:bg-zinc-50 dark:hover:bg-zinc-700/80
-           focus:outline-none transform translate-y-20 opacity-0 transition-all duration-300 cursor-pointer"
-    transition:persist
-  >
-    <span class="iconify icon-[tabler--arrow-up] text-lg"></span>
-  </button>
-  
-  <script is:inline data-astro-rerun>
-    document.addEventListener('astro:page-load', () => {
-      const backToTopButton = document.getElementById('backToTop');
-      if (!backToTopButton) return;
-      
-      const handleScroll = () => {
-        if (window.scrollY > 500) {
-          backToTopButton.classList.remove('translate-y-20', 'opacity-0');
-        } else {
-          backToTopButton.classList.add('translate-y-20', 'opacity-0');
-        }
-      };
-      
-      // 初始检查滚动位置
-      handleScroll();
-      
-      // 添加滚动监听
-      window.addEventListener('scroll', handleScroll);
-      
-      // 返回顶部点击事件
-      backToTopButton.addEventListener('click', () => {
-        window.scrollTo({
-          top: 0,
-          behavior: 'smooth'
-        });
-      });
-    }, { once: false });
-  </script>
+  <BackToTop />
   
   <style>
     @import "tailwindcss";
