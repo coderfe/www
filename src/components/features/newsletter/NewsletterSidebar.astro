@@ -1,5 +1,8 @@
 ---
 import type { CollectionEntry } from 'astro:content';
+import BackHistory from '@/components/common/BackHistory.astro';
+import IconMail from '~icons/tabler/mail';
+import IconX from '~icons/tabler/xbox-x';
 import NewsletterList from './NewsletterList.astro';
 
 interface Props {
@@ -20,7 +23,7 @@ const { items, currentSlug } = Astro.props;
   <div class="h-full flex flex-col overflow-hidden p-4 lg:p-5">
     <div class="flex justify-between items-center mb-5">
       <h2 class="text-base font-medium flex items-center gap-2 text-zinc-800 dark:text-zinc-200">
-        <span class="icon-[tabler--mail] w-5 h-5 text-indigo-500/90 dark:text-indigo-400/90" aria-hidden="true"></span>
+        <IconMail class="w-5 h-5 text-indigo-500/90 dark:text-indigo-400/90" aria-hidden="true"></IconMail>
         所有周刊
       </h2>
       <button 
@@ -28,7 +31,7 @@ const { items, currentSlug } = Astro.props;
         class="lg:hidden p-2 rounded-full hover:bg-zinc-100/70 dark:hover:bg-zinc-800/70 text-zinc-500 dark:text-zinc-400 transition-colors"
         aria-label="关闭周刊列表"
       >
-        <span class="icon-[tabler--x]" aria-hidden="true"></span>
+        <IconX aria-hidden="true"></IconX>
       </button>
     </div>
     
@@ -40,14 +43,7 @@ const { items, currentSlug } = Astro.props;
     </div>
 
     <div class="mt-5 text-center border-t border-slate-100 dark:border-slate-800/50 pt-5">
-      <a
-        href="/"
-        class="group inline-flex items-center justify-center gap-1.5 text-sm text-zinc-500 dark:text-zinc-400 
-        hover:text-zinc-800 dark:hover:text-zinc-200 transition-colors"
-      >
-        <span class="icon-[tabler--arrow-left] group-hover:-translate-x-0.5 transition-transform"></span>
-        返回首页
-      </a>
+      <BackHistory label="返回首页" to="/" />
     </div>
   </div>
 </aside>

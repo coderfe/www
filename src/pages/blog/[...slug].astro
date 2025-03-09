@@ -1,11 +1,13 @@
 ---
 import { type CollectionEntry, getCollection } from 'astro:content';
+import BackHistory from '@/components/common/BackHistory.astro';
 import BackToTop from '@/components/common/BackToTop.astro';
 import License from '@/components/features/post/License.astro';
 import PostHeader from '@/components/features/post/PostHeader.astro';
 import PostNavigation from '@/components/features/post/PostNavigation.astro';
 import RelatedPosts from '@/components/features/post/RelatedPosts.astro';
 import BaseLayout from '@/components/layouts/BaseLayout.astro';
+import IconArrowDown from '~icons/tabler/arrow-down';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
@@ -45,14 +47,7 @@ const { title, tldr, date, tags = [], cover } = post.data;
     <div class="max-w-3xl mx-auto px-4 sm:px-6 py-12">
       <!-- 返回链接 -->
       <div class="mb-10">
-        <button
-          type="button" 
-          onclick="history.back()"
-          class="group inline-flex items-center text-sm text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors cursor-pointer"
-        >
-          <span class="icon-[tabler--arrow-left] mr-1.5 group-hover:-translate-x-0.5 transition-transform"></span>
-          返回
-        </button>
+        <BackHistory label="返回" />
       </div>
 
       <!-- 文章标题区 -->
@@ -64,7 +59,7 @@ const { title, tldr, date, tags = [], cover } = post.data;
           <div class="w-full border-t border-zinc-200/30 dark:border-zinc-700/30"></div>
         </div>
         <div class="relative flex items-center justify-center w-8 h-8 rounded-full bg-gradient-to-b from-zinc-50/80 to-white/80 dark:from-zinc-800/80 dark:to-zinc-900/80 backdrop-blur-sm shadow-sm">
-          <span class="iconify tabler--arrow-down text-zinc-400 dark:text-zinc-500"></span>
+          <IconArrowDown font-size={14} class="text-zinc-400 dark:text-zinc-500" />
         </div>
       </div>
 
@@ -94,36 +89,4 @@ const { title, tldr, date, tags = [], cover } = post.data;
   
   <!-- 返回顶部按钮 -->
   <BackToTop />
-  
-  <style>
-    @import "tailwindcss";
-    /* 平滑滚动 */
-    html {
-      scroll-behavior: smooth;
-      scroll-padding-top: 2rem;
-    }
-    
-    /* 优化滚动条样式 */
-    ::-webkit-scrollbar {
-      width: 4px;
-    }
-    
-    ::-webkit-scrollbar-track {
-      background: transparent;
-    }
-    
-    ::-webkit-scrollbar-thumb {
-      background-color: rgba(161, 161, 170, 0.5);
-      border-radius: 2px;
-    }
-    
-    /* 图片悬停效果 */
-    .prose img {
-      @apply transition-all duration-300;
-    }
-    
-    .prose img:hover {
-      @apply transform scale-[1.02] shadow-xl;
-    }
-  </style>
 </BaseLayout>

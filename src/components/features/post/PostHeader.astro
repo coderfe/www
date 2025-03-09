@@ -1,5 +1,7 @@
 ---
 import dayjs from 'dayjs';
+import IconCalendar from '~icons/tabler/calendar';
+import IconHash from '~icons/tabler/hash';
 
 interface Props {
   title: string;
@@ -20,8 +22,8 @@ const { title, date, tags = [], tldr } = Astro.props;
   <div class="flex flex-wrap items-center gap-4 font-mono text-xs text-zinc-500 dark:text-zinc-400">
     {date && (
       <time datetime={date.toISOString()} class="flex items-center">
-        <span class="iconify tabler--calendar mr-1.5 opacity-70"></span>
-        {dayjs(date).format("DD, MMM YY")}
+        <IconCalendar class="mr-1.5 opacity-70"></IconCalendar>
+        {dayjs(date).format("DD MMM, YY")}
       </time>
     )}
     
@@ -36,7 +38,7 @@ const { title, date, tags = [], tldr } = Astro.props;
                    hover:text-zinc-900 dark:hover:text-zinc-200
                    transition-colors duration-300"
           >
-            <span class="iconify tabler--hash mr-1 opacity-70"></span>
+            <IconHash class="mr-1 opacity-70"></IconHash>
             {tag}
           </a>
         ))}

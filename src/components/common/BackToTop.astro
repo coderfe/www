@@ -1,10 +1,10 @@
 ---
-// 返回顶部通用组件
+import IconArrowUp from '~icons/tabler/arrow-up';
 ---
 
 <button 
   id="backToTop" 
-  class="fixed bottom-8 right-8 p-3 w-11 h-11 rounded-full 
+  class="fixed bottom-8 right-8 p-3 w-11 h-11 flex justify-center items-center rounded-full 
          bg-white/80 dark:bg-zinc-800/80
          text-zinc-600 dark:text-zinc-400
          shadow-lg backdrop-blur-sm
@@ -15,7 +15,7 @@
   transition:persist
   aria-label="返回顶部"
 >
-  <span class="iconify tabler--arrow-up text-lg"></span>
+  <IconArrowUp class="w-4 h-4 text-lg"></IconArrowUp>
 </button>
 
 <script is:inline data-astro-rerun>

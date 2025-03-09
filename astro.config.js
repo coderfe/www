@@ -31,13 +31,6 @@ export default defineConfig({
       [
         rehypeExternalLinks,
         {
-          content: {
-            type: 'element',
-            tagName: 'span',
-            properties: {
-              className: 'iconify tabler--external-link',
-            },
-          },
           target: '_blank',
         },
       ],

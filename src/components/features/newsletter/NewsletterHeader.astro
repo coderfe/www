@@ -1,5 +1,7 @@
 ---
 import dayjs from 'dayjs';
+import IconBook from '~icons/tabler/book';
+import IconCalendar from '~icons/tabler/calendar';
 
 interface Props {
   title: string;
@@ -11,17 +13,17 @@ interface Props {
 }
 
 const { title, cover, description, date, issue, total } = Astro.props;
-const formattedDate = dayjs(date).format('MMM DD, YY');
+const formattedDate = dayjs(date).format('DD MMM, YY');
 ---
 
 <div class="mb-6">
   <div class="flex items-center text-sm text-zinc-500 dark:text-zinc-400 mb-3">
     <div class="flex items-center gap-2 mr-4">
-      <span class="icon-[tabler--calendar] w-4 h-4" aria-hidden="true"></span>
+      <IconCalendar class="w-4 h-4" aria-hidden="true"></IconCalendar>
       <time datetime={date.toISOString()}>{formattedDate}</time>
     </div>
     <div class="flex items-center gap-2">
-      <span class="icon-[tabler--book] w-4 h-4" aria-hidden="true"></span>
+      <IconBook class="w-4 h-4" aria-hidden="true"></IconBook>
       <span>第 {issue} 期</span>
     </div>
   </div>

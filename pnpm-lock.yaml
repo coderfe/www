@@ -90,15 +90,6 @@ importers:
       '@iconify-json/tabler':
         specifier: ^1.2.17
         version: 1.2.17
-      '@iconify/json':
-        specifier: ^2.2.314
-        version: 2.2.314
-      '@iconify/tailwind':
-        specifier: ^1.2.0
-        version: 1.2.0
-      '@iconify/tailwind4':
-        specifier: ^1.0.6
-        version: 1.0.6(tailwindcss@4.0.12)
       '@tailwindcss/typography':
         specifier: ^0.5.16
         version: 0.5.16(tailwindcss@4.0.12)
@@ -452,17 +443,6 @@ packages:
 
   '@iconify-json/tabler@1.2.17':
     resolution: {integrity: sha512-Jfk20IC/n7UOQQSXM600BUhAwEfg8KU1dNUF+kg4eRhbET5w1Ktyax7CDx8Z8y0H6+J/8//AXpJOEgG8YoP8rw==}
-
-  '@iconify/json@2.2.314':
-    resolution: {integrity: sha512-yikVmts2jl9Z5ozNekFhEv5ovZBGOC24ugMrcobOr6gnOHuRrr9XCZvpY5lmUT2TIT0NGWKVAaPbhmRkJIukUw==}
-
-  '@iconify/tailwind4@1.0.6':
-    resolution: {integrity: sha512-43ZXe+bC7CuE2LCgROdqbQeFYJi/J7L/k1UpSy8KDQlWVsWxPzLSWbWhlJx4uRYLOh1NRyw02YlDOgzBOFNd+A==}
-    peerDependencies:
-      tailwindcss: '>= 4'
-
-  '@iconify/tailwind@1.2.0':
-    resolution: {integrity: sha512-KgpIHWOTcRYw1XcoUqyNSrmYyfLLqZYu3AmP8zdfLk0F5TqRO8YerhlvlQmGfn7rJXgPeZN569xPAJnJ53zZxA==}
 
   '@iconify/types@2.0.0':
     resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
@@ -1908,9 +1888,6 @@ packages:
     resolution: {integrity: sha512-ak9Qy5Q7jYb2Wwcey5Fpvg2KoAc/ZIhLSLOSBmRmygPsGwkVVt0fZa0qrtMz+m6tJTAHfZQ8FnmB4MG4LWy7/w==}
     engines: {node: '>=8'}
 
-  pathe@1.1.2:
-    resolution: {integrity: sha512-whLdWMYL2TwI08hn8/ZqAbrVemu0LNaNNJZX73O6qaIdCTfXutsLhMkjdENX0qhsQ9uIimo4/aQOmXkoon2nDQ==}
-
   pathe@2.0.3:
     resolution: {integrity: sha512-WUjGcAqP1gQacoQe+OBJsFA7Ld4DyXuUIjZ5cc75cLHvJ7dtNsTugphxIADwspS+AraAUePCKrSVtPLFj/F88w==}
 
@@ -2858,23 +2835,6 @@ snapshots:
     optional: true
 
   '@iconify-json/tabler@1.2.17':
-    dependencies:
-      '@iconify/types': 2.0.0
-
-  '@iconify/json@2.2.314':
-    dependencies:
-      '@iconify/types': 2.0.0
-      pathe: 1.1.2
-
-  '@iconify/tailwind4@1.0.6(tailwindcss@4.0.12)':
-    dependencies:
-      '@iconify/types': 2.0.0
-      '@iconify/utils': 2.3.0
-      tailwindcss: 4.0.12
-    transitivePeerDependencies:
-      - supports-color
-
-  '@iconify/tailwind@1.2.0':
     dependencies:
       '@iconify/types': 2.0.0
 
@@ -4696,8 +4656,6 @@ snapshots:
       entities: 4.5.0
 
   path-exists@4.0.0: {}
-
-  pathe@1.1.2: {}
 
   pathe@2.0.3: {}
 

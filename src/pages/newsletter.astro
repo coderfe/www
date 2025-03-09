@@ -1,8 +1,9 @@
 ---
 import { getCollection } from 'astro:content';
-const collection = await getCollection('newsletter');
 
-const [newest] = collection;
+const collection = await getCollection('newsletter', ({ data }) => !data.draft);
+const sorted = collection.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const [newest] = sorted;
 
-return Astro.redirect(`/newsletter/${newest.slug}`, 301);
+return Astro.rewrite(`/newsletter/${newest.slug}`);
 ---
