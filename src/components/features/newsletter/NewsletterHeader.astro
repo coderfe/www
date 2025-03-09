@@ -13,7 +13,7 @@ interface Props {
 }
 
 const { title, cover, description, date, issue, total } = Astro.props;
-const formattedDate = dayjs(date).format('DD MMM, YY');
+const formattedDate = dayjs(date).format('DD MMM, YYYY');
 ---
 
 <div class="mb-6">

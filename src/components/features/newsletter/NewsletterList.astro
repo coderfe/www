@@ -13,7 +13,7 @@ const { items, currentSlug } = Astro.props;
 <div class="space-y-px">
   {items.map((item, index) => {
     const isActive = item.slug === currentSlug;
-    const itemDate = dayjs(item.data.date).format('DD MMM, YY');
+    const itemDate = dayjs(item.data.date).format('DD MMM, YYYY');
     
     return (
       <a 
