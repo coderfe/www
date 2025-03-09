@@ -1,7 +1,6 @@
 ---
 import { type CollectionEntry, getCollection } from 'astro:content';
 import BackgroundGrid from '@/components/common/BackgroundGrid.astro';
-import MobileNavbar from '@/components/features/newsletter/MobileNavbar.astro';
 import NewsletterHeader from '@/components/features/newsletter/NewsletterHeader.astro';
 import NewsletterSidebar from '@/components/features/newsletter/NewsletterSidebar.astro';
 import Layout from '@/components/layouts/newsletter/Layout.astro';
@@ -29,18 +28,15 @@ const { Content } = await newsletter.render();
 const { title, description, cover, date, issue } = newsletter.data;
 const collection = await getCollection('newsletter', ({ data }) => !data.draft);
 const sorted = collection.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
-const currentIndex = sorted.findIndex((item) => item.slug === newsletter.slug) + 1;
 ---
 
 <Layout title={title} description={description} cover={cover}>
   <BackgroundGrid />
   
-  <MobileNavbar currentIndex={currentIndex} total={sorted.length} />
-  
-  <div class="flex h-[100dvh] lg:h-screen w-full">
+  <div class="grid grid-cols-1 lg:grid-cols-[280px_1fr] h-[100dvh] lg:h-screen w-full relative">
     <NewsletterSidebar items={sorted} currentSlug={newsletter.slug} />
     
-    <main class="flex-1 h-full overflow-y-auto pt-14 lg:pt-0">
+    <main class="h-full overflow-y-auto lg:pt-0">
       <div class="max-w-3xl mx-auto px-4 lg:px-8 py-6">
         <NewsletterHeader 
           title={title}
@@ -51,8 +47,7 @@ const currentIndex = sorted.findIndex((item) => item.slug === newsletter.slug) +
           total={sorted.length}
         />
         
-        <article class="prose dark:prose-invert max-w-none"
-        >
+        <article class="prose dark:prose-invert max-w-none">
           <Content />
         </article>
       </div>

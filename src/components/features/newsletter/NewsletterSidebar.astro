@@ -2,8 +2,9 @@
 import type { CollectionEntry } from 'astro:content';
 import BackHistory from '@/components/common/BackHistory.astro';
 import BackgroundDecoration from '@/components/common/BackgroundDecoration.astro';
-import IconMail from '~icons/tabler/mail';
-import IconX from '~icons/tabler/xbox-x';
+import IconBook from '~icons/tabler/book-2';
+import IconMenu from '~icons/tabler/menu-2';
+import IconX from '~icons/tabler/x';
 import NewsletterList from './NewsletterList.astro';
 
 interface Props {
@@ -14,18 +15,32 @@ interface Props {
 const { items, currentSlug } = Astro.props;
 ---
 
+<!-- 移动端触发按钮 -->
+<button
+  id="sidebarToggle"
+  class="fixed lg:hidden top-4 right-4 z-50 p-2.5 rounded-xl
+        bg-white/40 dark:bg-zinc-800/40 backdrop-blur-xl
+        border border-zinc-200/50 dark:border-zinc-700/50
+        shadow-lg shadow-zinc-800/5
+        hover:bg-white/50 dark:hover:bg-zinc-800/50
+        hover:shadow-zinc-800/10 hover:scale-105
+        active:scale-95
+        transition-all duration-300 ease-out"
+  aria-label="打开导航菜单"
+  >
+  <IconMenu class="w-6 h-6 text-zinc-500 dark:text-zinc-400" aria-hidden="true" data-sidebar-collapsed />
+  <IconX class="w-6 h-6 hidden text-zinc-500 dark:text-zinc-400" data-sidebar-expanded />
+</button>
+
 <aside 
   id="newsletter-sidebar"
-  class="fixed lg:relative w-full lg:w-64 xl:w-72 h-full z-40 
-    bg-gradient-to-br from-white/95 to-white/90 dark:from-gray-950/95 dark:to-gray-950/90 backdrop-blur-md
-    lg:border-r border-slate-100 dark:border-slate-800/50
-    transform -translate-x-full lg:translate-x-0 transition-all duration-300 ease-out"
+  class="fixed lg:relative w-full h-full transition-transform duration-300 ease-in-out translate-x-[-100%] lg:translate-x-0 bg-gradient-to-br from-zinc-50/50 to-zinc-100/50 dark:from-zinc-900/50 dark:to-zinc-800/50 backdrop-blur-xl border-r border-zinc-200 dark:border-zinc-800 z-40"
 >
   <BackgroundDecoration />
   <div class="h-full flex flex-col overflow-hidden p-4 lg:p-5">
     <div class="flex justify-between items-center mb-5">
       <h2 class="text-base font-medium flex items-center gap-2 text-zinc-800 dark:text-zinc-200">
-        <IconMail class="w-5 h-5 text-indigo-500/90 dark:text-indigo-400/90" aria-hidden="true"></IconMail>
+        <IconBook class="w-5 h-5 text-indigo-500/90 dark:text-indigo-400/90" aria-hidden="true"></IconBook>
         明日周刊
       </h2>
       <button 
@@ -44,41 +59,26 @@ const { items, currentSlug } = Astro.props;
       <NewsletterList items={items} currentSlug={currentSlug} />
     </div>
 
-    <div class="mt-5 text-center border-t border-slate-100 dark:border-slate-800/50 pt-5">
+    <div class="mt-5 text-center border-t border-zinc-200/50 dark:border-zinc-800/50 pt-5">
       <BackHistory label="返回首页" to="/" />
     </div>
   </div>
 </aside>
 
 <script>
-  const closeListButton = document.getElementById('close-newsletter-list');
-  const sidebar = document.getElementById('newsletter-sidebar');
-  
-  if (closeListButton && sidebar) {
-    closeListButton.addEventListener('click', () => {
-      sidebar.classList.remove('sidebar-active');
-      document.body.classList.remove('overflow-hidden');
-    });
-  }
+  document.addEventListener('DOMContentLoaded', () => {
+    const sidebarToggle = document.getElementById('sidebarToggle');
+    const sidebar = document.getElementById('newsletter-sidebar');
+    const collapsedIcon = document.querySelector('[data-sidebar-collapsed]');
+    const expandedIcon = document.querySelector('[data-sidebar-expanded]');
+    let isExpanded = false;
 
-  // 处理点击外部关闭侧边栏
-  document.addEventListener('click', (e) => {
-    const target = e.target as HTMLElement;
-    if (
-      sidebar?.classList.contains('sidebar-active') && 
-      !sidebar.contains(target) && 
-      target.id !== 'show-newsletter-list'
-    ) {
-      sidebar.classList.remove('sidebar-active');
-      document.body.classList.remove('overflow-hidden');
-    }
+    sidebarToggle?.addEventListener('click', () => {
+      isExpanded = !isExpanded;
+      sidebar?.classList.toggle('translate-x-[0]');
+      
+      collapsedIcon?.classList.toggle('hidden');
+      expandedIcon?.classList.toggle('hidden');
+    });
   });
 </script>
-
-<style>
-  @media (max-width: 1023px) {
-    .sidebar-active {
-      transform: translateX(0) !important;
-    }
-  }
-</style>
