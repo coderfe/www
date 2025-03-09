@@ -1,6 +1,10 @@
 ---
 import IconArrowRight from '~icons/tabler/arrow-right';
+import IconArticle from '~icons/tabler/article';
+import IconHome from '~icons/tabler/home';
 import IconMail from '~icons/tabler/mail';
+import IconBrandRss from '~icons/tabler/rss';
+import MobileNavigation from './MobileNavigation.astro';
 
 const menuItems = [
   {
@@ -8,63 +12,91 @@ const menuItems = [
     icon: 'mail',
     text: '周刊',
     description: '每周精选的有趣内容',
-    color: 'violet',
+    color: 'from-amber-500/20 to-orange-500/20',
+  },
+  {
+    href: '/blog',
+    icon: 'article',
+    text: '文章',
+    description: '所有博客文章',
+    color: 'from-emerald-500/20 to-teal-500/20',
   },
 ];
 ---
 
 <nav class="w-full">
-  <div class="flex flex-col space-y-1">
+  {/* 桌面端导航 */}
+  <div class="hidden md:flex md:flex-col md:space-y-4">
     {menuItems.map(item => (
-      <a 
+      <a
         href={item.href}
-        class="group relative flex items-center px-4 py-3
-               transition-all duration-300 ease-out
-               hover:pl-6"
+        class={`group relative overflow-hidden flex items-center justify-between p-5
+               rounded-3xl bg-gradient-to-br ${item.color} dark:bg-opacity-30
+               backdrop-blur-lg border border-white/20 dark:border-zinc-700/30
+               shadow-lg shadow-zinc-800/5 hover:shadow-xl
+               hover:scale-[1.03] active:scale-[0.98]
+               transition-all duration-300 ease-out`}
       >
-        {/* 左侧装饰线 */}
-        <div class={`absolute left-0 top-0 h-full w-[2px]
-                     bg-gradient-to-b from-transparent via-${item.color}-400/0 to-transparent
-                     group-hover:via-${item.color}-400
-                     transition-all duration-300`}>
-        </div>
-
-        {/* 内容区 */}
-        <div class="flex items-center gap-12 z-10">
-          <div class="flex items-center gap-3 min-w-[120px]">
-            <IconMail
-              class={`text-zinc-500 dark:text-zinc-400
-                      group-hover:text-${item.color}-500
-                      dark:group-hover:text-${item.color}-400
-                      transition-colors duration-300`}
-              aria-hidden="true"
-            ></IconMail>
-            <span 
-              class={`font-medium text-zinc-700 dark:text-zinc-300
-                      group-hover:text-${item.color}-700
-                      dark:group-hover:text-${item.color}-200
-                      transition-colors duration-300`}
-            >
+        <div class="absolute inset-0 bg-gradient-to-br opacity-0 group-hover:opacity-10 transition-opacity duration-500 ease-out"></div>
+        <div class="absolute -inset-1 bg-gradient-to-r from-transparent via-white/5 to-transparent opacity-0 group-hover:opacity-100 blur-xl transition-opacity duration-500 group-hover:animate-pulse"></div>
+        
+        <div class="flex items-center gap-5 z-10">
+          <div class="flex items-center justify-center w-12 h-12 rounded-2xl bg-white/80 dark:bg-zinc-800/80 shadow-inner backdrop-blur-sm">
+            {item.icon === 'home' && (
+              <IconHome
+                class="w-6 h-6 text-violet-500 dark:text-violet-400"
+                aria-hidden="true"
+              />
+            )}
+            {item.icon === 'mail' && (
+              <IconMail
+                class="w-6 h-6 text-amber-500 dark:text-amber-400"
+                aria-hidden="true"
+              />
+            )}
+            {item.icon === 'article' && (
+              <IconArticle
+                class="w-6 h-6 text-emerald-500 dark:text-emerald-400"
+                aria-hidden="true"
+              />
+            )}
+            {item.icon === 'rss' && (
+              <IconBrandRss
+                class="w-6 h-6 text-pink-500 dark:text-pink-400"
+                aria-hidden="true"
+              />
+            )}
+          </div>
+          <div class="flex flex-col">
+            <span class="font-semibold text-lg text-zinc-900 dark:text-zinc-100">
               {item.text}
             </span>
+            <span class="text-sm text-zinc-600 dark:text-zinc-400">
+              {item.description}
+            </span>
           </div>
-          
-          <p class={`text-sm text-zinc-500 dark:text-zinc-400
-                     opacity-60 group-hover:opacity-100
-                     transition-opacity duration-300`}>
-            {item.description}
-          </p>
         </div>
-
-        {/* 右侧箭头 */}
-        <IconArrowRight 
-          class={`absolute right-4 text-zinc-400 dark:text-zinc-500
-                  opacity-0 group-hover:opacity-100 
-                  -translate-x-2 group-hover:translate-x-0
-                  transition-all duration-300`}
-          aria-hidden="true"
-        ></IconArrowRight>
+        <div class="z-10 p-2.5">
+          <IconArrowRight
+            class="w-5 h-5 text-zinc-500 dark:text-zinc-400 group-hover:translate-x-1 transition-transform"
+            aria-hidden="true"
+          />
+        </div>
       </a>
     ))}
   </div>
+
+  {/* 移动端导航 */}
+  <MobileNavigation />
 </nav>
+
+<style>
+  @keyframes pulse {
+    0%, 100% { opacity: 0; }
+    50% { opacity: 1; }
+  }
+  
+  .animate-pulse {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+</style>

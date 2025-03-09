@@ -18,8 +18,8 @@ import IconArrowUp from '~icons/tabler/arrow-up';
   <IconArrowUp class="w-4 h-4 text-lg"></IconArrowUp>
 </button>
 
-<script is:inline data-astro-rerun>
-  document.addEventListener('astro:page-load', () => {
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
     const backToTopButton = document.getElementById('backToTop');
     if (!backToTopButton) return;
     
@@ -44,5 +44,5 @@ import IconArrowUp from '~icons/tabler/arrow-up';
         behavior: 'smooth'
       });
     });
-  }, { once: false });
+  });
 </script>
