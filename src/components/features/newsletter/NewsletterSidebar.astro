@@ -1,6 +1,7 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 import BackHistory from '@/components/common/BackHistory.astro';
+import BackgroundDecoration from '@/components/common/BackgroundDecoration.astro';
 import IconMail from '~icons/tabler/mail';
 import IconX from '~icons/tabler/xbox-x';
 import NewsletterList from './NewsletterList.astro';
@@ -20,11 +21,12 @@ const { items, currentSlug } = Astro.props;
     lg:border-r border-slate-100 dark:border-slate-800/50
     transform -translate-x-full lg:translate-x-0 transition-all duration-300 ease-out"
 >
+  <BackgroundDecoration />
   <div class="h-full flex flex-col overflow-hidden p-4 lg:p-5">
     <div class="flex justify-between items-center mb-5">
       <h2 class="text-base font-medium flex items-center gap-2 text-zinc-800 dark:text-zinc-200">
         <IconMail class="w-5 h-5 text-indigo-500/90 dark:text-indigo-400/90" aria-hidden="true"></IconMail>
-        所有周刊
+        明日周刊
       </h2>
       <button 
         id="close-newsletter-list" 

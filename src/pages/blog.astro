@@ -1,10 +1,10 @@
 ---
 import { getCollection } from 'astro:content';
+import BackgroundDecoration from '@/components/common/BackgroundDecoration.astro';
 import AboutMe from '@/components/features/blog/AboutMe.astro';
 import PageHeader from '@/components/features/blog/PageHeader.astro';
 import PostCard from '@/components/features/blog/PostCard.astro';
 import TagCloud from '@/components/features/blog/TagCloud.astro';
-import BackgroundDecoration from '@/components/layouts/BackgroundDecoration.astro';
 import BaseLayout from '@/components/layouts/BaseLayout.astro';
 
 // 获取博客文章集合
@@ -35,7 +35,7 @@ const allTags = Array.from(tagMap.entries())
     <!-- 主内容 -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 py-16 sm:py-24">
       <!-- 页面标题 -->
-      <PageHeader title="coderfee's Blog" />
+      <PageHeader title="coderfee's blog" />
       
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12">
         <!-- 主内容区 -->

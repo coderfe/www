@@ -1,5 +1,6 @@
 ---
 import { type CollectionEntry, getCollection } from 'astro:content';
+import BackgroundGrid from '@/components/common/BackgroundGrid.astro';
 import MobileNavbar from '@/components/features/newsletter/MobileNavbar.astro';
 import NewsletterHeader from '@/components/features/newsletter/NewsletterHeader.astro';
 import NewsletterSidebar from '@/components/features/newsletter/NewsletterSidebar.astro';
@@ -32,6 +33,8 @@ const currentIndex = sorted.findIndex((item) => item.slug === newsletter.slug) +
 ---
 
 <Layout title={title} description={description} cover={cover}>
+  <BackgroundGrid />
+  
   <MobileNavbar currentIndex={currentIndex} total={sorted.length} />
   
   <div class="flex h-[100dvh] lg:h-screen w-full">

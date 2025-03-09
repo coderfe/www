@@ -3,7 +3,7 @@ export interface Props {
   title: string;
 }
 
-const { title = "coderfee's Blog" } = Astro.props;
+const { title = "coderfee's blog" } = Astro.props;
 ---
 
 <header class="relative mb-16 sm:mb-24">
@@ -11,7 +11,7 @@ const { title = "coderfee's Blog" } = Astro.props;
   
   <h1 class="text-5xl sm:text-7xl font-black text-center leading-tight">
     <!-- 主标题 - 使用渐变文字效果 -->
-    <span class="block main-title">{title}</span>
+    <span class="block main-title">{title.toUpperCase()}</span>
     
     <!-- 副标题 - 动态打字机效果 -->
     <div class="text-base sm:text-xl font-medium mt-4 block text-gray-600 dark:text-gray-300 h-6">
