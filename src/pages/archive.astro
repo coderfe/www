@@ -1,0 +1,240 @@
+---
+import { getCollection } from 'astro:content';
+import BackHistory from '@/components/common/BackHistory.astro';
+import BackToTop from '@/components/common/BackToTop.astro';
+import PostCard from '@/components/features/blog/PostCard.astro';
+import BaseLayout from '@/components/layouts/BaseLayout.astro';
+
+// 获取博客文章集合
+const allPosts = await getCollection('blog');
+
+// 过滤掉草稿并按日期降序排序
+const posts = allPosts
+  .filter(({ data: { draft = false } }) => !draft)
+  .sort(({ data: { date: dateA } }, { data: { date: dateB } }) => dateB.valueOf() - dateA.valueOf());
+
+// 按年份分组文章
+const postsByYear = posts.reduce(
+  (acc, post) => {
+    const year = new Date(post.data.date).getFullYear();
+    if (!acc[year]) {
+      acc[year] = [];
+    }
+    acc[year].push(post);
+    return acc;
+  },
+  {} as Record<number, typeof posts>,
+);
+
+// 提取所有年份并排序（从新到旧）
+const years = Object.keys(postsByYear)
+  .map(Number)
+  .sort((a, b) => b - a);
+---
+
+<BaseLayout title="归档" description="所有归档文章">
+  <div class="relative min-h-screen pb-20">
+    <!-- 背景装饰 -->
+    <div class="absolute inset-0 overflow-hidden pointer-events-none -z-10">
+      <div class="absolute inset-0 bg-[radial-gradient(40%_36%_at_50%_0%,theme(colors.violet.400/10%)_0,transparent_100%),radial-gradient(20%_36%_at_80%_30%,theme(colors.fuchsia.400/6%)_0,transparent_100%)]"></div>
+    </div>
+    
+    <!-- 移动端年份导航 -->
+    <div class="lg:hidden sticky top-0 z-30 w-full bg-white/80 dark:bg-zinc-900/90 backdrop-blur-md border-b border-zinc-200 dark:border-zinc-800 shadow-sm">
+      <div class="max-w-7xl mx-auto px-4 py-3">
+        <div class="flex items-center">
+          <div class="overflow-x-auto hide-scrollbar flex-grow">
+            <div class="flex space-x-2">
+              {years.map(year => (
+                <a 
+                  href={`#year-${year}`} 
+                  class="mobile-year-link whitespace-nowrap text-sm font-medium px-2.5 py-1 rounded-md bg-white/50 dark:bg-zinc-800/70 shadow-sm border border-zinc-200/70 dark:border-zinc-700/70 hover:bg-violet-50 hover:text-violet-700 hover:border-violet-200 dark:hover:bg-violet-900/20 dark:hover:text-violet-300 dark:hover:border-violet-800/70 transition-all" 
+                  data-year={year}
+                >
+                  {year}
+                </a>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-6">
+      <!-- 返回首页链接 -->
+      <div class="flex pb-6 relative">
+        <BackHistory to="/" label="返回首页" />
+      </div>
+
+      <!-- 归档内容 -->
+      <div class="grid grid-cols-12 gap-6 sm:gap-8 lg:gap-12">
+        <!-- 主内容区域 -->
+        <main class="col-span-12 lg:col-span-9 space-y-16 sm:space-y-24">
+          {years.map((year) => (
+            <section id={`year-${year}`} class="year-section scroll-mt-24 sm:scroll-mt-32">
+              <!-- 年份标记 -->
+              <div class="relative mb-8 sm:mb-12">
+                <h2 class="font-serif text-4xl sm:text-5xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 drop-shadow-sm">{year}</h2>
+                <div class="mt-5 w-16 h-[1.5px] bg-zinc-400 dark:bg-zinc-500"></div>
+              </div>
+
+              <!-- 文章列表 -->
+              <div class="space-y-6 sm:space-y-8">
+                {postsByYear[year].map((post, index) => (
+                  <PostCard post={post} index={index} />
+                ))}
+              </div>
+            </section>
+          ))}
+        </main>
+
+        <!-- 桌面端侧边栏年份导航 -->
+        <aside class="hidden lg:block lg:col-span-3">
+          <div class="sticky top-24">
+            <nav class="flex flex-col">
+              <h3 class="text-xs font-medium text-zinc-400 dark:text-zinc-500 uppercase tracking-wider mb-3">年份</h3>
+              <div class="flex flex-wrap gap-2">
+                {years.map(year => (
+                  <a 
+                    href={`#year-${year}`} 
+                    class="sidebar-link text-sm px-2.5 py-1 rounded-md bg-white/50 dark:bg-zinc-800/70 shadow-sm border border-zinc-200/70 dark:border-zinc-700/70 hover:bg-violet-50 hover:text-violet-700 hover:border-violet-200 dark:hover:bg-violet-900/20 dark:hover:text-violet-300 dark:hover:border-violet-800/70 transition-all"
+                    data-year={year}
+                  >
+                    {year}
+                  </a>
+                ))}
+              </div>
+            </nav>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </div>
+  <BackToTop />
+</BaseLayout>
+
+<style>
+  @import "tailwindcss";
+  /* 隐藏滚动条但保留功能 */
+  .hide-scrollbar {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+  }
+  
+  /* 活跃状态样式 */
+  .sidebar-link.active {
+    @apply bg-violet-100 text-violet-700 border-violet-300 dark:bg-violet-900/40 dark:text-violet-300 dark:border-violet-700;
+    box-shadow: 0 0 0 1px rgba(124, 58, 237, 0.05);
+  }
+  
+  .mobile-year-link.active {
+    @apply bg-violet-100 text-violet-700 border-violet-300 dark:bg-violet-900/40 dark:text-violet-300 dark:border-violet-700;
+    box-shadow: 0 0 0 1px rgba(124, 58, 237, 0.05);
+  }
+  
+  /* 移动端优化 */
+  .touch-manipulation {
+    touch-action: manipulation;
+  }
+</style>
+
+<script>
+  // 平滑滚动到目标位置
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      const targetId = this.getAttribute('href');
+      if (targetId) {
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          targetElement.scrollIntoView({ 
+            behavior: 'smooth',
+            block: 'start'
+          });
+          
+          // 更新 URL 但不刷新页面
+          history.pushState(null, '', targetId);
+        }
+      }
+    });
+  });
+  
+  // 添加活跃状态高亮
+  const observeElements = () => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.getAttribute('id');
+          const year = id?.replace('year-', '');
+          
+          // 更新桌面端侧边栏
+          document.querySelectorAll('.sidebar-link').forEach((link: HTMLAnchorElement) => {
+            link.classList.remove('active');
+            if (link.dataset.year === year) {
+              link.classList.add('active');
+            }
+          });
+          
+          // 更新移动端导航
+          document.querySelectorAll('.mobile-year-link').forEach((link: HTMLAnchorElement) => {
+            link.classList.remove('active');
+            if (link.dataset.year === year) {
+              link.classList.add('active');
+              // 保证当前激活的年份在可视区域内
+              link.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+            }
+          });
+        }
+      });
+    }, { 
+      rootMargin: '-20% 0px -60% 0px',
+      threshold: 0
+    });
+    
+    document.querySelectorAll('.year-section').forEach(section => {
+      observer.observe(section);
+    });
+  };
+  
+  // 页面加载后执行
+  document.addEventListener('DOMContentLoaded', () => {
+    observeElements();
+    
+    // 初始设置活跃状态
+    const hash = window.location.hash;
+    if (hash && hash.startsWith('#year-')) {
+      const year = hash.replace('#year-', '');
+      
+      // 设置桌面端侧边栏活跃状态
+      document.querySelectorAll('.sidebar-link').forEach((link: HTMLAnchorElement) => {
+        if (link.dataset.year === year) {
+          link.classList.add('active');
+        }
+      });
+      
+      // 设置移动端导航活跃状态
+      document.querySelectorAll('.mobile-year-link').forEach((link: HTMLAnchorElement) => {
+        if (link.dataset.year === year) {
+          link.classList.add('active');
+          // 滚动到可视区域
+          setTimeout(() => {
+            link.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+          }, 300);
+        }
+      });
+    } else {
+      // 如果没有哈希值，默认激活第一个年份
+      const firstSidebarLink = document.querySelector('.sidebar-link');
+      const firstMobileLink = document.querySelector('.mobile-year-link');
+      
+      if (firstSidebarLink) firstSidebarLink.classList.add('active');
+      if (firstMobileLink) firstMobileLink.classList.add('active');
+    }
+  });
+</script>

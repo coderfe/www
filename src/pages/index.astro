@@ -11,9 +11,13 @@ import BaseLayout from '@/components/layouts/BaseLayout.astro';
 // 获取博客文章集合
 const allPosts = await getCollection('blog');
 
-// 过滤掉草稿并按日期降序排序
+// 计算两年前的日期
+const twoYearsAgo = new Date();
+twoYearsAgo.setFullYear(twoYearsAgo.getFullYear() - 2);
+
+// 过滤掉草稿和两年前的文章，并按日期降序排序
 const posts = allPosts
-  .filter(({ data: { draft = false } }) => !draft)
+  .filter(({ data: { draft = false, date } }) => !draft && date >= twoYearsAgo)
   .sort(({ data: { date: dateA } }, { data: { date: dateB } }) => dateB.valueOf() - dateA.valueOf());
 
 // 收集所有标签
@@ -41,9 +45,15 @@ const allTags = Array.from(tagMap.entries())
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12">
         <!-- 主内容区 -->
         <main class="lg:col-span-8 space-y-16">
-          {posts.map((post, index) => (
-            <PostCard post={post} index={index} />
-          ))}
+          {posts.length > 0 ? (
+            posts.map((post, index) => (
+              <PostCard post={post} index={index} />
+            ))
+          ) : (
+            <div class="p-8 text-center bg-white/10 backdrop-blur-lg rounded-xl border border-white/20">
+              <p class="text-lg text-gray-200">最近两年没有发布文章</p>
+            </div>
+          )}
         </main>
         
         <!-- 侧边栏 - 增加滚动固定效果 -->
