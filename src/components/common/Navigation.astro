@@ -29,33 +29,55 @@ const { showNavigation = true } = Astro.props;
 
 {showNavigation && (
   <header class="fixed top-6 left-0 right-0 z-50 mx-auto w-fit">
-    <nav class="nav-container relative backdrop-blur-xl bg-white/90 dark:bg-zinc-900/90 rounded-full px-3 py-1.5 transition-all duration-300 inset-navigation">
-      <!-- 滑块指示器 - 内嵌凹槽效果 -->
-      <div id="nav-slider" class="absolute top-1/2 -translate-y-1/2 h-[calc(100%-8px)] rounded-full transition-all duration-200 ease-spring nav-slider-inset" data-active-index={activeIndex}></div>
-
+    <nav class="relative backdrop-blur-xl bg-white/90 dark:bg-zinc-800/90 rounded-full px-3 py-1.5 transition-all duration-300">
       <div class="flex items-center space-x-0.5 relative z-10">
-        {navItems.map((item, index) => (
-          <a 
-            href={item.path} 
-            class:list={[
-              'nav-item flex items-center px-3 py-1.5 rounded-full text-xs font-medium transition-all duration-200',
-              {
-                'text-fuchsia-600 dark:text-cyan-400 font-medium': isActive(item.path),
-                'text-zinc-700 dark:text-zinc-300 hover:text-fuchsia-500 dark:hover:text-cyan-400': !isActive(item.path)
-              }
-            ]}
-            aria-current={isActive(item.path) ? 'page' : undefined}
-            data-index={index}
-          >
-            <span class:list={[
-              'mr-1 transition-all duration-200',
-              { 'text-fuchsia-600 dark:text-cyan-400': isActive(item.path) }
-            ]}>
-              <item.icon class="w-3.5 h-3.5" />
-            </span>
-            {item.name}
-          </a>
-        ))}
+        {navItems.map((item, index) => {
+          // 为每个导航项定义独特的颜色
+          const colors = {
+            '/': {
+              light: 'text-rose-500 hover:text-rose-600',
+              dark: 'dark:text-rose-400 dark:hover:text-rose-300',
+              inactive: 'hover:text-rose-500 dark:hover:text-rose-400'
+            },
+            '/newsletter': {
+              light: 'text-purple-500 hover:text-purple-600',
+              dark: 'dark:text-purple-400 dark:hover:text-purple-300',
+              inactive: 'hover:text-purple-500 dark:hover:text-purple-400'
+            },
+            '/archive': {
+              light: 'text-blue-500 hover:text-blue-600',
+              dark: 'dark:text-blue-400 dark:hover:text-blue-300',
+              inactive: 'hover:text-blue-500 dark:hover:text-blue-400'
+            },
+            '/blog/pages/about': {
+              light: 'text-emerald-500 hover:text-emerald-600',
+              dark: 'dark:text-emerald-400 dark:hover:text-emerald-300',
+              inactive: 'hover:text-emerald-500 dark:hover:text-emerald-400'
+            }
+          }[item.path];
+
+          return (
+            <a 
+              href={item.path} 
+              class:list={[
+                'nav-item flex items-center px-3 py-1.5 rounded-full text-xs font-medium transition-colors duration-200',
+                isActive(item.path) 
+                  ? [colors!.light, colors!.dark, 'font-semibold']
+                  : ['text-zinc-600', 'dark:text-zinc-400', colors!.inactive]
+              ]}
+              aria-current={isActive(item.path) ? 'page' : undefined}
+              data-index={index}
+            >
+              <span class:list={[
+                'mr-1 transition-colors duration-200',
+                isActive(item.path) ? [colors!.light, colors!.dark] : colors!.inactive
+              ]}>
+                <item.icon class="w-3.5 h-3.5" />
+              </span>
+              {item.name}
+            </a>
+          );
+        })}
       </div>
     </nav>
   </header>
@@ -78,113 +100,29 @@ const { showNavigation = true } = Astro.props;
     animation: slide-in-from-top 0.3s ease forwards;
   }
 
-  /* 自定义 ease-spring 动画曲线 - 调整为更平滑的曲线 */
-  .ease-spring {
-    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  }
-  
-  /* 导航栏嵌入式设计 */
-  .inset-navigation {
-    box-shadow: 
-      inset 0 1px 3px rgba(0, 0, 0, 0.03),
-      inset 0 -1px 2px rgba(255, 255, 255, 0.1),
-      0 1px 2px rgba(0, 0, 0, 0.04),
-      0 3px 6px rgba(0, 0, 0, 0.02);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-  }
-  
-  /* 嵌入式滑块设计 */
-  .nav-slider-inset {
-    background-color: rgba(255, 255, 255, 0.9);
-    box-shadow: 
-      inset 0 1px 2px rgba(0, 0, 0, 0.08),
-      0 1px 1px rgba(255, 255, 255, 0.8);
+  nav {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
   }
 
-  /* 暗色模式适配 */
-  :global(.dark) .nav-slider-inset {
-    background-color: rgba(30, 41, 59, 0.8);
-    box-shadow: 
-      inset 0 1px 3px rgba(0, 0, 0, 0.3),
-      0 1px 1px rgba(255, 255, 255, 0.05);
+  :global(.dark) nav {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
   }
 </style>
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-    const navContainer = document.querySelector('.nav-container');
-    const navItems = document.querySelectorAll('.nav-item');
-    const navSlider = document.getElementById('nav-slider');
-    
-    if (!navContainer || !navSlider || navItems.length === 0) return;
-
-    // 初始化滑块位置
-    const activeIndex = parseInt(navSlider.getAttribute('data-active-index') || '0');
-    const activeItem = navItems[activeIndex] as HTMLElement;
-    
-    // 修复：优化滑块位置和宽度计算
-    function updateSlider(item: HTMLElement) {
-      if (!navSlider) return;
-      
-      // 计算需要考虑导航容器的内边距
-      const navContainerRect = navContainer!.getBoundingClientRect();
-      const itemRect = item.getBoundingClientRect();
-      
-      // 计算相对于导航容器的位置，添加缓冲空间
-      const relativeLeft = itemRect.left - navContainerRect.left;
-      const itemWidth = itemRect.width;
-      
-      // 防止滑块超出容器范围
-      const maxLeft = navContainerRect.width - itemWidth;
-      const safeLeft = Math.max(0, Math.min(relativeLeft, maxLeft));
-      
-      // 设置滑块位置和宽度，确保平滑过渡
-      navSlider.style.left = `${safeLeft}px`;
-      navSlider.style.width = `${itemWidth}px`;
-    }
-
-    // 初始化滑块
-    if (activeItem) {
-      // 使用 requestAnimationFrame 确保 DOM 完全渲染后再计算位置
-      requestAnimationFrame(() => {
-        updateSlider(activeItem);
-      });
-    }
-
-    // 悬停效果
-    navItems.forEach(item => {
-      item.addEventListener('mouseenter', () => {
-        updateSlider(item as HTMLElement);
-      });
-    });
-
-    // 当鼠标离开导航区域时，滑块返回到活动项
-    navContainer.addEventListener('mouseleave', () => {
-      if (activeItem) {
-        updateSlider(activeItem);
-      }
-    });
-
-    // 监听窗口大小变化，重新计算滑块位置
-    window.addEventListener('resize', () => {
-      if (activeItem) {
-        updateSlider(activeItem);
-      }
-    });
-
     // 滚动透明度控制
     const header = document.querySelector('header nav');
     if (header) {
       window.addEventListener('scroll', () => {
-        // 滚动时增加阴影效果和不透明度
         if (window.scrollY > 50) {
           header.classList.add('shadow-md');
-          header.classList.remove('bg-white/90', 'dark:bg-zinc-900/90');
-          header.classList.add('bg-white/95', 'dark:bg-zinc-900/95');
+          header.classList.remove('bg-white/90', 'dark:bg-zinc-800/90');
+          header.classList.add('bg-white/95', 'dark:bg-zinc-800/95');
         } else {
           header.classList.remove('shadow-md');
-          header.classList.remove('bg-white/95', 'dark:bg-zinc-900/95');
-          header.classList.add('bg-white/90', 'dark:bg-zinc-900/90');
+          header.classList.remove('bg-white/95', 'dark:bg-zinc-800/95');
+          header.classList.add('bg-white/90', 'dark:bg-zinc-800/90');
         }
       });
     }
