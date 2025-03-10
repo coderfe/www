@@ -3,7 +3,12 @@ import BaseLayout from '../BaseLayout.astro';
 
 const { title, description, cover } = Astro.props;
 ---
-<BaseLayout title={title} description={description} ogImage={cover}>
+<BaseLayout
+  title={title}
+  description={description}
+  ogImage={cover}
+  showNavigation={false}
+>
   <div class="relative">
     <slot />
   </div>

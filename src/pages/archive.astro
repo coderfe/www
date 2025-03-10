@@ -1,7 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
-import BackHistory from '@/components/common/BackHistory.astro';
-import BackToTop from '@/components/common/BackToTop.astro';
+import BackgroundDecoration from '@/components/common/BackgroundDecoration.astro';
 import PostCard from '@/components/features/blog/PostCard.astro';
 import BaseLayout from '@/components/layouts/BaseLayout.astro';
 
@@ -33,39 +32,10 @@ const years = Object.keys(postsByYear)
 ---
 
 <BaseLayout title="归档" description="所有归档文章">
-  <div class="relative min-h-screen pb-20">
-    <!-- 背景装饰 -->
-    <div class="absolute inset-0 overflow-hidden pointer-events-none -z-10">
-      <div class="absolute inset-0 bg-[radial-gradient(40%_36%_at_50%_0%,theme(colors.violet.400/10%)_0,transparent_100%),radial-gradient(20%_36%_at_80%_30%,theme(colors.fuchsia.400/6%)_0,transparent_100%)]"></div>
-    </div>
-    
-    <!-- 移动端年份导航 -->
-    <div class="lg:hidden sticky top-0 z-30 w-full bg-white/80 dark:bg-zinc-900/90 backdrop-blur-md border-b border-zinc-200 dark:border-zinc-800 shadow-sm">
-      <div class="max-w-7xl mx-auto px-4 py-3">
-        <div class="flex items-center">
-          <div class="overflow-x-auto hide-scrollbar flex-grow">
-            <div class="flex space-x-2">
-              {years.map(year => (
-                <a 
-                  href={`#year-${year}`} 
-                  class="mobile-year-link whitespace-nowrap text-sm font-medium px-2.5 py-1 rounded-md bg-white/50 dark:bg-zinc-800/70 shadow-sm border border-zinc-200/70 dark:border-zinc-700/70 hover:bg-violet-50 hover:text-violet-700 hover:border-violet-200 dark:hover:bg-violet-900/20 dark:hover:text-violet-300 dark:hover:border-violet-800/70 transition-all" 
-                  data-year={year}
-                >
-                  {year}
-                </a>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+  <div class="relative min-h-screen py-20">
+    <BackgroundDecoration />
     
     <div class="max-w-7xl mx-auto px-4 sm:px-6 py-6">
-      <!-- 返回首页链接 -->
-      <div class="flex pb-6 relative">
-        <BackHistory to="/" label="返回首页" />
-      </div>
-
       <!-- 归档内容 -->
       <div class="grid grid-cols-12 gap-6 sm:gap-8 lg:gap-12">
         <!-- 主内容区域 -->
@@ -109,8 +79,30 @@ const years = Object.keys(postsByYear)
         </aside>
       </div>
     </div>
+    
+    <!-- 移动端年份导航 -->
+    <div class="lg:hidden fixed bottom-0 inset-x-0 z-30 pb-safe">
+      <div class="w-full bg-white/90 dark:bg-zinc-900/90 backdrop-blur-md border-t border-zinc-200/80 dark:border-zinc-800/80">
+        <div class="max-w-7xl mx-auto px-4 py-2">
+          <div class="flex items-center">
+            <div class="overflow-x-auto hide-scrollbar flex-grow">
+              <div class="flex space-x-1.5 px-0.5">
+                {years.map(year => (
+                  <a 
+                    href={`#year-${year}`} 
+                    class="mobile-year-link whitespace-nowrap text-sm px-3 py-1 rounded-lg text-zinc-600 dark:text-zinc-400 border border-zinc-200/80 dark:border-zinc-700/80 hover:text-zinc-900 dark:hover:text-white hover:border-zinc-400 dark:hover:border-zinc-500 transition-colors" 
+                    data-year={year}
+                  >
+                    {year}
+                  </a>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  <BackToTop />
 </BaseLayout>
 
 <style>
@@ -134,8 +126,17 @@ const years = Object.keys(postsByYear)
   }
   
   .mobile-year-link.active {
-    @apply bg-violet-100 text-violet-700 border-violet-300 dark:bg-violet-900/40 dark:text-violet-300 dark:border-violet-700;
-    box-shadow: 0 0 0 1px rgba(124, 58, 237, 0.05);
+    @apply text-zinc-900 dark:text-white border-zinc-400 dark:border-zinc-500;
+  }
+  
+  /* 移动端底部阴影 */
+  .shadow-up {
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+  }
+  
+  /* iOS 底部安全区域 */
+  .pb-safe {
+    padding-bottom: env(safe-area-inset-bottom);
   }
   
   /* 移动端优化 */
@@ -222,7 +223,7 @@ const years = Object.keys(postsByYear)
       document.querySelectorAll('.mobile-year-link').forEach((link: HTMLAnchorElement) => {
         if (link.dataset.year === year) {
           link.classList.add('active');
-          // 滚动到可视区域
+          // 滋动到可视区域
           setTimeout(() => {
             link.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
           }, 300);

@@ -1,6 +1,5 @@
 ---
 import { type CollectionEntry, getCollection } from 'astro:content';
-import BackHistory from '@/components/common/BackHistory.astro';
 import BackToTop from '@/components/common/BackToTop.astro';
 import BackgroundGrid from '@/components/common/BackgroundGrid.astro';
 import License from '@/components/features/post/License.astro';
@@ -9,11 +8,12 @@ import PostNavigation from '@/components/features/post/PostNavigation.astro';
 import RelatedPosts from '@/components/features/post/RelatedPosts.astro';
 import BaseLayout from '@/components/layouts/BaseLayout.astro';
 import IconArrowDown from '~icons/tabler/arrow-down';
+import IconSeparator from '~icons/tabler/separator';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
   const sortedPosts = posts
-    .filter((post) => !post.data.draft)
+    // .filter((post) => !post.data.draft)
     .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
   return sortedPosts.map((post, index) => {
@@ -43,12 +43,7 @@ const { title, tldr, date, tags = [], cover } = post.data;
   <article class="relative min-h-screen">
     <BackgroundGrid />
     
-    <div class="max-w-3xl mx-auto px-4 sm:px-6 py-12">
-      <!-- 返回链接 -->
-      <div class="mb-10">
-        <BackHistory label="返回" />
-      </div>
-
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 py-12 mt-12">
       <!-- 文章标题区 -->
       <PostHeader title={title} date={date} tags={tags} tldr={tldr} />
 
@@ -58,7 +53,7 @@ const { title, tldr, date, tags = [], cover } = post.data;
           <div class="w-full border-t border-zinc-200/30 dark:border-zinc-700/30"></div>
         </div>
         <div class="relative flex items-center justify-center w-8 h-8 rounded-full bg-gradient-to-b from-zinc-50/80 to-white/80 dark:from-zinc-800/80 dark:to-zinc-900/80 backdrop-blur-sm shadow-sm">
-          <IconArrowDown font-size={14} class="text-zinc-400 dark:text-zinc-500" />
+          <IconSeparator font-size={14} class="text-zinc-400 dark:text-zinc-500" />
         </div>
       </div>
 
