@@ -4,15 +4,12 @@ import BackgroundDecoration from '@/components/common/BackgroundDecoration.astro
 import PostCard from '@/components/features/blog/PostCard.astro';
 import BaseLayout from '@/components/layouts/BaseLayout.astro';
 
-// 获取博客文章集合
 const allPosts = await getCollection('blog');
 
-// 过滤掉草稿并按日期降序排序
 const posts = allPosts
   .filter(({ data: { draft = false } }) => !draft)
   .sort(({ data: { date: dateA } }, { data: { date: dateB } }) => dateB.valueOf() - dateA.valueOf());
 
-// 按年份分组文章
 const postsByYear = posts.reduce(
   (acc, post) => {
     const year = new Date(post.data.date).getFullYear();
@@ -25,7 +22,6 @@ const postsByYear = posts.reduce(
   {} as Record<number, typeof posts>,
 );
 
-// 提取所有年份并排序（从新到旧）
 const years = Object.keys(postsByYear)
   .map(Number)
   .sort((a, b) => b - a);
@@ -36,19 +32,15 @@ const years = Object.keys(postsByYear)
     <BackgroundDecoration />
     
     <div class="max-w-7xl mx-auto px-4 sm:px-6 py-6">
-      <!-- 归档内容 -->
       <div class="grid grid-cols-12 gap-6 sm:gap-8 lg:gap-12">
-        <!-- 主内容区域 -->
         <main class="col-span-12 lg:col-span-9 space-y-16 sm:space-y-24">
           {years.map((year) => (
             <section id={`year-${year}`} class="year-section scroll-mt-24 sm:scroll-mt-32">
-              <!-- 年份标记 -->
               <div class="relative mb-8 sm:mb-12">
                 <h2 class="font-serif text-4xl sm:text-5xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 drop-shadow-sm">{year}</h2>
                 <div class="mt-5 w-16 h-[1.5px] bg-zinc-400 dark:bg-zinc-500"></div>
               </div>
 
-              <!-- 文章列表 -->
               <div class="space-y-6 sm:space-y-8">
                 {postsByYear[year].map((post, index) => (
                   <PostCard post={post} index={index} />
@@ -58,7 +50,6 @@ const years = Object.keys(postsByYear)
           ))}
         </main>
 
-        <!-- 桌面端侧边栏年份导航 -->
         <aside class="hidden lg:block lg:col-span-3">
           <div class="sticky top-24">
             <nav class="flex flex-col">
@@ -80,7 +71,6 @@ const years = Object.keys(postsByYear)
       </div>
     </div>
     
-    <!-- 移动端年份导航 -->
     <div class="lg:hidden fixed bottom-0 inset-x-0 z-30 pb-safe">
       <div class="w-full bg-white/90 dark:bg-zinc-900/90 backdrop-blur-md border-t border-zinc-200/80 dark:border-zinc-800/80">
         <div class="max-w-7xl mx-auto px-4 py-2">
@@ -107,19 +97,18 @@ const years = Object.keys(postsByYear)
 
 <style>
   @import "tailwindcss";
-  /* 隐藏滚动条但保留功能 */
+  
   .hide-scrollbar {
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
   }
   
   .hide-scrollbar::-webkit-scrollbar {
-    display: none; /* Chrome, Safari, Opera */
+    display: none;
   }
   
-  /* 活跃状态样式 */
   .sidebar-link.active {
     @apply bg-violet-100 text-violet-700 border-violet-300 dark:bg-violet-900/40 dark:text-violet-300 dark:border-violet-700;
     box-shadow: 0 0 0 1px rgba(124, 58, 237, 0.05);
@@ -129,24 +118,20 @@ const years = Object.keys(postsByYear)
     @apply text-zinc-900 dark:text-white border-zinc-400 dark:border-zinc-500;
   }
   
-  /* 移动端底部阴影 */
   .shadow-up {
     box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
   }
   
-  /* iOS 底部安全区域 */
   .pb-safe {
     padding-bottom: env(safe-area-inset-bottom);
   }
   
-  /* 移动端优化 */
   .touch-manipulation {
     touch-action: manipulation;
   }
 </style>
 
 <script>
-  // 平滑滚动到目标位置
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
       e.preventDefault();
@@ -159,14 +144,12 @@ const years = Object.keys(postsByYear)
             block: 'start'
           });
           
-          // 更新 URL 但不刷新页面
           history.pushState(null, '', targetId);
         }
       }
     });
   });
   
-  // 添加活跃状态高亮
   const observeElements = () => {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
@@ -174,7 +157,6 @@ const years = Object.keys(postsByYear)
           const id = entry.target.getAttribute('id');
           const year = id?.replace('year-', '');
           
-          // 更新桌面端侧边栏
           document.querySelectorAll('.sidebar-link').forEach((link: HTMLAnchorElement) => {
             link.classList.remove('active');
             if (link.dataset.year === year) {
@@ -182,12 +164,10 @@ const years = Object.keys(postsByYear)
             }
           });
           
-          // 更新移动端导航
           document.querySelectorAll('.mobile-year-link').forEach((link: HTMLAnchorElement) => {
             link.classList.remove('active');
             if (link.dataset.year === year) {
               link.classList.add('active');
-              // 保证当前激活的年份在可视区域内
               link.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
             }
           });
@@ -203,34 +183,28 @@ const years = Object.keys(postsByYear)
     });
   };
   
-  // 页面加载后执行
   document.addEventListener('DOMContentLoaded', () => {
     observeElements();
     
-    // 初始设置活跃状态
     const hash = window.location.hash;
     if (hash && hash.startsWith('#year-')) {
       const year = hash.replace('#year-', '');
       
-      // 设置桌面端侧边栏活跃状态
       document.querySelectorAll('.sidebar-link').forEach((link: HTMLAnchorElement) => {
         if (link.dataset.year === year) {
           link.classList.add('active');
         }
       });
       
-      // 设置移动端导航活跃状态
       document.querySelectorAll('.mobile-year-link').forEach((link: HTMLAnchorElement) => {
         if (link.dataset.year === year) {
           link.classList.add('active');
-          // 滋动到可视区域
           setTimeout(() => {
             link.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
           }, 300);
         }
       });
     } else {
-      // 如果没有哈希值，默认激活第一个年份
       const firstSidebarLink = document.querySelector('.sidebar-link');
       const firstMobileLink = document.querySelector('.mobile-year-link');
       
