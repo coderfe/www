@@ -21,11 +21,11 @@ const { tags } = Astro.props;
       <h3 class="text-lg font-medium text-zinc-700 dark:text-zinc-300">标签</h3>
     </div>
     
-    <div class="flex flex-wrap gap-1.5 py-1">
+    <div class="flex flex-wrap gap-1 py-0.5">
       {tags.map(({ tag, count }) => (
         <a 
           href={`/blog/tags/${tag}`}
-          class="transition-all duration-300 rounded-lg px-3 py-1.5 text-xs bg-zinc-100/70 dark:bg-zinc-800/50 text-zinc-600 dark:text-zinc-400 hover:bg-gradient-to-r hover:from-violet-500/20 hover:to-indigo-500/20 dark:hover:from-violet-800/30 dark:hover:to-indigo-800/30 hover:text-violet-700 dark:hover:text-violet-300 hover:-translate-y-0.5"
+          class="transition-all duration-300 rounded-lg px-2.5 py-1 text-xs bg-zinc-100/70 dark:bg-zinc-800/50 text-zinc-600 dark:text-zinc-400 hover:bg-gradient-to-r hover:from-violet-500/20 hover:to-indigo-500/20 dark:hover:from-violet-800/30 dark:hover:to-indigo-800/30 hover:text-violet-700 dark:hover:text-violet-300 hover:-translate-y-0.5"
         >
           {tag} · {count}
         </a>
