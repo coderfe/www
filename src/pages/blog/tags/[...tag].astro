@@ -1,6 +1,5 @@
 ---
 import { getCollection } from 'astro:content';
-import BackHistory from '@/components/common/BackHistory.astro';
 import PostCard from '@/components/features/blog/PostCard.astro';
 import BaseLayout from '@/components/layouts/BaseLayout.astro';
 
@@ -30,12 +29,7 @@ const posts = collection
     </div>
 
     <main class="container max-w-4xl mx-auto px-4 py-10">
-      <!-- 返回按钮 -->
-      <div class="mb-10">
-        <BackHistory label="返回" />
-      </div>
-
-      <header class="mb-12 relative overflow-hidden">
+      <header class="my-12 relative overflow-hidden">
         <!-- 标签标题 -->
         <h1 class="py-6 text-3xl font-bold text-zinc-800 dark:text-zinc-100 hover:text-violet-600 dark:hover:text-violet-400 transition-all duration-500 text-center">
           #{tag}
