@@ -52,16 +52,19 @@ const years = Object.keys(postsByYear)
 
         <aside class="hidden lg:block lg:col-span-3">
           <div class="sticky top-24">
-            <nav class="flex flex-col">
-              <h3 class="text-xs font-medium text-zinc-400 dark:text-zinc-500 uppercase tracking-wider mb-3">年份</h3>
+            <nav class="flex flex-col p-4 rounded-2xl bg-white/20 dark:bg-zinc-800/20 backdrop-blur-lg border border-zinc-200/30 dark:border-zinc-700/30 shadow-xl shadow-zinc-900/5">
+              <h3 class="text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wider mb-3 pl-0.5">文章年份</h3>
               <div class="flex flex-wrap gap-2">
                 {years.map(year => (
                   <a 
                     href={`#year-${year}`} 
-                    class="sidebar-link text-sm px-2.5 py-1 rounded-md bg-white/50 dark:bg-zinc-800/70 shadow-sm border border-zinc-200/70 dark:border-zinc-700/70 hover:bg-violet-50 hover:text-violet-700 hover:border-violet-200 dark:hover:bg-violet-900/20 dark:hover:text-violet-300 dark:hover:border-violet-800/70 transition-all"
+                    class="sidebar-link group relative text-sm w-[4.5rem] py-1.5 rounded-xl bg-gradient-to-br from-white/90 to-white/40 dark:from-zinc-800/90 dark:to-zinc-800/40 text-zinc-700 dark:text-zinc-300 font-medium backdrop-blur-sm hover:scale-105 hover:bg-violet-50/90 hover:text-violet-700 hover:from-violet-50/90 hover:to-violet-50/30 dark:hover:from-violet-800/60 dark:hover:to-violet-900/40 dark:hover:text-violet-200 transition-all duration-300 ease-out text-center"
                     data-year={year}
                   >
                     {year}
+                    <span class="absolute inset-0 rounded-xl ring-1 ring-inset ring-zinc-900/5 dark:ring-white/5 group-hover:ring-violet-200/50 dark:group-hover:ring-violet-400/30 transition-colors"></span>
+                    <span class="absolute -inset-px rounded-xl bg-gradient-to-br from-white/40 via-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity dark:from-white/10 dark:via-white/5 dark:to-transparent pointer-events-none"></span>
+                    <span class="absolute inset-0 rounded-xl shadow-[0_0_0.5px_0.5px_rgba(0,0,0,0.06)] dark:shadow-[0_0_0.5px_0.5px_rgba(255,255,255,0.06)]"></span>
                   </a>
                 ))}
               </div>
@@ -76,11 +79,11 @@ const years = Object.keys(postsByYear)
         <div class="max-w-7xl mx-auto px-4 py-2">
           <div class="flex items-center">
             <div class="overflow-x-auto hide-scrollbar flex-grow">
-              <div class="flex space-x-1.5 px-0.5">
+              <div class="flex space-x-1 px-0.5">
                 {years.map(year => (
                   <a 
                     href={`#year-${year}`} 
-                    class="mobile-year-link whitespace-nowrap text-sm px-3 py-1 rounded-lg text-zinc-600 dark:text-zinc-400 border border-zinc-200/80 dark:border-zinc-700/80 hover:text-zinc-900 dark:hover:text-white hover:border-zinc-400 dark:hover:border-zinc-500 transition-colors" 
+                    class="mobile-year-link whitespace-nowrap text-sm px-2.5 py-0.5 rounded-lg text-zinc-600 dark:text-zinc-400 border border-zinc-200/80 dark:border-zinc-700/80 hover:text-zinc-900 dark:hover:text-white hover:border-zinc-400 dark:hover:border-zinc-500 transition-colors" 
                     data-year={year}
                   >
                     {year}
@@ -110,8 +113,15 @@ const years = Object.keys(postsByYear)
   }
   
   .sidebar-link.active {
-    @apply bg-violet-100 text-violet-700 border-violet-300 dark:bg-violet-900/40 dark:text-violet-300 dark:border-violet-700;
-    box-shadow: 0 0 0 1px rgba(124, 58, 237, 0.05);
+    @apply bg-gradient-to-br from-violet-50/90 to-violet-50/30 text-violet-700 dark:from-violet-800/60 dark:to-violet-900/40 dark:text-violet-200 scale-105;
+  }
+  
+  .sidebar-link.active span:first-of-type {
+    @apply ring-violet-200/50 dark:ring-violet-400/30;
+  }
+  
+  .sidebar-link.active span:nth-of-type(2) {
+    @apply opacity-100;
   }
   
   .mobile-year-link.active {
