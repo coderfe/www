@@ -9,9 +9,9 @@ const { title = "coderfee's blog" } = Astro.props;
 <header class="relative mb-16 mt-10 sm:mb-24">
   <div class="absolute w-full h-full max-w-2xl mx-auto inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-violet-500/5 via-fuchsia-500/5 to-transparent blur-xl animate-gradient"></div>
   
-  <h1 class="text-5xl sm:text-7xl font-black text-center leading-tight select-none">
+  <h1 class="text-5xl sm:text-7xl font-black text-center leading-tight select-none perspective">
     <!-- 主标题 - 使用渐变文字效果 -->
-    <span class="block main-title font-serif">{title.toUpperCase()}</span>
+    <span class="block main-title font-serif title-rotate">{title!.toUpperCase()}</span>
     
     <!-- 副标题 - 动态打字机效果 -->
     <div class="text-base sm:text-xl font-medium mt-4 block text-gray-600 dark:text-gray-300 h-6">
@@ -72,6 +72,18 @@ const { title = "coderfee's blog" } = Astro.props;
     margin-left: 2px;
     animation: blink 1s step-end infinite;
   }
+
+  /* 3D效果相关样式 */
+  .perspective {
+    perspective: 1000px;
+  }
+  
+  .title-rotate {
+    display: inline-block;
+    transition: transform 0.1s ease-out;
+    transform-style: preserve-3d;
+    will-change: transform;
+  }
 </style>
 
 <script>
@@ -123,9 +135,47 @@ function initTypingEffect() {
   setTimeout(type, 0);
 }
 
+// 添加鼠标移动效果
+function initTitleRotation() {
+  const title = document.querySelector('.title-rotate') as HTMLHeadingElement;
+  if (!title) return;
+  
+  const maxRotate = 5; // 最大旋转角度
+  const maxRotateX = 2; // X轴最大旋转角度(上下方向)设置得更小
+  
+  function handleMouseMove(e: MouseEvent) {
+    const rect = title!.getBoundingClientRect();
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+    
+    // 计算鼠标位置相对于元素中心的偏移
+    const rotateY = ((e.clientX - centerX) / (rect.width / 2)) * maxRotate;
+    let rotateX = -((e.clientY - centerY) / (rect.height / 2)) * maxRotateX;
+    
+    // 限制X轴旋转范围
+    rotateX = Math.max(-maxRotateX, Math.min(maxRotateX, rotateX));
+    
+    title!.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+  }
+  
+  // 鼠标离开时重置
+  function handleMouseLeave() {
+    title!.style.transform = 'rotateX(0) rotateY(0)';
+  }
+  
+  document.addEventListener('mousemove', handleMouseMove);
+  title!.addEventListener('mouseleave', handleMouseLeave);
+}
+
+// 初始化所有效果
+function initAllEffects() {
+  initTypingEffect();
+  initTitleRotation();
+}
+
 // 初始页面加载时启动
-document.addEventListener('DOMContentLoaded', initTypingEffect);
+document.addEventListener('DOMContentLoaded', initAllEffects);
 
 // View Transitions 相关事件处理
-document.addEventListener('astro:after-swap', initTypingEffect);
+document.addEventListener('astro:after-swap', initAllEffects);
 </script>

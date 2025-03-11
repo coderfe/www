@@ -1,11 +1,9 @@
 ---
 import ArchiveIcon from '~icons/tabler/archive';
 import BookIcon from '~icons/tabler/book-2';
-// 导入图标
 import HomeIcon from '~icons/tabler/home';
 import UserIcon from '~icons/tabler/user';
 
-// 检查当前页面路径
 const pathname = new URL(Astro.request.url).pathname;
 const isActive = (path: string) => {
   if (path === '/' && pathname === path) return true;
@@ -13,16 +11,12 @@ const isActive = (path: string) => {
   return false;
 };
 
-// 导航菜单项
 const navItems = [
   { name: '首页', path: '/', icon: HomeIcon },
   { name: '周刊', path: '/newsletter', icon: BookIcon },
   { name: '归档', path: '/archive', icon: ArchiveIcon },
   { name: '关于我', path: '/blog/pages/about', icon: UserIcon },
 ];
-
-// 获取当前激活的菜单索引，用于滑块定位
-const activeIndex = navItems.findIndex((item) => isActive(item.path));
 
 const { showNavigation = true } = Astro.props;
 ---
@@ -32,7 +26,6 @@ const { showNavigation = true } = Astro.props;
     <nav class="relative backdrop-blur-xl bg-white/90 dark:bg-zinc-800/90 rounded-full px-3 py-1.5 transition-all duration-300">
       <div class="flex items-center space-x-0.5 relative z-10">
         {navItems.map((item, index) => {
-          // 为每个导航项定义独特的颜色
           const colors = {
             '/': {
               light: 'text-rose-500 hover:text-rose-600',
@@ -84,7 +77,6 @@ const { showNavigation = true } = Astro.props;
 )}
 
 <style>
-  /* 添加导航菜单滑入动画 */
   @keyframes slide-in-from-top {
     from {
       opacity: 0;
@@ -111,7 +103,6 @@ const { showNavigation = true } = Astro.props;
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-    // 滚动透明度控制
     const header = document.querySelector('header nav');
     if (header) {
       window.addEventListener('scroll', () => {
