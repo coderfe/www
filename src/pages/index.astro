@@ -6,20 +6,17 @@ import PageHeader from '@/components/features/blog/PageHeader.astro';
 import PostCard from '@/components/features/blog/PostCard.astro';
 import TagCloud from '@/components/features/blog/TagCloud.astro';
 import BaseLayout from '@/components/layouts/BaseLayout.astro';
+import IconArrowRight from '~icons/tabler/arrow-right';
 
-// 获取博客文章集合
 const allPosts = await getCollection('blog');
 
-// 计算两年前的日期
 const twoYearsAgo = new Date();
 twoYearsAgo.setFullYear(twoYearsAgo.getFullYear() - 2);
 
-// 过滤掉草稿和两年前的文章，并按日期降序排序
 const posts = allPosts
   .filter(({ data: { draft = false, date } }) => !draft && date >= twoYearsAgo)
   .sort(({ data: { date: dateA } }, { data: { date: dateB } }) => dateB.valueOf() - dateA.valueOf());
 
-// 收集所有标签
 const tagMap = new Map();
 posts.forEach((post) => {
   (post.data.tags || []).forEach((tag) => {
@@ -33,16 +30,12 @@ const allTags = Array.from(tagMap.entries())
 
 <BaseLayout title="首页">
   <div class="relative min-h-screen">
-    <!-- 背景装饰 -->
     <BackgroundDecoration />
     
-    <!-- 主内容 -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 py-16 sm:py-24">
-      <!-- 页面标题 -->
       <PageHeader title="coderfee's blog" />
       
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12">
-        <!-- 主内容区 -->
         <main class="lg:col-span-8 space-y-16">
           {posts.length > 0 ? (
             posts.map((post, index) => (
@@ -53,15 +46,20 @@ const allTags = Array.from(tagMap.entries())
               <p class="text-lg text-gray-200">最近两年没有发布文章</p>
             </div>
           )}
+          
+          <div class="flex justify-center pt-8">
+            <a href="/archive" 
+               class="inline-flex items-center gap-2 px-6 py-3 text-sm font-medium text-zinc-600 dark:text-zinc-300 hover:text-violet-600 dark:hover:text-violet-400 group">
+              查看所有文章
+              <IconArrowRight class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+            </a>
+          </div>
         </main>
         
-        <!-- 侧边栏 - 增加滚动固定效果 -->
         <aside class="lg:col-span-4 relative">
           <div class="sticky top-24 space-y-6">
-            <!-- 标签云 -->
             <TagCloud tags={allTags} />
             
-            <!-- 侧边栏信息 -->
             <AboutMe />
           </div>
         </aside>
@@ -71,7 +69,6 @@ const allTags = Array.from(tagMap.entries())
 </BaseLayout>
 
 <style>
-  /* 添加微妙的动效 */
   @keyframes gentle-float {
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-5px); }
@@ -79,14 +76,11 @@ const allTags = Array.from(tagMap.entries())
 </style>
 
 <script>
-  // 处理侧边栏滚动逻辑
   document.addEventListener('DOMContentLoaded', () => {
     const stickyContainer = document.querySelector('.sticky');
     
-    // 监听滚动事件，添加平滑过渡效果
     if (stickyContainer) {
       window.addEventListener('scroll', () => {
-        // 已经由CSS sticky处理固定定位，这里只需要处理额外的视觉效果
         const scrollY = window.scrollY;
         if (scrollY > 100) {
           stickyContainer.classList.add('has-scrolled');
