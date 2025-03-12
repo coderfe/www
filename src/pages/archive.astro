@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content';
 import BackgroundDecoration from '@/components/common/BackgroundDecoration.astro';
 import PostCard from '@/components/features/blog/PostCard.astro';
 import BaseLayout from '@/components/layouts/BaseLayout.astro';
+import CalendarEvent from '~icons/tabler/calendar-event';
 
 const allPosts = await getCollection('blog');
 
@@ -52,21 +53,22 @@ const years = Object.keys(postsByYear)
 
         <aside class="hidden lg:block lg:col-span-3">
           <div class="sticky top-24">
-            <nav class="flex flex-col p-4 rounded-2xl bg-white/20 dark:bg-zinc-800/20 backdrop-blur-lg border border-zinc-200/30 dark:border-zinc-700/30 shadow-xl shadow-zinc-900/5">
-              <h3 class="text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wider mb-3 pl-0.5">文章年份</h3>
-              <div class="flex flex-wrap gap-2">
-                {years.map(year => (
-                  <a 
-                    href={`#year-${year}`} 
-                    class="sidebar-link group relative text-sm w-[4.5rem] py-1.5 rounded-xl bg-gradient-to-br from-white/90 to-white/40 dark:from-zinc-800/90 dark:to-zinc-800/40 text-zinc-700 dark:text-zinc-300 font-medium backdrop-blur-sm hover:scale-105 hover:bg-violet-50/90 hover:text-violet-700 hover:from-violet-50/90 hover:to-violet-50/30 dark:hover:from-violet-800/60 dark:hover:to-violet-900/40 dark:hover:text-violet-200 transition-all duration-300 ease-out text-center"
-                    data-year={year}
-                  >
-                    {year}
-                    <span class="absolute inset-0 rounded-xl ring-1 ring-inset ring-zinc-900/5 dark:ring-white/5 group-hover:ring-violet-200/50 dark:group-hover:ring-violet-400/30 transition-colors"></span>
-                    <span class="absolute -inset-px rounded-xl bg-gradient-to-br from-white/40 via-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity dark:from-white/10 dark:via-white/5 dark:to-transparent pointer-events-none"></span>
-                    <span class="absolute inset-0 rounded-xl shadow-[0_0_0.5px_0.5px_rgba(0,0,0,0.06)] dark:shadow-[0_0_0.5px_0.5px_rgba(255,255,255,0.06)]"></span>
-                  </a>
-                ))}
+            <nav class="timeline-nav p-5 rounded-2xl bg-white/20 dark:bg-zinc-800/20 backdrop-blur-lg border border-zinc-200/30 dark:border-zinc-700/30 shadow-xl shadow-zinc-900/5">
+              <h3 class="text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wider mb-3 pl-0.5 font-mono">文章年份</h3>
+              <div class="relative timeline-container">
+                <div class="flex flex-col space-y-2.5">
+                  {years.map(year => (
+                    <a 
+                      href={`#year-${year}`} 
+                      class="timeline-year group flex items-center relative"
+                      data-year={year}
+                    >
+                      <CalendarEvent class="w-4 h-4 text-zinc-400 dark:text-zinc-500 mr-3 group-hover:text-violet-400 dark:group-hover:text-violet-500 transition-all duration-300" />
+                      <span class="timeline-text text-sm font-medium text-zinc-700 dark:text-zinc-300 font-mono group-hover:text-violet-600 dark:group-hover:text-violet-400 transition-all duration-300">{year}</span>
+                      <span class="timeline-count ml-auto text-xs font-medium text-zinc-500 dark:text-zinc-400 font-mono group-hover:text-violet-500 dark:group-hover:text-violet-400 transition-colors duration-300">{postsByYear[year].length}篇</span>
+                    </a>
+                  ))}
+                </div>
               </div>
             </nav>
           </div>
@@ -112,16 +114,24 @@ const years = Object.keys(postsByYear)
     display: none;
   }
   
-  .sidebar-link.active {
-    @apply bg-gradient-to-br from-violet-50/90 to-violet-50/30 text-violet-700 dark:from-violet-800/60 dark:to-violet-900/40 dark:text-violet-200 scale-105;
+  .timeline-nav {
+    overflow: hidden;
   }
   
-  .sidebar-link.active span:first-of-type {
-    @apply ring-violet-200/50 dark:ring-violet-400/30;
+  .timeline-container {
+    padding: 0.125rem 0;
   }
   
-  .sidebar-link.active span:nth-of-type(2) {
-    @apply opacity-100;
+  .timeline-year.active svg {
+    @apply text-violet-500 dark:text-violet-400;
+  }
+  
+  .timeline-year.active .timeline-text {
+    @apply text-violet-600 dark:text-violet-400 font-semibold;
+  }
+  
+  .timeline-year.active .timeline-count {
+    @apply text-violet-500 dark:text-violet-400;
   }
   
   .mobile-year-link.active {
@@ -167,10 +177,20 @@ const years = Object.keys(postsByYear)
           const id = entry.target.getAttribute('id');
           const year = id?.replace('year-', '');
           
-          document.querySelectorAll('.sidebar-link').forEach((link: HTMLAnchorElement) => {
+          document.querySelectorAll('.timeline-year').forEach((link) => {
             link.classList.remove('active');
+            // @ts-ignore
             if (link.dataset.year === year) {
               link.classList.add('active');
+              
+              const container = document.querySelector('.timeline-container');
+              if (container) {
+                link.scrollIntoView({ 
+                  behavior: 'smooth', 
+                  block: 'nearest',
+                  inline: 'start' 
+                });
+              }
             }
           });
           
@@ -200,9 +220,17 @@ const years = Object.keys(postsByYear)
     if (hash && hash.startsWith('#year-')) {
       const year = hash.replace('#year-', '');
       
-      document.querySelectorAll('.sidebar-link').forEach((link: HTMLAnchorElement) => {
+      document.querySelectorAll('.timeline-year').forEach((link) => {
+        // @ts-ignore
         if (link.dataset.year === year) {
           link.classList.add('active');
+          
+          setTimeout(() => {
+            link.scrollIntoView({ 
+              behavior: 'smooth', 
+              block: 'nearest' 
+            });
+          }, 300);
         }
       });
       
@@ -215,10 +243,13 @@ const years = Object.keys(postsByYear)
         }
       });
     } else {
-      const firstSidebarLink = document.querySelector('.sidebar-link');
+      const firstTimelineYear = document.querySelector('.timeline-year');
       const firstMobileLink = document.querySelector('.mobile-year-link');
       
-      if (firstSidebarLink) firstSidebarLink.classList.add('active');
+      if (firstTimelineYear) {
+        firstTimelineYear.classList.add('active');
+      }
+      
       if (firstMobileLink) firstMobileLink.classList.add('active');
     }
   });
