@@ -1,5 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
+import BackgroundDecoration from '@/components/common/BackgroundDecoration.astro';
 import PostCard from '@/components/features/blog/PostCard.astro';
 import BaseLayout from '@/components/layouts/BaseLayout.astro';
 
@@ -22,21 +23,15 @@ const posts = collection
 
 <BaseLayout title={`#${tag} · 标签文章`}>
   <div class="relative min-h-[80vh]">
-    <!-- 页面背景装饰 -->
-    <div class="fixed inset-0 -z-10">
-      <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(167,139,250,0.05),transparent_50%),radial-gradient(ellipse_at_bottom,_rgba(139,92,246,0.05),transparent_50%)]"></div>
-      <div class="absolute inset-0 bg-gradient-to-br from-violet-500/5 via-transparent to-fuchsia-500/5"></div>
-    </div>
+    <BackgroundDecoration />
 
     <main class="container max-w-4xl mx-auto px-4 py-10">
       <header class="my-12 relative overflow-hidden">
-        <!-- 标签标题 -->
         <h1 class="py-6 text-3xl font-bold text-zinc-800 dark:text-zinc-100 hover:text-violet-600 dark:hover:text-violet-400 transition-all duration-500 text-center">
           #{tag}
         </h1>
       </header>
 
-      <!-- 文章列表 -->
       {posts.length > 0 ? (
         <div class="space-y-6">
           {posts.map((post, index) => (

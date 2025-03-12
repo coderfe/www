@@ -42,6 +42,7 @@
 
 ## Astro
 
+- 优先选择使用 Astro 来编写组件，避免使用 React 组件。
 - 避免在 `.astro` 组件中写过多的 JavaScript 逻辑，优先使用 Astro 提供的模板功能。
 - 使用 `astro:image` 进行图片优化，如懒加载、自适应大小等。
 - 对 SVG 进行优化，去除多余的 `fill` 和 `stroke` 属性。

@@ -11,9 +11,7 @@ import IconSeparator from '~icons/tabler/separator';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
-  const sortedPosts = posts
-    // .filter((post) => !post.data.draft)
-    .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+  const sortedPosts = posts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
   return sortedPosts.map((post, index) => {
     const prev = index + 1 < sortedPosts.length ? sortedPosts[index + 1] : null;
@@ -43,10 +41,8 @@ const { title, tldr, date, tags = [], cover } = post.data;
     <BackgroundGrid />
     
     <div class="max-w-3xl mx-auto px-4 sm:px-6 py-12 mt-12">
-      <!-- 文章标题区 -->
       <PostHeader title={title} date={date} tags={tags} tldr={tldr} />
 
-      <!-- 分隔标识 -->
       <div class="relative py-12 flex items-center justify-center overflow-hidden">
         <div class="absolute inset-0 flex items-center">
           <div class="w-full border-t border-zinc-200/30 dark:border-zinc-700/30"></div>
@@ -56,7 +52,6 @@ const { title, tldr, date, tags = [], cover } = post.data;
         </div>
       </div>
 
-      <!-- 文章主体 -->
       <div class="prose prose-zinc dark:prose-invert max-w-none
            prose-headings:font-bold prose-headings:tracking-tight 
            prose-headings:text-zinc-900 dark:prose-headings:text-zinc-100
@@ -67,19 +62,15 @@ const { title, tldr, date, tags = [], cover } = post.data;
       
       <hr class="my-12 border-zinc-200/50 dark:border-zinc-800/50" />
 
-      <!-- 上一篇/下一篇导航 -->
       <PostNavigation prev={prev} next={next} />
 
-      <!-- 相关文章 -->
       <RelatedPosts currentSlug={post.slug} tags={tags} />
       
-      <!-- 文章底部 -->
       <footer>
         <License />
       </footer>
     </div>
   </article>
   
-  <!-- 返回顶部按钮 -->
   <BackToTop />
 </BaseLayout>

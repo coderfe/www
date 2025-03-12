@@ -38,7 +38,7 @@ const years = Object.keys(postsByYear)
           {years.map((year) => (
             <section id={`year-${year}`} class="year-section scroll-mt-24 sm:scroll-mt-32">
               <div class="relative mb-8 sm:mb-12">
-                <h2 class="font-serif text-4xl sm:text-5xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 drop-shadow-sm">{year}</h2>
+                <h2 class="embossed-heading font-serif text-4xl sm:text-5xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 drop-shadow-sm">{year}</h2>
                 <div class="mt-5 w-16 h-[1.5px] bg-zinc-400 dark:bg-zinc-500"></div>
               </div>
 
@@ -112,6 +112,21 @@ const years = Object.keys(postsByYear)
   
   .hide-scrollbar::-webkit-scrollbar {
     display: none;
+  }
+  
+  .embossed-heading {
+    text-shadow: 
+      1px 1px 1px rgba(255, 255, 255, 0.3),
+      -1px -1px 1px rgba(0, 0, 0, 0.2),
+      0 0 5px rgba(0, 0, 0, 0.05);
+    letter-spacing: -0.02em;
+  }
+
+  :global(.dark) .embossed-heading {
+    text-shadow: 
+      1px 1px 2px rgba(255, 255, 255, 0.1),
+      -1px -1px 2px rgba(0, 0, 0, 0.5),
+      0 0 5px rgba(255, 255, 255, 0.05);
   }
   
   .timeline-nav {
