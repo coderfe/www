@@ -1,0 +1,289 @@
+/* Giscus 自定义样式 - 匹配博客整体风格 */
+
+/* 主容器样式 */
+.giscus {
+  width: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  margin-top: 1.5rem;
+}
+
+/* 评论框样式 */
+.giscus .gsc-comment-box-textarea {
+  border-radius: 0.75rem !important;
+  border-color: rgba(161, 161, 170, 0.3) !important;
+  background-color: rgba(255, 255, 255, 0.8) !important;
+  padding: 1rem !important;
+  font-size: 0.95rem !important;
+  line-height: 1.6 !important;
+  transition: all 0.2s ease-in-out !important;
+}
+
+.giscus .gsc-comment-box-textarea:focus {
+  border-color: rgba(113, 113, 122, 0.8) !important;
+  background-color: rgba(255, 255, 255, 0.95) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05) !important;
+}
+
+/* 暗色模式评论框 */
+.dark .giscus .gsc-comment-box-textarea {
+  border-color: rgba(113, 113, 122, 0.3) !important;
+  background-color: rgba(39, 39, 42, 0.8) !important;
+  color: rgba(244, 244, 245, 0.9) !important;
+}
+
+.dark .giscus .gsc-comment-box-textarea:focus {
+  border-color: rgba(161, 161, 170, 0.8) !important;
+  background-color: rgba(39, 39, 42, 0.95) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* 按钮样式 */
+.giscus .gsc-comment-box-buttons button {
+  border-radius: 0.5rem !important;
+  transition: all 0.2s ease-in-out !important;
+  font-size: 0.875rem !important;
+  font-weight: 500 !important;
+  padding: 0.5rem 1rem !important;
+}
+
+.giscus .gsc-comment-box-buttons button.gsc-comment-box-submit {
+  background-color: rgb(63, 63, 70) !important;
+  color: white !important;
+}
+
+.giscus .gsc-comment-box-buttons button.gsc-comment-box-submit:hover {
+  background-color: rgb(39, 39, 42) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+  transform: translateY(-1px) !important;
+}
+
+.dark .giscus .gsc-comment-box-buttons button.gsc-comment-box-submit {
+  background-color: rgb(113, 113, 122) !important;
+  color: white !important;
+}
+
+.dark .giscus .gsc-comment-box-buttons button.gsc-comment-box-submit:hover {
+  background-color: rgb(161, 161, 170) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* 评论区样式 */
+.giscus .gsc-comment {
+  border: 1px solid rgba(161, 161, 170, 0.2) !important;
+  border-radius: 0.75rem !important;
+  padding: 1rem !important;
+  margin-bottom: 1.25rem !important;
+  background-color: rgba(255, 255, 255, 0.7) !important;
+  backdrop-filter: blur(8px) !important;
+  transition: all 0.2s ease-in-out !important;
+}
+
+.giscus .gsc-comment:hover {
+  background-color: rgba(255, 255, 255, 0.85) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04) !important;
+  border-color: rgba(161, 161, 170, 0.3) !important;
+}
+
+.dark .giscus .gsc-comment {
+  border-color: rgba(63, 63, 70, 0.4) !important;
+  background-color: rgba(39, 39, 42, 0.7) !important;
+}
+
+.dark .giscus .gsc-comment:hover {
+  background-color: rgba(39, 39, 42, 0.85) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+  border-color: rgba(63, 63, 70, 0.5) !important;
+}
+
+/* 评论内容文字样式 */
+.giscus .gsc-comment-content {
+  color: rgb(63, 63, 70) !important;
+  font-size: 0.95rem !important;
+  line-height: 1.6 !important;
+}
+
+.dark .giscus .gsc-comment-content {
+  color: rgb(212, 212, 216) !important;
+}
+
+/* 作者名称样式 */
+.giscus .gsc-comment-author-name {
+  font-weight: 600 !important;
+  color: rgb(24, 24, 27) !important;
+}
+
+.dark .giscus .gsc-comment-author-name {
+  color: rgb(228, 228, 231) !important;
+}
+
+/* 分页按钮样式 */
+.giscus .gsc-pagination {
+  margin-top: 1rem !important;
+}
+
+.giscus .gsc-pagination button {
+  border-radius: 0.5rem !important;
+  padding: 0.4rem 0.8rem !important;
+  transition: all 0.2s ease-in-out !important;
+}
+
+.giscus .gsc-pagination button:hover {
+  background-color: rgba(212, 212, 216, 0.3) !important;
+  transform: translateY(-1px) !important;
+}
+
+.dark .giscus .gsc-pagination button:hover {
+  background-color: rgba(63, 63, 70, 0.3) !important;
+}
+
+/* 回复按钮样式 */
+.giscus .gsc-comment-reactions button {
+  border-radius: 0.5rem !important;
+  transition: all 0.15s ease-in-out !important;
+}
+
+.giscus .gsc-comment-reactions button:hover {
+  transform: scale(1.05) !important;
+}
+
+/* 头像样式 */
+.giscus .gsc-comment-author-avatar img {
+  border-radius: 50% !important;
+  border: 2px solid transparent !important;
+  transition: all 0.2s ease-in-out !important;
+}
+
+.giscus .gsc-comment-author-avatar img:hover {
+  border-color: rgb(161, 161, 170) !important;
+  transform: scale(1.05) !important;
+}
+
+.dark .giscus .gsc-comment-author-avatar img:hover {
+  border-color: rgb(113, 113, 122) !important;
+}
+
+/* 时间戳样式 */
+.giscus .gsc-comment-author-date {
+  font-size: 0.8rem !important;
+  color: rgb(113, 113, 122) !important;
+}
+
+.dark .giscus .gsc-comment-author-date {
+  color: rgb(161, 161, 170) !important;
+}
+
+/* 评论框上方提示文字 */
+.giscus .gsc-comment-box-markdown-hint {
+  font-size: 0.8rem !important;
+  opacity: 0.7 !important;
+}
+
+/* 标签样式 */
+.giscus .gsc-comment-box-tabs button {
+  border-radius: 0.5rem 0.5rem 0 0 !important;
+  transition: all 0.15s ease-in-out !important;
+}
+
+.giscus .gsc-comment-box-tabs button.active {
+  border-bottom-color: rgb(63, 63, 70) !important;
+}
+
+.dark .giscus .gsc-comment-box-tabs button.active {
+  border-bottom-color: rgb(161, 161, 170) !important;
+}
+
+/* 加载动画 */
+.giscus .gsc-loading {
+  background-color: transparent !important;
+}
+
+.giscus .gsc-loading-image {
+  filter: grayscale(100%) !important;
+  opacity: 0.5 !important;
+}
+
+/* 顶部区域 */
+.giscus .gsc-header {
+  border-bottom: 1px solid rgba(161, 161, 170, 0.2) !important;
+  padding-bottom: 1rem !important;
+  margin-bottom: 1rem !important;
+}
+
+/* 登录提示 */
+.giscus .gsc-comments > .gsc-header > .gsc-login-box > .gsc-login-hint {
+  font-size: 0.9rem !important;
+  color: rgb(113, 113, 122) !important;
+}
+
+.dark .giscus .gsc-comments > .gsc-header > .gsc-login-box > .gsc-login-hint {
+  color: rgb(161, 161, 170) !important;
+}
+
+/* 表情按钮 */
+.giscus .gsc-toolbar-tools button {
+  border-radius: 0.375rem !important;
+  transition: all 0.15s ease-in-out !important;
+}
+
+.giscus .gsc-toolbar-tools button:hover {
+  background-color: rgba(212, 212, 216, 0.3) !important;
+}
+
+.dark .giscus .gsc-toolbar-tools button:hover {
+  background-color: rgba(63, 63, 70, 0.3) !important;
+}
+
+/* 引用样式 */
+.giscus .gsc-comment blockquote {
+  border-left: 3px solid rgb(161, 161, 170) !important;
+  color: rgb(113, 113, 122) !important;
+  padding-left: 1rem !important;
+  margin: 0.5rem 0 !important;
+  font-style: italic !important;
+}
+
+.dark .giscus .gsc-comment blockquote {
+  border-left-color: rgb(113, 113, 122) !important;
+  color: rgb(161, 161, 170) !important;
+}
+
+/* 代码样式 */
+.giscus .gsc-comment code {
+  background-color: rgba(212, 212, 216, 0.3) !important;
+  border-radius: 0.25rem !important;
+  padding: 0.15rem 0.3rem !important;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !important;
+  font-size: 0.85em !important;
+}
+
+.dark .giscus .gsc-comment code {
+  background-color: rgba(63, 63, 70, 0.3) !important;
+}
+
+/* 代码块样式 */
+.giscus .gsc-comment pre {
+  background-color: rgba(244, 244, 245, 0.7) !important;
+  border-radius: 0.5rem !important;
+  padding: 1rem !important;
+  overflow-x: auto !important;
+  margin: 1rem 0 !important;
+}
+
+.dark .giscus .gsc-comment pre {
+  background-color: rgba(39, 39, 42, 0.7) !important;
+}
+
+/* 修复移动端布局 */
+@media (max-width: 640px) {
+  .giscus .gsc-comment {
+    padding: 0.75rem !important;
+  }
+  
+  .giscus .gsc-comment-box-textarea {
+    font-size: 0.9rem !important;
+  }
+  
+  .giscus .gsc-comment-content {
+    font-size: 0.9rem !important;
+  }
+}

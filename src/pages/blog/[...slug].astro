@@ -7,6 +7,7 @@ import PostHeader from '@/components/features/post/PostHeader.astro';
 import PostNavigation from '@/components/features/post/PostNavigation.astro';
 import RelatedPosts from '@/components/features/post/RelatedPosts.astro';
 import BaseLayout from '@/components/layouts/BaseLayout.astro';
+import IconMessageCircle from '~icons/tabler/message-circle';
 import IconSeparator from '~icons/tabler/separator';
 
 export async function getStaticPaths() {
@@ -36,7 +37,6 @@ const { title, tldr, date, tags = [], cover } = post.data;
 
 <BaseLayout title={title} description={tldr} ogImage={cover}>
   {date && <meta name="date" content={date.toLocaleDateString()} slot="head" />}
-
   <article class="relative min-h-screen">
     <BackgroundGrid />
     
@@ -66,7 +66,19 @@ const { title, tldr, date, tags = [], cover } = post.data;
 
       <RelatedPosts currentSlug={post.slug} tags={tags} />
       
-      <footer>
+      <!-- 评论区 -->
+      <div class="comments-container mt-16">
+        <div class="comment-header flex items-center gap-2 mb-6">
+          <IconMessageCircle class="text-zinc-500 dark:text-zinc-400" />
+          <h2 class="text-xl font-semibold text-zinc-800 dark:text-zinc-200">评论</h2>
+        </div>
+        
+        <div class="giscus-container">
+          <div class="giscus"></div>
+        </div>
+      </div>
+      
+      <footer class="mt-16">
         <License />
       </footer>
     </div>
@@ -74,3 +86,27 @@ const { title, tldr, date, tags = [], cover } = post.data;
   
   <BackToTop />
 </BaseLayout>
+
+<script src="https://giscus.app/client.js"
+        data-repo="coderfe/www"
+        data-repo-id="MDEwOlJlcG9zaXRvcnkxNjA5OTc3MTY="
+        data-category="Comments"
+        data-category-id="DIC_kwDOCZihVM4CoBlh"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="preferred_color_scheme"
+        data-lang="zh-CN"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+</script>
+
+<style>
+  @import "tailwindcss";
+  :global(.giscus) {
+    @apply w-full;
+  }
+</style>
