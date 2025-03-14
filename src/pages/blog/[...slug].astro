@@ -14,8 +14,8 @@ export async function getStaticPaths() {
   const sortedPosts = posts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
   return sortedPosts.map((post, index) => {
-    const prev = index + 1 < sortedPosts.length ? sortedPosts[index + 1] : null;
-    const next = index - 1 >= 0 ? sortedPosts[index - 1] : null;
+    const next = index + 1 < sortedPosts.length ? sortedPosts[index + 1] : null;
+    const prev = index - 1 >= 0 ? sortedPosts[index - 1] : null;
     return {
       params: { slug: post.slug },
       props: { post, prev, next },
