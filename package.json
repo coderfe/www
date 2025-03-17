@@ -20,7 +20,7 @@
     "@tailwindcss/vite": "^4.0.14",
     "@types/react": "^18.3.18",
     "@types/react-dom": "^18.3.5",
-    "astro": "^5.5.0",
+    "astro": "^5.5.2",
     "astro-pagefind": "^1.8.2",
     "framer-motion": "^12.5.0",
     "ky": "^1.7.5",
