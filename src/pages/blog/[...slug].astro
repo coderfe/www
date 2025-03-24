@@ -1,6 +1,7 @@
 ---
 import fs from 'node:fs/promises';
 import { type CollectionEntry, getCollection } from 'astro:content';
+import { getEntry } from 'astro:content';
 import BackToTop from '@/components/common/BackToTop.astro';
 import BackgroundGrid from '@/components/common/BackgroundGrid.astro';
 import Visitor from '@/components/common/Visitor';
@@ -37,8 +38,8 @@ const { post, prev, next } = Astro.props;
 const { Content } = await post.render();
 const { title, tldr, date, tags = [], cover } = post.data;
 
-const url = new URL('../../content/blog/' + post.slug + '.mdx', import.meta.url);
-const raw = await fs.readFile(url, 'utf-8');
+const entry = await getEntry('blog', post.slug);
+const raw = entry?.body;
 ---
 
 <BaseLayout title={title} description={tldr} ogImage={cover}>
