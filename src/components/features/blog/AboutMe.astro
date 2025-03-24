@@ -1,5 +1,5 @@
 ---
-import { Visitors } from '@/components/common/Visitors';
+import Visitor from '@/components/common/Visitor';
 import IconGitHub from '~icons/tabler/brand-github';
 import IconTwitter from '~icons/tabler/brand-twitter';
 import IconMap from '~icons/tabler/map';
@@ -53,7 +53,7 @@ import IconUser from '~icons/tabler/user';
         </span>
         <span class="mx-1.5 text-zinc-600 dark:text-zinc-400">·</span>
         <span class="text-xs font-medium bg-gradient-to-r from-violet-600 to-fuchsia-600 dark:from-violet-400 dark:to-fuchsia-400 bg-clip-text text-transparent">
-          <Visitors client:load />
+           <Visitor title="首页" slug="/" client:load />
         </span>
       </div>
       

@@ -1,10 +1,13 @@
 ---
+import fs from 'node:fs/promises';
 import { type CollectionEntry, getCollection } from 'astro:content';
 import BackToTop from '@/components/common/BackToTop.astro';
 import BackgroundGrid from '@/components/common/BackgroundGrid.astro';
+import Visitor from '@/components/common/Visitor';
 import License from '@/components/features/post/License.astro';
 import PostHeader from '@/components/features/post/PostHeader.astro';
 import PostNavigation from '@/components/features/post/PostNavigation.astro';
+import PostSummary from '@/components/features/post/PostSummary';
 import RelatedPosts from '@/components/features/post/RelatedPosts.astro';
 import BaseLayout from '@/components/layouts/BaseLayout.astro';
 import IconMessageCircle from '~icons/tabler/message-circle';
@@ -33,6 +36,9 @@ type Props = {
 const { post, prev, next } = Astro.props;
 const { Content } = await post.render();
 const { title, tldr, date, tags = [], cover } = post.data;
+
+const url = new URL('../../content/blog/' + post.slug + '.mdx', import.meta.url);
+const raw = await fs.readFile(url, 'utf-8');
 ---
 
 <BaseLayout title={title} description={tldr} ogImage={cover}>
@@ -57,6 +63,9 @@ const { title, tldr, date, tags = [], cover } = post.data;
            prose-headings:text-zinc-900 dark:prose-headings:text-zinc-100
            prose-p:text-zinc-600 dark:prose-p:text-zinc-300
            prose-img:rounded-xl prose-img:shadow-lg">
+        <div class="hidden">
+          <PostSummary slug={post.slug} content={raw} client:idle />
+        </div>
         <Content />
       </div>
       
@@ -83,6 +92,8 @@ const { title, tldr, date, tags = [], cover } = post.data;
       </footer>
     </div>
   </article>
+
+  <Visitor slug={post.slug} title={post.data.title} client:load />
   
   <BackToTop />
 </BaseLayout>

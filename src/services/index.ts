@@ -1,4 +1,3 @@
-import type { Post } from '@/store/postDetail';
 import ky from 'ky';
 
 export type ApiResponse<T = unknown> = {
@@ -11,21 +10,18 @@ export const http = ky.create({
   credentials: 'include',
 });
 
-type PostView = {
-  summary: string;
-  viewCount: number;
-  likeCount: number;
-};
-export async function viewPost(post: Post) {
+export async function view(json: any) {
   return await http
-    .post('web/view', {
-      json: post,
+    .post('blog/post/view', {
+      json,
     })
-    .json<ApiResponse<PostView>>();
+    .json<ApiResponse<number>>();
 }
 
-export const cookie = () => http.get('web').text();
-
-export async function likePost(url: string) {
-  return await http.get('web/like', { searchParams: { url } }).text();
+export async function summary(json: any) {
+  return await http
+    .post('blog/post/summary', {
+      json,
+    })
+    .json();
 }
