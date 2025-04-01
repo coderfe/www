@@ -25,3 +25,12 @@ export async function summary(json: any) {
     })
     .json();
 }
+
+export async function heartbeat() {
+  let uid = localStorage.getItem('uid');
+  if (!uid) {
+    uid = crypto.randomUUID();
+    localStorage.setItem('uid', uid);
+  }
+  return await http.get(`blog/heartbeat?uid=${uid}`).json<ApiResponse>();
+}
