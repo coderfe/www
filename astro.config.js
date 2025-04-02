@@ -13,6 +13,7 @@ import Icons from 'unplugin-icons/vite';
 
 export default defineConfig({
   site: 'https://coderfee.com',
+  publicDir: 'public',
   prefetch: {
     prefetchAll: true,
     defaultStrategy: 'viewport',
