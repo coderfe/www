@@ -44,7 +44,7 @@
     "@tailwindcss/typography": "^0.5.16",
     "@types/node": "latest",
     "dayjs": "^1.11.13",
-    "lefthook": "^1.11.6",
+    "lefthook": "^1.11.7",
     "unplugin-icons": "^22.1.0"
   },
   "pnpm": {
