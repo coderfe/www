@@ -1,0 +1,306 @@
+---
+import '@/styles/style.css';
+import companyList from './data';
+import IconTagOutline from '~icons/tabler/tag';
+import IconArrowBackUp from '~icons/tabler/arrow-back-up';
+import IconX from '~icons/tabler/x';
+import IconStock from '~icons/tabler/chart-bar';
+import IconBuildingSkyscraper from '~icons/tabler/building-skyscraper';
+import IconAlertCircle from '~icons/tabler/alert-circle';
+---
+
+<!doctype html>
+<html lang="zh-CN" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>《沉浮与梦想：A股十年上市博弈》——案例</title>
+    <meta name="description" content="中国A股资本市场的标志性事件与案例分析，展示了资本市场发展的关键时刻与转折点" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <!-- 字体优化 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  </head>
+  <body class="bg-zinc-50 dark:bg-zinc-900 min-h-screen font-sans text-zinc-800 dark:text-zinc-200">
+    <!-- 背景装饰 -->
+    <div class="fixed inset-0 -z-10 overflow-hidden">
+      <div class="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] dark:bg-[radial-gradient(#3f3f46_1px,transparent_1px)] [background-size:20px_20px] opacity-50"></div>
+    </div>
+
+    <!-- 顶部导航 -->
+    <header class="sticky top-0 z-40 backdrop-blur-sm bg-white/80 dark:bg-zinc-900/80 border-b border-zinc-200 dark:border-zinc-800 shadow-sm">
+      <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+        <div class="flex items-center gap-3">
+          <span class="flex items-center justify-center w-10 h-10 rounded-lg bg-zinc-800 dark:bg-zinc-700 text-white">
+            <IconStock class="w-5 h-5" />
+          </span>
+          <h1 class="text-xl md:text-2xl font-bold text-zinc-800 dark:text-zinc-100">
+            沉浮与梦想：A股案例
+          </h1>
+        </div>
+        <a 
+          href="#top" 
+          class="flex items-center gap-1.5 px-4 py-2 rounded-full bg-zinc-100 hover:bg-zinc-200 dark:bg-zinc-800 dark:hover:bg-zinc-700 text-zinc-700 dark:text-zinc-300 text-sm font-medium border border-zinc-200 dark:border-zinc-700 transition-all duration-200"
+        >
+          <IconArrowBackUp class="w-4 h-4" />
+          <span>回到顶部</span>
+        </a>
+      </div>
+    </header>
+
+    <main id="top" class="container mx-auto px-4 py-8 md:py-16">
+      <!-- 排序控制 -->
+      <div class="max-w-4xl mx-auto mb-8 flex justify-center sm:justify-end space-x-2">
+        <button data-sort="all" class="sort-button active px-4 py-2 rounded-md text-sm font-medium bg-zinc-200 dark:bg-zinc-700 text-zinc-800 dark:text-zinc-200 transition-colors cursor-pointer">全部</button>
+        <button data-sort="delisted" class="sort-button px-4 py-2 rounded-md text-sm font-medium bg-zinc-100 hover:bg-zinc-200 dark:bg-zinc-800 dark:hover:bg-zinc-700 text-zinc-700 dark:text-zinc-300 transition-colors cursor-pointer">已退市</button>
+      </div>
+
+      <!-- 公司案例列表容器 -->
+      <div id="companyListContainer" class="max-w-4xl mx-auto space-y-4">
+        {companyList.map((item, index) => (
+          <article 
+            class="group relative cursor-pointer"
+            data-company-id={index}
+          >
+            <!-- 列表项容器 -->
+            <div class="relative bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 rounded-lg overflow-hidden transition-all duration-200 hover:border-zinc-400 dark:hover:border-zinc-600 hover:shadow-md">
+              
+              <div class="pl-6 pr-4 py-5 sm:py-4 flex flex-col sm:flex-row items-start sm:items-center gap-4">
+                {/* 公司图标和名称 */}
+                <div class="flex items-center gap-3 min-w-0 flex-shrink-0">
+                  <div class="flex-shrink-0 w-10 h-10 rounded-lg bg-zinc-100 dark:bg-zinc-700 flex items-center justify-center text-zinc-600 dark:text-zinc-300 border border-zinc-200 dark:border-zinc-600">
+                    <IconBuildingSkyscraper class="w-5 h-5" />
+                  </div>
+                  <div class="min-w-0">
+                    <h3 class="text-xl font-bold text-zinc-800 dark:text-zinc-100 line-clamp-1">
+                      {item.name}
+                    </h3>
+                  </div>
+                </div>
+                
+                {/* 标签列表 - 中间部分 */}
+                <div class="flex flex-wrap gap-2 flex-1 min-w-0">
+                  {item.keyword.map((tag) => (
+                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-zinc-100 dark:bg-zinc-700 text-zinc-700 dark:text-zinc-300 text-xs border border-zinc-200 dark:border-zinc-600 transition-transform duration-200">
+                      <IconTagOutline class="w-3 h-3 opacity-70" />
+                      <span class="font-medium">{tag}</span>
+                    </span>
+                  ))}
+                </div>
+                
+                {/* 右侧状态标识 */}
+                <div class="flex items-center ml-auto">
+                  {item.delisted && (
+                    <span class="shrink-0 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-red-100 dark:bg-red-900/50 border border-red-300 dark:border-red-700/50 text-red-700 dark:text-red-300 text-xs font-medium">
+                      <IconAlertCircle class="w-3.5 h-3.5" />
+                      已退市
+                    </span>
+                  )}
+                </div>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </main>
+
+    <!-- 详情弹窗 -->
+    <div 
+      id="detailModal" 
+      class="fixed inset-0 z-50 hidden items-center justify-center p-4 md:p-6"
+      role="dialog" 
+      aria-modal="true" 
+      aria-labelledby="modalTitle"
+    >
+      <div class="fixed inset-0 bg-black/50 backdrop-blur-sm" id="modalOverlay"></div>
+      
+      <div 
+        class="relative w-full max-w-3xl max-h-[90vh] overflow-y-auto rounded-lg bg-white dark:bg-zinc-800 shadow-xl transform transition-all duration-300 scale-95 opacity-0 translate-y-4"
+      >
+        <div class="absolute top-0 left-0 right-0 h-1 bg-zinc-300 dark:bg-zinc-600"></div>
+        
+        <div class="sticky top-0 z-10 flex items-center justify-between p-6 backdrop-blur-sm bg-white/90 dark:bg-zinc-800/90 border-b border-zinc-200 dark:border-zinc-700">
+          <div class="flex items-center gap-3">
+            <div class="flex-shrink-0 w-10 h-10 rounded-lg bg-zinc-100 dark:bg-zinc-700 flex items-center justify-center text-zinc-600 dark:text-zinc-300 border border-zinc-200 dark:border-zinc-600">
+              <IconBuildingSkyscraper class="w-5 h-5" />
+            </div>
+            <h2 id="modalTitle" class="text-xl md:text-2xl font-bold text-zinc-800 dark:text-zinc-100"></h2>
+          </div>
+          <button 
+            id="closeModal" 
+            class="p-2 rounded-full hover:bg-zinc-100 dark:hover:bg-zinc-700 text-zinc-500 dark:text-zinc-400 transition-colors"
+            aria-label="关闭详情"
+          >
+            <IconX class="w-5 h-5" />
+          </button>
+        </div>
+        
+        <div class="p-6 md:p-8">
+          <div id="modalTags" class="flex flex-wrap gap-2 mb-8"></div>
+          <div id="modalContent" class="prose dark:prose-invert prose-zinc max-w-none">
+            <p class="text-zinc-600 dark:text-zinc-300 leading-relaxed"></p>
+          </div>
+        </div>
+        
+        <div class="sticky bottom-0 flex justify-end p-6 backdrop-blur-sm bg-white/90 dark:bg-zinc-800/90 border-t border-zinc-200 dark:border-zinc-700">
+          <button 
+            id="closeModalBtn" 
+            class="px-6 py-2.5 bg-zinc-800 hover:bg-zinc-900 dark:bg-zinc-700 dark:hover:bg-zinc-600 text-white font-medium rounded-lg transition-all duration-200"
+          >
+            关闭
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 页脚 -->
+    <footer class="mt-12 py-8 border-t border-zinc-200 dark:border-zinc-800 bg-white/50 dark:bg-zinc-900/50">
+      <div class="container mx-auto px-4">
+        <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+          <p class="text-zinc-600 dark:text-zinc-400 text-sm">
+            © 2025 数据来源：《沉浮与梦想：A股十年上市博弈》
+          </p>
+          <div class="flex items-center gap-4">
+            <a 
+              href="#top" 
+              class="text-sm text-zinc-500 dark:text-zinc-400 hover:text-zinc-800 dark:hover:text-zinc-300 transition-colors"
+            >
+              回到顶部
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script is:inline define:vars={{ companyList }}>
+      const companyData = companyList;
+
+      document.addEventListener('DOMContentLoaded', () => {
+        const modal = document.getElementById('detailModal');
+        const modalDialog = modal.querySelector('.relative');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalTags = document.getElementById('modalTags');
+        const modalContent = document.getElementById('modalContent').querySelector('p');
+        const companyListContainer = document.getElementById('companyListContainer');
+        const sortButtons = document.querySelectorAll('.sort-button');
+        const allCards = document.querySelectorAll('article[data-company-id]');
+
+        // 过滤并显示公司列表
+        const filterCompanyList = (sortBy = 'all') => {
+          allCards.forEach(card => {
+            const companyId = parseInt(card.dataset.companyId);
+            const company = companyData[companyId];
+            if (!company) return;
+
+            if (sortBy === 'delisted') {
+              card.style.display = company.delisted ? '' : 'none';
+            } else {
+              card.style.display = '';
+            }
+          });
+        };
+
+        // 排序按钮事件
+        sortButtons.forEach(button => {
+          button.addEventListener('click', () => {
+            const sortBy = button.dataset.sort;
+            filterCompanyList(sortBy);
+
+            // 更新按钮激活状态
+            sortButtons.forEach(btn => {
+              btn.classList.remove('active', 'bg-zinc-200', 'dark:bg-zinc-700', 'text-zinc-800', 'dark:text-zinc-200');
+              btn.classList.add('bg-zinc-100', 'hover:bg-zinc-200', 'dark:bg-zinc-800', 'dark:hover:bg-zinc-700', 'text-zinc-700', 'dark:text-zinc-300');
+            });
+            
+            button.classList.add('active', 'bg-zinc-200', 'dark:bg-zinc-700', 'text-zinc-800', 'dark:text-zinc-200');
+            button.classList.remove('bg-zinc-100', 'hover:bg-zinc-200', 'dark:bg-zinc-800', 'dark:hover:bg-zinc-700', 'text-zinc-700', 'dark:text-zinc-300');
+          });
+        });
+
+        // 弹窗打开逻辑 (使用事件委托)
+        companyListContainer.addEventListener('click', (event) => {
+          const card = event.target.closest('article[data-company-id]');
+          if (!card) return;
+
+          const companyId = parseInt(card.dataset.companyId);
+          const company = companyData[companyId];
+
+          if (!company) {
+            console.error('未找到公司数据:', companyId);
+            return;
+          }
+
+          // 填充弹窗内容
+          modalTitle.textContent = company.name;
+          modalTags.innerHTML = '';
+          company.keyword.forEach((tag, index) => {
+            const tagElement = document.createElement('span');
+            tagElement.className = 'inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-zinc-100 dark:bg-zinc-700 text-zinc-700 dark:text-zinc-300 text-xs border border-zinc-200 dark:border-zinc-600 opacity-0 translate-y-2';
+            // 使用 Tabler Tag 图标
+            tagElement.innerHTML = `
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag w-3 h-3 opacity-70" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                 <path d="M7.5 7.5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"></path>
+                 <path d="M4 7v3.859c0 .537 .213 1.052 .593 1.432l8.116 8.116a2.025 2.025 0 0 0 2.864 0l4.834 -4.834a2.025 2.025 0 0 0 0 -2.864l-8.117 -8.116a2.025 2.025 0 0 0 -1.431 -.593h-3.859a3 3 0 0 0 -3 3z"></path>
+              </svg>
+              <span class="font-medium">${tag}</span>
+            `;
+            modalTags.appendChild(tagElement);
+            
+            // 添加标签动画
+            setTimeout(() => {
+              tagElement.style.transition = 'all 0.3s ease-out';
+              tagElement.style.opacity = '1';
+              tagElement.style.transform = 'translateY(0)';
+            }, index * 80);
+          });
+          modalContent.textContent = company.detail || '暂无详细信息';
+
+          // 显示弹窗
+          modal.classList.remove('hidden');
+          modal.classList.add('flex');
+          document.body.classList.add('overflow-hidden');
+          requestAnimationFrame(() => {
+            modalDialog.classList.remove('scale-95', 'opacity-0', 'translate-y-4');
+          });
+          modal.focus();
+        });
+        
+        // 关闭弹窗功能
+        const closeModal = () => {
+          modalDialog.classList.add('scale-95', 'opacity-0', 'translate-y-4');
+          setTimeout(() => {
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            document.body.classList.remove('overflow-hidden');
+          }, 200); // 匹配过渡动画时长
+        };
+        
+        document.getElementById('closeModal').addEventListener('click', closeModal);
+        document.getElementById('closeModalBtn').addEventListener('click', closeModal);
+        document.getElementById('modalOverlay').addEventListener('click', closeModal);
+        
+        // ESC 键关闭弹窗
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+            closeModal();
+          }
+        });
+      });
+
+      // 暗色模式切换
+      const darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+      const toggleDarkMode = (e) => {
+        if (e.matches) {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+      };
+      
+      darkModeMediaQuery.addEventListener('change', toggleDarkMode);
+      toggleDarkMode(darkModeMediaQuery); // 初始检查
+    </script>
+  </body>
+</html>
