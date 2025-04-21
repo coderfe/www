@@ -4,11 +4,14 @@ import BaseLayout from '../BaseLayout.astro';
 const { title, description, cover } = Astro.props;
 ---
 <BaseLayout
-  title={title}
+  title={`明日周刊 · ${title}`}
   description={description}
   ogImage={cover}
   showNavigation={false}
 >
+  <Fragment slot="head">
+    <meta name="keywords" content=`明日周刊，${title}` />
+  </Fragment>
   <div class="relative">
     <slot />
   </div>
