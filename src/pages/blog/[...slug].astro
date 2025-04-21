@@ -1,5 +1,4 @@
 ---
-import fs from 'node:fs/promises';
 import { type CollectionEntry, getCollection } from 'astro:content';
 import { getEntry } from 'astro:content';
 import BackToTop from '@/components/common/BackToTop.astro';
@@ -13,6 +12,7 @@ import RelatedPosts from '@/components/features/post/RelatedPosts.astro';
 import BaseLayout from '@/components/layouts/BaseLayout.astro';
 import IconMessageCircle from '~icons/tabler/message-circle';
 import IconSeparator from '~icons/tabler/separator';
+import { AUTHOR } from '@/consts';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
@@ -36,14 +36,45 @@ type Props = {
 
 const { post, prev, next } = Astro.props;
 const { Content } = await post.render();
-const { title, tldr, date, tags = [], cover } = post.data;
+const { title, tldr, date, tags = [], cover, keywords } = post.data;
+const modifiedDate = post.data.date;
 
 const entry = await getEntry('blog', post.slug);
 const raw = entry?.body;
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: title,
+  description: tldr,
+  datePublished: date.toISOString(),
+  dateModified: modifiedDate ? modifiedDate.toISOString() : date.toISOString(),
+  author: {
+    '@type': 'Person',
+    name: AUTHOR,
+  },
+  publisher: {
+    '@type': 'Organization',
+    name: AUTHOR,
+    logo: {
+      '@type': 'ImageObject',
+      url: new URL('/favicon.svg', Astro.site).toString(),
+    },
+  },
+  mainEntityOfPage: {
+    '@type': 'WebPage',
+    '@id': new URL(Astro.url.pathname, Astro.site).toString(),
+  },
+};
 ---
 
 <BaseLayout title={title} description={tldr} ogImage={cover}>
-  {date && <meta name="date" content={date.toLocaleDateString()} slot="head" />}
+  <Fragment slot="head">
+    {date && <meta name="date" content={date.toLocaleDateString()} />}
+    {keywords && <meta name="keywords" content={keywords.join(', ')} />}
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  </Fragment>
+
   <article class="relative min-h-screen">
     <BackgroundGrid />
     
