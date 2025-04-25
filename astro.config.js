@@ -37,7 +37,14 @@ export default defineConfig({
       ],
     ],
   },
-  integrations: [react(), mdx(), sitemap(), pagefind()],
+  integrations: [
+    react(),
+    mdx(),
+    sitemap({
+      changefreq: 'weekly',
+    }),
+    pagefind(),
+  ],
   devToolbar: {
     enabled: false,
   },
