@@ -54,3 +54,16 @@
 - 使用 Tailwind 的调色板和间距比例以保持一致性
 - 在必要时在 `src/styles/style.css` 中实现自定义主题扩展
 - 永远不要使用 @apply 指令
+
+## Git
+
+- 生成的 commit message 应该简洁明了，遵循 [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) 规范。
+- 提交信息应包含以下内容：
+  - `feat`：新功能
+  - `fix`：修复 bug
+  - `docs`：文档更新
+  - `style`：样式更新（不影响 JS 逻辑）
+  - `refactor`：重构代码（既不是修复 bug 也不是添加功能）
+  - `perf`：性能优化
+  - `test`：添加测试用例
+  - `chore`：其他修改（不属于以上类型）
